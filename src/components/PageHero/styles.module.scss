@@ -12,38 +12,89 @@
   padding-bottom: $space-20;
   position: relative;
   overflow: hidden;
+}
 
-  &::before {
-    content: "";
-    position: absolute;
-    top: -120px;
-    right: -120px;
-    width: 500px;
-    height: 500px;
-    border-radius: 50%;
-    background: radial-gradient(
-      circle,
-      rgba(113, 194, 0, 0.14) 0%,
-      transparent 70%
-    );
-    pointer-events: none;
-  }
+// Taller, image-backed variant used by the inner pages.
+.hero--image {
+  display: flex;
+  align-items: flex-end;
+  min-height: 56vh;
+  padding-top: calc(#{$navbar-height} + #{$space-16});
 
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: -80px;
-    left: -80px;
-    width: 320px;
-    height: 320px;
-    border-radius: 50%;
-    background: radial-gradient(
-      circle,
-      rgba(255, 255, 255, 0.04) 0%,
-      transparent 70%
-    );
-    pointer-events: none;
+  @include respond-to(md) {
+    min-height: 44vh;
   }
+}
+
+.decor {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.media {
+  position: absolute;
+  inset: -18%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  will-change: transform;
+  animation: heroMediaIn 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      105deg,
+      rgba(8, 24, 52, 0.94) 0%,
+      rgba(11, 40, 84, 0.78) 44%,
+      rgba(19, 66, 137, 0.5) 100%
+    ),
+    linear-gradient(to top, rgba(8, 24, 52, 0.88) 0%, transparent 46%);
+}
+
+@keyframes heroMediaIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.blobA,
+.blobB,
+.grid {
+  position: absolute;
+  display: block;
+}
+
+.blobA {
+  top: -160px;
+  right: -120px;
+  width: 560px;
+  height: 560px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(113, 194, 0, 0.18) 0%, transparent 68%);
+}
+
+.blobB {
+  bottom: -160px;
+  left: -100px;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.06) 0%, transparent 70%);
+}
+
+.grid {
+  inset: -20%;
+  width: auto;
+  height: auto;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1.4px);
+  background-size: 36px 36px;
+  mask-image: radial-gradient(ellipse 70% 80% at 70% 30%, #000 0%, transparent 72%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 80% at 70% 30%, #000 0%, transparent 72%);
+  opacity: 0.6;
 }
 
 .inner {

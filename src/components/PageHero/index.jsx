@@ -7,9 +7,26 @@ export default function PageHero({
   subtitle,
   actions,
   breadcrumb,
+  image,
 }) {
   return (
-    <section className={s.hero}>
+    <section className={`${s.hero} ${image ? s["hero--image"] : ""}`}>
+      <div className={s.decor} aria-hidden="true">
+        {image && (
+          <>
+            <div
+              className={s.media}
+              data-parallax="0.07"
+              style={{ backgroundImage: `url(${image})` }}
+            />
+            <div className={s.scrim} />
+          </>
+        )}
+        <span className={s.blobA} data-parallax="0.16" />
+        <span className={s.blobB} data-parallax="-0.12" />
+        <span className={s.grid} data-parallax="0.05" />
+      </div>
+
       <div className={s.inner}>
         {breadcrumb && (
           <nav className={s.breadcrumb} aria-label="Miga de pan">

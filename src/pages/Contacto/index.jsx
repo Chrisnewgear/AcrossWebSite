@@ -95,6 +95,7 @@ export default function Contacto() {
         label="Hablemos de su operación"
         title="Contáctenos"
         subtitle="Nuestro equipo de especialistas está listo para asesorarle en cada etapa de su operación internacional."
+        image="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80"
       />
 
       {/* Main contact zone */}
@@ -102,7 +103,7 @@ export default function Contacto() {
         <div className={s.inner}>
           <div className={s.layout}>
             {/* Left — form */}
-            <div className={s["form-card"]}>
+            <div className={s["form-card"]} data-reveal="left">
               {submitted ? (
                 <div className={s.success}>
                   <span className={s["success-icon"]}><Icon name="checkCircle" size={52} /></span>
@@ -223,7 +224,7 @@ export default function Contacto() {
             </div>
 
             {/* Right — info */}
-            <aside className={s.sidebar}>
+            <aside className={s.sidebar} data-reveal="right">
               <div className={s["channels-block"]}>
                 <div className={s["block-label"]}>Canales de Atención</div>
                 <div className={s.channels}>
@@ -275,15 +276,15 @@ export default function Contacto() {
       {/* Global offices */}
       <section className={s.offices}>
         <div className={s.inner}>
-          <div className={s["section-label"]}>Presencia Global</div>
-          <h2 className={s["section-title"]}>Nuestras Oficinas</h2>
-          <p className={s["section-sub"]}>
+          <div className={s["section-label"]} data-reveal="up">Presencia Global</div>
+          <h2 className={s["section-title"]} data-reveal="up" data-reveal-delay={80}>Nuestras Oficinas</h2>
+          <p className={s["section-sub"]} data-reveal="up" data-reveal-delay={140}>
             Con presencia en cuatro países, coordinamos operaciones en los
             principales hubs comerciales del mundo.
           </p>
           <div className={s["offices-grid"]}>
-            {OFFICES.map(({ flag, city, role, address, phone, hours }) => (
-              <div key={city} className={s["office-card"]}>
+            {OFFICES.map(({ flag, city, role, address, phone, hours }, i) => (
+              <div key={city} className={s["office-card"]} data-reveal="up" data-reveal-delay={i * 90}>
                 <div className={s["office-flag"]}>{flag}</div>
                 <div className={s["office-city"]}>{city}</div>
                 <div className={s["office-role"]}>{role}</div>

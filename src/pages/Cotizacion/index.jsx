@@ -100,13 +100,14 @@ export default function Cotizacion() {
         label="Solicitud de cotización"
         title="Cotice su Operación Internacional"
         subtitle="Propuestas de pago personalizadas adaptadas a su situación financiera y volumen de operación."
+        image="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1920&q=80"
       />
 
       <section className={s.page}>
         <div className={s.inner}>
           <div className={s.layout}>
             {/* Sidebar */}
-            <aside className={s.sidebar}>
+            <aside className={s.sidebar} data-reveal="left">
               <h2 className={s["sidebar-title"]}>¿Cómo funciona?</h2>
               <p className={s["sidebar-sub"]}>
                 Reciba una cotización detallada en menos de 24 horas hábiles con
@@ -138,7 +139,7 @@ export default function Cotizacion() {
             </aside>
 
             {/* Form card */}
-            <div className={s["form-card"]}>
+            <div className={s["form-card"]} data-reveal="right">
               {submitted ? (
                 <div className={s.success}>
                   <span className={s["success-icon"]}><Icon name="checkCircle" size={52} /></span>

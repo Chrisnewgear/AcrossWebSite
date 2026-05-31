@@ -125,11 +125,12 @@ export default function Rastreo() {
         label="Seguimiento en tiempo real"
         title="Rastree su Envío"
         subtitle="Ingrese su número de guía, contenedor o AWB para ver el estado en tiempo real de su carga."
+        image="https://images.unsplash.com/photo-1605745341112-85968b19335b?w=1920&q=80"
       />
 
       <section className={s["search-section"]}>
         <div className={s.inner}>
-          <div className={s["search-card"]}>
+          <div className={s["search-card"]} data-reveal="up">
             <div className={s["search-label"]}>Búsqueda de Envío</div>
             <h2 className={s["search-title"]}>¿Dónde está su carga?</h2>
             <p className={s["search-sub"]}>
@@ -293,8 +294,8 @@ export default function Rastreo() {
             Todo lo que necesita saber
           </h2>
           <div className={s["info-grid"]}>
-            {INFO.map(({ icon, title, text }) => (
-              <div key={title} className={s["info-card"]}>
+            {INFO.map(({ icon, title, text }, i) => (
+              <div key={title} className={s["info-card"]} data-reveal="up" data-reveal-delay={i * 100}>
                 <span className={s["info-icon"]}><Icon name={icon} size={24} /></span>
                 <h3 className={s["info-title"]}>{title}</h3>
                 <p className={s["info-text"]}>{text}</p>
@@ -305,7 +306,7 @@ export default function Rastreo() {
       </section>
 
       <div className={s["contact-prompt"]}>
-        <div className={s["contact-card"]}>
+        <div className={s["contact-card"]} data-reveal="scale">
           <div className={s["contact-text"]}>
             <h3>¿Necesita ayuda con su envío?</h3>
             <p>

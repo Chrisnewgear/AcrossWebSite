@@ -38,7 +38,7 @@ export default function CotizacionForm() {
     <section id="cotizacion" className={s.section}>
       <div className={s.inner}>
         <div className={s.layout}>
-          <div className={s.info}>
+          <div className={s.info} data-reveal="left">
             <div className={s.label}>Cotización</div>
             <h2 className={s['info-title']}>Cotice su Envío con Nosotros</h2>
             <p className={s['info-sub']}>
@@ -46,8 +46,8 @@ export default function CotizacionForm() {
               y al volumen de su operación.
             </p>
             <div className={s.conditions}>
-              {CONDITIONS.map(({ icon, name, desc }) => (
-                <div key={name} className={s.condition}>
+              {CONDITIONS.map(({ icon, name, desc }, i) => (
+                <div key={name} className={s.condition} data-reveal="up" data-reveal-delay={i * 100}>
                   <span className={s['condition-icon']}><Icon name={icon} size={22} /></span>
                   <div>
                     <div className={s['condition-name']}>{name}</div>
@@ -58,7 +58,7 @@ export default function CotizacionForm() {
             </div>
           </div>
 
-          <div className={s['form-card']}>
+          <div className={s['form-card']} data-reveal="right">
             {submitted ? (
               <div className={s.success}>
                 <div className={s['success-icon']}><Icon name="checkCircle" size={48} /></div>

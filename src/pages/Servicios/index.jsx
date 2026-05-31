@@ -145,6 +145,7 @@ export default function Servicios() {
         label="Nuestras capacidades"
         title="Soluciones Logísticas Integrales"
         subtitle="Desde el proveedor hasta su bodega — gestionamos cada paso de su cadena de suministro internacional."
+        image="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1920&q=80"
         actions={
           <>
             <Link to="/cotizacion" className="btn-green">
@@ -160,9 +161,9 @@ export default function Servicios() {
       {/* Transport Modes */}
       <section className={s["transport-section"]}>
         <div className={s.inner}>
-          <div className={s["section-label"]}>Modos de Transporte</div>
-          <h2 className={s["section-title"]}>Cobertura Mar, Aire y Tierra</h2>
-          <p className={s["section-sub"]}>
+          <div className={s["section-label"]} data-reveal="up">Modos de Transporte</div>
+          <h2 className={s["section-title"]} data-reveal="up" data-reveal-delay={80}>Cobertura Mar, Aire y Tierra</h2>
+          <p className={s["section-sub"]} data-reveal="up" data-reveal-delay={140}>
             Operamos las tres modalidades de transporte para ofrecerle la
             solución más eficiente según su producto, volumen y urgencia.
           </p>
@@ -173,11 +174,19 @@ export default function Servicios() {
                 key={title}
                 className={`${s["transport-row"]} ${reverse ? s["transport-row--reverse"] : ""}`}
               >
-                <div className={s["transport-img"]}>
-                  <img src={img} alt={title} loading="lazy" />
+                <div
+                  className={s["transport-img"]}
+                  data-reveal={reverse ? "right" : "left"}
+                >
+                  <div className={s["transport-img-parallax"]} data-parallax="0.05">
+                    <img src={img} alt={title} loading="lazy" />
+                  </div>
                   <span className={s["transport-img-badge"]}>{badge}</span>
                 </div>
-                <div className={s["transport-content"]}>
+                <div
+                  className={s["transport-content"]}
+                  data-reveal={reverse ? "left" : "right"}
+                >
                   <div className={s["transport-tag"]}>
                     <Icon name={icon} size={18} /> {tag}
                   </div>
@@ -204,15 +213,15 @@ export default function Servicios() {
       {/* Additional Services */}
       <section className={s.additional}>
         <div className={s.inner}>
-          <div className={s["section-label"]}>Servicios Complementarios</div>
-          <h2 className={s["section-title"]}>Más allá del transporte</h2>
-          <p className={s["section-sub"]}>
+          <div className={s["section-label"]} data-reveal="up">Servicios Complementarios</div>
+          <h2 className={s["section-title"]} data-reveal="up" data-reveal-delay={80}>Más allá del transporte</h2>
+          <p className={s["section-sub"]} data-reveal="up" data-reveal-delay={140}>
             Su departamento de compras internacionales externo — verificamos,
             negociamos, inspeccionamos y protegemos su inversión.
           </p>
           <div className={s["add-grid"]}>
-            {ADDITIONAL.map(({ icon, title, desc, price }) => (
-              <div key={title} className={s["add-card"]}>
+            {ADDITIONAL.map(({ icon, title, desc, price }, i) => (
+              <div key={title} className={s["add-card"]} data-reveal="up" data-reveal-delay={(i % 3) * 90}>
                 <span className={s["add-icon"]}><Icon name={icon} size={26} /></span>
                 <h3 className={s["add-title"]}>{title}</h3>
                 <p className={s["add-desc"]}>{desc}</p>
@@ -245,8 +254,8 @@ export default function Servicios() {
             extendida bajo evaluación de viáticos.
           </p>
           <div className={s["insp-grid"]}>
-            {INSPECTION_PHASES.map(({ phase, title, desc, rate }) => (
-              <div key={phase} className={s["insp-card"]}>
+            {INSPECTION_PHASES.map(({ phase, title, desc, rate }, i) => (
+              <div key={phase} className={s["insp-card"]} data-reveal="up" data-reveal-delay={i * 110}>
                 <div className={s["insp-phase"]}>{phase}</div>
                 <h3 className={s["insp-title"]}>{title}</h3>
                 <p className={s["insp-desc"]}>{desc}</p>
@@ -274,7 +283,7 @@ export default function Servicios() {
             Trabajamos bajo el estándar AQL (Acceptance Quality Level) — en un
             lote de 1.000 unidades se inspeccionan estadísticamente 80 unidades.
           </p>
-          <div style={{ overflowX: "auto" }}>
+          <div style={{ overflowX: "auto" }} data-reveal="up">
             <table className={s["aql-table"]}>
               <thead>
                 <tr>

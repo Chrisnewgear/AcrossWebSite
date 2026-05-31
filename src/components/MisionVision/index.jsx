@@ -23,14 +23,14 @@ export default function MisionVision() {
   return (
     <section className={s.section}>
       <div className={s.inner}>
-        <div className={s.header}>
+        <div className={s.header} data-reveal="up">
           <div className={s.label}>Nuestra Identidad</div>
           <h2 className={s.title}>Lo que nos define</h2>
         </div>
 
         <div className={s.grid}>
           {/* Misión */}
-          <div className={`${s.card} ${s['card--mision']}`}>
+          <div className={`${s.card} ${s['card--mision']}`} data-reveal="left">
             <div className={s['card-inner']}>
               <div className={s['card-icon']}><Icon name="target" size={26} /></div>
               <div className={s['card-label']}>Misión</div>
@@ -47,7 +47,7 @@ export default function MisionVision() {
           </div>
 
           {/* Visión */}
-          <div className={`${s.card} ${s['card--vision']}`}>
+          <div className={`${s.card} ${s['card--vision']}`} data-reveal="right">
             <div className={s['card-inner']}>
               <div className={s['card-icon']}><Icon name="compass" size={26} /></div>
               <div className={s['card-label']}>Visión</div>
@@ -65,10 +65,10 @@ export default function MisionVision() {
         </div>
 
         <div className={s.values}>
-          <h3 className={s['values-title']}>Nuestros Valores</h3>
+          <h3 className={s['values-title']} data-reveal="up">Nuestros Valores</h3>
           <div className={s['values-grid']}>
-            {VALUES.map(({ icon, name, desc }) => (
-              <div key={name} className={s['value-card']}>
+            {VALUES.map(({ icon, name, desc }, i) => (
+              <div key={name} className={s['value-card']} data-reveal="up" data-reveal-delay={i * 120}>
                 <div className={s['value-icon']}><Icon name={icon} size={26} /></div>
                 <h4 className={s['value-name']}>{name}</h4>
                 <p className={s['value-desc']}>{desc}</p>

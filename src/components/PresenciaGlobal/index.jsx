@@ -11,7 +11,7 @@ export default function PresenciaGlobal() {
   return (
     <section className={s.section}>
       <div className={s.inner}>
-        <div className={s.header}>
+        <div className={s.header} data-reveal="up">
           <div className={s.label}>Presencia Internacional</div>
           <h2 className={s.title}>Conectados con el Mundo</h2>
           <p className={s.subtitle}>
@@ -20,8 +20,13 @@ export default function PresenciaGlobal() {
         </div>
 
         <div className={s.grid}>
-          {OFFICES.map(({ flag, city, country, role, isHQ }) => (
-            <div key={city} className={`${s.office} ${isHQ ? s['office--hq'] : ''}`}>
+          {OFFICES.map(({ flag, city, country, role, isHQ }, i) => (
+            <div
+              key={city}
+              className={`${s.office} ${isHQ ? s['office--hq'] : ''}`}
+              data-reveal="up"
+              data-reveal-delay={i * 100}
+            >
               <span className={s['office-flag']}>{flag}</span>
               {isHQ && <div className={s['office-hq']}>HQ</div>}
               <div className={s['office-city']}>{city}</div>
@@ -31,7 +36,7 @@ export default function PresenciaGlobal() {
           ))}
         </div>
 
-        <div className={s.network}>
+        <div className={s.network} data-reveal="scale">
           <div className={s['network-text']}>
             <h3>Red de Manufactura Global</h3>
             <p>Acceso directo a los mejores fabricantes de Asia y Europa</p>

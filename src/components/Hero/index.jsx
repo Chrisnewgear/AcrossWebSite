@@ -3,22 +3,28 @@ import { useNavigate } from 'react-router-dom';
 import Icon from '../Icon';
 import s from './styles.module.scss';
 
-// Floating image cards — each parallaxes at its own depth (--srate scroll rate,
-// --mrange mouse range) to build the layered, Apple-style sense of depth.
+// Floating image cards — each parallaxes at its own depth and now carries a
+// caption, so the collage reads as the three transport modes rather than decor.
 const FLOAT_CARDS = [
   {
     src: 'https://images.unsplash.com/photo-1605745341112-85968b19335b?w=700&q=80',
     alt: 'Terminal de contenedores',
+    icon: 'ship',
+    label: 'Marítimo',
     cls: 'card--a',
   },
   {
     src: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=700&q=80',
     alt: 'Carga aérea',
+    icon: 'plane',
+    label: 'Aéreo',
     cls: 'card--b',
   },
   {
     src: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=700&q=80',
     alt: 'Transporte terrestre',
+    icon: 'truck',
+    label: 'Terrestre',
     cls: 'card--c',
   },
 ];
@@ -88,18 +94,30 @@ export default function Hero() {
         <div className={s.hero__bgImage} />
         <div className={s.hero__bgGradient} />
         <div className={s.hero__grid} />
+        <div className={s.hero__grain} />
       </div>
 
-      {/* ── Floating photo cards (desktop depth layer) ──────────── */}
+      {/* ── Floating photo collage (desktop depth layer) ────────── */}
       <div className={s.hero__gallery} aria-hidden="true">
-        {FLOAT_CARDS.map(({ src, alt, cls }) => (
+        <div className={s.hero__glow} />
+        {FLOAT_CARDS.map(({ src, alt, icon, label, cls }) => (
           <figure key={cls} className={`${s.card} ${s[cls]}`}>
             <div className={s.card__inner}>
               <img src={src} alt={alt} loading="eager" />
+              <figcaption className={s.card__caption}>
+                <Icon name={icon} size={15} />
+                {label}
+              </figcaption>
             </div>
           </figure>
         ))}
-        <div className={s.hero__glow} />
+
+        {/* Glass stat callout overlapping the collage */}
+        <div className={s.hero__stat}>
+          <div className={s.hero__statNum}>+10K</div>
+          <div className={s.hero__statLabel}>Envíos entregados</div>
+          <div className={s.hero__statBar}><span /></div>
+        </div>
       </div>
 
       {/* ── Content ─────────────────────────────────────────────── */}

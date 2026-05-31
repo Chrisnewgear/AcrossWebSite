@@ -119,8 +119,16 @@
       content: '';
       position: absolute;
       inset: 0;
+      z-index: 1;
       background: linear-gradient(to top, rgba(19,66,137,0.4) 0%, transparent 60%);
     }
+  }
+
+  // Oversized layer so the scroll parallax never reveals an edge.
+  &__img-parallax {
+    position: absolute;
+    inset: -14% 0;
+    height: 128%;
   }
 
   &__badge {

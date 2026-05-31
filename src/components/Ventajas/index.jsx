@@ -38,7 +38,7 @@ export default function Ventajas() {
   return (
     <section className={s.section}>
       <div className={s.inner}>
-        <div className={s.header}>
+        <div className={s.header} data-reveal="up">
           <div className={s.label}>Ventajas Estratégicas</div>
           <h2 className={s.title}>Por qué elegirnos</h2>
           <p className={s.subtitle}>
@@ -48,8 +48,8 @@ export default function Ventajas() {
 
         <div className={s.grid}>
           {ADVANTAGES.map(({ icon, title, desc, detail }, i) => (
-            <div key={title} className={s.card}>
-              <div className={s['card-number']}>{String(i + 1).padStart(2, '0')}</div>
+            <div key={title} className={s.card} data-reveal="up" data-reveal-delay={(i % 2) * 120}>
+              <div className={s['card-number']} data-parallax="0.08">{String(i + 1).padStart(2, '0')}</div>
               <div className={s['card-icon']}><Icon name={icon} size={26} /></div>
               <h3 className={s['card-title']}>{title}</h3>
               <p className={s['card-desc']}>{desc}</p>
@@ -59,8 +59,8 @@ export default function Ventajas() {
         </div>
 
         <div className={s.commissions}>
-          {COMMISSIONS.map(({ rate, type, label }) => (
-            <div key={type} className={s['commission-item']}>
+          {COMMISSIONS.map(({ rate, type, label }, i) => (
+            <div key={type} className={s['commission-item']} data-reveal="scale" data-reveal-delay={i * 110}>
               <div className={s['commission-rate']}>{rate}</div>
               <div className={s['commission-type']}>{type}</div>
               <div className={s['commission-label']}>{label}</div>

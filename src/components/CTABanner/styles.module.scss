@@ -38,7 +38,21 @@
   }
 }
 
+.glow {
+  position: absolute;
+  bottom: -160px;
+  left: -120px;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(113, 194, 0, 0.18) 0%, transparent 68%);
+  pointer-events: none;
+  z-index: 0;
+}
+
 .label {
+  position: relative;
+  z-index: 1;
   display: inline-flex;
   align-items: center;
   gap: $space-2;

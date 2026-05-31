@@ -36,7 +36,7 @@ export default function Servicios() {
   return (
     <section id="servicios" className={s.section}>
       <div className={s.inner}>
-        <div className={s.header}>
+        <div className={s.header} data-reveal="up">
           <div className={s.label}>Nuestras Capacidades</div>
           <h2 className={s.title}>Soluciones de Transporte Global</h2>
           <p className={s.subtitle}>
@@ -46,10 +46,12 @@ export default function Servicios() {
         </div>
 
         <div className={s['transport-grid']}>
-          {TRANSPORT.map(({ icon, name, img, badge, desc }) => (
-            <div key={name} className={s['transport-card']}>
+          {TRANSPORT.map(({ icon, name, img, badge, desc }, i) => (
+            <div key={name} className={s['transport-card']} data-reveal="up" data-reveal-delay={i * 130}>
               <div className={s['transport-card__img-wrap']}>
-                <img src={img} alt={name} loading="lazy" />
+                <div className={s['transport-card__img-parallax']} data-parallax="0.04">
+                  <img src={img} alt={name} loading="lazy" />
+                </div>
                 <span className={s['transport-card__badge']}>{badge}</span>
               </div>
               <div className={s['transport-card__body']}>
@@ -67,10 +69,10 @@ export default function Servicios() {
         </div>
 
         <div className={s.features}>
-          <h3 className={s['features-title']}>Servicios Adicionales</h3>
+          <h3 className={s['features-title']} data-reveal="up">Servicios Adicionales</h3>
           <div className={s['features-grid']}>
-            {FEATURES.map(({ icon, name, desc }) => (
-              <div key={name} className={s['feature-item']}>
+            {FEATURES.map(({ icon, name, desc }, i) => (
+              <div key={name} className={s['feature-item']} data-reveal="up" data-reveal-delay={i * 90}>
                 <div className={s['feature-icon']}><Icon name={icon} size={28} /></div>
                 <div className={s['feature-name']}>{name}</div>
                 <div className={s['feature-desc']}>{desc}</div>
