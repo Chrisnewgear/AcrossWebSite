@@ -1,0 +1,225 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.footer {
+  background: $color-blue-dark;
+  background-image: linear-gradient(180deg, $color-blue-dark, #081e42);
+  padding-top: $space-20;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(113,194,0,0.4), transparent);
+  }
+}
+
+.inner {
+  @include container;
+}
+
+.top {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: $space-10;
+  padding-bottom: $space-12;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+
+  @include respond-to(lg) {
+    grid-template-columns: 1fr 1fr;
+    gap: $space-8;
+  }
+
+  @include respond-to(sm) {
+    grid-template-columns: 1fr;
+    gap: $space-8;
+  }
+}
+
+// Brand column
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+}
+
+.logo-icon {
+  width: 44px;
+  height: 44px;
+  background: $color-green;
+  border-radius: $radius-md;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-white;
+  flex-shrink: 0;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.logo-name {
+  font-family: $font-display;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: $color-white;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.logo-tagline {
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.brand-desc {
+  font-size: $fs-sm;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.7;
+  max-width: 280px;
+}
+
+.flag {
+  font-size: 1.5rem;
+}
+
+.socials {
+  display: flex;
+  gap: $space-3;
+  margin-top: $space-2;
+}
+
+.social-link {
+  width: 36px;
+  height: 36px;
+  border-radius: $radius-md;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.6);
+  font-size: 0.8rem;
+  transition: all $transition-fast;
+  text-decoration: none;
+
+  &:hover {
+    background: $color-green;
+    border-color: $color-green;
+    color: $color-white;
+    transform: translateY(-2px);
+  }
+}
+
+// Nav columns
+.col-title {
+  font-family: $font-primary;
+  font-size: $fs-xs;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 1.25rem;
+}
+
+.col-links {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.col-link {
+  font-size: $fs-sm;
+  color: rgba(255,255,255,0.65);
+  text-decoration: none;
+  transition: color $transition-fast;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: left;
+
+  &:hover {
+    color: $color-green;
+  }
+}
+
+// Contact info
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-3;
+  font-size: $fs-sm;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.5;
+
+  span:first-child {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    color: $color-green;
+    margin-top: 1px;
+  }
+}
+
+// Bottom bar
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-4;
+  padding-block: $space-6;
+  flex-wrap: wrap;
+
+  @include respond-to(sm) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.copyright {
+  font-size: $fs-xs;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.04em;
+}
+
+.lang-selector {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-2 $space-4;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: $radius-full;
+  font-size: $fs-xs;
+  color: rgba(255,255,255,0.55);
+  cursor: pointer;
+  transition: all $transition-fast;
+  appearance: none;
+  font-family: $font-primary;
+
+  &:hover {
+    background: rgba(255,255,255,0.1);
+    color: $color-white;
+  }
+
+  option {
+    background: $color-blue-dark;
+  }
+}

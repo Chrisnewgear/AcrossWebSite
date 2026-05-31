@@ -1,0 +1,157 @@
+@use 'variables' as *;
+@use 'reset';
+@use 'typography';
+
+// Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600;700&display=swap');
+
+// Global
+body {
+  background-color: $color-white;
+  overflow-x: hidden;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+// ─── Utility: Section Label ──────────────────────────────────────────────────
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  font-family: $font-primary;
+  font-size: $fs-xs;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $color-green;
+  margin-bottom: $space-4;
+
+  &::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: $color-green;
+    border-radius: 2px;
+  }
+}
+
+// ─── Utility: Btn Green ──────────────────────────────────────────────────────
+.btn-green {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
+  padding: $space-3 $space-8;
+  background: $color-green;
+  color: $color-white;
+  border-radius: $radius-full;
+  font-family: $font-primary;
+  font-size: $fs-sm;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  transition: all $transition-base;
+  box-shadow: 0 4px 16px rgba(113, 194, 0, 0.3);
+
+  &:hover {
+    background: $color-green-dark;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(113, 194, 0, 0.4);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.btn-outline-white {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
+  padding: $space-3 $space-8;
+  background: transparent;
+  color: $color-white;
+  border-radius: $radius-full;
+  font-family: $font-primary;
+  font-size: $fs-sm;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: 2px solid rgba(255,255,255,0.6);
+  text-decoration: none;
+  transition: all $transition-base;
+
+  &:hover {
+    background: rgba(255,255,255,0.15);
+    border-color: $color-white;
+    transform: translateY(-2px);
+  }
+}
+
+// ─── Scroll Reveal Animation ─────────────────────────────────────────────────
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes countUp {
+  from { opacity: 0; transform: scale(0.8); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.05); }
+}
+
+.animate-fade-up {
+  animation: fadeInUp 0.7s ease both;
+}
+
+.animate-fade-up-delay-1 { animation: fadeInUp 0.7s 0.1s ease both; }
+.animate-fade-up-delay-2 { animation: fadeInUp 0.7s 0.2s ease both; }
+.animate-fade-up-delay-3 { animation: fadeInUp 0.7s 0.3s ease both; }
+.animate-fade-up-delay-4 { animation: fadeInUp 0.7s 0.4s ease both; }

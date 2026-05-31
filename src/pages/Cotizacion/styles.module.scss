@@ -1,0 +1,458 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.page {
+  background: $color-gray-100;
+  padding-block: $space-20;
+
+  @include respond-to(md) {
+    padding-block: $space-16;
+  }
+}
+
+.inner {
+  @include container;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: $space-10;
+  align-items: start;
+
+  @include respond-to(lg) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// ─── Info sidebar ─────────────────────────────────────────────────────────────
+.sidebar {
+}
+
+.sidebar-title {
+  font-family: $font-display;
+  font-size: clamp(#{$fs-xl}, 3vw, #{$fs-2xl});
+  font-weight: 800;
+  color: $color-blue;
+  letter-spacing: -0.01em;
+  margin-bottom: $space-4;
+}
+
+.sidebar-sub {
+  font-size: $fs-base;
+  color: $color-gray-600;
+  line-height: 1.7;
+  margin-bottom: $space-8;
+}
+
+.steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+  margin-bottom: $space-8;
+}
+
+.step {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-4;
+}
+
+.step-num {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: $color-blue;
+  color: $color-white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $font-display;
+  font-size: $fs-base;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.step-text h4 {
+  font-family: $font-primary;
+  font-size: $fs-sm;
+  font-weight: 700;
+  color: $color-blue;
+  margin-bottom: $space-1;
+}
+
+.step-text p {
+  font-size: $fs-sm;
+  color: $color-gray-600;
+  line-height: 1.5;
+}
+
+.payment-modes {
+  background: $color-white;
+  border-radius: $radius-lg;
+  padding: $space-6;
+  border: 1px solid $color-gray-200;
+}
+
+.payment-label {
+  font-size: $fs-xs;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: $color-green;
+  margin-bottom: $space-5;
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 2px;
+    background: $color-green;
+    border-radius: 2px;
+  }
+}
+
+.payment-item {
+  display: flex;
+  gap: $space-3;
+  padding: $space-3 0;
+  border-bottom: 1px solid $color-gray-200;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.payment-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: $radius-md;
+  color: $color-blue;
+  background: rgba(19, 66, 137, 0.08);
+}
+
+.payment-name {
+  font-size: $fs-sm;
+  font-weight: 700;
+  color: $color-blue;
+  margin-bottom: 2px;
+}
+
+.payment-desc {
+  font-size: $fs-xs;
+  color: $color-gray-600;
+}
+
+// ─── Form card ────────────────────────────────────────────────────────────────
+.form-card {
+  background: $color-blue;
+  background-image: linear-gradient(160deg, $color-blue-dark, $color-blue);
+  border-radius: $radius-xl;
+  box-shadow: $shadow-blue;
+  overflow: hidden;
+}
+
+.form-header {
+  padding: $space-10 $space-10 0;
+
+  @include respond-to(sm) {
+    padding: $space-8 $space-6 0;
+  }
+}
+
+.form-title {
+  font-family: $font-display;
+  font-size: $fs-2xl;
+  font-weight: 800;
+  color: $color-white;
+  letter-spacing: -0.01em;
+  margin-bottom: $space-2;
+}
+
+.form-subtitle {
+  font-size: $fs-sm;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: $space-8;
+}
+
+// Progress bar
+.progress {
+  display: flex;
+  gap: $space-2;
+  margin-bottom: $space-8;
+}
+
+.progress-step {
+  flex: 1;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  transition: background $transition-base;
+
+  &--done {
+    background: $color-green;
+  }
+  &--active {
+    background: rgba(113, 194, 0, 0.6);
+  }
+}
+
+.form-body {
+  padding: 0 $space-10 $space-10;
+
+  @include respond-to(sm) {
+    padding: 0 $space-6 $space-8;
+  }
+}
+
+.step-title {
+  font-family: $font-display;
+  font-size: $fs-xl;
+  font-weight: 700;
+  color: $color-white;
+  margin-bottom: $space-6;
+  letter-spacing: -0.01em;
+}
+
+// Service type selector (step 1)
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-3;
+  margin-bottom: $space-6;
+
+  @include respond-to(sm) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.service-option {
+  position: relative;
+}
+
+.service-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.service-option label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-4 $space-3;
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: $radius-lg;
+  cursor: pointer;
+  transition: all $transition-fast;
+  text-align: center;
+}
+
+.service-option input:checked + label,
+.service-option label:hover {
+  background: rgba(113, 194, 0, 0.15);
+  border-color: $color-green;
+}
+
+.service-option-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-green;
+}
+
+.service-option-name {
+  font-size: $fs-xs;
+  font-weight: 600;
+  color: $color-white;
+  letter-spacing: 0.04em;
+}
+
+// Form fields
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-4;
+  margin-bottom: $space-4;
+
+  @include respond-to(sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.form-label {
+  font-size: $fs-xs;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: $space-4 $space-5;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: $radius-md;
+  font-family: $font-primary;
+  font-size: $fs-sm;
+  color: $color-white;
+  outline: none;
+  transition: all $transition-fast;
+
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.35);
+  }
+
+  &:focus {
+    background: rgba(255, 255, 255, 0.16);
+    border-color: $color-green;
+    box-shadow: 0 0 0 3px rgba(113, 194, 0, 0.2);
+  }
+}
+
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,0.5)' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+  cursor: pointer;
+
+  option {
+    background: $color-blue-dark;
+  }
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+  line-height: 1.5;
+}
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-4;
+  margin-top: $space-6;
+  flex-wrap: wrap;
+}
+
+.btn-prev {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-3 $space-6;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  border-radius: $radius-full;
+  font-size: $fs-sm;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all $transition-fast;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.18);
+    color: $color-white;
+  }
+}
+
+.btn-next {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
+  padding: $space-4 $space-10;
+  background: $color-green;
+  color: $color-white;
+  border-radius: $radius-full;
+  font-size: $fs-sm;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: all $transition-base;
+  box-shadow: 0 4px 16px rgba(113, 194, 0, 0.35);
+
+  &:hover:not(:disabled) {
+    background: $color-green-dark;
+    transform: translateY(-2px);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// Success state
+.success {
+  padding: $space-16 $space-10;
+  text-align: center;
+
+  @include respond-to(sm) {
+    padding: $space-12 $space-6;
+  }
+}
+
+.success-icon {
+  color: $color-green;
+  display: flex;
+  justify-content: center;
+  margin-bottom: $space-6;
+  animation: bounce 0.6s ease;
+}
+
+.success-title {
+  font-family: $font-display;
+  font-size: $fs-2xl;
+  font-weight: 800;
+  color: $color-white;
+  margin-bottom: $space-4;
+}
+
+.success-sub {
+  font-size: $fs-base;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: $space-8;
+  line-height: 1.65;
+  max-width: 380px;
+  margin-inline: auto;
+}
+
+.success-actions {
+  display: flex;
+  gap: $space-4;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+}

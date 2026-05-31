@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Claude_Preview__preview_start",
+      "Bash(npx sass *)",
+      "Bash(node -e \"const p=require\\('./package.json'\\); console.log\\('router:', p.dependencies['react-router-dom']||'NOT INSTALLED'\\)\")",
+      "Bash(cd \"C:\\\\Users\\\\chris\\\\Documents\\\\Github\\\\ACROSS PROJECT\\\\website\" && mkdir -p src/components/Icon && echo created)",
+      "Bash(npx vite *)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\chris\\Documents\\Github\\ACROSS PROJECT\\website\\src\\components"
+    ]
+  }
+}

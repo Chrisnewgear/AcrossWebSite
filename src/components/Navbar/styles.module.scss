@@ -1,0 +1,257 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: $navbar-height;
+  transition: background $transition-base, box-shadow $transition-base;
+
+  &__inner {
+    @include container;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-8;
+  }
+
+  &--transparent {
+    background: transparent;
+  }
+
+  &--scrolled {
+    background: rgba(13, 47, 99, 0.96);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 2px 32px rgba(0,0,0,0.25);
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  flex-shrink: 0;
+  text-decoration: none;
+
+  &__icon {
+    width: 44px;
+    height: 44px;
+    background: $color-green;
+    border-radius: $radius-md;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-white;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(113, 194, 0, 0.35);
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+
+  &__name {
+    font-family: $font-display;
+    font-size: 1rem;
+    font-weight: 800;
+    color: $color-white;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  &__tagline {
+    font-family: $font-primary;
+    font-size: 0.65rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.55);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: $space-1;
+
+  @include respond-to(lg) {
+    display: none;
+  }
+
+  &__link {
+    font-family: $font-primary;
+    font-size: $fs-sm;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+    padding: $space-2 $space-4;
+    border-radius: $radius-full;
+    transition: all $transition-fast;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    border: none;
+    background: none;
+    text-decoration: none;
+
+    &:hover {
+      color: $color-white;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    &--active {
+      color: $color-green;
+      font-weight: 600;
+    }
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+
+  @include respond-to(lg) {
+    .whatsapp { display: none; }
+  }
+}
+
+.whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  padding: 0.6rem 1.25rem;
+  background: $color-green;
+  color: $color-white;
+  border-radius: $radius-full;
+  font-family: $font-primary;
+  font-size: $fs-sm;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: all $transition-base;
+  box-shadow: 0 4px 16px rgba(113, 194, 0, 0.35);
+
+  svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+
+  &:hover {
+    background: $color-green-dark;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(113, 194, 0, 0.45);
+  }
+
+  @include respond-to(sm) {
+    padding: 0.6rem $space-4;
+    span { display: none; }
+  }
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  width: 32px;
+  cursor: pointer;
+  padding: $space-2;
+
+  @include respond-to(lg) {
+    display: flex;
+  }
+
+  span {
+    display: block;
+    height: 2px;
+    background: $color-white;
+    border-radius: 2px;
+    transition: all $transition-base;
+  }
+
+  &--open {
+    span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+    span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+  }
+}
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: $navbar-height;
+  left: 0;
+  right: 0;
+  background: rgba(13, 47, 99, 0.98);
+  backdrop-filter: blur(20px);
+  padding: $space-6;
+  flex-direction: column;
+  gap: $space-2;
+  z-index: 999;
+  border-top: 1px solid rgba(255,255,255,0.1);
+
+  @include respond-to(lg) {
+    display: flex;
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: all $transition-base;
+
+    &--open {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  a, button {
+    font-family: $font-primary;
+    font-size: $fs-md;
+    font-weight: 500;
+    color: rgba(255,255,255,0.85);
+    padding: $space-3 $space-4;
+    border-radius: $radius-md;
+    transition: all $transition-fast;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+
+    &:hover {
+      background: rgba(255,255,255,0.1);
+      color: $color-white;
+    }
+  }
+
+  .whatsapp-mobile {
+    margin-top: $space-4;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: $space-2;
+    padding: $space-3 $space-8;
+    background: $color-green;
+    color: $color-white !important;
+    border-radius: $radius-full;
+    font-weight: 700 !important;
+    text-align: center !important;
+    font-size: $fs-sm !important;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 16px rgba(113,194,0,0.3);
+  }
+}

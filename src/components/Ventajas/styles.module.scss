@@ -1,0 +1,233 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.section {
+  background: $color-blue;
+  background-image: linear-gradient(160deg, $color-blue-dark 0%, $color-blue 50%, #1a54ad 100%);
+  position: relative;
+  overflow: hidden;
+  padding-block: $space-24;
+
+  @include respond-to(md) {
+    padding-block: $space-16;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(113,194,0,0.12) 0%, transparent 70%);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -150px;
+    left: -100px;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
+  }
+}
+
+.inner {
+  @include container;
+  position: relative;
+  z-index: 1;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: $space-16;
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  font-size: $fs-xs;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $color-green;
+  margin-bottom: $space-4;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 2px;
+    background: $color-green;
+    border-radius: 2px;
+  }
+}
+
+.title {
+  font-family: $font-display;
+  font-size: clamp(#{$fs-2xl}, 4vw, #{$fs-3xl});
+  font-weight: 800;
+  color: $color-white;
+  letter-spacing: -0.02em;
+  margin-bottom: $space-4;
+}
+
+.subtitle {
+  font-size: $fs-md;
+  color: rgba(255,255,255,0.7);
+  max-width: 500px;
+  margin-inline: auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $space-6;
+
+  @include respond-to(md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: $radius-xl;
+  padding: $space-10;
+  transition: all $transition-base;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, $color-green, transparent);
+    opacity: 0;
+    transition: opacity $transition-base;
+  }
+
+  &:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(113,194,0,0.4);
+    transform: translateY(-4px);
+
+    &::before {
+      opacity: 1;
+    }
+  }
+}
+
+.card-number {
+  font-family: $font-display;
+  font-size: $fs-6xl;
+  font-weight: 900;
+  color: rgba(255,255,255,0.05);
+  line-height: 1;
+  position: absolute;
+  top: $space-4;
+  right: $space-6;
+  letter-spacing: -0.05em;
+  pointer-events: none;
+  user-select: none;
+}
+
+.card-icon {
+  width: 52px;
+  height: 52px;
+  background: rgba(113,194,0,0.18);
+  border-radius: $radius-md;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-green;
+  margin-bottom: $space-6;
+}
+
+.card-title {
+  font-family: $font-display;
+  font-size: $fs-xl;
+  font-weight: 700;
+  color: $color-white;
+  margin-bottom: $space-3;
+  letter-spacing: -0.01em;
+}
+
+.card-desc {
+  font-family: $font-primary;
+  font-size: $fs-base;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.7;
+  margin-bottom: $space-6;
+}
+
+.card-detail {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  font-size: $fs-sm;
+  font-weight: 600;
+  color: $color-green;
+  letter-spacing: 0.02em;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: $color-green;
+    flex-shrink: 0;
+  }
+}
+
+// Commissions strip
+.commissions {
+  margin-top: $space-16;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-4;
+
+  @include respond-to(md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.commission-item {
+  background: rgba(113,194,0,0.12);
+  border: 1px solid rgba(113,194,0,0.25);
+  border-radius: $radius-lg;
+  padding: $space-6 $space-8;
+  text-align: center;
+}
+
+.commission-rate {
+  font-family: $font-display;
+  font-size: $fs-3xl;
+  font-weight: 900;
+  color: $color-green;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: $space-2;
+}
+
+.commission-label {
+  font-size: $fs-sm;
+  color: rgba(255,255,255,0.65);
+  font-weight: 500;
+}
+
+.commission-type {
+  font-family: $font-display;
+  font-size: $fs-lg;
+  font-weight: 700;
+  color: $color-white;
+  margin-bottom: $space-2;
+}

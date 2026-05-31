@@ -1,0 +1,445 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+// ─── Transport detail cards ───────────────────────────────────────────────────
+.transport-section {
+  background: $color-white;
+  padding-block: $space-24;
+
+  @include respond-to(md) {
+    padding-block: $space-16;
+  }
+}
+
+.inner {
+  @include container;
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  font-size: $fs-xs;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $color-green;
+  margin-bottom: $space-4;
+
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 24px;
+    height: 2px;
+    background: $color-green;
+    border-radius: 2px;
+  }
+}
+
+.section-title {
+  font-family: $font-display;
+  font-size: clamp(#{$fs-2xl}, 4vw, #{$fs-3xl});
+  font-weight: 800;
+  color: $color-blue;
+  letter-spacing: -0.02em;
+  margin-bottom: $space-4;
+}
+
+.section-sub {
+  font-size: $fs-md;
+  color: $color-gray-600;
+  max-width: 560px;
+  line-height: 1.7;
+  margin-bottom: $space-12;
+}
+
+// Alternating transport feature rows
+.transport-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-12;
+  align-items: center;
+  margin-bottom: $space-16;
+  padding-bottom: $space-16;
+  border-bottom: 1px solid $color-gray-200;
+
+  &:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  &--reverse {
+    direction: rtl;
+    > * {
+      direction: ltr;
+    }
+  }
+
+  @include respond-to(md) {
+    grid-template-columns: 1fr;
+    direction: ltr;
+    gap: $space-8;
+    margin-bottom: $space-12;
+    padding-bottom: $space-12;
+  }
+}
+
+.transport-img {
+  border-radius: $radius-xl;
+  overflow: hidden;
+  aspect-ratio: 16/10;
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform $transition-slow;
+  }
+
+  &:hover img {
+    transform: scale(1.04);
+  }
+
+  &-badge {
+    position: absolute;
+    top: $space-4;
+    left: $space-4;
+    background: $color-blue;
+    color: $color-white;
+    padding: $space-2 $space-4;
+    border-radius: $radius-full;
+    font-size: $fs-xs;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    box-shadow: $shadow-blue;
+  }
+}
+
+.transport-content {
+}
+
+.transport-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  font-size: $fs-xs;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: $color-green;
+  margin-bottom: $space-4;
+}
+
+.transport-title {
+  font-family: $font-display;
+  font-size: clamp(#{$fs-xl}, 3vw, #{$fs-2xl});
+  font-weight: 800;
+  color: $color-blue;
+  letter-spacing: -0.01em;
+  margin-bottom: $space-4;
+}
+
+.transport-desc {
+  font-size: $fs-base;
+  color: $color-gray-600;
+  line-height: 1.75;
+  margin-bottom: $space-6;
+}
+
+.transport-features {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+  margin-bottom: $space-8;
+}
+
+.transport-feat {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  font-size: $fs-sm;
+  color: $color-gray-800;
+  font-weight: 500;
+
+  &-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: $color-green;
+    flex-shrink: 0;
+  }
+}
+
+.transport-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-3 $space-8;
+  background: $color-blue;
+  color: $color-white;
+  border-radius: $radius-full;
+  font-size: $fs-sm;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all $transition-base;
+  box-shadow: $shadow-blue;
+
+  &:hover {
+    background: $color-blue-dark;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(19, 66, 137, 0.35);
+  }
+}
+
+// ─── Additional services ──────────────────────────────────────────────────────
+.additional {
+  background: $color-gray-100;
+  padding-block: $space-24;
+
+  @include respond-to(md) {
+    padding-block: $space-16;
+  }
+}
+
+.add-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-6;
+  margin-top: $space-12;
+
+  @include respond-to(lg) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @include respond-to(sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.add-card {
+  background: $color-white;
+  border-radius: $radius-xl;
+  padding: $space-8;
+  border: 1px solid $color-gray-200;
+  box-shadow: $shadow-sm;
+  transition: all $transition-base;
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, $color-blue, $color-green);
+    transform: scaleX(0);
+    transition: transform $transition-base;
+    transform-origin: left;
+  }
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: $shadow-md;
+    border-color: rgba(19, 66, 137, 0.15);
+
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+}
+
+.add-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: $radius-md;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-blue;
+  background: rgba(19, 66, 137, 0.08);
+  margin-bottom: $space-5;
+}
+
+.add-title {
+  font-family: $font-display;
+  font-size: $fs-xl;
+  font-weight: 700;
+  color: $color-blue;
+  letter-spacing: -0.01em;
+  margin-bottom: $space-3;
+}
+
+.add-desc {
+  font-size: $fs-sm;
+  color: $color-gray-600;
+  line-height: 1.65;
+  margin-bottom: $space-5;
+}
+
+.add-price {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-2 $space-4;
+  background: rgba(113, 194, 0, 0.1);
+  border: 1px solid rgba(113, 194, 0, 0.25);
+  border-radius: $radius-full;
+  font-size: $fs-xs;
+  font-weight: 700;
+  color: $color-green-dark;
+  letter-spacing: 0.04em;
+}
+
+// ─── Inspection levels ────────────────────────────────────────────────────────
+.inspection {
+  background: $color-blue;
+  background-image: linear-gradient(160deg, $color-blue-dark, $color-blue);
+  padding-block: $space-24;
+
+  @include respond-to(md) {
+    padding-block: $space-16;
+  }
+}
+
+.insp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-6;
+  margin-top: $space-12;
+
+  @include respond-to(md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.insp-card {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: $radius-xl;
+  padding: $space-8;
+  transition: all $transition-base;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(113, 194, 0, 0.4);
+    transform: translateY(-4px);
+  }
+}
+
+.insp-phase {
+  font-size: $fs-xs;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: $color-green;
+  margin-bottom: $space-4;
+}
+
+.insp-title {
+  font-family: $font-display;
+  font-size: $fs-xl;
+  font-weight: 700;
+  color: $color-white;
+  margin-bottom: $space-3;
+}
+
+.insp-desc {
+  font-size: $fs-sm;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.65;
+  margin-bottom: $space-5;
+}
+
+.insp-rate {
+  font-family: $font-display;
+  font-size: $fs-2xl;
+  font-weight: 900;
+  color: $color-green;
+  letter-spacing: -0.02em;
+}
+
+.insp-rate-label {
+  font-size: $fs-xs;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: $space-1;
+}
+
+// ─── AQL standards ───────────────────────────────────────────────────────────
+.aql {
+  background: $color-white;
+  padding-block: $space-24;
+
+  @include respond-to(md) {
+    padding-block: $space-16;
+  }
+}
+
+.aql-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: $space-10;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-md;
+
+  th {
+    background: $color-blue;
+    color: $color-white;
+    font-family: $font-primary;
+    font-size: $fs-sm;
+    font-weight: 700;
+    padding: $space-4 $space-6;
+    text-align: left;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  td {
+    padding: $space-4 $space-6;
+    font-size: $fs-sm;
+    color: $color-gray-800;
+    border-bottom: 1px solid $color-gray-200;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  tr:nth-child(even) td {
+    background: $color-gray-100;
+  }
+
+  tr:hover td {
+    background: rgba(113, 194, 0, 0.06);
+  }
+}
+
+.aql-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-1 $space-3;
+  border-radius: $radius-full;
+  font-size: $fs-xs;
+  font-weight: 600;
+
+  &--critical {
+    background: rgba(220, 38, 38, 0.1);
+    color: #dc2626;
+  }
+  &--major {
+    background: rgba(234, 88, 12, 0.1);
+    color: #ea580c;
+  }
+  &--minor {
+    background: rgba(113, 194, 0, 0.1);
+    color: $color-green-dark;
+  }
+}

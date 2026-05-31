@@ -1,0 +1,107 @@
+@use 'variables' as *;
+
+// ─── Responsive ──────────────────────────────────────────────────────────────
+@mixin respond-to($bp) {
+  @if $bp == sm   { @media (max-width: #{$bp-sm})   { @content; } }
+  @if $bp == md   { @media (max-width: #{$bp-md})   { @content; } }
+  @if $bp == lg   { @media (max-width: #{$bp-lg})   { @content; } }
+  @if $bp == xl   { @media (max-width: #{$bp-xl})   { @content; } }
+  @if $bp == md-up { @media (min-width: #{$bp-md})  { @content; } }
+  @if $bp == lg-up { @media (min-width: #{$bp-lg})  { @content; } }
+}
+
+// ─── Container ───────────────────────────────────────────────────────────────
+@mixin container {
+  width: 100%;
+  max-width: $container-max;
+  margin-inline: auto;
+  padding-inline: $space-8;
+
+  @include respond-to(md) {
+    padding-inline: $space-6;
+  }
+
+  @include respond-to(sm) {
+    padding-inline: $space-4;
+  }
+}
+
+// ─── Flex ────────────────────────────────────────────────────────────────────
+@mixin flex($dir: row, $align: center, $justify: flex-start, $gap: 0) {
+  display: flex;
+  flex-direction: $dir;
+  align-items: $align;
+  justify-content: $justify;
+  @if $gap != 0 { gap: $gap; }
+}
+
+// ─── Section ─────────────────────────────────────────────────────────────────
+@mixin section-padding {
+  padding-block: $space-24;
+
+  @include respond-to(md) {
+    padding-block: $space-16;
+  }
+
+  @include respond-to(sm) {
+    padding-block: $space-12;
+  }
+}
+
+// ─── Glass ───────────────────────────────────────────────────────────────────
+@mixin glass($opacity: 0.12, $blur: 20px) {
+  background: rgba(255, 255, 255, $opacity);
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+// ─── Gradient Text ───────────────────────────────────────────────────────────
+@mixin gradient-text($from, $to) {
+  background: linear-gradient(135deg, $from, $to);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// ─── Button Base ─────────────────────────────────────────────────────────────
+@mixin btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
+  padding: $space-3 $space-8;
+  border-radius: $radius-full;
+  font-family: $font-primary;
+  font-size: $fs-sm;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  transition: all $transition-base;
+
+  &:focus-visible {
+    outline: 2px solid $color-green;
+    outline-offset: 3px;
+  }
+}
+
+// ─── Hover Lift ──────────────────────────────────────────────────────────────
+@mixin hover-lift($y: -4px, $shadow: $shadow-lg) {
+  transition: transform $transition-base, box-shadow $transition-base;
+
+  &:hover {
+    transform: translateY($y);
+    box-shadow: $shadow;
+  }
+}
+
+// ─── Card ────────────────────────────────────────────────────────────────────
+@mixin card($bg: $color-white, $radius: $radius-lg, $shadow: $shadow-md) {
+  background: $bg;
+  border-radius: $radius;
+  box-shadow: $shadow;
+  overflow: hidden;
+}

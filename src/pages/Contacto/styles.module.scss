@@ -1,0 +1,468 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.section {
+  background: $color-gray-100;
+  padding-block: $space-20;
+
+  @include respond-to(md) {
+    padding-block: $space-16;
+  }
+}
+
+.inner {
+  @include container;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: $space-10;
+  align-items: start;
+
+  @include respond-to(lg) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// ─── Form card ────────────────────────────────────────────────────────────────
+.form-card {
+  background: $color-blue;
+  background-image: linear-gradient(160deg, $color-blue-dark, $color-blue);
+  border-radius: $radius-xl;
+  box-shadow: $shadow-blue;
+  padding: $space-10;
+  overflow: hidden;
+
+  @include respond-to(sm) {
+    padding: $space-8 $space-6;
+  }
+}
+
+.form-header {
+  margin-bottom: $space-8;
+}
+
+.form-title {
+  font-family: $font-display;
+  font-size: $fs-2xl;
+  font-weight: 800;
+  color: $color-white;
+  letter-spacing: -0.01em;
+  margin-bottom: $space-2;
+}
+
+.form-sub {
+  font-size: $fs-sm;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-4;
+
+  @include respond-to(sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.form-label {
+  font-size: $fs-xs;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: $space-4 $space-5;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: $radius-md;
+  font-family: $font-primary;
+  font-size: $fs-sm;
+  color: $color-white;
+  outline: none;
+  transition: all $transition-fast;
+
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.35);
+  }
+
+  &:focus {
+    background: rgba(255, 255, 255, 0.16);
+    border-color: $color-green;
+    box-shadow: 0 0 0 3px rgba(113, 194, 0, 0.2);
+  }
+}
+
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,0.5)' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+  cursor: pointer;
+
+  option {
+    background: $color-blue-dark;
+  }
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 140px;
+  line-height: 1.6;
+}
+
+.btn-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-4 $space-10;
+  background: $color-green;
+  color: $color-white;
+  border-radius: $radius-full;
+  font-family: $font-primary;
+  font-size: $fs-sm;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: all $transition-base;
+  box-shadow: 0 4px 16px rgba(113, 194, 0, 0.35);
+  align-self: flex-start;
+  margin-top: $space-2;
+
+  &:hover:not(:disabled) {
+    background: $color-green-dark;
+    transform: translateY(-2px);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// Success state
+.success {
+  padding: $space-16 0;
+  text-align: center;
+}
+
+.success-icon {
+  color: $color-green;
+  display: flex;
+  justify-content: center;
+  margin-bottom: $space-6;
+  animation: bounce 0.6s ease;
+}
+
+.success-title {
+  font-family: $font-display;
+  font-size: $fs-2xl;
+  font-weight: 800;
+  color: $color-white;
+  margin-bottom: $space-4;
+}
+
+.success-sub {
+  font-size: $fs-base;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: $space-8;
+  line-height: 1.65;
+  max-width: 380px;
+  margin-inline: auto;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+// ─── Sidebar ──────────────────────────────────────────────────────────────────
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+}
+
+.channels-block,
+.hours-block {
+  background: $color-white;
+  border-radius: $radius-xl;
+  padding: $space-8;
+  border: 1px solid $color-gray-200;
+  box-shadow: $shadow-sm;
+}
+
+.block-label {
+  font-size: $fs-xs;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: $color-green;
+  margin-bottom: $space-5;
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 2px;
+    background: $color-green;
+    border-radius: 2px;
+  }
+}
+
+.channels {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.channel {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+  padding: $space-4;
+  border-radius: $radius-lg;
+  border: 1px solid $color-gray-200;
+  text-decoration: none;
+  transition: all $transition-fast;
+  background: $color-gray-100;
+
+  &:hover {
+    border-color: $color-blue;
+    background: rgba(19, 66, 137, 0.04);
+
+    .channel-cta {
+      color: $color-blue;
+    }
+  }
+}
+
+.channel-icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: $radius-md;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-green;
+  background: rgba(113, 194, 0, 0.1);
+}
+
+.channel-info {
+  flex: 1;
+}
+
+.channel-label {
+  font-size: $fs-xs;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $color-gray-400;
+  margin-bottom: 2px;
+}
+
+.channel-value {
+  font-size: $fs-sm;
+  font-weight: 600;
+  color: $color-blue;
+}
+
+.channel-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-1;
+  font-size: $fs-xs;
+  font-weight: 700;
+  color: $color-gray-400;
+  transition: color $transition-fast;
+  white-space: nowrap;
+}
+
+// Hours block
+.hours-grid {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+  margin-bottom: $space-4;
+}
+
+.hours-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $space-3 0;
+  border-bottom: 1px solid $color-gray-200;
+  font-size: $fs-sm;
+  color: $color-gray-600;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  strong {
+    color: $color-blue;
+    font-weight: 700;
+  }
+}
+
+.closed {
+  color: $color-gray-400 !important;
+}
+
+.hours-note {
+  font-size: $fs-xs;
+  color: $color-gray-400;
+  line-height: 1.5;
+}
+
+// ─── Offices ──────────────────────────────────────────────────────────────────
+.offices {
+  background: $color-white;
+  padding-block: $space-24;
+
+  @include respond-to(md) {
+    padding-block: $space-16;
+  }
+}
+
+.section-label {
+  font-size: $fs-xs;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $color-green;
+  margin-bottom: $space-4;
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 24px;
+    height: 2px;
+    background: $color-green;
+    border-radius: 2px;
+  }
+}
+
+.section-title {
+  font-family: $font-display;
+  font-size: clamp(#{$fs-2xl}, 4vw, 2.5rem);
+  font-weight: 800;
+  color: $color-blue;
+  letter-spacing: -0.01em;
+  margin-bottom: $space-4;
+}
+
+.section-sub {
+  font-size: $fs-base;
+  color: $color-gray-600;
+  line-height: 1.7;
+  max-width: 560px;
+  margin-bottom: $space-12;
+}
+
+.offices-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $space-6;
+
+  @include respond-to(lg) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include respond-to(sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.office-card {
+  background: $color-gray-100;
+  border-radius: $radius-xl;
+  padding: $space-8;
+  border: 1px solid $color-gray-200;
+  transition: all $transition-base;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-md;
+    border-color: rgba(19, 66, 137, 0.2);
+  }
+}
+
+.office-flag {
+  font-size: 2rem;
+  margin-bottom: $space-3;
+}
+
+.office-city {
+  font-family: $font-display;
+  font-size: $fs-xl;
+  font-weight: 800;
+  color: $color-blue;
+  letter-spacing: -0.01em;
+  margin-bottom: $space-1;
+}
+
+.office-role {
+  font-size: $fs-xs;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $color-green;
+  margin-bottom: $space-5;
+}
+
+.office-details {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.office-detail {
+  font-size: $fs-sm;
+  color: $color-gray-600;
+  line-height: 1.4;
+  display: flex;
+  gap: $space-2;
+  align-items: flex-start;
+
+  span {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    color: $color-green;
+    margin-top: 1px;
+  }
+}
