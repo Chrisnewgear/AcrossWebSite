@@ -10,7 +10,7 @@ const TRANSPORT = [
     tag: "Transporte Marítimo",
     badge: "FCL / LCL / Consolidado",
     title: "Carga Marítima Internacional",
-    img: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=800&q=80",
+    img: "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=800&q=80",
     desc: "Gestionamos envíos de contenedor completo (FCL) y grupaje (LCL) desde los principales puertos de China, India y Europa hacia Ecuador y Latinoamérica. Nuestros agentes en origen supervisan cada etapa del proceso.",
     features: [
       "Puertos de origen: Shanghai, Ningbo, Guangzhou, Mumbai, Rotterdam, Hamburg",

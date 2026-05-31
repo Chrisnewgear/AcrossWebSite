@@ -5,7 +5,7 @@ const TRANSPORT = [
   {
     icon: 'ship',
     name: 'Transporte Marítimo',
-    img: 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=600&q=80',
+    img: 'https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=600&q=80',
     badge: 'FCL / LCL',
     desc: 'Servicios completos de carga marítima desde los principales puertos de Asia y Europa. Manejamos contenedores completos y grupaje con tiempos de tránsito competitivos.',
   },
