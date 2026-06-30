@@ -1,0 +1,89 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.section {
+  background: linear-gradient(180deg, $color-off-white 0%, $color-gray-100 100%);
+}
+
+// ── Full-bleed green banner ───────────────────────────────────────────
+.banner {
+  background: $color-green;
+  text-align: center;
+  padding-block: $space-4;
+}
+
+.banner__text {
+  font-family: $font-primary;
+  font-size: $fs-sm;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: $color-white;
+}
+
+.inner {
+  @include container;
+  padding-block: $space-20;
+
+  @include respond-to(md) {
+    padding-block: $space-16;
+  }
+}
+
+// ── Cards ─────────────────────────────────────────────────────────────
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-8;
+
+  @include respond-to(md) {
+    grid-template-columns: 1fr;
+    gap: $space-6;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: $space-10 $space-8;
+  background: $color-white;
+  border-radius: $radius-xl;
+  box-shadow: 0 16px 40px rgba(19, 66, 137, 0.06);
+  transition: transform $transition-base, box-shadow $transition-base;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 56px rgba(19, 66, 137, 0.12);
+  }
+}
+
+.card__icon {
+  width: 68px;
+  height: 68px;
+  border-radius: $radius-lg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: $space-6;
+  color: $color-blue;
+  background: $color-gray-100;
+}
+
+.card__title {
+  font-family: $font-display;
+  font-size: $fs-xl;
+  font-weight: 700;
+  color: $color-blue;
+  letter-spacing: -0.01em;
+  margin-bottom: $space-3;
+}
+
+.card__desc {
+  font-family: $font-primary;
+  font-size: $fs-base;
+  line-height: 1.65;
+  color: $color-gray-600;
+  max-width: 34ch;
+}

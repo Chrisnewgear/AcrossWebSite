@@ -1,12 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
-import Icon from '../Icon';
 import s from './styles.module.scss';
 
 const STATS = [
-  { icon: 'handshake', number: '500', suffix: '+', label: 'Clientes Activos' },
-  { icon: 'globe',     number: '4',   suffix: '',  label: 'Países con Oficinas' },
-  { icon: 'package',   number: '10K', suffix: '+', label: 'Envíos Completados' },
-  { icon: 'award',     number: '15',  suffix: '+', label: 'Años de Experiencia' },
+  { number: '500', suffix: '+', label: 'Clientes Activos' },
+  { number: '4',   suffix: '',  label: 'Países con Oficinas' },
+  { number: '10K', suffix: '+', label: 'Envíos Completados' },
+  { number: '15',  suffix: '+', label: 'Años de Experiencia' },
 ];
 
 export default function Stats() {
@@ -26,7 +25,7 @@ export default function Stats() {
     <section id="stats" className={s.stats} ref={ref}>
       <div className={s.stats__inner}>
         <div className={s.stats__grid}>
-          {STATS.map(({ icon, number, suffix, label }, i) => (
+          {STATS.map(({ number, suffix, label }, i) => (
             <div
               key={label}
               className={s.stats__item}
@@ -35,7 +34,6 @@ export default function Stats() {
                 opacity: visible ? undefined : 0,
               }}
             >
-              <div className={s.stats__icon}><Icon name={icon} size={28} /></div>
               <div className={s.stats__number}>
                 {number}<span>{suffix}</span>
               </div>

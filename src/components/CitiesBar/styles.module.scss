@@ -1,0 +1,50 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+// Full-bleed blue band whose contents scroll horizontally forever.
+.bar {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  padding-block: $space-3;
+  background: $color-blue;
+  border-block: 1px solid rgba(255, 255, 255, 0.08);
+
+  // Pause the carousel when the visitor hovers the band.
+  &:hover .bar__track {
+    animation-play-state: paused;
+  }
+}
+
+.bar__track {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  animation: scrollX 34s linear infinite;
+  will-change: transform;
+}
+
+.bar__item {
+  display: inline-flex;
+  align-items: center;
+  padding-inline: $space-10;
+  font-family: $font-primary;
+  font-size: clamp(#{$fs-base}, 1.5vw, #{$fs-xl});
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: $color-white;
+}
+
+// Track holds two copies of the list, so shifting by half its width loops
+// back to an identical frame — no visible seam.
+@keyframes scrollX {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bar__track {
+    animation: none;
+  }
+}

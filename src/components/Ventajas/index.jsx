@@ -1,30 +1,21 @@
-import Icon from '../Icon';
 import s from './styles.module.scss';
 
 const ADVANTAGES = [
   {
-    icon: 'factory',
-    title: 'Red de Proveedores',
-    desc: 'Fabricantes seleccionados con precios competitivos directamente en China, India y Europa. Sin intermediarios innecesarios.',
-    detail: 'Hasta 5 SKUs de sourcing SIN COSTO',
+    title: 'Red Global de Proveedores',
+    desc: 'Contamos con una sólida red de fabricantes y proveedores internacionales cuidadosamente seleccionados, lo que nos permite ofrecer productos competitivos, confiables y adaptados a las necesidades de cada cliente.',
   },
   {
-    icon: 'scan',
-    title: 'Calidad Garantizada',
-    desc: 'Inspecciones exhaustivas realizadas por expertos durante producción, post-producción y carga de contenedor en las instalaciones del proveedor.',
-    detail: 'Desde $475 + IVA / día de inspección',
+    title: 'Eficiencia en la Gestión Comercial',
+    desc: 'Optimizamos cada etapa del proceso de importación, desde la búsqueda de proveedores hasta la entrega final, garantizando operaciones ágiles y seguras.',
   },
   {
-    icon: 'bank',
-    title: 'Seguridad Financiera',
-    desc: 'Gestión de pagos desde nuestras oficinas en China o Hong Kong. Protegemos su inversión con contratos de confidencialidad y garantías documentales.',
-    detail: 'Seguridad de inversión 100%',
+    title: 'Transparencia y Confianza',
+    desc: 'Trabajamos con total claridad en cada negociación, brindando información oportuna y acompañamiento constante para que nuestros clientes tomen decisiones con seguridad.',
   },
   {
-    icon: 'eye',
-    title: 'Privacidad Estratégica',
-    desc: 'Acrosscon figura como el embarcador real en todos los documentos. Su competencia nunca conocerá la identidad de su fabricante. Contrato de confidencialidad incluido.',
-    detail: 'Contrato de confidencialidad garantizado',
+    title: 'Experiencia en Comercio Internacional',
+    desc: 'Nuestro conocimiento de los mercados globales, procesos aduaneros y logística internacional nos permite minimizar riesgos y generar oportunidades de negocio exitosas.',
   },
 ];
 
@@ -39,22 +30,23 @@ export default function Ventajas() {
     <section className={s.section}>
       <div className={s.inner}>
         <div className={s.header} data-reveal="up">
-          <div className={s.label}>Ventajas Estratégicas</div>
           <h2 className={s.title}>Por qué elegirnos</h2>
-          <p className={s.subtitle}>
-            Más que un servicio de transporte — somos su socio estratégico en cada operación internacional.
-          </p>
         </div>
 
         <div className={s.grid}>
-          {ADVANTAGES.map(({ icon, title, desc, detail }, i) => (
-            <div key={title} className={s.card} data-reveal="up" data-reveal-delay={(i % 2) * 120}>
-              <div className={s['card-number']} data-parallax="0.08">{String(i + 1).padStart(2, '0')}</div>
-              <div className={s['card-icon']}><Icon name={icon} size={26} /></div>
+          {ADVANTAGES.map(({ title, desc }, i) => (
+            <article
+              key={title}
+              className={s.card}
+              data-reveal="up"
+              data-reveal-delay={(i % 2) * 120}
+            >
               <h3 className={s['card-title']}>{title}</h3>
               <p className={s['card-desc']}>{desc}</p>
-              <div className={s['card-detail']}>{detail}</div>
-            </div>
+              <span className={s['card-number']} aria-hidden="true">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+            </article>
           ))}
         </div>
 
