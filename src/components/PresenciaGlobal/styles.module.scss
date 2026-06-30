@@ -1,230 +1,172 @@
-@use '../../styles/variables' as *;
-@use '../../styles/mixins' as *;
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+// ── Section ───────────────────────────────────────────────────────────────────
 
 .section {
-  background: $color-gray-100;
-  padding-block: $space-24;
+  background: #f0f2f6;
+  padding-top: $space-24;
+  padding-bottom: $space-20;
   overflow: hidden;
 
   @include respond-to(md) {
-    padding-block: $space-16;
+    padding-top: $space-16;
+    padding-bottom: $space-16;
   }
 }
 
-.inner {
-  @include container;
-}
+// ── Header ────────────────────────────────────────────────────────────────────
 
 .header {
   text-align: center;
   margin-bottom: $space-16;
+  padding-inline: $space-6;
+
+  @include respond-to(md) {
+    margin-bottom: $space-12;
+  }
 }
 
-.label {
+.badge {
   display: inline-flex;
   align-items: center;
-  gap: $space-2;
-  font-size: $fs-xs;
+  padding: 0.4rem 1.2rem;
+  background: $color-green;
+  color: $color-white;
+  border-radius: $radius-full;
+  font-family: $font-primary;
+  font-size: $fs-sm;
   font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: $color-green;
-  margin-bottom: $space-4;
-
-  &::before {
-    content: '';
-    display: inline-block;
-    width: 24px;
-    height: 2px;
-    background: $color-green;
-    border-radius: 2px;
-  }
+  letter-spacing: 0.04em;
+  margin-bottom: $space-5;
 }
 
 .title {
   font-family: $font-display;
-  font-size: clamp(#{$fs-2xl}, 4vw, #{$fs-3xl});
-  font-weight: 800;
+  font-size: clamp(#{$fs-3xl}, 5.5vw, 4rem);
+  font-weight: 900;
   color: $color-blue;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  line-height: 1.05;
   margin-bottom: $space-4;
 }
 
 .subtitle {
-  font-size: $fs-md;
+  font-family: $font-primary;
+  font-size: $fs-base;
   color: $color-gray-600;
-  max-width: 480px;
+  max-width: 420px;
   margin-inline: auto;
+  line-height: 1.65;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: $space-6;
+// ── Carousel ──────────────────────────────────────────────────────────────────
 
-  @include respond-to(lg) {
-    grid-template-columns: repeat(2, 1fr);
+// Clips cards outside the viewport edge. No padding — centering is done by JS.
+.carousel-wrap {
+  overflow: hidden;
+  padding-block: 10px 28px;
+}
+
+// The actual strip that JS moves via translateX. No scroll, no CSS transition.
+.slides {
+  display: flex;
+  gap: 20px; // ← must match GAP constant in index.jsx
+  will-change: transform;
+}
+
+// ── Card ──────────────────────────────────────────────────────────────────────
+
+.card {
+  flex: 0 0 300px;
+  height: 440px;
+  background: #dde1e8;
+  border-radius: $radius-xl;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  cursor: pointer;
+  flex-shrink: 0;
+  user-select: none;
+  transition: box-shadow $transition-base;
+
+  &:hover {
+    box-shadow: $shadow-md;
+  }
+
+  @include respond-to(md) {
+    flex: 0 0 240px;
+    height: 360px;
   }
 
   @include respond-to(sm) {
-    grid-template-columns: 1fr 1fr;
-    gap: $space-4;
+    flex: 0 0 200px;
+    height: 300px;
   }
 }
 
-.office {
-  background: $color-white;
-  border-radius: $radius-xl;
-  padding: $space-8;
-  text-align: center;
-  border: 1px solid $color-gray-200;
-  box-shadow: $shadow-sm;
-  transition: all $transition-base;
-  position: relative;
-  overflow: hidden;
+.card-body {
+  flex: 1;
+}
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, $color-blue, $color-green);
-    transform: scaleX(0);
-    transition: transform $transition-base;
-  }
+.card-footer {
+  padding: 1.25rem 1.5rem 1.5rem;
+}
+
+.card-city {
+  font-family: $font-display;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: $color-blue;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+
+.card-country {
+  font-family: $font-primary;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: $color-gray-400;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+// ── Pagination dots ───────────────────────────────────────────────────────────
+
+.dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: $space-8;
+  padding-inline: $space-4;
+}
+
+.dot {
+  height: 8px;
+  width: 28px;
+  border-radius: $radius-full;
+  background: #c2c8d4;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              background 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
-    transform: translateY(-6px);
-    box-shadow: $shadow-blue;
-    border-color: rgba(19,66,137,0.2);
-
-    &::before {
-      transform: scaleX(1);
-    }
+    background: #a8b0bf;
   }
 
-  &--hq {
-    border-color: $color-blue;
-    background: linear-gradient(160deg, rgba(19,66,137,0.04), $color-white);
-
-    &::before {
-      transform: scaleX(1);
-    }
+  &--active {
+    width: 44px;
+    background: $color-blue;
   }
-}
 
-.office-flag {
-  font-size: 2.5rem;
-  margin-bottom: $space-3;
-  display: block;
-}
-
-.office-hq {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: $space-1 $space-3;
-  background: $color-green;
-  color: $color-white;
-  border-radius: $radius-full;
-  font-size: $fs-xs;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: $space-3;
-}
-
-.office-city {
-  font-family: $font-display;
-  font-size: $fs-xl;
-  font-weight: 800;
-  color: $color-blue;
-  letter-spacing: -0.01em;
-  margin-bottom: $space-1;
-}
-
-.office-country {
-  font-family: $font-primary;
-  font-size: $fs-sm;
-  color: $color-gray-400;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: $space-4;
-}
-
-.office-role {
-  font-size: $fs-xs;
-  font-weight: 600;
-  color: $color-blue;
-  background: rgba(19,66,137,0.08);
-  padding: $space-1 $space-3;
-  border-radius: $radius-full;
-  display: inline-block;
-}
-
-// Network strip
-.network {
-  margin-top: $space-16;
-  background: $color-blue;
-  border-radius: $radius-xl;
-  padding: $space-10 $space-12;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: $space-8;
-  flex-wrap: wrap;
-
-  @include respond-to(md) {
-    flex-direction: column;
-    text-align: center;
-    padding: $space-8;
+  &:focus-visible {
+    outline: 2px solid $color-blue;
+    outline-offset: 3px;
   }
-}
-
-.network-text h3 {
-  font-family: $font-display;
-  font-size: $fs-2xl;
-  font-weight: 800;
-  color: $color-white;
-  letter-spacing: -0.01em;
-  margin-bottom: $space-2;
-}
-
-.network-text p {
-  font-size: $fs-base;
-  color: rgba(255,255,255,0.7);
-}
-
-.network-stats {
-  display: flex;
-  gap: $space-8;
-  flex-wrap: wrap;
-
-  @include respond-to(md) {
-    justify-content: center;
-    gap: $space-6;
-  }
-}
-
-.network-stat {
-  text-align: center;
-}
-
-.network-stat-number {
-  font-family: $font-display;
-  font-size: $fs-2xl;
-  font-weight: 900;
-  color: $color-green;
-  display: block;
-  letter-spacing: -0.02em;
-}
-
-.network-stat-label {
-  font-size: $fs-xs;
-  color: rgba(255,255,255,0.6);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
 }
