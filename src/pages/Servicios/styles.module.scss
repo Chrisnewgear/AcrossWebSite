@@ -202,178 +202,331 @@
   }
 }
 
-// ─── Additional services ──────────────────────────────────────────────────────
-.additional {
-  background: $color-gray-100;
-  padding-block: $space-24;
+// ─── Section ribbon (full-bleed colored header band) ──────────────────────────
+.ribbon {
+  width: 100%;
+  padding: $space-4 $space-8;
+  text-align: center;
+  font-family: $font-primary;
+  font-size: $fs-sm;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: $color-white;
 
-  @include respond-to(md) {
-    padding-block: $space-16;
+  &--blue {
+    background: $color-blue;
+  }
+
+  &--green {
+    background: $color-green;
+  }
+
+  @include respond-to(sm) {
+    letter-spacing: 0.16em;
+    font-size: $fs-xs;
   }
 }
 
-.add-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: $space-6;
-  margin-top: $space-12;
+// ─── Servicios complementarios (numbered card grid) ───────────────────────────
+.complementary {
+  background: $color-gray-100;
+  padding-bottom: $space-24;
 
-  @include respond-to(lg) {
-    grid-template-columns: 1fr 1fr;
+  @include respond-to(md) {
+    padding-bottom: $space-16;
   }
+}
+
+.comp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-8;
+  padding-top: $space-16;
+
+  @include respond-to(md) {
+    padding-top: $space-12;
+    gap: $space-6;
+  }
+
   @include respond-to(sm) {
     grid-template-columns: 1fr;
   }
 }
 
-.add-card {
-  background: $color-white;
-  border-radius: $radius-xl;
-  padding: $space-8;
-  border: 1px solid $color-gray-200;
-  box-shadow: $shadow-sm;
-  transition: all $transition-base;
+.comp-card {
   position: relative;
+  background: $color-white;
+  border: 1px solid $color-gray-200;
+  border-top: 3px solid $color-gray-300;
+  border-radius: $radius-lg;
+  padding: $space-8 $space-8 $space-10;
+  box-shadow: $shadow-sm;
   overflow: hidden;
-
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, $color-blue, $color-green);
-    transform: scaleX(0);
-    transition: transform $transition-base;
-    transform-origin: left;
-  }
+  transition: transform $transition-base, box-shadow $transition-base,
+    border-color $transition-base;
 
   &:hover {
     transform: translateY(-6px);
     box-shadow: $shadow-md;
-    border-color: rgba(19, 66, 137, 0.15);
-
-    &::after {
-      transform: scaleX(1);
-    }
+    border-top-color: $color-blue;
   }
 }
 
-.add-icon {
-  width: 52px;
-  height: 52px;
-  border-radius: $radius-md;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: $color-blue;
-  background: rgba(19, 66, 137, 0.08);
-  margin-bottom: $space-5;
-}
-
-.add-title {
+.comp-num {
+  position: absolute;
+  top: $space-5;
+  right: $space-6;
   font-family: $font-display;
-  font-size: $fs-xl;
-  font-weight: 700;
-  color: $color-blue;
-  letter-spacing: -0.01em;
-  margin-bottom: $space-3;
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: $color-gray-200;
+  user-select: none;
 }
 
-.add-desc {
-  font-size: $fs-sm;
-  color: $color-gray-600;
-  line-height: 1.65;
-  margin-bottom: $space-5;
-}
-
-.add-price {
+.comp-icon {
   display: inline-flex;
   align-items: center;
-  gap: $space-2;
-  padding: $space-2 $space-4;
-  background: rgba(113, 194, 0, 0.1);
-  border: 1px solid rgba(113, 194, 0, 0.25);
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border-radius: $radius-md;
+  background: rgba(19, 66, 137, 0.08);
+  color: $color-blue;
+  margin-bottom: $space-8;
+}
+
+.comp-title {
+  position: relative;
+  font-family: $font-display;
+  font-size: $fs-xl;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: $color-blue;
+  letter-spacing: -0.005em;
+  line-height: 1.15;
+  margin-bottom: $space-4;
+  max-width: 90%;
+}
+
+.comp-desc {
+  font-size: $fs-sm;
+  color: $color-gray-600;
+  line-height: 1.7;
+  max-width: 44ch;
+}
+
+// ─── Inspección de calidad (dark panel + phase tabs) ──────────────────────────
+.inspection {
+  background: $color-gray-100;
+  padding-bottom: $space-24;
+
+  @include respond-to(md) {
+    padding-bottom: $space-16;
+  }
+}
+
+.insp-panel {
+  margin-top: $space-16;
+  padding: $space-16 $space-12 $space-12;
+  border-radius: $radius-xl;
+  background: $color-blue-dark;
+  background-image: linear-gradient(
+    165deg,
+    $color-blue 0%,
+    $color-blue-dark 60%,
+    #081e42 100%
+  );
+  text-align: center;
+  overflow: hidden;
+
+  @include respond-to(md) {
+    margin-top: $space-12;
+    padding: $space-12 $space-5;
+  }
+}
+
+.insp-heading {
+  font-family: $font-display;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  color: $color-white;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+  max-width: 720px;
+  margin: 0 auto $space-6;
+}
+
+.insp-pill {
+  display: inline-block;
+  padding: $space-3 $space-6;
+  border: 1px solid rgba(113, 194, 0, 0.5);
   border-radius: $radius-full;
   font-size: $fs-xs;
   font-weight: 700;
-  color: $color-green-dark;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $color-green-light;
 }
 
-// ─── Inspection levels ────────────────────────────────────────────────────────
-.inspection {
-  background: $color-blue;
-  background-image: linear-gradient(160deg, $color-blue-dark, $color-blue);
-  padding-block: $space-24;
+.insp-divider {
+  display: block;
+  width: 320px;
+  max-width: 55%;
+  height: 1px;
+  margin: $space-8 auto;
+  background: rgba(255, 255, 255, 0.2);
+}
 
-  @include respond-to(md) {
-    padding-block: $space-16;
+.insp-intro {
+  font-size: $fs-md;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.7;
+  max-width: 620px;
+  margin: 0 auto $space-10;
+}
+
+.insp-tabs {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: $space-1;
+  padding: 5px;
+  margin-bottom: $space-12;
+  max-width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: $radius-full;
+  background: linear-gradient(90deg, $color-blue-light, $color-blue);
+}
+
+.insp-tab {
+  padding: $space-3 $space-6;
+  border: none;
+  border-radius: $radius-full;
+  background: none;
+  font-family: $font-primary;
+  font-size: $fs-xs;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.8);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all $transition-base;
+
+  &:hover {
+    color: $color-white;
+  }
+
+  &--active {
+    background: $color-white;
+    color: $color-blue-dark;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
   }
 }
 
-.insp-grid {
+.insp-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: $space-6;
-  margin-top: $space-12;
+  align-items: start;
+  text-align: center;
 
   @include respond-to(md) {
     grid-template-columns: 1fr;
   }
 }
 
-.insp-card {
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: $radius-xl;
-  padding: $space-8;
-  transition: all $transition-base;
+.insp-item {
+  padding: $space-8 $space-6;
+  border-radius: $radius-lg;
+  color: $color-blue-dark;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(255, 255, 255, 0.68) 100%
+  );
+  transition: transform $transition-base, box-shadow $transition-base,
+    background $transition-base;
 
-  &:hover {
-    background: rgba(255, 255, 255, 0.12);
-    border-color: rgba(113, 194, 0, 0.4);
-    transform: translateY(-4px);
+  &--active {
+    background: $color-white;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+
+    @include respond-to(md-up) {
+      transform: translateY(-24px) scale(1.03);
+      padding-block: $space-10;
+    }
   }
 }
 
-.insp-phase {
-  font-size: $fs-xs;
-  font-weight: 700;
-  letter-spacing: 0.15em;
+.insp-item-title {
+  font-family: $font-display;
+  font-size: clamp(#{$fs-xl}, 2.4vw, #{$fs-2xl});
+  font-weight: 900;
   text-transform: uppercase;
-  color: $color-green;
+  color: $color-blue;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin-bottom: $space-2;
+}
+
+.insp-item-sub {
+  font-size: $fs-sm;
+  font-weight: 600;
+  color: $color-gray-600;
   margin-bottom: $space-4;
 }
 
-.insp-title {
-  font-family: $font-display;
-  font-size: $fs-xl;
-  font-weight: 700;
-  color: $color-white;
-  margin-bottom: $space-3;
-}
-
-.insp-desc {
+.insp-item-desc {
   font-size: $fs-sm;
-  color: rgba(255, 255, 255, 0.65);
-  line-height: 1.65;
-  margin-bottom: $space-5;
+  color: $color-gray-600;
+  line-height: 1.6;
+  margin-bottom: $space-6;
 }
 
-.insp-rate {
-  font-family: $font-display;
-  font-size: $fs-2xl;
-  font-weight: 900;
-  color: $color-green;
-  letter-spacing: -0.02em;
+.insp-box {
+  padding: $space-5 $space-4;
+  border-radius: $radius-md;
+  background: rgba(19, 66, 137, 0.05);
+
+  & + & {
+    margin-top: $space-4;
+  }
 }
 
-.insp-rate-label {
+.insp-tag {
+  display: inline-block;
+  padding: $space-2 $space-5;
+  margin-bottom: $space-4;
+  border-radius: $radius-full;
+  background: $color-blue;
   font-size: $fs-xs;
-  color: rgba(255, 255, 255, 0.5);
-  margin-top: $space-1;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $color-white;
+}
+
+.insp-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+  font-size: $fs-sm;
+  color: $color-gray-800;
+  line-height: 1.5;
+}
+
+.insp-benefit {
+  font-size: $fs-sm;
+  color: $color-gray-600;
+  line-height: 1.6;
 }
 
 // ─── AQL standards ───────────────────────────────────────────────────────────

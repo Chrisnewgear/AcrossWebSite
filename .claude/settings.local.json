@@ -5,7 +5,8 @@
       "Bash(npx sass *)",
       "Bash(node -e \"const p=require\\('./package.json'\\); console.log\\('router:', p.dependencies['react-router-dom']||'NOT INSTALLED'\\)\")",
       "Bash(cd \"C:\\\\Users\\\\chris\\\\Documents\\\\Github\\\\ACROSS PROJECT\\\\website\" && mkdir -p src/components/Icon && echo created)",
-      "Bash(npx vite *)"
+      "Bash(npx vite *)",
+      "Bash(npm run *)"
     ],
     "additionalDirectories": [
       "C:\\Users\\chris\\Documents\\Github\\ACROSS PROJECT\\website\\src\\components"

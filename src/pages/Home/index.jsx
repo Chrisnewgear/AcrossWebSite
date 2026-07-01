@@ -5,8 +5,8 @@ import MisionVision from "../../components/MisionVision";
 import Valores from "../../components/Valores";
 import Ventajas from "../../components/Ventajas";
 import PresenciaGlobal from "../../components/PresenciaGlobal";
-import CTABanner from "../../components/CTABanner";
-import CotizacionForm from "../../components/CotizacionForm";
+// import CTABanner from "../../components/CTABanner";
+// import CotizacionForm from "../../components/CotizacionForm";
 
 export default function Home() {
   return (
@@ -18,8 +18,8 @@ export default function Home() {
       <Valores />
       <Ventajas />
       <PresenciaGlobal />
-      <CTABanner />
-      <CotizacionForm />
+      {/* <CTABanner />
+      <CotizacionForm /> */}
     </>
   );
 }

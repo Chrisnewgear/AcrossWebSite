@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Icon from "../Icon";
 import s from "./styles.module.scss";
@@ -27,6 +28,8 @@ const SOCIALS = [
 ];
 
 export default function Footer() {
+  const [lang, setLang] = useState("es");
+
   return (
     <footer className={s.footer}>
       <div className={s.inner}>
@@ -36,17 +39,14 @@ export default function Footer() {
             <Link to="/" className={s.logo}>
               <div className={s["logo-icon"]}><Icon name="globe" size={26} strokeWidth={1.8} /></div>
               <div className={s["logo-text"]}>
-                <span className={s["logo-name"]}>Across Continents</span>
-                <span className={s["logo-tagline"]}>Come on, you get it</span>
+                <span className={s["logo-name"]}>Across Continents Trading</span>
+                <span className={s["logo-tagline"]}>name it &amp; you get it</span>
               </div>
             </Link>
             <p className={s["brand-desc"]}>
               Su socio confiable en trading e intermediación internacional.
               Conectamos mercados desde Asia y Europa hasta su destino.
             </p>
-            <span className={s.flag} title="Ecuador">
-              🇪🇨
-            </span>
             <div className={s.socials}>
               {SOCIALS.map(({ icon, href, label }) => (
                 <a
@@ -88,35 +88,42 @@ export default function Footer() {
           {/* Contacto */}
           <div>
             <div className={s["col-title"]}>Contacto</div>
+            <div className={s["contact-list"]}>
+              <p className={s["contact-line"]}>
+                Av. del Bombero, La Vista de San Eduardo, Edificio 100A Of. 502,
+                Guayaquil, Ecuador
+              </p>
+              <p className={s["contact-line"]}>
+                <a href="tel:+593998432427">+593 99 843 2427</a>
+              </p>
+              <p className={s["contact-line"]}>
+                <a href="mailto:info@acrosscon.com">info@acrosscon.com</a>
+              </p>
+              <p className={s["contact-line"]}>www.acrosscon.com</p>
+            </div>
             <div
-              style={{ display: "flex", flexDirection: "column", gap: "12px" }}
+              className={s["lang-toggle"]}
+              data-active={lang}
+              role="group"
+              aria-label="Idioma"
             >
-              <div className={s["contact-item"]}>
-                <span><Icon name="mapPin" size={18} /></span>
-                <span>
-                  Av. del Bombero, La Vista de San Eduardo, Edificio 100A Of.
-                  502, Guayaquil, Ecuador
-                </span>
-              </div>
-              <div className={s["contact-item"]}>
-                <span><Icon name="phone" size={18} /></span>
-                <a href="tel:+593998432427" style={{ color: "inherit" }}>
-                  +593 99 843 2427
-                </a>
-              </div>
-              <div className={s["contact-item"]}>
-                <span><Icon name="mail" size={18} /></span>
-                <a
-                  href="mailto:info@acrosscon.com"
-                  style={{ color: "inherit" }}
-                >
-                  info@acrosscon.com
-                </a>
-              </div>
-              <div className={s["contact-item"]}>
-                <span><Icon name="globe" size={18} /></span>
-                <span>www.acrosscon.com</span>
-              </div>
+              <span className={s["lang-thumb"]} aria-hidden="true" />
+              <button
+                type="button"
+                className={s["lang-option"]}
+                onClick={() => setLang("es")}
+                aria-pressed={lang === "es"}
+              >
+                ES
+              </button>
+              <button
+                type="button"
+                className={s["lang-option"]}
+                onClick={() => setLang("en")}
+                aria-pressed={lang === "en"}
+              >
+                EN
+              </button>
             </div>
           </div>
         </div>
@@ -125,15 +132,6 @@ export default function Footer() {
           <span className={s.copyright}>
             © 2026 Across Continents Trading. Todos los derechos reservados.
           </span>
-          <select
-            className={s["lang-selector"]}
-            defaultValue="es"
-            aria-label="Idioma"
-          >
-            <option value="es">Español (ES)</option>
-            <option value="en">English (EN)</option>
-            <option value="zh">中文 (ZH)</option>
-          </select>
         </div>
       </div>
     </footer>
