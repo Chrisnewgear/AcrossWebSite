@@ -31,86 +31,133 @@
 }
 
 // ── Misión / Visión ───────────────────────────────────────────────────
+// A dark-navy pillar paired with a light one: the contrast gives the
+// section the visual weight it was missing, while both share the same
+// silhouette (watermark, icon badge, accent rule) so they read as a set.
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: $space-8;
 
   @include respond-to(md) {
     grid-template-columns: 1fr;
+    gap: $space-6;
   }
 }
 
 .pillar {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(#{$space-8}, 4vw, #{$space-12});
+  border-radius: $radius-xl;
+  transition: transform $transition-base, box-shadow $transition-base;
+
+  &:hover {
+    transform: translateY(-6px);
+  }
+
   &--mision {
-    padding-right: clamp(#{$space-8}, 5vw, #{$space-20});
+    color: $color-white;
+    background-color: $color-blue-dark;
+    background-image: linear-gradient(
+      155deg,
+      $color-blue 0%,
+      $color-blue-dark 58%,
+      #081a37 100%
+    );
+    box-shadow: 0 24px 60px rgba(8, 24, 52, 0.28);
+
+    &:hover { box-shadow: 0 34px 76px rgba(8, 24, 52, 0.4); }
   }
 
   &--vision {
-    padding-left: clamp(#{$space-8}, 5vw, #{$space-20});
-    border-left: 1px solid $color-gray-200;
+    background: $color-white;
+    border: 1px solid $color-gray-200;
+    box-shadow: 0 24px 60px rgba(19, 66, 137, 0.08);
+
+    &:hover { box-shadow: 0 34px 76px rgba(19, 66, 137, 0.16); }
   }
 
-  @include respond-to(md) {
-    &--mision {
-      padding-right: 0;
-      padding-bottom: $space-12;
-    }
-
-    &--vision {
-      padding-left: 0;
-      padding-top: $space-12;
-      border-left: none;
-      border-top: 1px solid $color-gray-200;
-    }
+  @include respond-to(sm) {
+    &:hover { transform: none; }
   }
 }
 
+// Oversized ghosted glyph anchored to the lower-right — echoes the big
+// number/watermark motif used in Ventajas and Servicios.
+.pillar__watermark {
+  position: absolute;
+  right: -28px;
+  bottom: -36px;
+  z-index: 0;
+  line-height: 0;
+  pointer-events: none;
+
+  .pillar--mision & { color: $color-white; opacity: 0.08; }
+  .pillar--vision & { color: $color-blue;  opacity: 0.05; }
+}
+
 .pillar__icon {
-  width: 54px;
-  height: 54px;
-  border-radius: $radius-md;
+  position: relative;
+  z-index: 1;
+  width: 64px;
+  height: 64px;
+  border-radius: $radius-lg;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: $space-6;
 
   .pillar--mision & {
-    background: rgba(19, 66, 137, 0.08);
-    color: $color-blue;
+    color: $color-green-light;
+    background: rgba(113, 194, 0, 0.16);
+    border: 1px solid rgba(113, 194, 0, 0.32);
   }
 
   .pillar--vision & {
-    background: rgba(113, 194, 0, 0.12);
-    color: $color-green;
+    color: $color-blue;
+    background: rgba(19, 66, 137, 0.08);
+    border: 1px solid rgba(19, 66, 137, 0.12);
   }
 }
 
 .pillar__title {
+  position: relative;
+  z-index: 1;
   font-family: $font-display;
   font-size: clamp(#{$fs-2xl}, 3.5vw, #{$fs-4xl});
   font-weight: 800;
   line-height: 1;
   letter-spacing: -0.01em;
   text-transform: uppercase;
-  color: $color-blue;
+
+  .pillar--mision & { color: $color-white; }
+  .pillar--vision & { color: $color-blue; }
 }
 
 .pillar__rule {
   display: block;
+  position: relative;
+  z-index: 1;
   width: 60px;
   height: 4px;
   border-radius: 2px;
   margin: $space-5 0 $space-6;
-
-  .pillar--mision & { background: $color-blue; }
-  .pillar--vision & { background: $color-green; }
+  background: $color-green;
 }
 
 .pillar__text {
+  position: relative;
+  z-index: 1;
+  max-width: 46ch;
   font-family: $font-primary;
   font-size: $fs-md;
-  line-height: 1.85;
-  color: $color-gray-600;
-  text-align: justify;
-  hyphens: auto;
+  line-height: 1.8;
+  text-align: left;
+
+  .pillar--mision & { color: rgba(255, 255, 255, 0.82); }
+  .pillar--vision & { color: $color-gray-600; }
 }

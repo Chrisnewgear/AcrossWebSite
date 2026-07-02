@@ -25,10 +25,13 @@ export default function MisionVision() {
               className={`${s.pillar} ${s[`pillar--${key}`]}`}
               data-reveal={i === 0 ? 'left' : 'right'}
             >
-              <div className={s.pillar__icon}><Icon name={icon} size={24} /></div>
+              <div className={s.pillar__icon}><Icon name={icon} size={30} /></div>
               <h3 className={s.pillar__title}>{t.misionVision[key].title}</h3>
               <span className={s.pillar__rule} />
               <p className={s.pillar__text}>{t.misionVision[key].text}</p>
+              <span className={s.pillar__watermark} aria-hidden="true">
+                <Icon name={icon} size={240} strokeWidth={1} />
+              </span>
             </article>
           ))}
         </div>

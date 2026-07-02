@@ -25,6 +25,7 @@ export default function Valores() {
             >
               <div className={s.card__icon}><Icon name={ICONS[i]} size={30} /></div>
               <h3 className={s.card__title}>{name}</h3>
+              <span className={s.card__rule} />
               <p className={s.card__desc}>{desc}</p>
             </article>
           ))}

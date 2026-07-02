@@ -27,6 +27,17 @@
     align-items: center;
     text-align: center;
     gap: $space-2;
+
+    // Hairline separators divide the metrics into one authoritative strip.
+    & + & {
+      border-left: 1px solid $color-gray-200;
+    }
+
+    @include respond-to(md) {
+      // 2-col layout: only the right-hand column keeps a divider.
+      & + & { border-left: none; }
+      &:nth-child(even) { border-left: 1px solid $color-gray-200; }
+    }
   }
 
   &__number {
