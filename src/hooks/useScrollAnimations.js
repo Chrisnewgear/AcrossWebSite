@@ -9,9 +9,12 @@ import { useEffect } from 'react';
  *   data-reveal-delay="120"                  → stagger, in ms
  *   data-parallax="0.18"                     → translateY at a fraction of scroll
  *
- * Re-runs on every route change so freshly mounted pages get wired up.
+ * Re-runs on every route change — and whenever `deps` change (e.g. language) —
+ * so freshly mounted/remounted reveal elements get re-observed. Without this,
+ * nodes that React remounts on a language switch keep their hidden initial
+ * state because the original observer only tracked the old DOM nodes.
  */
-export default function useScrollAnimations(pathname) {
+export default function useScrollAnimations(pathname, ...deps) {
   useEffect(() => {
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -67,5 +70,6 @@ export default function useScrollAnimations(pathname) {
       io.disconnect();
       if (raf) cancelAnimationFrame(raf);
     };
-  }, [pathname]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname, ...deps]);
 }
