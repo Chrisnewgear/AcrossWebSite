@@ -3,63 +3,13 @@ import PageHero from "../../components/PageHero";
 import Icon from "../../components/Icon";
 import s from "./styles.module.scss";
 
-const OFFICES = [
-  {
-    flag: "🇨🇳",
-    city: "Shanghai",
-    role: "Oficina Principal — Asia",
-    address: "No. 1000 Lujiazui Ring Rd, Pudong New Area",
-    phone: "+86 21 5888 0000",
-    hours: "Lun–Vie 09:00–18:00 (CST)",
-  },
-  {
-    flag: "🇪🇨",
-    city: "Guayaquil",
-    role: "Oficina Regional — Ecuador",
-    address: "Av. del Bombero, Edificio 100A Of. 502",
-    phone: "+593 99 843 2427",
-    hours: "Lun–Sáb 08:00–18:00 (GMT-5)",
-  },
-  {
-    flag: "🇺🇸",
-    city: "Plantation, FL",
-    role: "Representación — Norteamérica",
-    address: "1800 N Pine Island Rd, Suite 210",
-    phone: "+1 954 000 0000",
-    hours: "Lun–Vie 09:00–17:00 (EST)",
-  },
-  {
-    flag: "🇮🇳",
-    city: "Mumbai",
-    role: "Representación — Sur de Asia",
-    address: "Bandra Kurla Complex, BKC, Mumbai 400051",
-    phone: "+91 22 0000 0000",
-    hours: "Lun–Vie 09:00–18:00 (IST)",
-  },
-];
-
-const CHANNELS = [
-  {
-    icon: "smartphone",
-    label: "WhatsApp",
-    value: "+593 99 843 2427",
-    href: "https://wa.me/593998432427",
-    cta: "Iniciar chat",
-  },
-  {
-    icon: "mail",
-    label: "Correo",
-    value: "info@acrosscon.com",
-    href: "mailto:info@acrosscon.com",
-    cta: "Enviar email",
-  },
-  {
-    icon: "phone",
-    label: "Teléfono",
-    value: "+593 99 843 2427",
-    href: "tel:+593998432427",
-    cta: "Llamar ahora",
-  },
+const SUBJECTS = [
+  "Cotización de flete",
+  "Inspección de calidad",
+  "Sourcing de proveedores",
+  "Seguimiento de envío",
+  "Trading / Intermediación",
+  "Otro",
 ];
 
 const INITIAL = {
@@ -68,6 +18,7 @@ const INITIAL = {
   email: "",
   telefono: "",
   asunto: "",
+  asuntoOtro: "",
   mensaje: "",
 };
 
@@ -98,28 +49,22 @@ export default function Contacto() {
         image="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80"
       />
 
-      {/* Main contact zone */}
       <section className={s.section}>
         <div className={s.inner}>
-          <div className={s.layout}>
-            {/* Left — form */}
-            <div className={s["form-card"]} data-reveal="left">
+          <div className={s["header-bar"]}>Contacto</div>
+
+          <div className={s.panel}>
+            <div className={s["form-card"]} data-reveal="up">
               {submitted ? (
                 <div className={s.success}>
-                  <span className={s["success-icon"]}><Icon name="checkCircle" size={52} /></span>
+                  <span className={s["success-icon"]}>
+                    <Icon name="checkCircle" size={52} />
+                  </span>
                   <h3 className={s["success-title"]}>¡Mensaje Enviado!</h3>
                   <p className={s["success-sub"]}>
                     Hemos recibido su mensaje. Un especialista se pondrá en
                     contacto con usted en menos de 24 horas hábiles.
                   </p>
-                  <a
-                    href="https://wa.me/593998432427"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-green"
-                  >
-                    WhatsApp Directo
-                  </a>
                 </div>
               ) : (
                 <>
@@ -129,6 +74,7 @@ export default function Contacto() {
                       Le respondemos en menos de 24 horas hábiles.
                     </p>
                   </div>
+
                   <form className={s.form} onSubmit={handleSubmit}>
                     <div className={s["form-grid"]}>
                       <div className={s["form-group"]}>
@@ -137,7 +83,7 @@ export default function Contacto() {
                         </label>
                         <input
                           className={s["form-input"]}
-                          placeholder="Juan García"
+                          placeholder="Ej: Juan García"
                           value={form.nombre}
                           onChange={update("nombre")}
                           required
@@ -147,7 +93,7 @@ export default function Contacto() {
                         <label className={s["form-label"]}>Empresa</label>
                         <input
                           className={s["form-input"]}
-                          placeholder="Mi Empresa S.A."
+                          placeholder="Empresa S.A."
                           value={form.empresa}
                           onChange={update("empresa")}
                         />
@@ -172,12 +118,13 @@ export default function Contacto() {
                         <input
                           className={s["form-input"]}
                           type="tel"
-                          placeholder="+593 99 000 0000"
+                          placeholder="0987654321"
                           value={form.telefono}
                           onChange={update("telefono")}
                         />
                       </div>
                     </div>
+
                     <div className={s["form-group"]}>
                       <label className={s["form-label"]}>Asunto *</label>
                       <select
@@ -189,18 +136,21 @@ export default function Contacto() {
                         <option value="" disabled>
                           Seleccionar motivo...
                         </option>
-                        {[
-                          "Cotización de flete",
-                          "Inspección de calidad",
-                          "Sourcing de proveedores",
-                          "Seguimiento de envío",
-                          "Trading / Intermediación",
-                          "Otro",
-                        ].map((o) => (
+                        {SUBJECTS.map((o) => (
                           <option key={o}>{o}</option>
                         ))}
                       </select>
+                      {form.asunto === "Otro" && (
+                        <input
+                          className={s["form-input"]}
+                          placeholder="Especifique el motivo de su consulta"
+                          value={form.asuntoOtro}
+                          onChange={update("asuntoOtro")}
+                          required
+                        />
+                      )}
                     </div>
+
                     <div className={s["form-group"]}>
                       <label className={s["form-label"]}>Mensaje *</label>
                       <textarea
@@ -211,99 +161,18 @@ export default function Contacto() {
                         required
                       />
                     </div>
+
                     <button
                       type="submit"
                       className={s["btn-submit"]}
                       disabled={loading}
                     >
-                      {loading ? "Enviando..." : <><Icon name="arrowRight" size={16} /> Enviar Mensaje</>}
+                      {loading ? "Enviando..." : "Enviar Mensaje"}
                     </button>
                   </form>
                 </>
               )}
             </div>
-
-            {/* Right — info */}
-            <aside className={s.sidebar} data-reveal="right">
-              <div className={s["channels-block"]}>
-                <div className={s["block-label"]}>Canales de Atención</div>
-                <div className={s.channels}>
-                  {CHANNELS.map(({ icon, label, value, href, cta }) => (
-                    <a
-                      key={label}
-                      href={href}
-                      target={href.startsWith("http") ? "_blank" : undefined}
-                      rel="noopener noreferrer"
-                      className={s.channel}
-                    >
-                      <span className={s["channel-icon"]}><Icon name={icon} size={22} /></span>
-                      <div className={s["channel-info"]}>
-                        <div className={s["channel-label"]}>{label}</div>
-                        <div className={s["channel-value"]}>{value}</div>
-                      </div>
-                      <span className={s["channel-cta"]}>{cta} <Icon name="arrowRight" size={14} /></span>
-                    </a>
-                  ))}
-                </div>
-              </div>
-
-              <div className={s["hours-block"]}>
-                <div className={s["block-label"]}>Horario de Atención</div>
-                <div className={s["hours-grid"]}>
-                  <div className={s["hours-row"]}>
-                    <span>Lunes – Viernes</span>
-                    <strong>08:00 – 18:00</strong>
-                  </div>
-                  <div className={s["hours-row"]}>
-                    <span>Sábado</span>
-                    <strong>08:00 – 13:00</strong>
-                  </div>
-                  <div className={s["hours-row"]}>
-                    <span>Domingo</span>
-                    <strong className={s.closed}>Cerrado</strong>
-                  </div>
-                </div>
-                <p className={s["hours-note"]}>
-                  Zona horaria GMT-5 (Ecuador). Operaciones Asia disponibles por
-                  WhatsApp fuera de horario.
-                </p>
-              </div>
-            </aside>
-          </div>
-        </div>
-      </section>
-
-      {/* Global offices */}
-      <section className={s.offices}>
-        <div className={s.inner}>
-          <div className={s["section-label"]} data-reveal="up">Presencia Global</div>
-          <h2 className={s["section-title"]} data-reveal="up" data-reveal-delay={80}>Nuestras Oficinas</h2>
-          <p className={s["section-sub"]} data-reveal="up" data-reveal-delay={140}>
-            Con presencia en cuatro países, coordinamos operaciones en los
-            principales hubs comerciales del mundo.
-          </p>
-          <div className={s["offices-grid"]}>
-            {OFFICES.map(({ flag, city, role, address, phone, hours }, i) => (
-              <div key={city} className={s["office-card"]} data-reveal="up" data-reveal-delay={i * 90}>
-                <div className={s["office-flag"]}>{flag}</div>
-                <div className={s["office-city"]}>{city}</div>
-                <div className={s["office-role"]}>{role}</div>
-                <div className={s["office-details"]}>
-                  <div className={s["office-detail"]}>
-                    <span><Icon name="mapPin" size={16} /></span>
-                    {address}
-                  </div>
-                  <div className={s["office-detail"]}>
-                    <span><Icon name="phone" size={16} /></span>
-                    {phone}
-                  </div>
-                  <div className={s["office-detail"]}>
-                    <span><Icon name="clock" size={16} /></span>
-                    {hours}
-                  </div>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>

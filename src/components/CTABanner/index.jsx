@@ -22,6 +22,7 @@ export default function CTABanner() {
               Solicitar Cotización
               <Icon name="arrowRight" size={16} />
             </Link>
+            {/* WhatsApp button disabled for now — uncomment to re-enable
             <a
               href="https://wa.me/593998432427"
               target="_blank"
@@ -30,6 +31,7 @@ export default function CTABanner() {
             >
               Hablar con un Experto
             </a>
+            */}
           </div>
         </div>
       </div>

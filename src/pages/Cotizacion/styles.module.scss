@@ -1,12 +1,12 @@
 @use "../../styles/variables" as *;
 @use "../../styles/mixins" as *;
 
-.page {
+.section {
   background: $color-gray-100;
-  padding-block: $space-20;
+  padding-block: $space-16 $space-24;
 
   @include respond-to(md) {
-    padding-block: $space-16;
+    padding-block: $space-12 $space-16;
   }
 }
 
@@ -14,34 +14,61 @@
   @include container;
 }
 
-.layout {
+// ─── Green header bar ─────────────────────────────────────────────────────────
+.header-bar {
+  background: $color-green;
+  background-image: linear-gradient(90deg, $color-green, $color-green-dark);
+  color: $color-white;
+  text-align: center;
+  font-family: $font-display;
+  font-size: $fs-xl;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: $space-4;
+  border-radius: $radius-lg $radius-lg 0 0;
+  box-shadow: $shadow-green;
+}
+
+// ─── Outer navy panel ─────────────────────────────────────────────────────────
+.panel {
   display: grid;
-  grid-template-columns: 1fr 1.6fr;
+  grid-template-columns: 1fr 1.35fr;
   gap: $space-10;
   align-items: start;
+  background: $color-blue;
+  background-image: linear-gradient(160deg, $color-blue-dark, $color-blue);
+  border-radius: 0 0 $radius-xl $radius-xl;
+  box-shadow: $shadow-blue;
+  padding: $space-12 $space-10;
 
   @include respond-to(lg) {
     grid-template-columns: 1fr;
+    gap: $space-8;
+  }
+  @include respond-to(sm) {
+    padding: $space-8 $space-6;
   }
 }
 
-// ─── Info sidebar ─────────────────────────────────────────────────────────────
-.sidebar {
+// ─── Left — ¿Cómo funciona? ───────────────────────────────────────────────────
+.how {
+  color: $color-white;
 }
 
-.sidebar-title {
+.how-title {
   font-family: $font-display;
   font-size: clamp(#{$fs-xl}, 3vw, #{$fs-2xl});
   font-weight: 800;
-  color: $color-blue;
+  color: $color-white;
   letter-spacing: -0.01em;
-  margin-bottom: $space-4;
+  margin-bottom: $space-3;
 }
 
-.sidebar-sub {
-  font-size: $fs-base;
-  color: $color-gray-600;
-  line-height: 1.7;
+.how-sub {
+  font-size: $fs-sm;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.65;
   margin-bottom: $space-8;
 }
 
@@ -52,147 +79,91 @@
   margin-bottom: $space-8;
 }
 
-.step {
-  display: flex;
-  align-items: flex-start;
-  gap: $space-4;
+.step-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: $radius-lg;
+  padding: $space-6;
+  overflow: hidden;
+  transition: all $transition-base;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(113, 194, 0, 0.4);
+  }
 }
 
 .step-num {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: $color-blue;
-  color: $color-white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: absolute;
+  top: $space-4;
+  right: $space-5;
   font-family: $font-display;
-  font-size: $fs-base;
+  font-size: $fs-xl;
   font-weight: 800;
-  flex-shrink: 0;
+  color: rgba(255, 255, 255, 0.22);
+  line-height: 1;
 }
 
-.step-text h4 {
+.step-title {
   font-family: $font-primary;
   font-size: $fs-sm;
   font-weight: 700;
-  color: $color-blue;
-  margin-bottom: $space-1;
-}
-
-.step-text p {
-  font-size: $fs-sm;
-  color: $color-gray-600;
-  line-height: 1.5;
-}
-
-.payment-modes {
-  background: $color-white;
-  border-radius: $radius-lg;
-  padding: $space-6;
-  border: 1px solid $color-gray-200;
-}
-
-.payment-label {
-  font-size: $fs-xs;
-  font-weight: 700;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: $color-green;
-  margin-bottom: $space-5;
-  display: flex;
-  align-items: center;
-  gap: $space-2;
-
-  &::before {
-    content: "";
-    display: inline-block;
-    width: 16px;
-    height: 2px;
-    background: $color-green;
-    border-radius: 2px;
-  }
+  color: $color-white;
+  margin-bottom: $space-2;
+  padding-right: $space-8;
 }
 
-.payment-item {
-  display: flex;
-  gap: $space-3;
-  padding: $space-3 0;
-  border-bottom: 1px solid $color-gray-200;
-
-  &:last-child {
-    border-bottom: none;
-  }
-}
-
-.payment-icon {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 38px;
-  height: 38px;
-  border-radius: $radius-md;
-  color: $color-blue;
-  background: rgba(19, 66, 137, 0.08);
-}
-
-.payment-name {
+.step-desc {
   font-size: $fs-sm;
-  font-weight: 700;
-  color: $color-blue;
-  margin-bottom: 2px;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.55;
 }
 
-.payment-desc {
-  font-size: $fs-xs;
-  color: $color-gray-600;
-}
-
-// ─── Form card ────────────────────────────────────────────────────────────────
+// ─── Right — light form card ──────────────────────────────────────────────────
 .form-card {
-  background: $color-blue;
-  background-image: linear-gradient(160deg, $color-blue-dark, $color-blue);
+  background: $color-off-white;
   border-radius: $radius-xl;
-  box-shadow: $shadow-blue;
-  overflow: hidden;
+  box-shadow: $shadow-md;
+  padding: $space-8;
+
+  @include respond-to(sm) {
+    padding: $space-6;
+  }
 }
 
 .form-header {
-  padding: $space-10 $space-10 0;
-
-  @include respond-to(sm) {
-    padding: $space-8 $space-6 0;
-  }
+  margin-bottom: $space-6;
 }
 
 .form-title {
   font-family: $font-display;
   font-size: $fs-2xl;
   font-weight: 800;
-  color: $color-white;
+  color: $color-blue;
   letter-spacing: -0.01em;
   margin-bottom: $space-2;
+  text-transform: uppercase;
 }
 
 .form-subtitle {
   font-size: $fs-sm;
-  color: rgba(255, 255, 255, 0.6);
-  margin-bottom: $space-8;
+  color: $color-gray-600;
+  margin-bottom: $space-4;
 }
 
 // Progress bar
 .progress {
   display: flex;
   gap: $space-2;
-  margin-bottom: $space-8;
 }
 
 .progress-step {
   flex: 1;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.15);
+  height: 5px;
+  background: $color-gray-200;
   border-radius: 4px;
   transition: background $transition-base;
 
@@ -200,33 +171,28 @@
     background: $color-green;
   }
   &--active {
-    background: rgba(113, 194, 0, 0.6);
+    background: $color-green;
   }
 }
 
 .form-body {
-  padding: 0 $space-10 $space-10;
-
-  @include respond-to(sm) {
-    padding: 0 $space-6 $space-8;
-  }
+  margin-top: $space-6;
 }
 
-.step-title {
-  font-family: $font-display;
-  font-size: $fs-xl;
-  font-weight: 700;
-  color: $color-white;
+// ─── Service tiles (navy inner panel) ─────────────────────────────────────────
+.tiles-panel {
+  background: $color-blue;
+  background-image: linear-gradient(160deg, $color-blue, $color-blue-dark);
+  border-radius: $radius-lg;
+  padding: $space-6;
   margin-bottom: $space-6;
-  letter-spacing: -0.01em;
 }
 
-// Service type selector (step 1)
 .service-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: $space-3;
-  margin-bottom: $space-6;
+  margin-bottom: $space-5;
 
   @include respond-to(sm) {
     grid-template-columns: 1fr 1fr;
@@ -246,42 +212,70 @@
 .service-option label {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: $space-2;
-  padding: $space-4 $space-3;
-  background: rgba(255, 255, 255, 0.08);
-  border: 2px solid rgba(255, 255, 255, 0.15);
-  border-radius: $radius-lg;
+  gap: $space-3;
+  padding: $space-4;
+  min-height: 84px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: $radius-md;
   cursor: pointer;
   transition: all $transition-fast;
-  text-align: center;
 }
 
-.service-option input:checked + label,
 .service-option label:hover {
-  background: rgba(113, 194, 0, 0.15);
-  border-color: $color-green;
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.service-option input:checked + label {
+  background: $color-blue-light;
+  border-color: $color-blue-light;
+  box-shadow: 0 6px 18px rgba(26, 84, 173, 0.5);
 }
 
 .service-option-icon {
   display: flex;
   align-items: center;
-  justify-content: center;
-  color: $color-green;
+  color: $color-green-light;
+}
+
+.service-option input:checked + label .service-option-icon {
+  color: $color-white;
 }
 
 .service-option-name {
   font-size: $fs-xs;
-  font-weight: 600;
-  color: $color-white;
-  letter-spacing: 0.04em;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  margin-top: auto;
 }
 
-// Form fields
+.tiles-heading {
+  font-family: $font-display;
+  font-size: $fs-lg;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: $color-white;
+}
+
+.section-heading {
+  font-family: $font-display;
+  font-size: $fs-xl;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: $color-blue;
+  margin-bottom: $space-6;
+}
+
+// ─── Light form fields ────────────────────────────────────────────────────────
 .form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: $space-4;
+  gap: $space-5;
   margin-bottom: $space-4;
 
   @include respond-to(sm) {
@@ -296,11 +290,9 @@
 }
 
 .form-label {
-  font-size: $fs-xs;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.6);
+  font-size: $fs-sm;
+  font-weight: 600;
+  color: $color-gray-600;
 }
 
 .form-input,
@@ -308,51 +300,91 @@
 .form-textarea {
   width: 100%;
   padding: $space-4 $space-5;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: $color-gray-100;
+  border: 1px solid $color-gray-200;
   border-radius: $radius-md;
   font-family: $font-primary;
   font-size: $fs-sm;
-  color: $color-white;
+  color: $color-gray-800;
   outline: none;
   transition: all $transition-fast;
 
   &::placeholder {
-    color: rgba(255, 255, 255, 0.35);
+    color: $color-gray-400;
   }
 
   &:focus {
-    background: rgba(255, 255, 255, 0.16);
-    border-color: $color-green;
-    box-shadow: 0 0 0 3px rgba(113, 194, 0, 0.2);
+    background: $color-white;
+    border-color: $color-blue;
+    box-shadow: 0 0 0 3px rgba(19, 66, 137, 0.12);
   }
 }
 
 .form-select {
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,0.5)' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234a5e7a' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 16px center;
   padding-right: 40px;
   cursor: pointer;
 
   option {
-    background: $color-blue-dark;
+    background: $color-white;
+    color: $color-gray-800;
   }
 }
 
 .form-textarea {
   resize: vertical;
-  min-height: 100px;
-  line-height: 1.5;
+  min-height: 140px;
+  line-height: 1.6;
 }
 
+// ─── Review (step 3) ──────────────────────────────────────────────────────────
+.review {
+  background: $color-gray-100;
+  border: 1px solid $color-gray-200;
+  border-radius: $radius-lg;
+  padding: $space-6;
+  margin-bottom: $space-6;
+}
+
+.review-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $space-4;
+  padding: $space-3 0;
+  border-bottom: 1px solid $color-gray-200;
+  font-size: $fs-sm;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.review-key {
+  color: $color-gray-400;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: $fs-xs;
+  flex-shrink: 0;
+}
+
+.review-value {
+  color: $color-gray-800;
+  font-weight: 600;
+  text-align: right;
+}
+
+// ─── Actions ──────────────────────────────────────────────────────────────────
 .form-actions {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: $space-4;
-  margin-top: $space-6;
+  margin-top: $space-8;
   flex-wrap: wrap;
 }
 
@@ -361,18 +393,19 @@
   align-items: center;
   gap: $space-2;
   padding: $space-3 $space-6;
-  background: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.8);
+  background: transparent;
+  color: $color-gray-600;
   border-radius: $radius-full;
   font-size: $fs-sm;
   font-weight: 600;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid $color-gray-300;
   cursor: pointer;
   transition: all $transition-fast;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.18);
-    color: $color-white;
+    background: $color-gray-100;
+    color: $color-blue;
+    border-color: $color-blue;
   }
 }
 
@@ -405,14 +438,10 @@
   }
 }
 
-// Success state
+// ─── Success state ────────────────────────────────────────────────────────────
 .success {
-  padding: $space-16 $space-10;
+  padding: $space-16 $space-8;
   text-align: center;
-
-  @include respond-to(sm) {
-    padding: $space-12 $space-6;
-  }
 }
 
 .success-icon {
@@ -427,13 +456,13 @@
   font-family: $font-display;
   font-size: $fs-2xl;
   font-weight: 800;
-  color: $color-white;
+  color: $color-blue;
   margin-bottom: $space-4;
 }
 
 .success-sub {
   font-size: $fs-base;
-  color: rgba(255, 255, 255, 0.7);
+  color: $color-gray-600;
   margin-bottom: $space-8;
   line-height: 1.65;
   max-width: 380px;
@@ -445,6 +474,32 @@
   gap: $space-4;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
+  padding: $space-3 $space-8;
+  background: transparent;
+  color: $color-blue;
+  border-radius: $radius-full;
+  font-family: $font-primary;
+  font-size: $fs-sm;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: 2px solid $color-gray-300;
+  text-decoration: none;
+  transition: all $transition-base;
+
+  &:hover {
+    background: $color-white;
+    border-color: $color-blue;
+    transform: translateY(-2px);
+  }
 }
 
 @keyframes bounce {

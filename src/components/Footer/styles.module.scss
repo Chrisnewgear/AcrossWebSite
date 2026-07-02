@@ -184,58 +184,6 @@
   }
 }
 
-// Language toggle — ES / EN segmented switch with sliding indicator
-.lang-toggle {
-  position: relative;
-  display: inline-flex;
-  align-items: stretch;
-  margin-top: $space-6;
-  padding: 4px;
-  background: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: $radius-full;
-}
-
-.lang-thumb {
-  position: absolute;
-  top: 4px;
-  bottom: 4px;
-  left: 4px;
-  width: calc(50% - 4px);
-  background: $color-white;
-  border-radius: $radius-full;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  transition: transform $transition-base;
-}
-
-.lang-toggle[data-active="en"] .lang-thumb {
-  transform: translateX(100%);
-}
-
-.lang-option {
-  position: relative;
-  z-index: 1;
-  min-width: 3.25rem;
-  padding: $space-2 $space-3;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-family: $font-primary;
-  font-size: $fs-xs;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  color: rgba(255,255,255,0.6);
-  transition: color $transition-base;
-
-  &:hover {
-    color: rgba(255,255,255,0.85);
-  }
-
-  &[aria-pressed="true"] {
-    color: $color-blue-dark;
-  }
-}
-
 // Bottom bar
 .bottom {
   display: flex;

@@ -322,6 +322,7 @@ export default function Rastreo() {
               justifyContent: "center",
             }}
           >
+            {/* WhatsApp button disabled for now — uncomment to re-enable
             <a
               href="https://wa.me/593998432427"
               target="_blank"
@@ -330,6 +331,7 @@ export default function Rastreo() {
             >
               WhatsApp
             </a>
+            */}
             <Link to="/contacto" className="btn-outline-white">
               Formulario de Contacto
             </Link>

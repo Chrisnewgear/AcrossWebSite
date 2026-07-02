@@ -6,29 +6,11 @@ import s from "./styles.module.scss";
 
 const SERVICES = [
   { icon: "ship", name: "Marítimo" },
-  { icon: "plane", name: "Aéreo" },
   { icon: "truck", name: "Terrestre" },
-  { icon: "factory", name: "Sourcing" },
   { icon: "search", name: "Inspección" },
+  { icon: "plane", name: "Aéreo" },
+  { icon: "factory", name: "Sourcing" },
   { icon: "handshake", name: "Trading" },
-];
-
-const PAYMENT = [
-  {
-    icon: "document",
-    name: "Anticipo + BL",
-    desc: "Pago inicial y saldo contra copia de Bill of Lading",
-  },
-  {
-    icon: "bank",
-    name: "Carta de Crédito",
-    desc: "Instrumento bancario internacional (L/C)",
-  },
-  {
-    icon: "creditCard",
-    name: "Crédito Parcial",
-    desc: "Con garantía específica y fluidez de flujo de caja",
-  },
 ];
 
 const STEPS_INFO = [
@@ -103,46 +85,37 @@ export default function Cotizacion() {
         image="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1920&q=80"
       />
 
-      <section className={s.page}>
+      <section className={s.section}>
         <div className={s.inner}>
-          <div className={s.layout}>
-            {/* Sidebar */}
-            <aside className={s.sidebar} data-reveal="left">
-              <h2 className={s["sidebar-title"]}>¿Cómo funciona?</h2>
-              <p className={s["sidebar-sub"]}>
+          <div className={s["header-bar"]}>Cotización</div>
+
+          <div className={s.panel}>
+            {/* Left — ¿Cómo funciona? */}
+            <aside className={s.how} data-reveal="left">
+              <h2 className={s["how-title"]}>¿Cómo funciona?</h2>
+              <p className={s["how-sub"]}>
                 Reciba una cotización detallada en menos de 24 horas hábiles con
                 el mejor precio del mercado.
               </p>
+
               <div className={s["steps-list"]}>
                 {STEPS_INFO.map(({ n, title, desc }) => (
-                  <div key={n} className={s.step}>
-                    <div className={s["step-num"]}>{n}</div>
-                    <div className={s["step-text"]}>
-                      <h4>{title}</h4>
-                      <p>{desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <div className={s["payment-modes"]}>
-                <div className={s["payment-label"]}>Modalidades de Pago</div>
-                {PAYMENT.map(({ icon, name, desc }) => (
-                  <div key={name} className={s["payment-item"]}>
-                    <span className={s["payment-icon"]}><Icon name={icon} size={20} /></span>
-                    <div>
-                      <div className={s["payment-name"]}>{name}</div>
-                      <div className={s["payment-desc"]}>{desc}</div>
-                    </div>
+                  <div key={n} className={s["step-card"]}>
+                    <span className={s["step-num"]}>{n}</span>
+                    <h4 className={s["step-title"]}>{title}</h4>
+                    <p className={s["step-desc"]}>{desc}</p>
                   </div>
                 ))}
               </div>
             </aside>
 
-            {/* Form card */}
+            {/* Right — light form card */}
             <div className={s["form-card"]} data-reveal="right">
               {submitted ? (
                 <div className={s.success}>
-                  <span className={s["success-icon"]}><Icon name="checkCircle" size={52} /></span>
+                  <span className={s["success-icon"]}>
+                    <Icon name="checkCircle" size={52} />
+                  </span>
                   <h3 className={s["success-title"]}>¡Cotización Enviada!</h3>
                   <p className={s["success-sub"]}>
                     Hemos recibido su solicitud. Nuestro equipo la revisará y le
@@ -150,6 +123,7 @@ export default function Cotizacion() {
                     hábiles.
                   </p>
                   <div className={s["success-actions"]}>
+                    {/* WhatsApp button disabled for now — uncomment to re-enable
                     <a
                       href="https://wa.me/593998432427"
                       target="_blank"
@@ -158,7 +132,8 @@ export default function Cotizacion() {
                     >
                       WhatsApp Directo
                     </a>
-                    <Link to="/" className="btn-outline-white">
+                    */}
+                    <Link to="/" className={s["btn-outline"]}>
                       Volver al Inicio
                     </Link>
                   </div>
@@ -190,31 +165,34 @@ export default function Cotizacion() {
                     {/* Step 1 — Service + Route */}
                     {step === 1 && (
                       <>
-                        <h3 className={s["step-title"]}>
-                          Tipo de Servicio y Ruta
-                        </h3>
-                        <div className={s["service-grid"]}>
-                          {SERVICES.map(({ icon, name }) => (
-                            <div key={name} className={s["service-option"]}>
-                              <input
-                                type="radio"
-                                id={`svc-${name}`}
-                                name="service"
-                                value={name}
-                                checked={form.service === name}
-                                onChange={() => setService(name)}
-                              />
-                              <label htmlFor={`svc-${name}`}>
-                                <span className={s["service-option-icon"]}>
-                                  <Icon name={icon} size={24} />
-                                </span>
-                                <span className={s["service-option-name"]}>
-                                  {name}
-                                </span>
-                              </label>
-                            </div>
-                          ))}
+                        <div className={s["tiles-panel"]}>
+                          <div className={s["service-grid"]}>
+                            {SERVICES.map(({ icon, name }) => (
+                              <div key={name} className={s["service-option"]}>
+                                <input
+                                  type="radio"
+                                  id={`svc-${name}`}
+                                  name="service"
+                                  value={name}
+                                  checked={form.service === name}
+                                  onChange={() => setService(name)}
+                                />
+                                <label htmlFor={`svc-${name}`}>
+                                  <span className={s["service-option-icon"]}>
+                                    <Icon name={icon} size={22} />
+                                  </span>
+                                  <span className={s["service-option-name"]}>
+                                    {name}
+                                  </span>
+                                </label>
+                              </div>
+                            ))}
+                          </div>
+                          <div className={s["tiles-heading"]}>
+                            Tipo de Servicio y Ruta
+                          </div>
                         </div>
+
                         <div className={s["form-grid"]}>
                           <div className={s["form-group"]}>
                             <label className={s["form-label"]}>
@@ -270,10 +248,8 @@ export default function Cotizacion() {
                             />
                           </div>
                         </div>
-                        <div
-                          className={s["form-group"]}
-                          style={{ marginBottom: "0" }}
-                        >
+
+                        <div className={s["form-group"]}>
                           <label className={s["form-label"]}>
                             Descripción del Producto *
                           </label>
@@ -284,6 +260,7 @@ export default function Cotizacion() {
                             onChange={update("descripcion")}
                           />
                         </div>
+
                         <div className={s["form-actions"]}>
                           <span />
                           <button
@@ -301,7 +278,9 @@ export default function Cotizacion() {
                     {/* Step 2 — Contact info */}
                     {step === 2 && (
                       <>
-                        <h3 className={s["step-title"]}>Datos de Contacto</h3>
+                        <h3 className={s["section-heading"]}>
+                          Datos de Contacto
+                        </h3>
                         <div className={s["form-grid"]}>
                           <div className={s["form-group"]}>
                             <label className={s["form-label"]}>
@@ -384,15 +363,10 @@ export default function Cotizacion() {
                     {/* Step 3 — Review + submit */}
                     {step === 3 && (
                       <>
-                        <h3 className={s["step-title"]}>Confirmar Solicitud</h3>
-                        <div
-                          style={{
-                            background: "rgba(255,255,255,0.08)",
-                            borderRadius: 12,
-                            padding: "24px",
-                            marginBottom: 24,
-                          }}
-                        >
+                        <h3 className={s["section-heading"]}>
+                          Confirmar Solicitud
+                        </h3>
+                        <div className={s.review}>
                           {[
                             ["Servicio", form.service || "—"],
                             ["Ruta", `${form.origen} → ${form.destino}`],
@@ -404,30 +378,9 @@ export default function Cotizacion() {
                             ["Contacto", `${form.nombre} — ${form.email}`],
                             ["Empresa", form.empresa || "—"],
                           ].map(([k, v]) => (
-                            <div
-                              key={k}
-                              style={{
-                                display: "flex",
-                                justifyContent: "space-between",
-                                padding: "8px 0",
-                                borderBottom: "1px solid rgba(255,255,255,0.1)",
-                                fontSize: "0.875rem",
-                              }}
-                            >
-                              <span
-                                style={{
-                                  color: "rgba(255,255,255,0.55)",
-                                  fontWeight: 600,
-                                  textTransform: "uppercase",
-                                  letterSpacing: "0.06em",
-                                  fontSize: "0.7rem",
-                                }}
-                              >
-                                {k}
-                              </span>
-                              <span style={{ color: "white", fontWeight: 500 }}>
-                                {v}
-                              </span>
+                            <div key={k} className={s["review-row"]}>
+                              <span className={s["review-key"]}>{k}</span>
+                              <span className={s["review-value"]}>{v}</span>
                             </div>
                           ))}
                         </div>
@@ -444,7 +397,13 @@ export default function Cotizacion() {
                             className={s["btn-next"]}
                             disabled={loading}
                           >
-                            {loading ? "Enviando..." : <><Icon name="check" size={16} /> Enviar Cotización</>}
+                            {loading ? (
+                              "Enviando..."
+                            ) : (
+                              <>
+                                <Icon name="check" size={16} /> Enviar Cotización
+                              </>
+                            )}
                           </button>
                         </div>
                       </>

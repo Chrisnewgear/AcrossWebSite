@@ -24,10 +24,13 @@
   }
 
   &--scrolled {
-    background: rgba(13, 47, 99, 0.96);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    box-shadow: 0 2px 32px rgba(0,0,0,0.25);
+    background: rgba(13, 47, 99, 0.6);
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
   }
 }
 
@@ -155,6 +158,58 @@
   }
 }
 
+// Language toggle — ES / EN segmented switch with sliding indicator
+.lang-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: stretch;
+  padding: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: $radius-full;
+  flex-shrink: 0;
+}
+
+.lang-thumb {
+  position: absolute;
+  top: 3px;
+  bottom: 3px;
+  left: 3px;
+  width: calc(50% - 3px);
+  background: $color-white;
+  border-radius: $radius-full;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: transform $transition-base;
+}
+
+.lang-toggle[data-active="en"] .lang-thumb {
+  transform: translateX(100%);
+}
+
+.lang-option {
+  position: relative;
+  z-index: 1;
+  min-width: 2.75rem;
+  padding: $space-1 $space-3;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: $font-primary;
+  font-size: $fs-xs;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color $transition-base;
+
+  &:hover {
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  &[aria-pressed="true"] {
+    color: $color-blue-dark;
+  }
+}
+
 .hamburger {
   display: none;
   flex-direction: column;
@@ -195,8 +250,9 @@
   top: $navbar-height;
   left: 0;
   right: 0;
-  background: rgba(13, 47, 99, 0.98);
-  backdrop-filter: blur(20px);
+  background: rgba(13, 47, 99, 0.75);
+  backdrop-filter: blur(22px) saturate(160%);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
   padding: $space-6;
   flex-direction: column;
   gap: $space-2;

@@ -52,7 +52,7 @@
 
 .title {
   font-family: $font-display;
-  font-size: clamp(#{$fs-3xl}, 5vw, #{$fs-5xl});
+  font-size: clamp(#{$fs-2xl}, 4vw, #{$fs-4xl});
   font-weight: 900;
   color: $color-white;
   letter-spacing: -0.02em;

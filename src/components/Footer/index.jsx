@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import Icon from "../Icon";
 import s from "./styles.module.scss";
@@ -28,8 +27,6 @@ const SOCIALS = [
 ];
 
 export default function Footer() {
-  const [lang, setLang] = useState("es");
-
   return (
     <footer className={s.footer}>
       <div className={s.inner}>
@@ -100,30 +97,6 @@ export default function Footer() {
                 <a href="mailto:info@acrosscon.com">info@acrosscon.com</a>
               </p>
               <p className={s["contact-line"]}>www.acrosscon.com</p>
-            </div>
-            <div
-              className={s["lang-toggle"]}
-              data-active={lang}
-              role="group"
-              aria-label="Idioma"
-            >
-              <span className={s["lang-thumb"]} aria-hidden="true" />
-              <button
-                type="button"
-                className={s["lang-option"]}
-                onClick={() => setLang("es")}
-                aria-pressed={lang === "es"}
-              >
-                ES
-              </button>
-              <button
-                type="button"
-                className={s["lang-option"]}
-                onClick={() => setLang("en")}
-                aria-pressed={lang === "en"}
-              >
-                EN
-              </button>
             </div>
           </div>
         </div>
