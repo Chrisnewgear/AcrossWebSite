@@ -1,16 +1,8 @@
 import { useState } from "react";
 import PageHero from "../../components/PageHero";
 import Icon from "../../components/Icon";
+import { useI18n } from "../../i18n/LanguageContext";
 import s from "./styles.module.scss";
-
-const SUBJECTS = [
-  "Cotización de flete",
-  "Inspección de calidad",
-  "Sourcing de proveedores",
-  "Seguimiento de envío",
-  "Trading / Intermediación",
-  "Otro",
-];
 
 const INITIAL = {
   nombre: "",
@@ -27,6 +19,10 @@ export default function Contacto() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const { t } = useI18n();
+  const tc = t.contacto;
+  const isOtro = form.asunto === tc.subjects[tc.subjects.length - 1];
+
   const update = (field) => (e) =>
     setForm((f) => ({ ...f, [field]: e.target.value }));
 
@@ -42,16 +38,16 @@ export default function Contacto() {
   return (
     <>
       <PageHero
-        breadcrumb="Contacto"
-        label="Hablemos de su operación"
-        title="Contáctenos"
-        subtitle="Nuestro equipo de especialistas está listo para asesorarle en cada etapa de su operación internacional."
+        breadcrumb={tc.breadcrumb}
+        label={tc.heroLabel}
+        title={tc.heroTitle}
+        subtitle={tc.heroSub}
         image="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80"
       />
 
       <section className={s.section}>
         <div className={s.inner}>
-          <div className={s["header-bar"]}>Contacto</div>
+          <div className={s["header-bar"]}>{tc.headerBar}</div>
 
           <div className={s.panel}>
             <div className={s["form-card"]} data-reveal="up">
@@ -60,52 +56,47 @@ export default function Contacto() {
                   <span className={s["success-icon"]}>
                     <Icon name="checkCircle" size={52} />
                   </span>
-                  <h3 className={s["success-title"]}>¡Mensaje Enviado!</h3>
-                  <p className={s["success-sub"]}>
-                    Hemos recibido su mensaje. Un especialista se pondrá en
-                    contacto con usted en menos de 24 horas hábiles.
-                  </p>
+                  <h3 className={s["success-title"]}>{tc.success.title}</h3>
+                  <p className={s["success-sub"]}>{tc.success.sub}</p>
                 </div>
               ) : (
                 <>
                   <div className={s["form-header"]}>
-                    <h2 className={s["form-title"]}>Envíenos un mensaje</h2>
-                    <p className={s["form-sub"]}>
-                      Le respondemos en menos de 24 horas hábiles.
-                    </p>
+                    <h2 className={s["form-title"]}>{tc.formTitle}</h2>
+                    <p className={s["form-sub"]}>{tc.formSub}</p>
                   </div>
 
                   <form className={s.form} onSubmit={handleSubmit}>
                     <div className={s["form-grid"]}>
                       <div className={s["form-group"]}>
                         <label className={s["form-label"]}>
-                          Nombres y Apellidos *
+                          {tc.labels.nombre}
                         </label>
                         <input
                           className={s["form-input"]}
-                          placeholder="Ej: Juan García"
+                          placeholder={tc.placeholders.nombre}
                           value={form.nombre}
                           onChange={update("nombre")}
                           required
                         />
                       </div>
                       <div className={s["form-group"]}>
-                        <label className={s["form-label"]}>Empresa</label>
+                        <label className={s["form-label"]}>{tc.labels.empresa}</label>
                         <input
                           className={s["form-input"]}
-                          placeholder="Empresa S.A."
+                          placeholder={tc.placeholders.empresa}
                           value={form.empresa}
                           onChange={update("empresa")}
                         />
                       </div>
                       <div className={s["form-group"]}>
                         <label className={s["form-label"]}>
-                          Correo Electrónico *
+                          {tc.labels.email}
                         </label>
                         <input
                           className={s["form-input"]}
                           type="email"
-                          placeholder="su@empresa.com"
+                          placeholder={tc.placeholders.email}
                           value={form.email}
                           onChange={update("email")}
                           required
@@ -113,12 +104,12 @@ export default function Contacto() {
                       </div>
                       <div className={s["form-group"]}>
                         <label className={s["form-label"]}>
-                          Teléfono / WhatsApp
+                          {tc.labels.telefono}
                         </label>
                         <input
                           className={s["form-input"]}
                           type="tel"
-                          placeholder="0987654321"
+                          placeholder={tc.placeholders.telefono}
                           value={form.telefono}
                           onChange={update("telefono")}
                         />
@@ -126,7 +117,7 @@ export default function Contacto() {
                     </div>
 
                     <div className={s["form-group"]}>
-                      <label className={s["form-label"]}>Asunto *</label>
+                      <label className={s["form-label"]}>{tc.labels.asunto}</label>
                       <select
                         className={s["form-select"]}
                         value={form.asunto}
@@ -134,16 +125,16 @@ export default function Contacto() {
                         required
                       >
                         <option value="" disabled>
-                          Seleccionar motivo...
+                          {tc.asuntoPlaceholder}
                         </option>
-                        {SUBJECTS.map((o) => (
+                        {tc.subjects.map((o) => (
                           <option key={o}>{o}</option>
                         ))}
                       </select>
-                      {form.asunto === "Otro" && (
+                      {isOtro && (
                         <input
                           className={s["form-input"]}
-                          placeholder="Especifique el motivo de su consulta"
+                          placeholder={tc.otroPlaceholder}
                           value={form.asuntoOtro}
                           onChange={update("asuntoOtro")}
                           required
@@ -152,10 +143,10 @@ export default function Contacto() {
                     </div>
 
                     <div className={s["form-group"]}>
-                      <label className={s["form-label"]}>Mensaje *</label>
+                      <label className={s["form-label"]}>{tc.labels.mensaje}</label>
                       <textarea
                         className={s["form-textarea"]}
-                        placeholder="Cuéntenos sobre su operación: producto, origen, destino, volumen y cualquier consulta específica..."
+                        placeholder={tc.placeholders.mensaje}
                         value={form.mensaje}
                         onChange={update("mensaje")}
                         required
@@ -167,7 +158,7 @@ export default function Contacto() {
                       className={s["btn-submit"]}
                       disabled={loading}
                     >
-                      {loading ? "Enviando..." : "Enviar Mensaje"}
+                      {loading ? tc.submitting : tc.submit}
                     </button>
                   </form>
                 </>

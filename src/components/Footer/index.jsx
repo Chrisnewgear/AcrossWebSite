@@ -1,23 +1,11 @@
 import { Link } from "react-router-dom";
 import Icon from "../Icon";
+import { useI18n } from "../../i18n/LanguageContext";
 import s from "./styles.module.scss";
 
-const SERVICES = [
-  { label: "Transporte Marítimo", to: "/servicios" },
-  { label: "Transporte Aéreo", to: "/servicios" },
-  { label: "Transporte Terrestre", to: "/servicios" },
-  { label: "Rastreo de Envíos", to: "/rastreo" },
-  { label: "Verificación Proveedores", to: "/servicios" },
-  { label: "Inspección de Calidad", to: "/servicios" },
-];
-
-const COMPANY = [
-  { label: "Nosotros", to: "/" },
-  { label: "Misión y Visión", to: "/" },
-  { label: "Presencia Global", to: "/" },
-  { label: "Cotización", to: "/cotizacion" },
-  { label: "Contacto", to: "/contacto" },
-];
+// Routes are index-aligned with t.footer.services / t.footer.company
+const SERVICE_LINKS = ["/servicios", "/servicios", "/servicios", "/rastreo", "/servicios", "/servicios"];
+const COMPANY_LINKS = ["/", "/", "/", "/cotizacion", "/contacto"];
 
 const SOCIALS = [
   { icon: "x", href: "#", label: "Twitter/X" },
@@ -27,6 +15,8 @@ const SOCIALS = [
 ];
 
 export default function Footer() {
+  const { t } = useI18n();
+
   return (
     <footer className={s.footer}>
       <div className={s.inner}>
@@ -40,10 +30,7 @@ export default function Footer() {
                 <span className={s["logo-tagline"]}>name it &amp; you get it</span>
               </div>
             </Link>
-            <p className={s["brand-desc"]}>
-              Su socio confiable en trading e intermediación internacional.
-              Conectamos mercados desde Asia y Europa hasta su destino.
-            </p>
+            <p className={s["brand-desc"]}>{t.footer.brandDesc}</p>
             <div className={s.socials}>
               {SOCIALS.map(({ icon, href, label }) => (
                 <a
@@ -60,10 +47,10 @@ export default function Footer() {
 
           {/* Servicios */}
           <div>
-            <div className={s["col-title"]}>Servicios</div>
+            <div className={s["col-title"]}>{t.footer.servicesTitle}</div>
             <div className={s["col-links"]}>
-              {SERVICES.map(({ label, to }) => (
-                <Link key={label} to={to} className={s["col-link"]}>
+              {t.footer.services.map((label, i) => (
+                <Link key={label} to={SERVICE_LINKS[i]} className={s["col-link"]}>
                   {label}
                 </Link>
               ))}
@@ -72,10 +59,10 @@ export default function Footer() {
 
           {/* La Empresa */}
           <div>
-            <div className={s["col-title"]}>La Empresa</div>
+            <div className={s["col-title"]}>{t.footer.companyTitle}</div>
             <div className={s["col-links"]}>
-              {COMPANY.map(({ label, to }) => (
-                <Link key={label} to={to} className={s["col-link"]}>
+              {t.footer.company.map((label, i) => (
+                <Link key={label} to={COMPANY_LINKS[i]} className={s["col-link"]}>
                   {label}
                 </Link>
               ))}
@@ -84,12 +71,9 @@ export default function Footer() {
 
           {/* Contacto */}
           <div>
-            <div className={s["col-title"]}>Contacto</div>
+            <div className={s["col-title"]}>{t.footer.contactTitle}</div>
             <div className={s["contact-list"]}>
-              <p className={s["contact-line"]}>
-                Av. del Bombero, La Vista de San Eduardo, Edificio 100A Of. 502,
-                Guayaquil, Ecuador
-              </p>
+              <p className={s["contact-line"]}>{t.footer.address}</p>
               <p className={s["contact-line"]}>
                 <a href="tel:+593998432427">+593 99 843 2427</a>
               </p>
@@ -102,9 +86,7 @@ export default function Footer() {
         </div>
 
         <div className={s.bottom}>
-          <span className={s.copyright}>
-            © 2026 Across Continents Trading. Todos los derechos reservados.
-          </span>
+          <span className={s.copyright}>{t.footer.copyright}</span>
         </div>
       </div>
     </footer>

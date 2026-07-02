@@ -1,48 +1,18 @@
+import { useI18n } from "../../i18n/LanguageContext";
 import s from "./styles.module.scss";
 
-const ADVANTAGES = [
-  {
-    title: "Red Global de Proveedores",
-    desc: "Contamos con una sólida red de fabricantes y proveedores internacionales cuidadosamente seleccionados, lo que nos permite ofrecer productos competitivos, confiables y adaptados a las necesidades de cada cliente.",
-  },
-  {
-    title: "Eficiencia en la Gestión Comercial",
-    desc: "Optimizamos cada etapa del proceso de importación, desde la búsqueda de proveedores hasta la entrega final, garantizando operaciones ágiles y seguras.",
-  },
-  {
-    title: "Transparencia y Confianza",
-    desc: "Trabajamos con total claridad en cada negociación, brindando información oportuna y acompañamiento constante para que nuestros clientes tomen decisiones con seguridad.",
-  },
-  {
-    title: "Experiencia en Comercio Internacional",
-    desc: "Nuestro conocimiento de los mercados globales, procesos aduaneros y logística internacional nos permite minimizar riesgos y generar oportunidades de negocio exitosas.",
-  },
-];
-
-const COMMISSIONS = [
-  {
-    rate: "5%",
-    type: "Comisión Estándar",
-    label: "Pedidos entre $20K y $50K FOB",
-  },
-  {
-    rate: "3.5%",
-    type: "Comisión Premium",
-    label: "Pedidos superiores a $50K FOB",
-  },
-  { rate: "$150", type: "Verificación", label: "Auditoría de proveedor + IVA" },
-];
-
 export default function Ventajas() {
+  const { t } = useI18n();
+
   return (
     <section className={s.section}>
       <div className={s.inner}>
         <div className={s.header} data-reveal="up">
-          <h2 className={s.title}>Por qué elegirnos</h2>
+          <h2 className={s.title}>{t.ventajas.title}</h2>
         </div>
 
         <div className={s.grid}>
-          {ADVANTAGES.map(({ title, desc }, i) => (
+          {t.ventajas.advantages.map(({ title, desc }, i) => (
             <article
               key={title}
               className={s.card}
@@ -59,7 +29,7 @@ export default function Ventajas() {
         </div>
 
         <div className={s.commissions}>
-          {COMMISSIONS.map(({ rate, type, label }, i) => (
+          {t.ventajas.commissions.map(({ rate, type, label }, i) => (
             <div
               key={type}
               className={s["commission-item"]}

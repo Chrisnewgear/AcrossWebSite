@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useI18n } from "../../i18n/LanguageContext";
 import s from "./styles.module.scss";
 
 export default function PageHero({
@@ -9,6 +10,8 @@ export default function PageHero({
   breadcrumb,
   image,
 }) {
+  const { t } = useI18n();
+
   return (
     <section className={`${s.hero} ${image ? s["hero--image"] : ""}`}>
       <div className={s.decor} aria-hidden="true">
@@ -30,7 +33,7 @@ export default function PageHero({
       <div className={s.inner}>
         {breadcrumb && (
           <nav className={s.breadcrumb} aria-label="Miga de pan">
-            <Link to="/">Inicio</Link>
+            <Link to="/">{t.common.home}</Link>
             <span>/</span>
             <span>{breadcrumb}</span>
           </nav>

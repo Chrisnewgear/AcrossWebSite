@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import Icon from "../Icon";
+import { useI18n } from "../../i18n/LanguageContext";
 import s from "./styles.module.scss";
 
 const NAV_LINKS = [
-  { label: "Inicio", to: "/" },
-  { label: "Servicios", to: "/servicios" },
-  { label: "Rastreo", to: "/rastreo" },
-  { label: "Cotización", to: "/cotizacion" },
-  { label: "Contacto", to: "/contacto" },
+  { key: "inicio", to: "/" },
+  { key: "servicios", to: "/servicios" },
+  { key: "rastreo", to: "/rastreo" },
+  { key: "cotizacion", to: "/cotizacion" },
+  { key: "contacto", to: "/contacto" },
 ];
 
 // WhatsApp button disabled for now — uncomment together with the buttons below to re-enable
@@ -21,7 +22,7 @@ const NAV_LINKS = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [lang, setLang] = useState("es");
+  const { lang, setLang, t } = useI18n();
   const { pathname } = useLocation();
 
   // On home page use transparent bg; on inner pages always use scrolled style
@@ -55,8 +56,8 @@ export default function Navbar() {
             </div>
           </Link>
 
-          <nav className={s.nav} aria-label="Navegación principal">
-            {NAV_LINKS.map(({ label, to }) => (
+          <nav className={s.nav} aria-label={t.common.navMain}>
+            {NAV_LINKS.map(({ key, to }) => (
               <NavLink
                 key={to}
                 to={to}
@@ -65,7 +66,7 @@ export default function Navbar() {
                   `${s.nav__link} ${isActive ? s["nav__link--active"] : ""}`
                 }
               >
-                {label}
+                {t.nav[key]}
               </NavLink>
             ))}
           </nav>
@@ -88,7 +89,7 @@ export default function Navbar() {
               className={s["lang-toggle"]}
               data-active={lang}
               role="group"
-              aria-label="Idioma"
+              aria-label={t.common.language}
             >
               <span className={s["lang-thumb"]} aria-hidden="true" />
               <button
@@ -112,7 +113,7 @@ export default function Navbar() {
             <button
               className={`${s.hamburger} ${menuOpen ? s["hamburger--open"] : ""}`}
               onClick={() => setMenuOpen((v) => !v)}
-              aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+              aria-label={menuOpen ? t.common.menuClose : t.common.menuOpen}
               aria-expanded={menuOpen}
             >
               <span />
@@ -126,11 +127,11 @@ export default function Navbar() {
       <div
         className={`${s["mobile-menu"]} ${menuOpen ? s["mobile-menu--open"] : ""}`}
         role="navigation"
-        aria-label="Menú móvil"
+        aria-label={t.common.menuMobile}
       >
-        {NAV_LINKS.map(({ label, to }) => (
+        {NAV_LINKS.map(({ key, to }) => (
           <Link key={to} to={to} onClick={() => setMenuOpen(false)}>
-            {label}
+            {t.nav[key]}
           </Link>
         ))}
         {/* WhatsApp button disabled for now — uncomment to re-enable

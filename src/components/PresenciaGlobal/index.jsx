@@ -1,13 +1,10 @@
 import { useState, useRef, useEffect } from "react";
+import { useI18n } from "../../i18n/LanguageContext";
 import s from "./styles.module.scss";
 
-const OFFICES = [
-  { city: "Shanghai",   country: "China" },
-  { city: "Plantation", country: "Florida, USA" },
-  { city: "Guayaquil",  country: "Ecuador" },
-  { city: "Mumbai",     country: "India" },
-  { city: "Lima",       country: "Perú" },
-];
+// Only the number of offices matters for the carousel math; the displayed
+// city/country text is pulled from translations by index at render time.
+const OFFICES = [0, 1, 2, 3, 4];
 
 const N      = OFFICES.length;
 const GAP    = 20;   // px — must equal `gap` value in .slides SCSS
@@ -26,6 +23,8 @@ const easeInOutCubic = (k) =>
   k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
 
 export default function PresenciaGlobal() {
+  const { t } = useI18n();
+  const offices = t.presenciaGlobal.offices;
   const [activeDot, setActiveDot] = useState(0);
   const [ready,     setReady]     = useState(false);
 
@@ -155,12 +154,12 @@ export default function PresenciaGlobal() {
       onMouseLeave={() => { pausedRef.current = false; }}
     >
       <div className={s.header} data-reveal="up">
-        <span className={s.badge}>Presencia Internacional</span>
-        <h2 className={s.title}>Conectados con el Mundo</h2>
+        <span className={s.badge}>{t.presenciaGlobal.badge}</span>
+        <h2 className={s.title}>{t.presenciaGlobal.title}</h2>
         <p className={s.subtitle}>
-          Oficinas estratégicas en los principales centros
+          {t.presenciaGlobal.subtitle1}
           <br />
-          de manufactura y comercio global.
+          {t.presenciaGlobal.subtitle2}
         </p>
       </div>
 
@@ -170,24 +169,27 @@ export default function PresenciaGlobal() {
           ref={slidesRef}
           style={{ visibility: ready ? "visible" : "hidden" }}
         >
-          {SLOTS.map(({ city, country }, i) => (
-            <article
-              key={`${city}-${i}`}
-              className={s.card}
-              ref={i === 0 ? card0Ref : null}
-            >
-              <div className={s["card-body"]} />
-              <footer className={s["card-footer"]}>
-                <p className={s["card-city"]}>{city}</p>
-                <p className={s["card-country"]}>{country}</p>
-              </footer>
-            </article>
-          ))}
+          {SLOTS.map((_, i) => {
+            const office = offices[i % N];
+            return (
+              <article
+                key={`${office.city}-${i}`}
+                className={s.card}
+                ref={i === 0 ? card0Ref : null}
+              >
+                <div className={s["card-body"]} />
+                <footer className={s["card-footer"]}>
+                  <p className={s["card-city"]}>{office.city}</p>
+                  <p className={s["card-country"]}>{office.country}</p>
+                </footer>
+              </article>
+            );
+          })}
         </div>
       </div>
 
-      <div className={s.dots} role="tablist" aria-label="Seleccionar oficina">
-        {OFFICES.map((o, i) => (
+      <div className={s.dots} role="tablist" aria-label={t.presenciaGlobal.dotsLabel}>
+        {offices.map((o, i) => (
           <button
             key={i}
             role="tab"

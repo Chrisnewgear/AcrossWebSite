@@ -2,39 +2,12 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import PageHero from "../../components/PageHero";
 import Icon from "../../components/Icon";
+import { useI18n } from "../../i18n/LanguageContext";
 import s from "./styles.module.scss";
 
-const SERVICES = [
-  { icon: "ship", name: "Marítimo" },
-  { icon: "truck", name: "Terrestre" },
-  { icon: "search", name: "Inspección" },
-  { icon: "plane", name: "Aéreo" },
-  { icon: "factory", name: "Sourcing" },
-  { icon: "handshake", name: "Trading" },
-];
-
-const STEPS_INFO = [
-  {
-    n: "01",
-    title: "Complete el formulario",
-    desc: "Indique tipo de servicio, origen, destino y datos de contacto.",
-  },
-  {
-    n: "02",
-    title: "Análisis en 24h",
-    desc: "Nuestro equipo revisa su solicitud y prepara una propuesta.",
-  },
-  {
-    n: "03",
-    title: "Propuesta personalizada",
-    desc: "Recibe cotización con opciones de pago adaptadas a su operación.",
-  },
-  {
-    n: "04",
-    title: "Inicio de operación",
-    desc: "Aprueba y comenzamos a trabajar en su importación o exportación.",
-  },
-];
+// Icons + incoterm codes stay in code; copy comes from translations.
+const SERVICE_ICONS = ["ship", "truck", "search", "plane", "factory", "handshake"];
+const INCOTERMS = ["EXW", "FOB", "CIF", "CFR", "DDP", "FCA"];
 
 const INITIAL = {
   service: "",
@@ -59,6 +32,12 @@ export default function Cotizacion() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const { t } = useI18n();
+  const tc = t.cotizacion;
+  const stepLabel = tc.stepLabel
+    .replace("{n}", step)
+    .replace("{total}", TOTAL_STEPS);
+
   const update = (field) => (e) =>
     setForm((f) => ({ ...f, [field]: e.target.value }));
   const setService = (name) => setForm((f) => ({ ...f, service: name }));
@@ -78,30 +57,29 @@ export default function Cotizacion() {
   return (
     <>
       <PageHero
-        breadcrumb="Cotización"
-        label="Solicitud de cotización"
-        title="Cotice su Operación Internacional"
-        subtitle="Propuestas de pago personalizadas adaptadas a su situación financiera y volumen de operación."
+        breadcrumb={tc.breadcrumb}
+        label={tc.heroLabel}
+        title={tc.heroTitle}
+        subtitle={tc.heroSub}
         image="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1920&q=80"
       />
 
       <section className={s.section}>
         <div className={s.inner}>
-          <div className={s["header-bar"]}>Cotización</div>
+          <div className={s["header-bar"]}>{tc.headerBar}</div>
 
           <div className={s.panel}>
             {/* Left — ¿Cómo funciona? */}
             <aside className={s.how} data-reveal="left">
-              <h2 className={s["how-title"]}>¿Cómo funciona?</h2>
-              <p className={s["how-sub"]}>
-                Reciba una cotización detallada en menos de 24 horas hábiles con
-                el mejor precio del mercado.
-              </p>
+              <h2 className={s["how-title"]}>{tc.howTitle}</h2>
+              <p className={s["how-sub"]}>{tc.howSub}</p>
 
               <div className={s["steps-list"]}>
-                {STEPS_INFO.map(({ n, title, desc }) => (
-                  <div key={n} className={s["step-card"]}>
-                    <span className={s["step-num"]}>{n}</span>
+                {tc.steps.map(({ title, desc }, i) => (
+                  <div key={i} className={s["step-card"]}>
+                    <span className={s["step-num"]}>
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
                     <h4 className={s["step-title"]}>{title}</h4>
                     <p className={s["step-desc"]}>{desc}</p>
                   </div>
@@ -116,12 +94,8 @@ export default function Cotizacion() {
                   <span className={s["success-icon"]}>
                     <Icon name="checkCircle" size={52} />
                   </span>
-                  <h3 className={s["success-title"]}>¡Cotización Enviada!</h3>
-                  <p className={s["success-sub"]}>
-                    Hemos recibido su solicitud. Nuestro equipo la revisará y le
-                    enviará una propuesta personalizada en menos de 24 horas
-                    hábiles.
-                  </p>
+                  <h3 className={s["success-title"]}>{tc.success.title}</h3>
+                  <p className={s["success-sub"]}>{tc.success.sub}</p>
                   <div className={s["success-actions"]}>
                     {/* WhatsApp button disabled for now — uncomment to re-enable
                     <a
@@ -134,17 +108,15 @@ export default function Cotizacion() {
                     </a>
                     */}
                     <Link to="/" className={s["btn-outline"]}>
-                      Volver al Inicio
+                      {tc.success.backHome}
                     </Link>
                   </div>
                 </div>
               ) : (
                 <>
                   <div className={s["form-header"]}>
-                    <h2 className={s["form-title"]}>Solicitar Cotización</h2>
-                    <p className={s["form-subtitle"]}>
-                      Paso {step} de {TOTAL_STEPS}
-                    </p>
+                    <h2 className={s["form-title"]}>{tc.formTitle}</h2>
+                    <p className={s["form-subtitle"]}>{stepLabel}</p>
                     <div className={s.progress}>
                       {Array.from({ length: TOTAL_STEPS }, (_, i) => (
                         <div
@@ -167,19 +139,19 @@ export default function Cotizacion() {
                       <>
                         <div className={s["tiles-panel"]}>
                           <div className={s["service-grid"]}>
-                            {SERVICES.map(({ icon, name }) => (
+                            {tc.services.map((name, i) => (
                               <div key={name} className={s["service-option"]}>
                                 <input
                                   type="radio"
-                                  id={`svc-${name}`}
+                                  id={`svc-${i}`}
                                   name="service"
                                   value={name}
                                   checked={form.service === name}
                                   onChange={() => setService(name)}
                                 />
-                                <label htmlFor={`svc-${name}`}>
+                                <label htmlFor={`svc-${i}`}>
                                   <span className={s["service-option-icon"]}>
-                                    <Icon name={icon} size={22} />
+                                    <Icon name={SERVICE_ICONS[i]} size={22} />
                                   </span>
                                   <span className={s["service-option-name"]}>
                                     {name}
@@ -189,18 +161,18 @@ export default function Cotizacion() {
                             ))}
                           </div>
                           <div className={s["tiles-heading"]}>
-                            Tipo de Servicio y Ruta
+                            {tc.tilesHeading}
                           </div>
                         </div>
 
                         <div className={s["form-grid"]}>
                           <div className={s["form-group"]}>
                             <label className={s["form-label"]}>
-                              Ciudad / Puerto de Origen *
+                              {tc.labels.origen}
                             </label>
                             <input
                               className={s["form-input"]}
-                              placeholder="Ej: Shanghai, China"
+                              placeholder={tc.placeholders.origen}
                               value={form.origen}
                               onChange={update("origen")}
                               required
@@ -208,41 +180,41 @@ export default function Cotizacion() {
                           </div>
                           <div className={s["form-group"]}>
                             <label className={s["form-label"]}>
-                              País de Destino *
+                              {tc.labels.destino}
                             </label>
                             <input
                               className={s["form-input"]}
-                              placeholder="Ej: Ecuador"
+                              placeholder={tc.placeholders.destino}
                               value={form.destino}
                               onChange={update("destino")}
                               required
                             />
                           </div>
                           <div className={s["form-group"]}>
-                            <label className={s["form-label"]}>Incoterm</label>
+                            <label className={s["form-label"]}>
+                              {tc.labels.incoterm}
+                            </label>
                             <select
                               className={s["form-select"]}
                               value={form.incoterm}
                               onChange={update("incoterm")}
                             >
                               <option value="" disabled>
-                                Seleccionar...
+                                {tc.placeholders.incoterm}
                               </option>
-                              {["EXW", "FOB", "CIF", "CFR", "DDP", "FCA"].map(
-                                (t) => (
-                                  <option key={t}>{t}</option>
-                                ),
-                              )}
+                              {INCOTERMS.map((code) => (
+                                <option key={code}>{code}</option>
+                              ))}
                             </select>
                           </div>
                           <div className={s["form-group"]}>
                             <label className={s["form-label"]}>
-                              Peso estimado (kg)
+                              {tc.labels.peso}
                             </label>
                             <input
                               className={s["form-input"]}
                               type="number"
-                              placeholder="Ej: 5000"
+                              placeholder={tc.placeholders.peso}
                               value={form.peso}
                               onChange={update("peso")}
                             />
@@ -251,11 +223,11 @@ export default function Cotizacion() {
 
                         <div className={s["form-group"]}>
                           <label className={s["form-label"]}>
-                            Descripción del Producto *
+                            {tc.labels.descripcion}
                           </label>
                           <textarea
                             className={s["form-textarea"]}
-                            placeholder="Describa brevemente la mercancía, HS code si lo conoce, y cualquier consideración especial (peligrosa, refrigerada, frágil, etc.)"
+                            placeholder={tc.placeholders.descripcion}
                             value={form.descripcion}
                             onChange={update("descripcion")}
                           />
@@ -269,7 +241,7 @@ export default function Cotizacion() {
                             disabled={!canNext1}
                             onClick={() => setStep(2)}
                           >
-                            Continuar <Icon name="arrowRight" size={16} />
+                            {tc.buttons.continuar} <Icon name="arrowRight" size={16} />
                           </button>
                         </div>
                       </>
@@ -279,38 +251,40 @@ export default function Cotizacion() {
                     {step === 2 && (
                       <>
                         <h3 className={s["section-heading"]}>
-                          Datos de Contacto
+                          {tc.sectionDatos}
                         </h3>
                         <div className={s["form-grid"]}>
                           <div className={s["form-group"]}>
                             <label className={s["form-label"]}>
-                              Nombres y Apellidos *
+                              {tc.labels.nombre}
                             </label>
                             <input
                               className={s["form-input"]}
-                              placeholder="Juan García"
+                              placeholder={tc.placeholders.nombre}
                               value={form.nombre}
                               onChange={update("nombre")}
                               required
                             />
                           </div>
                           <div className={s["form-group"]}>
-                            <label className={s["form-label"]}>Empresa</label>
+                            <label className={s["form-label"]}>
+                              {tc.labels.empresa}
+                            </label>
                             <input
                               className={s["form-input"]}
-                              placeholder="Mi Empresa S.A."
+                              placeholder={tc.placeholders.empresa}
                               value={form.empresa}
                               onChange={update("empresa")}
                             />
                           </div>
                           <div className={s["form-group"]}>
                             <label className={s["form-label"]}>
-                              Correo Electrónico *
+                              {tc.labels.email}
                             </label>
                             <input
                               className={s["form-input"]}
                               type="email"
-                              placeholder="su@empresa.com"
+                              placeholder={tc.placeholders.email}
                               value={form.email}
                               onChange={update("email")}
                               required
@@ -318,12 +292,12 @@ export default function Cotizacion() {
                           </div>
                           <div className={s["form-group"]}>
                             <label className={s["form-label"]}>
-                              Teléfono / WhatsApp
+                              {tc.labels.telefono}
                             </label>
                             <input
                               className={s["form-input"]}
                               type="tel"
-                              placeholder="+593 99 000 0000"
+                              placeholder={tc.placeholders.telefono}
                               value={form.telefono}
                               onChange={update("telefono")}
                             />
@@ -331,11 +305,11 @@ export default function Cotizacion() {
                         </div>
                         <div className={s["form-group"]}>
                           <label className={s["form-label"]}>
-                            Comentarios adicionales
+                            {tc.labels.comentarios}
                           </label>
                           <textarea
                             className={s["form-textarea"]}
-                            placeholder="¿Tiene alguna fecha límite, consideración especial o pregunta?"
+                            placeholder={tc.placeholders.comentarios}
                             value={form.comentarios}
                             onChange={update("comentarios")}
                           />
@@ -346,7 +320,7 @@ export default function Cotizacion() {
                             className={s["btn-prev"]}
                             onClick={() => setStep(1)}
                           >
-                            <Icon name="arrowLeft" size={16} /> Atrás
+                            <Icon name="arrowLeft" size={16} /> {tc.buttons.atras}
                           </button>
                           <button
                             type="button"
@@ -354,7 +328,7 @@ export default function Cotizacion() {
                             disabled={!canNext2}
                             onClick={() => setStep(3)}
                           >
-                            Revisar <Icon name="arrowRight" size={16} />
+                            {tc.buttons.revisar} <Icon name="arrowRight" size={16} />
                           </button>
                         </div>
                       </>
@@ -364,19 +338,19 @@ export default function Cotizacion() {
                     {step === 3 && (
                       <>
                         <h3 className={s["section-heading"]}>
-                          Confirmar Solicitud
+                          {tc.sectionConfirmar}
                         </h3>
                         <div className={s.review}>
                           {[
-                            ["Servicio", form.service || "—"],
-                            ["Ruta", `${form.origen} → ${form.destino}`],
-                            ["Incoterm", form.incoterm || "—"],
+                            [tc.review.servicio, form.service || tc.review.dash],
+                            [tc.review.ruta, `${form.origen} → ${form.destino}`],
+                            [tc.review.incoterm, form.incoterm || tc.review.dash],
                             [
-                              "Peso estimado",
-                              form.peso ? `${form.peso} kg` : "—",
+                              tc.review.peso,
+                              form.peso ? `${form.peso} ${tc.review.kg}` : tc.review.dash,
                             ],
-                            ["Contacto", `${form.nombre} — ${form.email}`],
-                            ["Empresa", form.empresa || "—"],
+                            [tc.review.contacto, `${form.nombre} — ${form.email}`],
+                            [tc.review.empresa, form.empresa || tc.review.dash],
                           ].map(([k, v]) => (
                             <div key={k} className={s["review-row"]}>
                               <span className={s["review-key"]}>{k}</span>
@@ -390,7 +364,7 @@ export default function Cotizacion() {
                             className={s["btn-prev"]}
                             onClick={() => setStep(2)}
                           >
-                            <Icon name="arrowLeft" size={16} /> Atrás
+                            <Icon name="arrowLeft" size={16} /> {tc.buttons.atras}
                           </button>
                           <button
                             type="submit"
@@ -398,10 +372,10 @@ export default function Cotizacion() {
                             disabled={loading}
                           >
                             {loading ? (
-                              "Enviando..."
+                              tc.buttons.enviando
                             ) : (
                               <>
-                                <Icon name="check" size={16} /> Enviar Cotización
+                                <Icon name="check" size={16} /> {tc.buttons.enviar}
                               </>
                             )}
                           </button>

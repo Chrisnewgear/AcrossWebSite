@@ -3,7 +3,11 @@ import { Link } from "react-router-dom";
 import PageHero from "../../components/PageHero";
 //import CTABanner from "../../components/CTABanner";
 import Icon from "../../components/Icon";
+import { useI18n } from "../../i18n/LanguageContext";
 import s from "./styles.module.scss";
+
+// Icons stay in code; copy comes from translations (index-aligned).
+const COMP_ICONS = ["search", "package", "handshake", "truck", "document", "shieldCheck"];
 
 /* const TRANSPORT = [
   {
@@ -57,87 +61,6 @@ import s from "./styles.module.scss";
 ];
 */
 
-const COMPLEMENTARY = [
-  {
-    icon: "search",
-    title: "Búsqueda y Desarrollo de Proveedores Internacionales",
-    desc: "Identificamos, evaluamos y seleccionamos fabricantes y proveedores confiables en mercados internacionales, garantizando calidad, competitividad y seguridad comercial.",
-  },
-  {
-    icon: "package",
-    title: "Gestión Integral de Importaciones",
-    desc: "Coordinamos todo el ciclo de importación —trámites aduaneros, aranceles, permisos y logística— para que su mercancía llegue a destino sin contratiempos.",
-  },
-  {
-    icon: "handshake",
-    title: "Negociación y Compras Internacionales",
-    desc: "Representamos los intereses de nuestros clientes en negociaciones comerciales, obteniendo las mejores condiciones de precio, calidad y plazos de entrega.",
-  },
-  {
-    icon: "truck",
-    title: "Logística y Coordinación de Transporte Internacional",
-    desc: "Gestionamos el transporte marítimo, aéreo y terrestre, asegurando una cadena logística eficiente y un seguimiento continuo de la mercancía.",
-  },
-  {
-    icon: "document",
-    title: "Asesoría en Comercio Exterior",
-    desc: "Brindamos orientación especializada en normativas, documentación, requisitos aduaneros, aranceles y procesos de importación para minimizar riesgos.",
-  },
-  {
-    icon: "shieldCheck",
-    title: "Inspección y Control de Calidad",
-    desc: "Coordinamos verificaciones e inspecciones de productos antes del embarque para garantizar que cumplan con las especificaciones y estándares requeridos.",
-  },
-];
-
-const INSPECTION = [
-  {
-    key: "carga",
-    tab: "Carga de Contenedor",
-    subtitle: "Supervisión de Estiba y Carga",
-    desc: "Verificamos que la mercancía sea cargada correctamente en el contenedor, asegurando la integridad de los productos durante el transporte internacional.",
-    includes: [
-      "Verificación del estado del contenedor.",
-      "Confirmación de cantidades cargadas.",
-      "Supervisión de manipulación y estiba.",
-      "Control de distribución y aseguramiento de la carga.",
-      "Registro fotográfico completo del proceso.",
-    ],
-    benefit:
-      "Evita daños durante el transporte, reduce riesgos logísticos y proporciona evidencia documental del estado de la mercancía al momento del embarque.",
-  },
-  {
-    key: "durante",
-    tab: "Durante Producción",
-    subtitle: "Inspección en Planta (DUPRO)",
-    desc: "Supervisamos el proceso de fabricación mientras su pedido se encuentra en producción, permitiendo detectar desviaciones, defectos o incumplimientos antes de que afecten la totalidad del lote.",
-    includes: [
-      "Verificación del avance de producción.",
-      "Revisión de materias primas y componentes.",
-      "Evaluación de procesos de fabricación.",
-      "Detección temprana de defectos.",
-      "Informe detallado con evidencia fotográfica.",
-    ],
-    benefit:
-      "Reduce riesgos, evita retrasos y permite aplicar acciones correctivas antes de finalizar la producción.",
-  },
-  {
-    key: "post",
-    tab: "Post Producción",
-    subtitle: "Inspección Final Pre-Embarque",
-    desc: "Realizamos una evaluación completa del lote terminado antes de su despacho, utilizando criterios de muestreo AQL para verificar que los productos cumplan con los estándares de calidad establecidos.",
-    includes: [
-      "Control de calidad visual y funcional.",
-      "Verificación de cantidades y referencias.",
-      "Revisión de etiquetado, marcados y códigos.",
-      "Inspección de empaque y embalaje.",
-      "Informe técnico con fotografías y resultados de inspección.",
-    ],
-    benefit:
-      "Garantiza que la mercancía enviada corresponde a lo solicitado y minimiza reclamaciones, devoluciones y pérdidas económicas.",
-  },
-];
-
 /* const AQL_DATA = [
   {
     nivel: "Crítico",
@@ -162,24 +85,26 @@ const INSPECTION = [
 */
 
 export default function Servicios() {
+  const { t } = useI18n();
+  const ts = t.servicios;
   // Center card ("Durante Producción") is featured by default, matching the design.
   const [activePhase, setActivePhase] = useState(1);
 
   return (
     <>
       <PageHero
-        breadcrumb="Servicios"
-        label="Nuestras capacidades"
-        title="Soluciones Logísticas Integrales"
-        subtitle="Desde el proveedor hasta su bodega — gestionamos cada paso de su cadena de suministro internacional."
+        breadcrumb={ts.breadcrumb}
+        label={ts.heroLabel}
+        title={ts.heroTitle}
+        subtitle={ts.heroSub}
         image="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1920&q=80"
         actions={
           <>
             <Link to="/cotizacion" className="btn-green">
-              Solicitar Cotización
+              {ts.ctaQuote}
             </Link>
             <Link to="/contacto" className="btn-outline-white">
-              Hablar con un Experto
+              {ts.ctaExpert}
             </Link>
           </>
         }
@@ -256,11 +181,11 @@ export default function Servicios() {
       {/* Servicios Complementarios */}
       <section className={s.complementary}>
         <div className={`${s.ribbon} ${s["ribbon--blue"]}`}>
-          Servicios Complementarios
+          {ts.complementaryRibbon}
         </div>
         <div className={s.inner}>
           <div className={s["comp-grid"]}>
-            {COMPLEMENTARY.map(({ icon, title, desc }, i) => (
+            {ts.complementary.map(({ title, desc }, i) => (
               <article
                 key={title}
                 className={s["comp-card"]}
@@ -271,7 +196,7 @@ export default function Servicios() {
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <span className={s["comp-icon"]}>
-                  <Icon name={icon} size={26} />
+                  <Icon name={COMP_ICONS[i]} size={26} />
                 </span>
                 <h3 className={s["comp-title"]}>{title}</h3>
                 <p className={s["comp-desc"]}>{desc}</p>
@@ -284,32 +209,23 @@ export default function Servicios() {
       {/* Inspección de Calidad */}
       <section className={s.inspection}>
         <div className={`${s.ribbon} ${s["ribbon--green"]}`}>
-          Inspección de Calidad
+          {ts.inspectionRibbon}
         </div>
         <div className={s.inner}>
           <div className={s["insp-panel"]}>
-            <h2 className={s["insp-heading"]}>
-              Control de Calidad AQL en Fábrica
-            </h2>
-            <span className={s["insp-pill"]}>
-              Proteja su inversión antes de que la mercancía salga de origen.
-            </span>
+            <h2 className={s["insp-heading"]}>{ts.inspHeading}</h2>
+            <span className={s["insp-pill"]}>{ts.inspPill}</span>
             <span className={s["insp-divider"]} aria-hidden="true" />
-            <p className={s["insp-intro"]}>
-              Realizamos inspecciones de calidad bajo estándares internacionales
-              AQL (Acceptable Quality Limit) en las principales zonas
-              industriales de China, verificando que los productos cumplan con
-              las especificaciones acordadas antes del embarque.
-            </p>
+            <p className={s["insp-intro"]}>{ts.inspIntro}</p>
 
             <div
               className={s["insp-tabs"]}
               role="tablist"
-              aria-label="Fases de inspección"
+              aria-label={ts.tabsLabel}
             >
-              {INSPECTION.map((p, i) => (
+              {ts.phases.map((p, i) => (
                 <button
-                  key={p.key}
+                  key={i}
                   type="button"
                   role="tab"
                   aria-selected={activePhase === i}
@@ -322,9 +238,9 @@ export default function Servicios() {
             </div>
 
             <div className={s["insp-cards"]}>
-              {INSPECTION.map((p, i) => (
+              {ts.phases.map((p, i) => (
                 <article
-                  key={p.key}
+                  key={i}
                   className={`${s["insp-item"]} ${activePhase === i ? s["insp-item--active"] : ""}`}
                 >
                   <h3 className={s["insp-item-title"]}>{p.tab}</h3>
@@ -332,7 +248,7 @@ export default function Servicios() {
                   <p className={s["insp-item-desc"]}>{p.desc}</p>
 
                   <div className={s["insp-box"]}>
-                    <span className={s["insp-tag"]}>Incluye</span>
+                    <span className={s["insp-tag"]}>{ts.includesTag}</span>
                     <ul className={s["insp-list"]}>
                       {p.includes.map((it) => (
                         <li key={it}>{it}</li>
@@ -341,9 +257,7 @@ export default function Servicios() {
                   </div>
 
                   <div className={s["insp-box"]}>
-                    <span className={s["insp-tag"]}>
-                      Beneficio para el cliente
-                    </span>
+                    <span className={s["insp-tag"]}>{ts.benefitTag}</span>
                     <p className={s["insp-benefit"]}>{p.benefit}</p>
                   </div>
                 </article>
