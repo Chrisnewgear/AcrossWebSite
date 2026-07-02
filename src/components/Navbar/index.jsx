@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import Icon from "../Icon";
 import { useI18n } from "../../i18n/LanguageContext";
+import logo from "../../assets/logo.png";
 import s from "./styles.module.scss";
 
 const NAV_LINKS = [
@@ -19,20 +19,9 @@ const NAV_LINKS = [
 // );
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const { lang, setLang, t } = useI18n();
   const { pathname } = useLocation();
-
-  // On home page use transparent bg; on inner pages always use scrolled style
-  const isHome = pathname === "/";
-  const solidBg = !isHome || scrolled;
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   // Close mobile menu on route change
   useEffect(() => {
@@ -42,17 +31,11 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`${s.navbar} ${solidBg ? s["navbar--scrolled"] : s["navbar--transparent"]}`}
+        className={`${s.navbar} ${s["navbar--scrolled"]}`}
       >
         <div className={s.navbar__inner}>
           <Link to="/" className={s.logo}>
-            <div className={s.logo__icon}>
-              <Icon name="globe" size={26} strokeWidth={1.8} />
-            </div>
-            <div className={s.logo__text}>
-              <span className={s.logo__name}>Across Continents</span>
-              <span className={s.logo__tagline}>Come on, you get it</span>
-            </div>
+            <img src={logo} alt="Across Continents" className={s.logo__img} />
           </Link>
 
           <nav className={s.nav} aria-label={t.common.navMain}>

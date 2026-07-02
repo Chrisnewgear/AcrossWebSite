@@ -24,13 +24,50 @@
   }
 
   &--scrolled {
-    background: rgba(13, 47, 99, 0.6);
+    background: rgba(255, 255, 255, 0.88);
     backdrop-filter: blur(18px) saturate(160%);
     -webkit-backdrop-filter: blur(18px) saturate(160%);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow:
-      0 8px 32px rgba(0, 0, 0, 0.2),
-      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(13, 47, 99, 0.08);
+    box-shadow: 0 8px 32px rgba(13, 47, 99, 0.12);
+
+    // Flip nav ink to dark on the light bg
+    .nav__link {
+      color: rgba(13, 47, 99, 0.75);
+
+      &:hover {
+        color: $color-blue-dark;
+        background: rgba(13, 47, 99, 0.06);
+      }
+
+      &--active {
+        color: $color-green;
+      }
+    }
+
+    .lang-toggle {
+      background: rgba(13, 47, 99, 0.06);
+      border-color: rgba(13, 47, 99, 0.15);
+    }
+
+    .lang-thumb {
+      background: $color-blue-dark;
+    }
+
+    .lang-option {
+      color: rgba(13, 47, 99, 0.6);
+
+      &:hover {
+        color: rgba(13, 47, 99, 0.9);
+      }
+
+      &[aria-pressed="true"] {
+        color: $color-white;
+      }
+    }
+
+    .hamburger span {
+      background: $color-blue-dark;
+    }
   }
 }
 
@@ -41,41 +78,11 @@
   flex-shrink: 0;
   text-decoration: none;
 
-  &__icon {
-    width: 44px;
+  &__img {
     height: 44px;
-    background: $color-green;
-    border-radius: $radius-md;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: $color-white;
+    width: auto;
+    display: block;
     flex-shrink: 0;
-    box-shadow: 0 4px 12px rgba(113, 194, 0, 0.35);
-  }
-
-  &__text {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.2;
-  }
-
-  &__name {
-    font-family: $font-display;
-    font-size: 1rem;
-    font-weight: 800;
-    color: $color-white;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-  }
-
-  &__tagline {
-    font-family: $font-primary;
-    font-size: 0.65rem;
-    font-weight: 400;
-    color: rgba(255, 255, 255, 0.55);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
   }
 }
 
