@@ -149,6 +149,7 @@ export default function PresenciaGlobal() {
 
   return (
     <section
+      id="presencia-internacional"
       className={s.section}
       onMouseEnter={() => { pausedRef.current = true; }}
       onMouseLeave={() => { pausedRef.current = false; }}

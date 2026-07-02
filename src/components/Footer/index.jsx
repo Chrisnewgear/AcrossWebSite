@@ -1,12 +1,23 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Icon from "../Icon";
 import { useI18n } from "../../i18n/LanguageContext";
 import logo from "../../assets/logo.png";
 import s from "./styles.module.scss";
 
-// Routes are index-aligned with t.footer.services / t.footer.company
-const SERVICE_LINKS = ["/servicios", "/servicios", "/servicios", "/rastreo", "/servicios", "/servicios"];
-const COMPANY_LINKS = ["/", "/", "/", "/cotizacion", "/contacto"];
+// `i` indexes into t.footer.services. Commented entries are temporarily
+// disabled — re-enable when their page/section exists.
+const SERVICE_LINKS = [
+  { i: 0, to: "/servicios" }, // Transporte Marítimo
+  { i: 1, to: "/servicios" }, // Transporte Aéreo
+  { i: 2, to: "/servicios" }, // Transporte Terrestre
+  // { i: 3, to: "/rastreo" },   // Rastreo de Envíos
+  // { i: 4, to: "/servicios" }, // Verificación Proveedores
+  // { i: 5, to: "/servicios" }, // Inspección de Calidad
+];
+
+// Index-aligned with t.footer.company — all resolve to live routes.
+// A `#hash` target scrolls to that section on the home page.
+const COMPANY_LINKS = ["/", "/#mision-vision", "/#presencia-internacional", "/cotizacion", "/contacto"];
 
 const SOCIALS = [
   { icon: "x", href: "#", label: "Twitter/X" },
@@ -17,6 +28,23 @@ const SOCIALS = [
 
 export default function Footer() {
   const { t } = useI18n();
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+
+  // Navigate to a "/#section" target and smooth-scroll to it. If already on the
+  // home page, just scroll; otherwise route home first, then scroll once mounted.
+  function handleHashNav(e, to) {
+    const [path, id] = to.split("#");
+    e.preventDefault();
+    const scrollToSection = () =>
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    if (pathname === (path || "/")) {
+      scrollToSection();
+    } else {
+      navigate(path || "/");
+      setTimeout(scrollToSection, 120);
+    }
+  }
 
   return (
     <footer className={s.footer}>
@@ -46,9 +74,9 @@ export default function Footer() {
           <div>
             <div className={s["col-title"]}>{t.footer.servicesTitle}</div>
             <div className={s["col-links"]}>
-              {t.footer.services.map((label, i) => (
-                <Link key={label} to={SERVICE_LINKS[i]} className={s["col-link"]}>
-                  {label}
+              {SERVICE_LINKS.map(({ i, to }) => (
+                <Link key={i} to={to} className={s["col-link"]}>
+                  {t.footer.services[i]}
                 </Link>
               ))}
             </div>
@@ -58,11 +86,19 @@ export default function Footer() {
           <div>
             <div className={s["col-title"]}>{t.footer.companyTitle}</div>
             <div className={s["col-links"]}>
-              {t.footer.company.map((label, i) => (
-                <Link key={label} to={COMPANY_LINKS[i]} className={s["col-link"]}>
-                  {label}
-                </Link>
-              ))}
+              {t.footer.company.map((label, i) => {
+                const to = COMPANY_LINKS[i];
+                return (
+                  <Link
+                    key={label}
+                    to={to}
+                    className={s["col-link"]}
+                    onClick={to.includes("#") ? (e) => handleHashNav(e, to) : undefined}
+                  >
+                    {label}
+                  </Link>
+                );
+              })}
             </div>
           </div>
 

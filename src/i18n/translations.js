@@ -128,7 +128,7 @@ export const translations = {
         "Verificación Proveedores",
         "Inspección de Calidad",
       ],
-      company: ["Nosotros", "Misión y Visión", "Presencia Global", "Cotización", "Contacto"],
+      company: ["Nosotros", "Misión y Visión", "Presencia Internacional", "Cotización", "Contacto"],
       address:
         "Av. del Bombero, La Vista de San Eduardo, Edificio 100A Of. 502, Guayaquil, Ecuador",
       copyright: "© 2026 Across Continents Trading. Todos los derechos reservados.",
@@ -519,7 +519,7 @@ export const translations = {
         "Supplier Verification",
         "Quality Inspection",
       ],
-      company: ["About Us", "Mission & Vision", "Global Presence", "Quote", "Contact"],
+      company: ["About Us", "Mission & Vision", "International Presence", "Quote", "Contact"],
       address:
         "Av. del Bombero, La Vista de San Eduardo, Edificio 100A Of. 502, Guayaquil, Ecuador",
       copyright: "© 2026 Across Continents Trading. All rights reserved.",

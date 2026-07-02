@@ -11,7 +11,7 @@ export default function MisionVision() {
   const { t } = useI18n();
 
   return (
-    <section className={s.section}>
+    <section id="mision-vision" className={s.section}>
       {/* Full-bleed banner — the section's defining header */}
       <div className={s.banner}>
         <span className={s.banner__text}>{t.misionVision.banner}</span>
