@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Icon from "../Icon";
 import { useI18n } from "../../i18n/LanguageContext";
+import logo from "../../assets/logo.png";
 import s from "./styles.module.scss";
 
 // Routes are index-aligned with t.footer.services / t.footer.company
@@ -24,11 +25,7 @@ export default function Footer() {
           {/* Brand */}
           <div className={s.brand}>
             <Link to="/" className={s.logo}>
-              <div className={s["logo-icon"]}><Icon name="globe" size={26} strokeWidth={1.8} /></div>
-              <div className={s["logo-text"]}>
-                <span className={s["logo-name"]}>Across Continents Trading</span>
-                <span className={s["logo-tagline"]}>name it &amp; you get it</span>
-              </div>
+              <img src={logo} alt="Across Continents Trading" className={s["logo-img"]} />
             </Link>
             <p className={s["brand-desc"]}>{t.footer.brandDesc}</p>
             <div className={s.socials}>
