@@ -7,7 +7,6 @@ import s from "./styles.module.scss";
 const NAV_LINKS = [
   { key: "inicio", to: "/" },
   { key: "servicios", to: "/servicios" },
-  { key: "rastreo", to: "/rastreo" },
   { key: "cotizacion", to: "/cotizacion" },
   { key: "contacto", to: "/contacto" },
 ];
