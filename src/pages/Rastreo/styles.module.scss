@@ -80,7 +80,7 @@
   left: $space-4;
   top: 50%;
   transform: translateY(-50%);
-  color: $color-gray-400;
+  color: $color-gray-500;
   display: flex;
   align-items: center;
   pointer-events: none;
@@ -98,7 +98,7 @@
   transition: all $transition-fast;
 
   &::placeholder {
-    color: $color-gray-400;
+    color: $color-gray-500;
   }
 
   &:focus {
@@ -144,7 +144,7 @@
 
 .search-example {
   font-size: $fs-xs;
-  color: $color-gray-400;
+  color: $color-gray-600;
   background: $color-gray-100;
   padding: $space-1 $space-3;
   border-radius: $radius-full;
@@ -198,7 +198,7 @@
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: $color-gray-400;
+    color: $color-gray-500;
     margin-bottom: 2px;
   }
 }
@@ -297,7 +297,7 @@
 .timeline-date {
   font-size: $fs-xs;
   font-weight: 600;
-  color: $color-gray-400;
+  color: $color-gray-500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   margin-bottom: $space-1;

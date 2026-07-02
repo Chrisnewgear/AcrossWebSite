@@ -258,7 +258,6 @@
   position: relative;
   background: $color-white;
   border: 1px solid $color-gray-200;
-  border-top: 3px solid $color-gray-300;
   border-radius: $radius-lg;
   padding: $space-8 $space-8 $space-10;
   box-shadow: $shadow-sm;
@@ -269,7 +268,7 @@
   &:hover {
     transform: translateY(-6px);
     box-shadow: $shadow-md;
-    border-top-color: $color-blue;
+    border-color: $color-blue;
   }
 }
 

@@ -11,7 +11,8 @@ $color-dark:        #0a0a0a;
 $color-gray-100:    #f8fafc;
 $color-gray-200:    #e8edf5;
 $color-gray-300:    #c5d0e0;
-$color-gray-400:    #8fa3bc;
+$color-gray-400:    #8fa3bc; // decorative only — fails WCAG AA as text (2.5:1 on white)
+$color-gray-500:    #5b6d85; // muted text — passes AA (5.3:1 on white)
 $color-gray-600:    #4a5e7a;
 $color-gray-800:    #1e2c3d;
 

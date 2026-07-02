@@ -17,6 +17,20 @@ body {
   min-height: 100vh;
 }
 
+// ─── Keyboard focus ──────────────────────────────────────────────────────────
+// Consistent, on-brand focus ring for keyboard users across every interactive
+// element (mouse clicks stay clean via :focus-visible).
+:focus-visible {
+  outline: 2px solid $color-blue;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline-color: $color-green;
+}
+
 // ─── Utility: Section Label ──────────────────────────────────────────────────
 .section-label {
   display: inline-flex;
@@ -190,6 +204,17 @@ $reveal-ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @media (prefers-reduced-motion: reduce) {
+  // Global safety net: neutralize all motion (marquees, counters, entrance
+  // pops, hover lifts) for users who ask for reduced motion.
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
   [data-reveal] {
     opacity: 1 !important;
     transform: none !important;

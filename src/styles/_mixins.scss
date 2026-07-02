@@ -56,14 +56,6 @@
   border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-// ─── Gradient Text ───────────────────────────────────────────────────────────
-@mixin gradient-text($from, $to) {
-  background: linear-gradient(135deg, $from, $to);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
 // ─── Button Base ─────────────────────────────────────────────────────────────
 @mixin btn-base {
   display: inline-flex;
