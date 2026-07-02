@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { useI18n } from "../../i18n/LanguageContext";
 import logo from "../../assets/logo.png";
@@ -23,10 +23,12 @@ export default function Navbar() {
   const { lang, setLang, t } = useI18n();
   const { pathname } = useLocation();
 
-  // Close mobile menu on route change
-  useEffect(() => {
+  // Close mobile menu on route change (adjust state during render — no effect)
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname);
     setMenuOpen(false);
-  }, [pathname]);
+  }
 
   return (
     <>
