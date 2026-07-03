@@ -1,6 +1,6 @@
-import { useNavigate } from 'react-router-dom';
-import { useI18n } from '../../i18n/LanguageContext';
-import s from './styles.module.scss';
+import { useNavigate } from "react-router-dom";
+import { useI18n } from "../../i18n/LanguageContext";
+import s from "./styles.module.scss";
 
 export default function Hero() {
   const navigate = useNavigate();
@@ -29,23 +29,26 @@ export default function Hero() {
         <p className={s.hero__sub}>{t.hero.sub}</p>
 
         <div className={s.hero__ctas}>
-          <button className="btn-green" onClick={() => navigate('/cotizacion')}>
+          <button className="btn-green" onClick={() => navigate("/cotizacion")}>
             {t.hero.ctaQuote}
           </button>
-          <button className={s.hero__ghost} onClick={() => navigate('/servicios')}>
+          <button
+            className={s.hero__ghost}
+            onClick={() => navigate("/servicios")}
+          >
             {t.hero.ctaServices}
           </button>
         </div>
       </div>
 
       {/* ── Trust badges, pinned over the lower edge of the photo ───────── */}
-      <div className={s.hero__badges}>
+      {/* <div className={s.hero__badges}>
         <div className={s.hero__badgePill}>
           {t.hero.badges.map((badge) => (
             <span key={badge} className={s.hero__badge}>{badge}</span>
           ))}
         </div>
-      </div>
+      </div> */}
     </section>
   );
 }

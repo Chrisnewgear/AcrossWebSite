@@ -81,7 +81,9 @@ export default function Contacto() {
                         />
                       </div>
                       <div className={s["form-group"]}>
-                        <label className={s["form-label"]}>{tc.labels.empresa}</label>
+                        <label className={s["form-label"]}>
+                          {tc.labels.empresa}
+                        </label>
                         <input
                           className={s["form-input"]}
                           placeholder={tc.placeholders.empresa}
@@ -117,7 +119,9 @@ export default function Contacto() {
                     </div>
 
                     <div className={s["form-group"]}>
-                      <label className={s["form-label"]}>{tc.labels.asunto}</label>
+                      <label className={s["form-label"]}>
+                        {tc.labels.asunto}
+                      </label>
                       <select
                         className={s["form-select"]}
                         value={form.asunto}
@@ -143,7 +147,9 @@ export default function Contacto() {
                     </div>
 
                     <div className={s["form-group"]}>
-                      <label className={s["form-label"]}>{tc.labels.mensaje}</label>
+                      <label className={s["form-label"]}>
+                        {tc.labels.mensaje}
+                      </label>
                       <textarea
                         className={s["form-textarea"]}
                         placeholder={tc.placeholders.mensaje}
@@ -164,6 +170,52 @@ export default function Contacto() {
                 </>
               )}
             </div>
+
+            <aside className={s["info-card"]} data-reveal="up">
+              <div className={s["info-block"]}>
+                <h3 className={s["info-block-title"]}>{tc.channelsTitle}</h3>
+                <div className={s["channel-list"]}>
+                  {tc.channels.map((ch) => (
+                    <a
+                      key={ch.label}
+                      href={ch.href}
+                      className={s["channel-item"]}
+                      target={ch.href.startsWith("http") ? "_blank" : undefined}
+                      rel={
+                        ch.href.startsWith("http")
+                          ? "noopener noreferrer"
+                          : undefined
+                      }
+                    >
+                      <span className={s["channel-icon"]}>
+                        <Icon name={ch.icon} size={20} />
+                      </span>
+                      <span className={s["channel-info"]}>
+                        <span className={s["channel-label"]}>{ch.label}</span>
+                        <span className={s["channel-value"]}>{ch.value}</span>
+                      </span>
+                      <span className={s["channel-action"]}>
+                        {ch.action}
+                        <Icon name="arrowRight" size={14} />
+                      </span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+
+              <div className={s["info-block"]}>
+                <h3 className={s["info-block-title"]}>{tc.hoursTitle}</h3>
+                <div className={s["hours-list"]}>
+                  {tc.hours.map((h) => (
+                    <div key={h.day} className={s["hours-row"]}>
+                      <span>{h.day}</span>
+                      <span className={s["hours-time"]}>{h.time}</span>
+                    </div>
+                  ))}
+                </div>
+                <p className={s["hours-note"]}>{tc.hoursNote}</p>
+              </div>
+            </aside>
           </div>
         </div>
       </section>

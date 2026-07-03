@@ -30,7 +30,11 @@ export const translations = {
       sub: "Garantizamos la seguridad de tus operaciones mediante procesos claros, visibilidad absoluta y un respaldo constante.",
       ctaQuote: "Solicitar Cotización",
       ctaServices: "Nuestros Servicios",
-      badges: ["500+ Clientes Activos", "Presencia en 4 Países", "Carga Asegurada"],
+      badges: [
+        "500+ Clientes Activos",
+        "Presencia en 4 Países",
+        "Carga Asegurada",
+      ],
     },
 
     stats: {
@@ -93,9 +97,21 @@ export const translations = {
         },
       ],
       commissions: [
-        { rate: "5%", type: "Comisión Estándar", label: "Pedidos entre $20K y $50K FOB" },
-        { rate: "3.5%", type: "Comisión Premium", label: "Pedidos superiores a $50K FOB" },
-        { rate: "$150", type: "Verificación", label: "Auditoría de proveedor + IVA" },
+        {
+          rate: "5%",
+          type: "Comisión Estándar",
+          label: "Pedidos entre $20K y $50K FOB",
+        },
+        {
+          rate: "3.5%",
+          type: "Comisión Premium",
+          label: "Pedidos superiores a $50K FOB",
+        },
+        {
+          rate: "$150",
+          type: "Verificación",
+          label: "Auditoría de proveedor + IVA",
+        },
       ],
     },
 
@@ -128,10 +144,17 @@ export const translations = {
         "Verificación Proveedores",
         "Inspección de Calidad",
       ],
-      company: ["Nosotros", "Misión y Visión", "Presencia Internacional", "Cotización", "Contacto"],
+      company: [
+        "Nosotros",
+        "Misión y Visión",
+        "Presencia Internacional",
+        "Cotización",
+        "Contacto",
+      ],
       address:
         "Av. del Bombero, La Vista de San Eduardo, Edificio 100A Of. 502, Guayaquil, Ecuador",
-      copyright: "© 2026 Across Continents Trading. Todos los derechos reservados.",
+      copyright:
+        "© 2026 Across Continents Trading. Todos los derechos reservados.",
     },
 
     servicios: {
@@ -171,7 +194,8 @@ export const translations = {
       ],
       inspectionRibbon: "Inspección de Calidad",
       inspHeading: "Control de Calidad AQL en Fábrica",
-      inspPill: "Proteja su inversión antes de que la mercancía salga de origen.",
+      inspPill:
+        "Proteja su inversión antes de que la mercancía salga de origen.",
       inspIntro:
         "Realizamos inspecciones de calidad bajo estándares internacionales AQL (Acceptable Quality Limit) en las principales zonas industriales de China, verificando que los productos cumplan con las especificaciones acordadas antes del embarque.",
       tabsLabel: "Fases de inspección",
@@ -238,7 +262,12 @@ export const translations = {
       placeholder: "Ej: MSKU7845213 / AWB-987654 / BL-2026-GYE",
       searchBtn: "Rastrear",
       examplesLabel: "Ejemplos:",
-      resultLabels: { origen: "Origen", destino: "Destino", tipo: "Tipo", eta: "ETA" },
+      resultLabels: {
+        origen: "Origen",
+        destino: "Destino",
+        tipo: "Tipo",
+        eta: "ETA",
+      },
       notFound:
         "No encontramos un envío con ese número. Verifique e intente de nuevo, o contáctenos directamente.",
       notFoundCta: "Contactar a Operaciones",
@@ -270,14 +299,54 @@ export const translations = {
         eta: "15 Jun 2026",
         statusLabel: "En Tránsito",
         events: [
-          { state: "done", date: "01 May 2026 — 09:00", event: "Orden de compra confirmada", location: "Shanghai, China" },
-          { state: "done", date: "08 May 2026 — 14:30", event: "Inspección de calidad completada", location: "Guangzhou, China" },
-          { state: "done", date: "12 May 2026 — 08:00", event: "Cargado en contenedor MSKU7845213", location: "Puerto de Shanghai" },
-          { state: "done", date: "14 May 2026 — 22:15", event: "Zarpe desde Shanghai", location: "Terminal SIPG, Shanghai" },
-          { state: "active", date: "24 May 2026 — 11:00", event: "En tránsito — Océano Pacífico", location: "Lat: -3.2, Lon: -140.8" },
-          { state: "pending", date: "Aprox. 10 Jun 2026", event: "Arribo al Canal de Panamá", location: "Miraflores, Panamá" },
-          { state: "pending", date: "Aprox. 13 Jun 2026", event: "Llegada a Puerto Bolívar", location: "Puerto Bolívar, Ecuador" },
-          { state: "pending", date: "Aprox. 15 Jun 2026", event: "Entrega en bodega cliente", location: "Guayaquil, Ecuador" },
+          {
+            state: "done",
+            date: "01 May 2026 — 09:00",
+            event: "Orden de compra confirmada",
+            location: "Shanghai, China",
+          },
+          {
+            state: "done",
+            date: "08 May 2026 — 14:30",
+            event: "Inspección de calidad completada",
+            location: "Guangzhou, China",
+          },
+          {
+            state: "done",
+            date: "12 May 2026 — 08:00",
+            event: "Cargado en contenedor MSKU7845213",
+            location: "Puerto de Shanghai",
+          },
+          {
+            state: "done",
+            date: "14 May 2026 — 22:15",
+            event: "Zarpe desde Shanghai",
+            location: "Terminal SIPG, Shanghai",
+          },
+          {
+            state: "active",
+            date: "24 May 2026 — 11:00",
+            event: "En tránsito — Océano Pacífico",
+            location: "Lat: -3.2, Lon: -140.8",
+          },
+          {
+            state: "pending",
+            date: "Aprox. 10 Jun 2026",
+            event: "Arribo al Canal de Panamá",
+            location: "Miraflores, Panamá",
+          },
+          {
+            state: "pending",
+            date: "Aprox. 13 Jun 2026",
+            event: "Llegada a Puerto Bolívar",
+            location: "Puerto Bolívar, Ecuador",
+          },
+          {
+            state: "pending",
+            date: "Aprox. 15 Jun 2026",
+            event: "Entrega en bodega cliente",
+            location: "Guayaquil, Ecuador",
+          },
         ],
       },
     },
@@ -293,12 +362,31 @@ export const translations = {
       howSub:
         "Reciba una cotización detallada en menos de 24 horas hábiles con el mejor precio del mercado.",
       steps: [
-        { title: "Complete el formulario", desc: "Indique tipo de servicio, origen, destino y datos de contacto." },
-        { title: "Análisis en 24h", desc: "Nuestro equipo revisa su solicitud y prepara una propuesta." },
-        { title: "Propuesta personalizada", desc: "Recibe cotización con opciones de pago adaptadas a su operación." },
-        { title: "Inicio de operación", desc: "Aprueba y comenzamos a trabajar en su importación o exportación." },
+        {
+          title: "Complete el formulario",
+          desc: "Indique tipo de servicio, origen, destino y datos de contacto.",
+        },
+        {
+          title: "Análisis en 24h",
+          desc: "Nuestro equipo revisa su solicitud y prepara una propuesta.",
+        },
+        {
+          title: "Propuesta personalizada",
+          desc: "Recibe cotización con opciones de pago adaptadas a su operación.",
+        },
+        {
+          title: "Inicio de operación",
+          desc: "Aprueba y comenzamos a trabajar en su importación o exportación.",
+        },
       ],
-      services: ["Marítimo", "Terrestre", "Inspección", "Aéreo", "Sourcing", "Trading"],
+      services: [
+        "Marítimo",
+        "Terrestre",
+        "Inspección",
+        "Aéreo",
+        "Sourcing",
+        "Trading",
+      ],
       formTitle: "Solicitar Cotización",
       stepLabel: "Paso {n} de {total}",
       tilesHeading: "Tipo de Servicio y Ruta",
@@ -325,7 +413,8 @@ export const translations = {
         empresa: "Mi Empresa S.A.",
         email: "su@empresa.com",
         telefono: "+593 99 000 0000",
-        comentarios: "¿Tiene alguna fecha límite, consideración especial o pregunta?",
+        comentarios:
+          "¿Tiene alguna fecha límite, consideración especial o pregunta?",
       },
       sectionDatos: "Datos de Contacto",
       sectionConfirmar: "Confirmar Solicitud",
@@ -394,6 +483,38 @@ export const translations = {
         title: "¡Mensaje Enviado!",
         sub: "Hemos recibido su mensaje. Un especialista se pondrá en contacto con usted en menos de 24 horas hábiles.",
       },
+      channelsTitle: "Canales de Atención",
+      channels: [
+        {
+          icon: "mail",
+          label: "Información General",
+          value: "info@acrosscon.com",
+          action: "Enviar email",
+          href: "mailto:info@acrosscon.com",
+        },
+        {
+          icon: "mail",
+          label: "Documentación",
+          value: "documentacion@acrosscon.com",
+          action: "Enviar email",
+          href: "mailto:documentacion@acrosscon.com",
+        },
+        {
+          icon: "mail",
+          label: "Comercio Exterior",
+          value: "comex@acrosscon.com",
+          action: "Enviar email",
+          href: "mailto:comex@acrosscon.com",
+        },
+      ],
+      hoursTitle: "Horario de Atención",
+      hours: [
+        { day: "Lunes – Viernes", time: "08:00 – 18:00" },
+        { day: "Sábado", time: "08:00 – 13:00" },
+        { day: "Domingo", time: "Cerrado" },
+      ],
+      hoursNote:
+        "Zona horaria GMT-5 (Ecuador). Operaciones Asia disponibles por WhatsApp fuera de horario.",
     },
   },
 
@@ -423,7 +544,11 @@ export const translations = {
       sub: "We guarantee the security of your operations through clear processes, full visibility and constant support.",
       ctaQuote: "Request a Quote",
       ctaServices: "Our Services",
-      badges: ["500+ Active Clients", "Presence in 4 Countries", "Insured Cargo"],
+      badges: [
+        "500+ Active Clients",
+        "Presence in 4 Countries",
+        "Insured Cargo",
+      ],
     },
 
     stats: {
@@ -486,8 +611,16 @@ export const translations = {
         },
       ],
       commissions: [
-        { rate: "5%", type: "Standard Commission", label: "Orders between $20K and $50K FOB" },
-        { rate: "3.5%", type: "Premium Commission", label: "Orders above $50K FOB" },
+        {
+          rate: "5%",
+          type: "Standard Commission",
+          label: "Orders between $20K and $50K FOB",
+        },
+        {
+          rate: "3.5%",
+          type: "Premium Commission",
+          label: "Orders above $50K FOB",
+        },
         { rate: "$150", type: "Verification", label: "Supplier audit + VAT" },
       ],
     },
@@ -521,7 +654,13 @@ export const translations = {
         "Supplier Verification",
         "Quality Inspection",
       ],
-      company: ["About Us", "Mission & Vision", "International Presence", "Quote", "Contact"],
+      company: [
+        "About Us",
+        "Mission & Vision",
+        "International Presence",
+        "Quote",
+        "Contact",
+      ],
       address:
         "Av. del Bombero, La Vista de San Eduardo, Edificio 100A Of. 502, Guayaquil, Ecuador",
       copyright: "© 2026 Across Continents Trading. All rights reserved.",
@@ -631,7 +770,12 @@ export const translations = {
       placeholder: "e.g. MSKU7845213 / AWB-987654 / BL-2026-GYE",
       searchBtn: "Track",
       examplesLabel: "Examples:",
-      resultLabels: { origen: "Origin", destino: "Destination", tipo: "Type", eta: "ETA" },
+      resultLabels: {
+        origen: "Origin",
+        destino: "Destination",
+        tipo: "Type",
+        eta: "ETA",
+      },
       notFound:
         "We couldn't find a shipment with that number. Please check and try again, or contact us directly.",
       notFoundCta: "Contact Operations",
@@ -663,14 +807,54 @@ export const translations = {
         eta: "Jun 15, 2026",
         statusLabel: "In Transit",
         events: [
-          { state: "done", date: "May 01, 2026 — 09:00", event: "Purchase order confirmed", location: "Shanghai, China" },
-          { state: "done", date: "May 08, 2026 — 14:30", event: "Quality inspection completed", location: "Guangzhou, China" },
-          { state: "done", date: "May 12, 2026 — 08:00", event: "Loaded into container MSKU7845213", location: "Port of Shanghai" },
-          { state: "done", date: "May 14, 2026 — 22:15", event: "Departure from Shanghai", location: "SIPG Terminal, Shanghai" },
-          { state: "active", date: "May 24, 2026 — 11:00", event: "In transit — Pacific Ocean", location: "Lat: -3.2, Lon: -140.8" },
-          { state: "pending", date: "Approx. Jun 10, 2026", event: "Arrival at the Panama Canal", location: "Miraflores, Panama" },
-          { state: "pending", date: "Approx. Jun 13, 2026", event: "Arrival at Puerto Bolívar", location: "Puerto Bolívar, Ecuador" },
-          { state: "pending", date: "Approx. Jun 15, 2026", event: "Delivery at client warehouse", location: "Guayaquil, Ecuador" },
+          {
+            state: "done",
+            date: "May 01, 2026 — 09:00",
+            event: "Purchase order confirmed",
+            location: "Shanghai, China",
+          },
+          {
+            state: "done",
+            date: "May 08, 2026 — 14:30",
+            event: "Quality inspection completed",
+            location: "Guangzhou, China",
+          },
+          {
+            state: "done",
+            date: "May 12, 2026 — 08:00",
+            event: "Loaded into container MSKU7845213",
+            location: "Port of Shanghai",
+          },
+          {
+            state: "done",
+            date: "May 14, 2026 — 22:15",
+            event: "Departure from Shanghai",
+            location: "SIPG Terminal, Shanghai",
+          },
+          {
+            state: "active",
+            date: "May 24, 2026 — 11:00",
+            event: "In transit — Pacific Ocean",
+            location: "Lat: -3.2, Lon: -140.8",
+          },
+          {
+            state: "pending",
+            date: "Approx. Jun 10, 2026",
+            event: "Arrival at the Panama Canal",
+            location: "Miraflores, Panama",
+          },
+          {
+            state: "pending",
+            date: "Approx. Jun 13, 2026",
+            event: "Arrival at Puerto Bolívar",
+            location: "Puerto Bolívar, Ecuador",
+          },
+          {
+            state: "pending",
+            date: "Approx. Jun 15, 2026",
+            event: "Delivery at client warehouse",
+            location: "Guayaquil, Ecuador",
+          },
         ],
       },
     },
@@ -686,10 +870,22 @@ export const translations = {
       howSub:
         "Receive a detailed quote in under 24 business hours with the best price on the market.",
       steps: [
-        { title: "Complete the form", desc: "Enter service type, origin, destination and contact details." },
-        { title: "Analysis within 24h", desc: "Our team reviews your request and prepares a proposal." },
-        { title: "Personalized proposal", desc: "Receive a quote with payment options tailored to your operation." },
-        { title: "Operation kickoff", desc: "Approve and we begin working on your import or export." },
+        {
+          title: "Complete the form",
+          desc: "Enter service type, origin, destination and contact details.",
+        },
+        {
+          title: "Analysis within 24h",
+          desc: "Our team reviews your request and prepares a proposal.",
+        },
+        {
+          title: "Personalized proposal",
+          desc: "Receive a quote with payment options tailored to your operation.",
+        },
+        {
+          title: "Operation kickoff",
+          desc: "Approve and we begin working on your import or export.",
+        },
       ],
       services: ["Ocean", "Ground", "Inspection", "Air", "Sourcing", "Trading"],
       formTitle: "Request a Quote",
@@ -718,7 +914,8 @@ export const translations = {
         empresa: "My Company Inc.",
         email: "you@company.com",
         telefono: "+593 99 000 0000",
-        comentarios: "Do you have a deadline, special consideration or question?",
+        comentarios:
+          "Do you have a deadline, special consideration or question?",
       },
       sectionDatos: "Contact Details",
       sectionConfirmar: "Confirm Request",
@@ -787,6 +984,38 @@ export const translations = {
         title: "Message Sent!",
         sub: "We've received your message. A specialist will contact you in under 24 business hours.",
       },
+      channelsTitle: "Contact Channels",
+      channels: [
+        {
+          icon: "mail",
+          label: "General Inquiries",
+          value: "info@acrosscon.com",
+          action: "Send email",
+          href: "mailto:info@acrosscon.com",
+        },
+        {
+          icon: "mail",
+          label: "Documentation",
+          value: "documentacion@acrosscon.com",
+          action: "Send email",
+          href: "mailto:documentacion@acrosscon.com",
+        },
+        {
+          icon: "mail",
+          label: "Foreign Trade",
+          value: "comex@acrosscon.com",
+          action: "Send email",
+          href: "mailto:comex@acrosscon.com",
+        },
+      ],
+      hoursTitle: "Business Hours",
+      hours: [
+        { day: "Monday – Friday", time: "08:00 – 18:00" },
+        { day: "Saturday", time: "08:00 – 13:00" },
+        { day: "Sunday", time: "Closed" },
+      ],
+      hoursNote:
+        "GMT-5 timezone (Ecuador). Asia operations available via WhatsApp outside business hours.",
     },
   },
 };

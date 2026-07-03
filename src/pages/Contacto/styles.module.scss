@@ -34,14 +34,21 @@
 .panel {
   display: flex;
   justify-content: center;
+  align-items: flex-start;
+  gap: $space-8;
   background: $color-blue;
   background-image: linear-gradient(160deg, $color-blue-dark, $color-blue);
   border-radius: 0 0 $radius-xl $radius-xl;
   box-shadow: $shadow-blue;
   padding: $space-16 $space-10;
 
+  @include respond-to(lg) {
+    flex-wrap: wrap;
+  }
+
   @include respond-to(sm) {
     padding: $space-8 $space-5;
+    gap: $space-6;
   }
 }
 
@@ -57,6 +64,166 @@
   @include respond-to(sm) {
     padding: $space-8 $space-6;
   }
+}
+
+// ─── Info card (channels + business hours) ───────────────────────────────────
+.info-card {
+  width: 100%;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+
+  // Tablets (iPad, etc.) wrap this card onto its own full-width row below the
+  // form — lay its two blocks out side by side instead of a tall narrow stack.
+  @include respond-to(lg) {
+    max-width: 640px;
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  @include respond-to(sm) {
+    max-width: 100%;
+    flex-direction: column;
+  }
+}
+
+.info-block {
+  flex: 1;
+  min-width: 0;
+  background: $color-off-white;
+  border-radius: $radius-xl;
+  box-shadow: $shadow-md;
+  padding: $space-8;
+
+  @include respond-to(sm) {
+    flex: initial;
+    padding: $space-6;
+  }
+}
+
+.info-block-title {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  font-family: $font-display;
+  font-size: $fs-sm;
+  font-weight: 800;
+  color: $color-blue;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: $space-5;
+
+  &::before {
+    content: "";
+    width: 18px;
+    height: 3px;
+    border-radius: $radius-full;
+    background: $color-green;
+    flex-shrink: 0;
+  }
+}
+
+.channel-list {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.channel-item {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-3 $space-4;
+  background: $color-gray-100;
+  border: 1px solid $color-gray-200;
+  border-radius: $radius-md;
+  text-decoration: none;
+  transition: all $transition-fast;
+
+  &:hover {
+    background: $color-white;
+    border-color: $color-green;
+    transform: translateY(-1px);
+  }
+}
+
+.channel-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  background: rgba(113, 194, 0, 0.12);
+  color: $color-green;
+  border-radius: $radius-md;
+}
+
+.channel-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.channel-label {
+  font-size: $fs-xs;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: $color-gray-500;
+}
+
+.channel-value {
+  font-size: $fs-sm;
+  font-weight: 600;
+  color: $color-blue;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.channel-action {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: $fs-xs;
+  font-weight: 600;
+  color: $color-gray-500;
+  white-space: nowrap;
+}
+
+.hours-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.hours-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $space-3 0;
+  font-size: $fs-sm;
+  color: $color-gray-600;
+  border-bottom: 1px solid $color-gray-200;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.hours-time {
+  font-weight: 700;
+  color: $color-blue;
+}
+
+.hours-note {
+  margin-top: $space-4;
+  font-size: $fs-xs;
+  line-height: 1.6;
+  color: $color-gray-500;
 }
 
 .form-header {
