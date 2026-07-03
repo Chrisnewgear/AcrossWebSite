@@ -401,6 +401,7 @@ export const translations = {
         email: "Correo Electrónico *",
         telefono: "Teléfono / WhatsApp",
         comentarios: "Comentarios adicionales",
+        documento: "Documento (PDF)",
       },
       placeholders: {
         origen: "Ej: Shanghai, China",
@@ -440,6 +441,13 @@ export const translations = {
         sub: "Hemos recibido su solicitud. Nuestro equipo la revisará y le enviará una propuesta personalizada en menos de 24 horas hábiles.",
         backHome: "Volver al Inicio",
       },
+      fileHint: "Opcional · Solo PDF · máx 10 MB",
+      fileErrors: {
+        type: "Solo se permiten archivos PDF.",
+        size: "El archivo supera los 10 MB.",
+      },
+      error:
+        "No se pudo enviar la solicitud. Intente nuevamente o escríbanos a info@acrosscon.com.",
     },
 
     contacto: {
@@ -904,6 +912,7 @@ export const translations = {
         email: "Email Address *",
         telefono: "Phone / WhatsApp",
         comentarios: "Additional comments",
+        documento: "Document (PDF)",
       },
       placeholders: {
         origen: "e.g. Shanghai, China",
@@ -943,6 +952,13 @@ export const translations = {
         sub: "We've received your request. Our team will review it and send you a personalized proposal in under 24 business hours.",
         backHome: "Back to Home",
       },
+      fileHint: "Optional · PDF only · max 10 MB",
+      fileErrors: {
+        type: "Only PDF files are allowed.",
+        size: "The file exceeds 10 MB.",
+      },
+      error:
+        "Your request could not be sent. Please try again or email us at info@acrosscon.com.",
     },
 
     contacto: {
