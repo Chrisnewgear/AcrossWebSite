@@ -45,11 +45,13 @@ export default function Cotizacion() {
   const setService = (name) => setForm((f) => ({ ...f, service: name }));
 
   const MAX_MB = 10;
+  const ALLOWED_EXT = ["pdf", "docx", "xlsx", "jpg", "jpeg", "png"];
   const handleFile = (e) => {
     const f = e.target.files?.[0] || null;
     setDocError("");
     if (f) {
-      if (f.type !== "application/pdf") {
+      const ext = f.name.split(".").pop().toLowerCase();
+      if (!ALLOWED_EXT.includes(ext)) {
         setDocError(tc.fileErrors.type);
         e.target.value = "";
         return;
@@ -258,7 +260,7 @@ export default function Cotizacion() {
                             </label>
                             <input
                               type="file"
-                              accept="application/pdf,.pdf"
+                              accept=".pdf,.docx,.xlsx,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
                               className={s["form-input"]}
                               onChange={handleFile}
                             />

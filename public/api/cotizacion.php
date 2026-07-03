@@ -38,14 +38,25 @@ if ($file && ($file['error'] ?? UPLOAD_ERR_NO_FILE) !== UPLOAD_ERR_NO_FILE) {
     if ($file['size'] > $maxBytes) {
         json_response(422, ['ok' => false, 'error' => 'File too large', 'fields' => ['documento']]);
     }
-    if (strtolower(pathinfo($file['name'], PATHINFO_EXTENSION)) !== 'pdf') {
-        json_response(422, ['ok' => false, 'error' => 'Only PDF allowed', 'fields' => ['documento']]);
+    // extension => acceptable finfo MIME types. Office docs are zip containers,
+    // so libmagic often reports application/zip (or octet-stream) for them.
+    $allowed = [
+        'pdf'  => ['application/pdf'],
+        'docx' => ['application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/zip', 'application/octet-stream'],
+        'xlsx' => ['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/zip', 'application/octet-stream'],
+        'jpg'  => ['image/jpeg'],
+        'jpeg' => ['image/jpeg'],
+        'png'  => ['image/png'],
+    ];
+    $ext = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+    if (!isset($allowed[$ext])) {
+        json_response(422, ['ok' => false, 'error' => 'File type not allowed', 'fields' => ['documento']]);
     }
     $finfo = finfo_open(FILEINFO_MIME_TYPE);
     $mime  = finfo_file($finfo, $file['tmp_name']);
     finfo_close($finfo);
-    if ($mime !== 'application/pdf') {
-        json_response(422, ['ok' => false, 'error' => 'Invalid PDF', 'fields' => ['documento']]);
+    if (!in_array($mime, $allowed[$ext], true)) {
+        json_response(422, ['ok' => false, 'error' => 'File content does not match extension', 'fields' => ['documento']]);
     }
     $attachments[] = ['tmp_path' => $file['tmp_name'], 'filename' => basename($file['name'])];
     $docNote = 'Sí (' . basename($file['name']) . ')';

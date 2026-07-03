@@ -401,7 +401,7 @@ export const translations = {
         email: "Correo Electrónico *",
         telefono: "Teléfono / WhatsApp",
         comentarios: "Comentarios adicionales",
-        documento: "Documento (PDF)",
+        documento: "Documento adjunto",
       },
       placeholders: {
         origen: "Ej: Shanghai, China",
@@ -441,9 +441,9 @@ export const translations = {
         sub: "Hemos recibido su solicitud. Nuestro equipo la revisará y le enviará una propuesta personalizada en menos de 24 horas hábiles.",
         backHome: "Volver al Inicio",
       },
-      fileHint: "Opcional · Solo PDF · máx 10 MB",
+      fileHint: "Opcional · PDF, DOCX, XLSX, JPG, PNG · máx 10 MB",
       fileErrors: {
-        type: "Solo se permiten archivos PDF.",
+        type: "Formato no permitido. Use PDF, DOCX, XLSX, JPG o PNG.",
         size: "El archivo supera los 10 MB.",
       },
       error:
@@ -912,7 +912,7 @@ export const translations = {
         email: "Email Address *",
         telefono: "Phone / WhatsApp",
         comentarios: "Additional comments",
-        documento: "Document (PDF)",
+        documento: "Attachment",
       },
       placeholders: {
         origen: "e.g. Shanghai, China",
@@ -952,9 +952,9 @@ export const translations = {
         sub: "We've received your request. Our team will review it and send you a personalized proposal in under 24 business hours.",
         backHome: "Back to Home",
       },
-      fileHint: "Optional · PDF only · max 10 MB",
+      fileHint: "Optional · PDF, DOCX, XLSX, JPG, PNG · max 10 MB",
       fileErrors: {
-        type: "Only PDF files are allowed.",
+        type: "File type not allowed. Use PDF, DOCX, XLSX, JPG or PNG.",
         size: "The file exceeds 10 MB.",
       },
       error:
