@@ -401,8 +401,13 @@
   background: linear-gradient(90deg, $color-blue-light, $color-blue);
 
   // On mobile the cards become a swipeable carousel driven by the dots below,
-  // so the (wrapping, cluttered) pill tabs are hidden here.
+  // so the (wrapping, cluttered) pill tabs are hidden here. Same treatment for
+  // iPads held in portrait — they get the carousel too, not the 3-up grid.
   @include respond-to(md) {
+    display: none;
+  }
+
+  @include respond-to(tablet-portrait) {
     display: none;
   }
 }
@@ -450,6 +455,7 @@
   position: relative; // makes it the offsetParent for the carousel scroll math
 
   // ── Mobile: full-width horizontal scroll-snap carousel (one card per view) ──
+  // Same carousel treatment applies to iPads in portrait orientation.
   @include respond-to(md) {
     display: flex;
     align-items: stretch; // equal-height cards across the track
@@ -462,6 +468,23 @@
     padding-inline: 0; // full-bleed cards — no peek; the arrows signal swipe
     padding-block: $space-2 $space-4; // headroom for the active card's shadow
     // Hide the scrollbar — the arrows + dots communicate position instead.
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  @include respond-to(tablet-portrait) {
+    display: flex;
+    align-items: stretch;
+    gap: $space-5;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    padding-inline: 0;
+    padding-block: $space-2 $space-4;
     scrollbar-width: none;
     &::-webkit-scrollbar {
       display: none;
@@ -490,13 +513,28 @@
     box-shadow: 0 16px 40px rgba(8, 24, 52, 0.28);
   }
 
+  @include respond-to(tablet-portrait) {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    padding: $space-10 $space-6;
+    background: $color-white;
+    box-shadow: 0 16px 40px rgba(8, 24, 52, 0.28);
+  }
+
   &--active {
     background: $color-white;
     box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
 
+    // Enlarged "featured card" hover effect is desktop/landscape-only — it must
+    // not fire on iPad portrait, which uses the carousel layout instead.
     @include respond-to(md-up) {
       transform: translateY(-24px) scale(1.03);
       padding-block: $space-10;
+    }
+
+    @include respond-to(tablet-portrait) {
+      transform: none;
+      padding-block: $space-10 $space-6;
     }
   }
 }
@@ -572,6 +610,14 @@
   display: none;
 
   @include respond-to(md) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $space-5;
+    margin-top: $space-10;
+  }
+
+  @include respond-to(tablet-portrait) {
     display: flex;
     align-items: center;
     justify-content: center;

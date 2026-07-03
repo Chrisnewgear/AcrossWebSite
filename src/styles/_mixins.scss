@@ -8,6 +8,10 @@
   @if $bp == xl   { @media (max-width: #{$bp-xl})   { @content; } }
   @if $bp == md-up { @media (min-width: #{$bp-md})  { @content; } }
   @if $bp == lg-up { @media (min-width: #{$bp-lg})  { @content; } }
+  // iPads (and similarly-sized tablets) held in portrait orientation — covers
+  // widths from iPad mini (768) up through iPad Pro 12.9" (1024) in portrait,
+  // without affecting the same devices in landscape.
+  @if $bp == tablet-portrait { @media (max-width: #{$bp-lg}) and (orientation: portrait) { @content; } }
 }
 
 // ─── Container ───────────────────────────────────────────────────────────────
