@@ -483,6 +483,8 @@ export const translations = {
         title: "¡Mensaje Enviado!",
         sub: "Hemos recibido su mensaje. Un especialista se pondrá en contacto con usted en menos de 24 horas hábiles.",
       },
+      error:
+        "No se pudo enviar el mensaje. Intente nuevamente o escríbanos a info@acrosscon.com.",
       channelsTitle: "Canales de Atención",
       channels: [
         {
@@ -984,6 +986,8 @@ export const translations = {
         title: "Message Sent!",
         sub: "We've received your message. A specialist will contact you in under 24 business hours.",
       },
+      error:
+        "Your message could not be sent. Please try again or email us at info@acrosscon.com.",
       channelsTitle: "Contact Channels",
       channels: [
         {

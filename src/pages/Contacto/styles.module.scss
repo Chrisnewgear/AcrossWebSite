@@ -396,3 +396,18 @@
     transform: scale(1);
   }
 }
+
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.form-error {
+  margin: 0 0 12px;
+  color: #c0392b;
+  font-size: 0.9rem;
+}
