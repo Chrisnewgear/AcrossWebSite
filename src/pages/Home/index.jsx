@@ -1,6 +1,6 @@
 import Hero from "../../components/Hero";
 // import CitiesBar from "../../components/CitiesBar";
-import Stats from "../../components/Stats";
+// import Stats from "../../components/Stats";
 import MisionVision from "../../components/MisionVision";
 import Valores from "../../components/Valores";
 import Ventajas from "../../components/Ventajas";
@@ -13,7 +13,7 @@ export default function Home() {
     <>
       <Hero />
       {/* <CitiesBar /> */}
-      <Stats />
+      {/* <Stats /> */}
       <MisionVision />
       <Valores />
       <Ventajas />

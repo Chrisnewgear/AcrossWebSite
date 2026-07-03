@@ -28,7 +28,7 @@ export default function Ventajas() {
           ))}
         </div>
 
-        <div className={s.commissions}>
+        {/* <div className={s.commissions}>
           {t.ventajas.commissions.map(({ rate, type, label }, i) => (
             <div
               key={type}
@@ -41,7 +41,7 @@ export default function Ventajas() {
               <div className={s["commission-label"]}>{label}</div>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
     </section>
   );
