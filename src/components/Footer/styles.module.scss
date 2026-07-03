@@ -39,9 +39,12 @@
     gap: $space-8;
   }
 
+  // Mobile: keep it compact instead of one long stack. Brand + Contact span the
+  // full width; the two short link lists (Servicios / La Empresa) share a row.
   @include respond-to(sm) {
-    grid-template-columns: 1fr;
-    gap: $space-8;
+    grid-template-columns: 1fr 1fr;
+    column-gap: $space-6;
+    row-gap: $space-10;
   }
 }
 
@@ -50,6 +53,21 @@
   display: flex;
   flex-direction: column;
   gap: $space-5;
+
+  // Span the full width above the two side-by-side link lists.
+  @include respond-to(sm) {
+    grid-column: 1 / -1;
+  }
+}
+
+// Contact column — spans full width below the link lists, set off by a hairline
+// that echoes the border style already used across the footer.
+.col-contact {
+  @include respond-to(sm) {
+    grid-column: 1 / -1;
+    padding-top: $space-8;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
 }
 
 .logo {
@@ -64,6 +82,12 @@
   display: block;
   // logo.png is navy on transparent; render it white for the blue footer
   filter: brightness(0) invert(1);
+
+  // The wordmark is ~5.8:1 — at 56px it is 324px wide and dominates a phone,
+  // so step it down to sit comfortably within the viewport.
+  @include respond-to(sm) {
+    height: 44px;
+  }
 }
 
 .brand-desc {

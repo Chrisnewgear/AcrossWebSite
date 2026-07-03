@@ -120,6 +120,11 @@
   outline: none;
   transition: all $transition-fast;
 
+  // Keep fields at 16px on mobile so iOS Safari doesn't auto-zoom on focus.
+  @include respond-to(md) {
+    font-size: $fs-base;
+  }
+
   &::placeholder {
     color: $color-gray-500;
   }

@@ -183,6 +183,12 @@
   appearance: none;
   -webkit-appearance: none;
 
+  // iOS Safari auto-zooms into any field with a font-size below 16px on focus
+  // and never zooms back out. Hold fields at 16px on mobile to prevent it.
+  @include respond-to(md) {
+    font-size: $fs-base;
+  }
+
   &::placeholder {
     color: rgba(255,255,255,0.35);
   }

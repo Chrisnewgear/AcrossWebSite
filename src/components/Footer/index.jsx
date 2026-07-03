@@ -71,7 +71,7 @@ export default function Footer() {
           </div>
 
           {/* Servicios */}
-          <div>
+          <div className={s.col}>
             <div className={s["col-title"]}>{t.footer.servicesTitle}</div>
             <div className={s["col-links"]}>
               {SERVICE_LINKS.map(({ i, to }) => (
@@ -83,7 +83,7 @@ export default function Footer() {
           </div>
 
           {/* La Empresa */}
-          <div>
+          <div className={s.col}>
             <div className={s["col-title"]}>{t.footer.companyTitle}</div>
             <div className={s["col-links"]}>
               {t.footer.company.map((label, i) => {
@@ -103,7 +103,7 @@ export default function Footer() {
           </div>
 
           {/* Contacto */}
-          <div>
+          <div className={s["col-contact"]}>
             <div className={s["col-title"]}>{t.footer.contactTitle}</div>
             <div className={s["contact-list"]}>
               <p className={s["contact-line"]}>{t.footer.address}</p>

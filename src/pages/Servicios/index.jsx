@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PageHero from "../../components/PageHero";
 //import CTABanner from "../../components/CTABanner";
@@ -89,6 +89,64 @@ export default function Servicios() {
   const ts = t.servicios;
   // Center card ("Durante Producción") is featured by default, matching the design.
   const [activePhase, setActivePhase] = useState(1);
+
+  // On mobile the phase cards become a swipeable scroll-snap carousel; on desktop
+  // the same DOM stays a 3-up featured grid (the track never scrolls there).
+  const trackRef = useRef(null);
+  const rafPending = useRef(false);
+
+  // Center the card at index `i` in the carousel and flag it active.
+  const goToPhase = (i) => {
+    const idx = Math.max(0, Math.min(i, ts.phases.length - 1));
+    setActivePhase(idx);
+    const track = trackRef.current;
+    const card = track?.children[idx];
+    if (track && card) {
+      track.scrollTo({
+        left: card.offsetLeft - (track.clientWidth - card.clientWidth) / 2,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  // As the user swipes, sync the active card to whichever is nearest centre.
+  const handleScroll = () => {
+    if (rafPending.current) return;
+    rafPending.current = true;
+    requestAnimationFrame(() => {
+      rafPending.current = false;
+      const track = trackRef.current;
+      if (!track) return;
+      const centre = track.scrollLeft + track.clientWidth / 2;
+      let best = 0;
+      let bestDist = Infinity;
+      Array.from(track.children).forEach((card, i) => {
+        const d = Math.abs(card.offsetLeft + card.clientWidth / 2 - centre);
+        if (d < bestDist) {
+          bestDist = d;
+          best = i;
+        }
+      });
+      setActivePhase((prev) => (prev === best ? prev : best));
+    });
+  };
+
+  // On mobile, start the carousel centred on the default phase so the visible
+  // card matches the active dot (desktop is a static grid — the guard skips it).
+  useEffect(() => {
+    requestAnimationFrame(() => {
+      const track = trackRef.current;
+      const card = track?.children[activePhase];
+      if (track && card && track.scrollWidth > track.clientWidth + 1) {
+        track.scrollTo({
+          left: card.offsetLeft - (track.clientWidth - card.clientWidth) / 2,
+          behavior: "auto",
+        });
+      }
+    });
+    // Run once on mount.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
@@ -230,14 +288,18 @@ export default function Servicios() {
                   role="tab"
                   aria-selected={activePhase === i}
                   className={`${s["insp-tab"]} ${activePhase === i ? s["insp-tab--active"] : ""}`}
-                  onClick={() => setActivePhase(i)}
+                  onClick={() => goToPhase(i)}
                 >
                   {p.tab}
                 </button>
               ))}
             </div>
 
-            <div className={s["insp-cards"]}>
+            <div
+              className={s["insp-cards"]}
+              ref={trackRef}
+              onScroll={handleScroll}
+            >
               {ts.phases.map((p, i) => (
                 <article
                   key={i}
@@ -262,6 +324,49 @@ export default function Servicios() {
                   </div>
                 </article>
               ))}
+            </div>
+
+            {/* Carousel controls — shown only on mobile (tabs are hidden there).
+                Prev/next arrows flank the position dots; the dots are the sole
+                tablist on mobile, so there is no a11y duplication with the tabs. */}
+            <div className={s["insp-nav"]}>
+              <button
+                type="button"
+                className={s["insp-arrow"]}
+                onClick={() => goToPhase(activePhase - 1)}
+                disabled={activePhase === 0}
+                aria-label={ts.prevPhase}
+              >
+                <Icon name="arrowLeft" size={22} />
+              </button>
+
+              <div
+                className={s["insp-dots"]}
+                role="tablist"
+                aria-label={ts.tabsLabel}
+              >
+                {ts.phases.map((p, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    role="tab"
+                    aria-selected={activePhase === i}
+                    aria-label={p.tab}
+                    className={`${s["insp-dot"]} ${activePhase === i ? s["insp-dot--active"] : ""}`}
+                    onClick={() => goToPhase(i)}
+                  />
+                ))}
+              </div>
+
+              <button
+                type="button"
+                className={s["insp-arrow"]}
+                onClick={() => goToPhase(activePhase + 1)}
+                disabled={activePhase === ts.phases.length - 1}
+                aria-label={ts.nextPhase}
+              >
+                <Icon name="arrowRight" size={22} />
+              </button>
             </div>
           </div>
         </div>

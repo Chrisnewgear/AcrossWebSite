@@ -8,6 +8,15 @@ html {
   scroll-behavior: smooth;
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
+
+  // Clip any horizontal overflow at the document root. Scroll-reveal elements
+  // rest offset on the X axis (e.g. [data-reveal="right"] → translateX(52px)),
+  // which pushes past the viewport edge and creates a phantom horizontal scroll
+  // on tablet/mobile. `body { overflow-x: hidden }` alone can't stop this: with
+  // html visible, that value propagates to the viewport and body stops clipping.
+  // `clip` (not `hidden`) keeps overflow-y `visible`, so html never becomes a
+  // scroll container and `position: sticky` elsewhere keeps working.
+  overflow-x: clip;
 }
 
 body {

@@ -17,6 +17,16 @@
     align-items: center;
     justify-content: space-between;
     gap: $space-8;
+
+    // Tighten the gap on smaller screens so the wide wordmark logo and the
+    // ES/EN + hamburger cluster never collide off the edge of the viewport.
+    @include respond-to(md) {
+      gap: $space-3;
+    }
+
+    @include respond-to(sm) {
+      gap: $space-2;
+    }
   }
 
   &--transparent {
@@ -75,14 +85,25 @@
   display: flex;
   align-items: center;
   gap: $space-3;
-  flex-shrink: 0;
+  min-width: 0; // allow the flex item to shrink below the logo's intrinsic width
   text-decoration: none;
 
   &__img {
     height: 44px;
     width: auto;
+    max-width: 100%; // last-resort guard so a narrow viewport scales, never overflows
     display: block;
-    flex-shrink: 0;
+
+    // The logo is a wide horizontal wordmark (~5.8:1). At 44px tall it is 254px
+    // wide — too wide to sit beside the language toggle + hamburger on a phone,
+    // so step it down on smaller screens.
+    @include respond-to(md) {
+      height: 38px;
+    }
+
+    @include respond-to(sm) {
+      height: 32px;
+    }
   }
 }
 
@@ -220,10 +241,13 @@
 .hamburger {
   display: none;
   flex-direction: column;
+  justify-content: center;
   gap: 5px;
-  width: 32px;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
   cursor: pointer;
-  padding: $space-2;
+  padding: $space-2 6px;
 
   @include respond-to(lg) {
     display: flex;

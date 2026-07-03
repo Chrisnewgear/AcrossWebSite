@@ -175,6 +175,8 @@ export const translations = {
       inspIntro:
         "Realizamos inspecciones de calidad bajo estándares internacionales AQL (Acceptable Quality Limit) en las principales zonas industriales de China, verificando que los productos cumplan con las especificaciones acordadas antes del embarque.",
       tabsLabel: "Fases de inspección",
+      prevPhase: "Fase anterior",
+      nextPhase: "Fase siguiente",
       includesTag: "Incluye",
       benefitTag: "Beneficio para el cliente",
       phases: [
@@ -566,6 +568,8 @@ export const translations = {
       inspIntro:
         "We perform quality inspections under international AQL (Acceptable Quality Limit) standards in China's main industrial zones, verifying that products meet the agreed specifications before shipment.",
       tabsLabel: "Inspection phases",
+      prevPhase: "Previous phase",
+      nextPhase: "Next phase",
       includesTag: "Includes",
       benefitTag: "Client benefit",
       phases: [
