@@ -262,7 +262,9 @@
   padding: $space-8 $space-8 $space-10;
   box-shadow: $shadow-sm;
   overflow: hidden;
-  transition: transform $transition-base, box-shadow $transition-base,
+  transition:
+    transform $transition-base,
+    box-shadow $transition-base,
     border-color $transition-base;
 
   &:hover {
@@ -501,7 +503,9 @@
     rgba(255, 255, 255, 0.95) 0%,
     rgba(255, 255, 255, 0.68) 100%
   );
-  transition: transform $transition-base, box-shadow $transition-base,
+  transition:
+    transform $transition-base,
+    box-shadow $transition-base,
     background $transition-base;
 
   // Carousel slide sizing: full width — one card fills the viewport per snap.
@@ -638,7 +642,9 @@
   background: rgba(255, 255, 255, 0.08);
   color: $color-white;
   cursor: pointer;
-  transition: background $transition-base, border-color $transition-base,
+  transition:
+    background $transition-base,
+    border-color $transition-base,
     opacity $transition-base;
 
   &:hover:not(:disabled) {
@@ -675,7 +681,9 @@
   border-radius: $radius-full;
   background: rgba(255, 255, 255, 0.3);
   cursor: pointer;
-  transition: width $transition-base, background $transition-base;
+  transition:
+    width $transition-base,
+    background $transition-base;
 
   &:hover {
     background: rgba(255, 255, 255, 0.5);

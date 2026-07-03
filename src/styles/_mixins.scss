@@ -1,17 +1,45 @@
-@use 'variables' as *;
+@use "variables" as *;
 
 // ─── Responsive ──────────────────────────────────────────────────────────────
 @mixin respond-to($bp) {
-  @if $bp == sm   { @media (max-width: #{$bp-sm})   { @content; } }
-  @if $bp == md   { @media (max-width: #{$bp-md})   { @content; } }
-  @if $bp == lg   { @media (max-width: #{$bp-lg})   { @content; } }
-  @if $bp == xl   { @media (max-width: #{$bp-xl})   { @content; } }
-  @if $bp == md-up { @media (min-width: #{$bp-md})  { @content; } }
-  @if $bp == lg-up { @media (min-width: #{$bp-lg})  { @content; } }
+  @if $bp == sm {
+    @media (max-width: #{$bp-sm}) {
+      @content;
+    }
+  }
+  @if $bp == md {
+    @media (max-width: #{$bp-md}) {
+      @content;
+    }
+  }
+  @if $bp == lg {
+    @media (max-width: #{$bp-lg}) {
+      @content;
+    }
+  }
+  @if $bp == xl {
+    @media (max-width: #{$bp-xl}) {
+      @content;
+    }
+  }
+  @if $bp == md-up {
+    @media (min-width: #{$bp-md}) {
+      @content;
+    }
+  }
+  @if $bp == lg-up {
+    @media (min-width: #{$bp-lg}) {
+      @content;
+    }
+  }
   // iPads (and similarly-sized tablets) held in portrait orientation — covers
   // widths from iPad mini (768) up through iPad Pro 12.9" (1024) in portrait,
   // without affecting the same devices in landscape.
-  @if $bp == tablet-portrait { @media (max-width: #{$bp-lg}) and (orientation: portrait) { @content; } }
+  @if $bp == tablet-portrait {
+    @media (max-width: #{$bp-lg}) and (orientation: portrait) {
+      @content;
+    }
+  }
 }
 
 // ─── Container ───────────────────────────────────────────────────────────────
@@ -36,7 +64,9 @@
   flex-direction: $dir;
   align-items: $align;
   justify-content: $justify;
-  @if $gap != 0 { gap: $gap; }
+  @if $gap != 0 {
+    gap: $gap;
+  }
 }
 
 // ─── Section ─────────────────────────────────────────────────────────────────
@@ -86,7 +116,9 @@
 
 // ─── Hover Lift ──────────────────────────────────────────────────────────────
 @mixin hover-lift($y: -4px, $shadow: $shadow-lg) {
-  transition: transform $transition-base, box-shadow $transition-base;
+  transition:
+    transform $transition-base,
+    box-shadow $transition-base;
 
   &:hover {
     transform: translateY($y);
