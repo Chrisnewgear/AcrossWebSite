@@ -14,7 +14,6 @@ const INITIAL = {
   origen: "",
   destino: "",
   incoterm: "",
-  peso: "",
   volumen: "",
   nombre: "",
   empresa: "",
@@ -255,15 +254,18 @@ export default function Cotizacion() {
                           </div>
                           <div className={s["form-group"]}>
                             <label className={s["form-label"]}>
-                              {tc.labels.peso}
+                              {tc.labels.documento}
                             </label>
                             <input
+                              type="file"
+                              accept="application/pdf,.pdf"
                               className={s["form-input"]}
-                              type="number"
-                              placeholder={tc.placeholders.peso}
-                              value={form.peso}
-                              onChange={update("peso")}
+                              onChange={handleFile}
                             />
+                            <span className={s["file-hint"]}>{tc.fileHint}</span>
+                            {docError && (
+                              <span className={s["form-error"]}>{docError}</span>
+                            )}
                           </div>
                         </div>
 
@@ -277,22 +279,6 @@ export default function Cotizacion() {
                             value={form.descripcion}
                             onChange={update("descripcion")}
                           />
-                        </div>
-
-                        <div className={s["form-group"]}>
-                          <label className={s["form-label"]}>
-                            {tc.labels.documento}
-                          </label>
-                          <input
-                            type="file"
-                            accept="application/pdf,.pdf"
-                            className={s["form-input"]}
-                            onChange={handleFile}
-                          />
-                          <span className={s["file-hint"]}>{tc.fileHint}</span>
-                          {docError && (
-                            <span className={s["form-error"]}>{docError}</span>
-                          )}
                         </div>
 
                         <div className={s["form-actions"]}>
@@ -407,10 +393,6 @@ export default function Cotizacion() {
                             [tc.review.servicio, form.service || tc.review.dash],
                             [tc.review.ruta, `${form.origen} → ${form.destino}`],
                             [tc.review.incoterm, form.incoterm || tc.review.dash],
-                            [
-                              tc.review.peso,
-                              form.peso ? `${form.peso} ${tc.review.kg}` : tc.review.dash,
-                            ],
                             [tc.review.contacto, `${form.nombre} — ${form.email}`],
                             [tc.review.empresa, form.empresa || tc.review.dash],
                           ].map(([k, v]) => (
