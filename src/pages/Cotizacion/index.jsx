@@ -5,8 +5,7 @@ import Icon from "../../components/Icon";
 import { useI18n } from "../../i18n/LanguageContext";
 import s from "./styles.module.scss";
 
-// Icons + incoterm codes stay in code; copy comes from translations.
-const SERVICE_ICONS = ["ship", "truck", "search", "plane", "factory", "handshake"];
+// Incoterm codes stay in code; copy comes from translations.
 const INCOTERMS = ["EXW", "FOB", "CIF", "CFR", "DDP", "FCA"];
 
 const INITIAL = {
@@ -42,7 +41,6 @@ export default function Cotizacion() {
 
   const update = (field) => (e) =>
     setForm((f) => ({ ...f, [field]: e.target.value }));
-  const setService = (name) => setForm((f) => ({ ...f, service: name }));
 
   const MAX_MB = 10;
   const ALLOWED_EXT = ["pdf", "docx", "xlsx", "jpg", "jpeg", "png"];
@@ -184,35 +182,27 @@ export default function Cotizacion() {
                     {/* Step 1 — Service + Route */}
                     {step === 1 && (
                       <>
-                        <div className={s["tiles-panel"]}>
-                          <div className={s["service-grid"]}>
-                            {tc.services.map((name, i) => (
-                              <div key={name} className={s["service-option"]}>
-                                <input
-                                  type="radio"
-                                  id={`svc-${i}`}
-                                  name="service"
-                                  value={name}
-                                  checked={form.service === name}
-                                  onChange={() => setService(name)}
-                                />
-                                <label htmlFor={`svc-${i}`}>
-                                  <span className={s["service-option-icon"]}>
-                                    <Icon name={SERVICE_ICONS[i]} size={22} />
-                                  </span>
-                                  <span className={s["service-option-name"]}>
-                                    {name}
-                                  </span>
-                                </label>
-                              </div>
-                            ))}
-                          </div>
-                          <div className={s["tiles-heading"]}>
-                            {tc.tilesHeading}
-                          </div>
-                        </div>
-
                         <div className={s["form-grid"]}>
+                          <div className={s["form-group"]}>
+                            <label className={s["form-label"]}>
+                              {tc.labels.servicio}
+                            </label>
+                            <select
+                              className={s["form-select"]}
+                              value={form.service}
+                              onChange={update("service")}
+                              required
+                            >
+                              <option value="" disabled>
+                                {tc.placeholders.servicio}
+                              </option>
+                              {tc.services.map((name) => (
+                                <option key={name} value={name}>
+                                  {name}
+                                </option>
+                              ))}
+                            </select>
+                          </div>
                           <div className={s["form-group"]}>
                             <label className={s["form-label"]}>
                               {tc.labels.origen}

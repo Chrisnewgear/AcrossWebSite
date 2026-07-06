@@ -179,88 +179,6 @@
   margin-top: $space-6;
 }
 
-// ─── Service tiles (navy inner panel) ─────────────────────────────────────────
-.tiles-panel {
-  background: $color-blue;
-  background-image: linear-gradient(160deg, $color-blue, $color-blue-dark);
-  border-radius: $radius-lg;
-  padding: $space-6;
-  margin-bottom: $space-6;
-}
-
-.service-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: $space-3;
-  margin-bottom: $space-5;
-
-  @include respond-to(sm) {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-.service-option {
-  position: relative;
-}
-
-.service-option input[type="radio"] {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.service-option label {
-  display: flex;
-  flex-direction: column;
-  gap: $space-3;
-  padding: $space-4;
-  min-height: 84px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: $radius-md;
-  cursor: pointer;
-  transition: all $transition-fast;
-}
-
-.service-option label:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.3);
-}
-
-.service-option input:checked + label {
-  background: $color-blue-light;
-  border-color: $color-blue-light;
-  box-shadow: 0 6px 18px rgba(26, 84, 173, 0.5);
-}
-
-.service-option-icon {
-  display: flex;
-  align-items: center;
-  color: $color-green-light;
-}
-
-.service-option input:checked + label .service-option-icon {
-  color: $color-white;
-}
-
-.service-option-name {
-  font-size: $fs-xs;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.85);
-  margin-top: auto;
-}
-
-.tiles-heading {
-  font-family: $font-display;
-  font-size: $fs-lg;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: $color-white;
-}
-
 .section-heading {
   font-family: $font-display;
   font-size: $fs-xl;
@@ -274,13 +192,9 @@
 // ─── Light form fields ────────────────────────────────────────────────────────
 .form-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: $space-5;
   margin-bottom: $space-4;
-
-  @include respond-to(sm) {
-    grid-template-columns: 1fr;
-  }
 }
 
 .form-group {
