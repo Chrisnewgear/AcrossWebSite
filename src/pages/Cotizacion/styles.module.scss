@@ -517,3 +517,26 @@
     transform: scale(1);
   }
 }
+
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.file-hint {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.form-error {
+  display: block;
+  margin: 8px 0 0;
+  color: #c0392b;
+  font-size: 0.9rem;
+}

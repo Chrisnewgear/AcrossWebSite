@@ -14,7 +14,6 @@ const INITIAL = {
   origen: "",
   destino: "",
   incoterm: "",
-  peso: "",
   volumen: "",
   nombre: "",
   empresa: "",
@@ -31,6 +30,9 @@ export default function Cotizacion() {
   const [form, setForm] = useState(INITIAL);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [documento, setDocumento] = useState(null);
+  const [docError, setDocError] = useState("");
+  const [error, setError] = useState(false);
 
   const { t } = useI18n();
   const tc = t.cotizacion;
@@ -42,16 +44,51 @@ export default function Cotizacion() {
     setForm((f) => ({ ...f, [field]: e.target.value }));
   const setService = (name) => setForm((f) => ({ ...f, service: name }));
 
+  const MAX_MB = 10;
+  const ALLOWED_EXT = ["pdf", "docx", "xlsx", "jpg", "jpeg", "png"];
+  const handleFile = (e) => {
+    const f = e.target.files?.[0] || null;
+    setDocError("");
+    if (f) {
+      const ext = f.name.split(".").pop().toLowerCase();
+      if (!ALLOWED_EXT.includes(ext)) {
+        setDocError(tc.fileErrors.type);
+        e.target.value = "";
+        return;
+      }
+      if (f.size > MAX_MB * 1024 * 1024) {
+        setDocError(tc.fileErrors.size);
+        e.target.value = "";
+        return;
+      }
+    }
+    setDocumento(f);
+  };
+
   const canNext1 = form.service && form.origen && form.destino;
   const canNext2 = form.nombre && form.email;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
+    setError(false);
+    try {
+      const fd = new FormData();
+      Object.entries(form).forEach(([k, v]) => fd.append(k, v));
+      fd.append("website", ""); // honeypot
+      if (documento) fd.append("documento", documento);
+      const res = await fetch("/api/cotizacion.php", {
+        method: "POST",
+        body: fd,
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.ok) throw new Error("send failed");
       setSubmitted(true);
-    }, 1200);
+    } catch {
+      setError(true);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -134,6 +171,16 @@ export default function Cotizacion() {
                   </div>
 
                   <form className={s["form-body"]} onSubmit={handleSubmit}>
+                    <input
+                      type="text"
+                      name="website"
+                      className={s.honeypot}
+                      tabIndex={-1}
+                      autoComplete="off"
+                      aria-hidden="true"
+                      value=""
+                      onChange={() => {}}
+                    />
                     {/* Step 1 — Service + Route */}
                     {step === 1 && (
                       <>
@@ -209,15 +256,18 @@ export default function Cotizacion() {
                           </div>
                           <div className={s["form-group"]}>
                             <label className={s["form-label"]}>
-                              {tc.labels.peso}
+                              {tc.labels.documento}
                             </label>
                             <input
+                              type="file"
+                              accept=".pdf,.docx,.xlsx,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
                               className={s["form-input"]}
-                              type="number"
-                              placeholder={tc.placeholders.peso}
-                              value={form.peso}
-                              onChange={update("peso")}
+                              onChange={handleFile}
                             />
+                            <span className={s["file-hint"]}>{tc.fileHint}</span>
+                            {docError && (
+                              <span className={s["form-error"]}>{docError}</span>
+                            )}
                           </div>
                         </div>
 
@@ -345,10 +395,6 @@ export default function Cotizacion() {
                             [tc.review.servicio, form.service || tc.review.dash],
                             [tc.review.ruta, `${form.origen} → ${form.destino}`],
                             [tc.review.incoterm, form.incoterm || tc.review.dash],
-                            [
-                              tc.review.peso,
-                              form.peso ? `${form.peso} ${tc.review.kg}` : tc.review.dash,
-                            ],
                             [tc.review.contacto, `${form.nombre} — ${form.email}`],
                             [tc.review.empresa, form.empresa || tc.review.dash],
                           ].map(([k, v]) => (
@@ -358,6 +404,9 @@ export default function Cotizacion() {
                             </div>
                           ))}
                         </div>
+                        {error && (
+                          <p className={s["form-error"]}>{tc.error}</p>
+                        )}
                         <div className={s["form-actions"]}>
                           <button
                             type="button"

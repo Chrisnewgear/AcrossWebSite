@@ -1,0 +1,17 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  # Serve real files/dirs and the API untouched
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+  RewriteRule ^api/ - [L]
+  # SPA fallback: everything else -> index.html
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# Never serve backend secrets or library internals
+<FilesMatch "^config(\.example)?\.php$">
+  Require all denied
+</FilesMatch>
+RedirectMatch 403 ^/api/lib/

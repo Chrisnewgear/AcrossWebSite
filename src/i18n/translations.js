@@ -401,6 +401,7 @@ export const translations = {
         email: "Correo Electrónico *",
         telefono: "Teléfono / WhatsApp",
         comentarios: "Comentarios adicionales",
+        documento: "Documento adjunto",
       },
       placeholders: {
         origen: "Ej: Shanghai, China",
@@ -440,6 +441,13 @@ export const translations = {
         sub: "Hemos recibido su solicitud. Nuestro equipo la revisará y le enviará una propuesta personalizada en menos de 24 horas hábiles.",
         backHome: "Volver al Inicio",
       },
+      fileHint: "Opcional · PDF, DOCX, XLSX, JPG, PNG · máx 10 MB",
+      fileErrors: {
+        type: "Formato no permitido. Use PDF, DOCX, XLSX, JPG o PNG.",
+        size: "El archivo supera los 10 MB.",
+      },
+      error:
+        "No se pudo enviar la solicitud. Intente nuevamente o escríbanos a info@acrosscon.com.",
     },
 
     contacto: {
@@ -483,6 +491,8 @@ export const translations = {
         title: "¡Mensaje Enviado!",
         sub: "Hemos recibido su mensaje. Un especialista se pondrá en contacto con usted en menos de 24 horas hábiles.",
       },
+      error:
+        "No se pudo enviar el mensaje. Intente nuevamente o escríbanos a info@acrosscon.com.",
       channelsTitle: "Canales de Atención",
       channels: [
         {
@@ -902,6 +912,7 @@ export const translations = {
         email: "Email Address *",
         telefono: "Phone / WhatsApp",
         comentarios: "Additional comments",
+        documento: "Attachment",
       },
       placeholders: {
         origen: "e.g. Shanghai, China",
@@ -941,6 +952,13 @@ export const translations = {
         sub: "We've received your request. Our team will review it and send you a personalized proposal in under 24 business hours.",
         backHome: "Back to Home",
       },
+      fileHint: "Optional · PDF, DOCX, XLSX, JPG, PNG · max 10 MB",
+      fileErrors: {
+        type: "File type not allowed. Use PDF, DOCX, XLSX, JPG or PNG.",
+        size: "The file exceeds 10 MB.",
+      },
+      error:
+        "Your request could not be sent. Please try again or email us at info@acrosscon.com.",
     },
 
     contacto: {
@@ -984,6 +1002,8 @@ export const translations = {
         title: "Message Sent!",
         sub: "We've received your message. A specialist will contact you in under 24 business hours.",
       },
+      error:
+        "Your message could not be sent. Please try again or email us at info@acrosscon.com.",
       channelsTitle: "Contact Channels",
       channels: [
         {

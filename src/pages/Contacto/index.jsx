@@ -12,12 +12,14 @@ const INITIAL = {
   asunto: "",
   asuntoOtro: "",
   mensaje: "",
+  website: "", // honeypot — must stay empty
 };
 
 export default function Contacto() {
   const [form, setForm] = useState(INITIAL);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const { t } = useI18n();
   const tc = t.contacto;
@@ -26,13 +28,24 @@ export default function Contacto() {
   const update = (field) => (e) =>
     setForm((f) => ({ ...f, [field]: e.target.value }));
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
+    setError(false);
+    try {
+      const res = await fetch("/api/contact.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.ok) throw new Error("send failed");
       setSubmitted(true);
-    }, 1200);
+    } catch {
+      setError(true);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -67,6 +80,16 @@ export default function Contacto() {
                   </div>
 
                   <form className={s.form} onSubmit={handleSubmit}>
+                    <input
+                      type="text"
+                      name="website"
+                      className={s.honeypot}
+                      tabIndex={-1}
+                      autoComplete="off"
+                      aria-hidden="true"
+                      value={form.website}
+                      onChange={update("website")}
+                    />
                     <div className={s["form-grid"]}>
                       <div className={s["form-group"]}>
                         <label className={s["form-label"]}>
@@ -158,6 +181,8 @@ export default function Contacto() {
                         required
                       />
                     </div>
+
+                    {error && <p className={s["form-error"]}>{tc.error}</p>}
 
                     <button
                       type="submit"
