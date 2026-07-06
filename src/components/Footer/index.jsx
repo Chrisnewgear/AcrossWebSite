@@ -19,11 +19,16 @@ const SERVICE_LINKS = [
 // A `#hash` target scrolls to that section on the home page.
 const COMPANY_LINKS = ["/", "/#mision-vision", "/#presencia-internacional", "/cotizacion", "/contacto"];
 
+// Only Instagram is active for now. Re-enable the others when accounts exist.
 const SOCIALS = [
-  { icon: "x", href: "#", label: "Twitter/X" },
-  { icon: "linkedin", href: "#", label: "LinkedIn" },
-  { icon: "youtube", href: "#", label: "YouTube" },
-  { icon: "instagram", href: "#", label: "Instagram" },
+  // { icon: "x", href: "#", label: "Twitter/X" },
+  // { icon: "linkedin", href: "#", label: "LinkedIn" },
+  // { icon: "youtube", href: "#", label: "YouTube" },
+  {
+    icon: "instagram",
+    href: "https://www.instagram.com/acrosscontinentstrading.ec?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+    label: "Instagram",
+  },
 ];
 
 export default function Footer() {
@@ -61,6 +66,8 @@ export default function Footer() {
                 <a
                   key={label}
                   href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={s["social-link"]}
                   aria-label={label}
                 >
