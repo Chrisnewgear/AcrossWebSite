@@ -12,18 +12,50 @@ import cityGuayaquil from "../../assets/cities/Guayaquil.jpg";
 import cityMumbai from "../../assets/cities/mumbai.jpg";
 import cityLima from "../../assets/cities/lima.jpg";
 
+// TODO(swap): temporary placeholders for the 5 new offices — reusing existing
+// art so the build/carousel keep working. Replace each alias with a real import
+// once the files land, e.g.:
+//   import flagGreece from "../../assets/flags/Greece.png";
+//   import cityAthens from "../../assets/cities/atenas.jpg";
+const flagGreece = flagChina; //   → assets/flags/Greece.*
+const flagItaly = flagUSA; //      → assets/flags/Italy.*
+const flagIsrael = flagEcuador; // → assets/flags/Israel.*
+const flagChile = flagIndia; //    → assets/flags/Chile.*
+const flagBrazil = flagPeru; //    → assets/flags/Brazil.*
+const cityAthens = cityShanghai; //     → assets/cities/atenas.*
+const cityRome = cityPlantation; //     → assets/cities/roma.*
+const cityJerusalem = cityGuayaquil; // → assets/cities/jerusalen.*
+const citySantiago = cityMumbai; //     → assets/cities/santiago.*
+const cityBrasilia = cityLima; //       → assets/cities/brasilia.*
+
 // Only the number of offices matters for the carousel math; the displayed
 // city/country text is pulled from translations by index at render time.
-const OFFICES = [0, 1, 2, 3, 4];
+const OFFICES = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 // Index-aligned with the `offices` arrays in translations.js
-const FLAGS = [flagChina, flagUSA, flagEcuador, flagIndia, flagPeru];
+const FLAGS = [
+  flagChina,
+  flagUSA,
+  flagEcuador,
+  flagIndia,
+  flagPeru,
+  flagGreece,
+  flagItaly,
+  flagIsrael,
+  flagChile,
+  flagBrazil,
+];
 const CITIES = [
   cityShanghai,
   cityPlantation,
   cityGuayaquil,
   cityMumbai,
   cityLima,
+  cityAthens,
+  cityRome,
+  cityJerusalem,
+  citySantiago,
+  cityBrasilia,
 ];
 
 const N = OFFICES.length;

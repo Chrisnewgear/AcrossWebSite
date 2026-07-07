@@ -23,7 +23,7 @@ export const translations = {
     },
 
     hero: {
-      eyebrow: "Su socio en comercio internacional",
+      eyebrow: "Tu socio en comercio internacional",
       line1: "Conexiones",
       line2: "Globales",
       tagline: "Confianza sin fronteras",
@@ -127,12 +127,17 @@ export const translations = {
         { city: "Guayaquil", country: "Ecuador" },
         { city: "Mumbai", country: "India" },
         { city: "Lima", country: "Perú" },
+        { city: "Atenas", country: "Grecia" },
+        { city: "Roma", country: "Italia" },
+        { city: "Jerusalén", country: "Israel" },
+        { city: "Santiago", country: "Chile" },
+        { city: "Brasilia", country: "Brasil" },
       ],
     },
 
     footer: {
       brandDesc:
-        "Su socio confiable en trading e intermediación internacional. Conectamos mercados desde Asia y Europa hasta su destino.",
+        "Tu socio confiable en trading e intermediación internacional. Conectamos mercados desde Asia y Europa hasta su destino.",
       servicesTitle: "Servicios",
       companyTitle: "La Empresa",
       contactTitle: "Contacto",
@@ -641,6 +646,11 @@ export const translations = {
         { city: "Guayaquil", country: "Ecuador" },
         { city: "Mumbai", country: "India" },
         { city: "Lima", country: "Peru" },
+        { city: "Athens", country: "Greece" },
+        { city: "Rome", country: "Italy" },
+        { city: "Jerusalem", country: "Israel" },
+        { city: "Santiago", country: "Chile" },
+        { city: "Brasilia", country: "Brazil" },
       ],
     },
 
