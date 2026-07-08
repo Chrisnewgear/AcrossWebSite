@@ -195,8 +195,14 @@ export default function PresenciaGlobal() {
   const handleCardMove = (e) => {
     const el = e.currentTarget;
     const r = el.getBoundingClientRect();
-    el.style.setProperty("--px", ((e.clientX - r.left) / r.width - 0.5).toFixed(3));
-    el.style.setProperty("--py", ((e.clientY - r.top) / r.height - 0.5).toFixed(3));
+    el.style.setProperty(
+      "--px",
+      ((e.clientX - r.left) / r.width - 0.5).toFixed(3),
+    );
+    el.style.setProperty(
+      "--py",
+      ((e.clientY - r.top) / r.height - 0.5).toFixed(3),
+    );
   };
   const handleCardLeave = (e) => {
     e.currentTarget.style.setProperty("--px", "0");
