@@ -15,8 +15,14 @@ export default function Hero() {
     const el = heroRef.current;
     if (!el) return;
     const r = el.getBoundingClientRect();
-    el.style.setProperty("--mx", ((e.clientX - r.left) / r.width - 0.5).toFixed(3));
-    el.style.setProperty("--my", ((e.clientY - r.top) / r.height - 0.5).toFixed(3));
+    el.style.setProperty(
+      "--mx",
+      ((e.clientX - r.left) / r.width - 0.5).toFixed(3),
+    );
+    el.style.setProperty(
+      "--my",
+      ((e.clientY - r.top) / r.height - 0.5).toFixed(3),
+    );
   };
   const handlePointerLeave = () => {
     const el = heroRef.current;

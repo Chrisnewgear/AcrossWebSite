@@ -1,5 +1,5 @@
-@use '../../styles/variables' as *;
-@use '../../styles/mixins' as *;
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
 
 // Easing shared by entrance reveals
 $ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
@@ -39,7 +39,11 @@ $ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
     position: absolute;
     inset: -4%;
     transition: transform 0.5s $ease-out-expo;
-    transform: translate3d(calc(var(--mx, 0) * -20px), calc(var(--my, 0) * -14px), 0);
+    transform: translate3d(
+      calc(var(--mx, 0) * -20px),
+      calc(var(--my, 0) * -14px),
+      0
+    );
     will-change: transform;
   }
 
@@ -47,7 +51,7 @@ $ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
   &__bgImage {
     position: absolute;
     inset: 0;
-    background-image: url('https://images.unsplash.com/photo-1605745341112-85968b19335b?w=2200&q=80');
+    background-image: url("https://images.unsplash.com/photo-1605745341112-85968b19335b?w=2200&q=80");
     background-size: cover;
     background-position: center right;
     animation: heroZoom 2.2s $ease-out-expo both;
@@ -138,8 +142,12 @@ $ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
       animation: lineUp 0.95s $ease-out-expo both;
     }
 
-    .line:nth-child(1) { animation-delay: 0.15s; }
-    .line:nth-child(2) { animation-delay: 0.28s; }
+    .line:nth-child(1) {
+      animation-delay: 0.15s;
+    }
+    .line:nth-child(2) {
+      animation-delay: 0.28s;
+    }
   }
 
   &__tagline {
@@ -176,7 +184,11 @@ $ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
     :global(.btn-green) {
       padding: $space-4 $space-8;
       font-size: $fs-base;
-      background: linear-gradient(100deg, $color-green 0%, $color-green-light 100%);
+      background: linear-gradient(
+        100deg,
+        $color-green 0%,
+        $color-green-light 100%
+      );
     }
   }
 
@@ -229,7 +241,9 @@ $ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     @include respond-to(sm) {
-      & + & { border-left: none; }
+      & + & {
+        border-left: none;
+      }
     }
   }
 
@@ -267,18 +281,34 @@ $ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
 
 // ── Keyframes ───────────────────────────────────────────────────────
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(26px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes lineUp {
-  from { opacity: 0; transform: translateY(100%); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes heroZoom {
-  from { transform: scale(1.12); }
-  to   { transform: scale(1); }
+  from {
+    transform: scale(1.12);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
