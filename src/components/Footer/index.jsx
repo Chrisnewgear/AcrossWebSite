@@ -17,7 +17,13 @@ const SERVICE_LINKS = [
 
 // Index-aligned with t.footer.company — all resolve to live routes.
 // A `#hash` target scrolls to that section on the home page.
-const COMPANY_LINKS = ["/", "/#mision-vision", "/#presencia-internacional", "/cotizacion", "/contacto"];
+const COMPANY_LINKS = [
+  "/",
+  "/#mision-vision",
+  "/#presencia-internacional",
+  "/cotizacion",
+  "/contacto",
+];
 
 // Only Instagram is active for now. Re-enable the others when accounts exist.
 const SOCIALS = [
@@ -58,7 +64,11 @@ export default function Footer() {
           {/* Brand */}
           <div className={s.brand}>
             <Link to="/" className={s.logo}>
-              <img src={logo} alt="Across Continents Trading" className={s["logo-img"]} />
+              <img
+                src={logo}
+                alt="Across Continents Trading"
+                className={s["logo-img"]}
+              />
             </Link>
             <p className={s["brand-desc"]}>{t.footer.brandDesc}</p>
             <div className={s.socials}>
@@ -100,7 +110,9 @@ export default function Footer() {
                     key={label}
                     to={to}
                     className={s["col-link"]}
-                    onClick={to.includes("#") ? (e) => handleHashNav(e, to) : undefined}
+                    onClick={
+                      to.includes("#") ? (e) => handleHashNav(e, to) : undefined
+                    }
                   >
                     {label}
                   </Link>
