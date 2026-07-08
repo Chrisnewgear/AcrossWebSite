@@ -6,27 +6,21 @@ import flagUSA from "../../assets/flags/USA.jpg";
 import flagEcuador from "../../assets/flags/Ecuador.png";
 import flagIndia from "../../assets/flags/india.png";
 import flagPeru from "../../assets/flags/Peru.jpg";
+import flagGreece from "../../assets/flags/Grecia.jpg";
+import flagItaly from "../../assets/flags/Italia.jpg";
+import flagIsrael from "../../assets/flags/Israel.jpg";
+import flagChile from "../../assets/flags/Chile.jpg";
+import flagBrazil from "../../assets/flags/brazil.jpg";
 import cityShanghai from "../../assets/cities/shanghai.jpg";
 import cityPlantation from "../../assets/cities/plantation.jpg";
 import cityGuayaquil from "../../assets/cities/Guayaquil.jpg";
 import cityMumbai from "../../assets/cities/mumbai.jpg";
 import cityLima from "../../assets/cities/lima.jpg";
-
-// TODO(swap): temporary placeholders for the 5 new offices — reusing existing
-// art so the build/carousel keep working. Replace each alias with a real import
-// once the files land, e.g.:
-//   import flagGreece from "../../assets/flags/Greece.png";
-//   import cityAthens from "../../assets/cities/atenas.jpg";
-const flagGreece = flagChina; //   → assets/flags/Greece.*
-const flagItaly = flagUSA; //      → assets/flags/Italy.*
-const flagIsrael = flagEcuador; // → assets/flags/Israel.*
-const flagChile = flagIndia; //    → assets/flags/Chile.*
-const flagBrazil = flagPeru; //    → assets/flags/Brazil.*
-const cityAthens = cityShanghai; //     → assets/cities/atenas.*
-const cityRome = cityPlantation; //     → assets/cities/roma.*
-const cityJerusalem = cityGuayaquil; // → assets/cities/jerusalen.*
-const citySantiago = cityMumbai; //     → assets/cities/santiago.*
-const cityBrasilia = cityLima; //       → assets/cities/brasilia.*
+import cityAthens from "../../assets/cities/Atenas.jpg";
+import cityRome from "../../assets/cities/Roma.jpg";
+import cityJerusalem from "../../assets/cities/Jerusalem.jpeg";
+import citySantiago from "../../assets/cities/Santiago.jpeg";
+import cityBrasilia from "../../assets/cities/Brasilia.jpeg";
 
 // Only the number of offices matters for the carousel math; the displayed
 // city/country text is pulled from translations by index at render time.
@@ -269,7 +263,9 @@ export default function PresenciaGlobal() {
                     style={
                       i % N === 0
                         ? { objectPosition: "left center" }
-                        : undefined
+                        : i % N === 8
+                          ? { objectPosition: "40% center" }
+                          : undefined
                     }
                   />
                   <img
