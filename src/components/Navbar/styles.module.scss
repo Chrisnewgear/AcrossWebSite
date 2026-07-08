@@ -36,31 +36,32 @@
   }
 
   &--scrolled {
-    background: rgba(255, 255, 255, 0.58);
+    background: rgba(255, 255, 255, 0.82);
     backdrop-filter: blur(22px) saturate(180%);
     -webkit-backdrop-filter: blur(22px) saturate(180%);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     box-shadow:
       0 8px 32px rgba(13, 47, 99, 0.12),
-      inset 0 1px 0 rgba(255, 255, 255, 0.55);
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
 
-    // Flip nav ink to dark on the light bg
+    // Flip nav ink to dark on the light bg — fully opaque so legibility never
+    // depends on whatever photo/content is blurred behind the glass.
     .nav__link {
-      color: rgba(13, 47, 99, 0.75);
+      color: $color-blue-dark;
 
       &:hover {
         color: $color-blue-dark;
-        background: rgba(13, 47, 99, 0.06);
+        background: rgba(13, 47, 99, 0.08);
       }
 
       &--active {
-        color: $color-green;
+        color: $color-green-dark;
       }
     }
 
     .lang-toggle {
-      background: rgba(13, 47, 99, 0.06);
-      border-color: rgba(13, 47, 99, 0.15);
+      background: rgba(13, 47, 99, 0.08);
+      border-color: rgba(13, 47, 99, 0.18);
     }
 
     .lang-thumb {
@@ -68,10 +69,10 @@
     }
 
     .lang-option {
-      color: rgba(13, 47, 99, 0.6);
+      color: rgba(13, 47, 99, 0.75);
 
       &:hover {
-        color: rgba(13, 47, 99, 0.9);
+        color: $color-blue-dark;
       }
 
       &[aria-pressed="true"] {

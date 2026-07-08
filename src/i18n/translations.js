@@ -368,8 +368,8 @@ export const translations = {
         "Recibe una cotización detallada en menos de 24 horas hábiles con el mejor precio del mercado.",
       steps: [
         {
-          title: "Complete el formulario",
-          desc: "Indique tipo de servicio, origen, destino y datos de contacto.",
+          title: "Completa el formulario",
+          desc: "Indica tipo de servicio, origen, destino y datos de contacto.",
         },
         {
           title: "Análisis en 24h",
@@ -408,7 +408,7 @@ export const translations = {
         incoterm: "Seleccionar...",
         peso: "Ej: 5000",
         descripcion:
-          "Describa brevemente la mercancía, HS code si lo conoce, y cualquier consideración especial (peligrosa, refrigerada, frágil, etc.)",
+          "Describe brevemente la mercancía, HS code si lo conoces, y cualquier consideración especial (peligrosa, refrigerada, frágil, etc.)",
         nombre: "Juan García",
         empresa: "Mi Empresa S.A.",
         email: "su@empresa.com",
@@ -472,7 +472,7 @@ export const translations = {
         email: "su@empresa.com",
         telefono: "0987654321",
         mensaje:
-          "Cuéntenos sobre tu operación: producto, origen, destino, volumen y cualquier consulta específica...",
+          "Cuéntanos sobre tu operación: producto, origen, destino, volumen y cualquier consulta específica...",
       },
       asuntoPlaceholder: "Seleccionar motivo...",
       subjects: [
