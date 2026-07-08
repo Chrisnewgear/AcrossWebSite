@@ -129,10 +129,10 @@ export default function Footer() {
               <p className={s["contact-line"]}>
                 <a href="tel:+593998432427">+593 99 843 2427</a>
               </p>
-              <p className={s["contact-line"]}>
+              {/* <p className={s["contact-line"]}>
                 <a href="mailto:info@acrosscon.com">info@acrosscon.com</a>
               </p>
-              <p className={s["contact-line"]}>www.acrosscon.com</p>
+              <p className={s["contact-line"]}>www.acrosscon.com</p> */}
             </div>
           </div>
         </div>

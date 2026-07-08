@@ -1,8 +1,12 @@
-@use '../../styles/variables' as *;
-@use '../../styles/mixins' as *;
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
 
 .section {
-  background: linear-gradient(180deg, $color-off-white 0%, $color-gray-100 100%);
+  background: linear-gradient(
+    180deg,
+    $color-off-white 0%,
+    $color-gray-100 100%
+  );
 }
 
 // ── Full-bleed green banner ───────────────────────────────────────────
@@ -48,11 +52,15 @@
   align-items: center;
   text-align: center;
   padding: $space-10 $space-8;
-  background: $color-white;
-  border: 1px solid $color-gray-200;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: $radius-xl;
   box-shadow: 0 16px 40px rgba(19, 66, 137, 0.06);
-  transition: transform $transition-base, box-shadow $transition-base;
+  transition:
+    transform $transition-base,
+    box-shadow $transition-base;
 
   &:hover {
     transform: translateY(-6px);
@@ -77,7 +85,9 @@
   color: $color-blue;
   background: rgba(19, 66, 137, 0.07);
   border: 1px solid rgba(19, 66, 137, 0.12);
-  transition: color $transition-base, background $transition-base,
+  transition:
+    color $transition-base,
+    background $transition-base,
     border-color $transition-base;
 }
 

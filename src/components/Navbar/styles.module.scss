@@ -1,5 +1,5 @@
-@use '../../styles/variables' as *;
-@use '../../styles/mixins' as *;
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
 
 .navbar {
   position: fixed;
@@ -8,7 +8,9 @@
   right: 0;
   z-index: 1000;
   height: $navbar-height;
-  transition: background $transition-base, box-shadow $transition-base;
+  transition:
+    background $transition-base,
+    box-shadow $transition-base;
 
   &__inner {
     @include container;
@@ -34,11 +36,13 @@
   }
 
   &--scrolled {
-    background: rgba(255, 255, 255, 0.88);
-    backdrop-filter: blur(18px) saturate(160%);
-    -webkit-backdrop-filter: blur(18px) saturate(160%);
-    border-bottom: 1px solid rgba(13, 47, 99, 0.08);
-    box-shadow: 0 8px 32px rgba(13, 47, 99, 0.12);
+    background: rgba(255, 255, 255, 0.58);
+    backdrop-filter: blur(22px) saturate(180%);
+    -webkit-backdrop-filter: blur(22px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow:
+      0 8px 32px rgba(13, 47, 99, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.55);
 
     // Flip nav ink to dark on the light bg
     .nav__link {
@@ -148,7 +152,9 @@
   gap: $space-3;
 
   @include respond-to(lg) {
-    .whatsapp { display: none; }
+    .whatsapp {
+      display: none;
+    }
   }
 }
 
@@ -182,7 +188,9 @@
 
   @include respond-to(sm) {
     padding: 0.6rem $space-4;
-    span { display: none; }
+    span {
+      display: none;
+    }
   }
 }
 
@@ -281,14 +289,15 @@
   top: $navbar-height;
   left: 0;
   right: 0;
-  background: rgba(13, 47, 99, 0.75);
-  backdrop-filter: blur(22px) saturate(160%);
-  -webkit-backdrop-filter: blur(22px) saturate(160%);
+  background: rgba(13, 47, 99, 0.6);
+  backdrop-filter: blur(26px) saturate(180%);
+  -webkit-backdrop-filter: blur(26px) saturate(180%);
   padding: $space-6;
   flex-direction: column;
   gap: $space-2;
   z-index: 999;
-  border-top: 1px solid rgba(255,255,255,0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
 
   @include respond-to(lg) {
     display: flex;
@@ -304,11 +313,12 @@
     }
   }
 
-  a, button {
+  a,
+  button {
     font-family: $font-primary;
     font-size: $fs-md;
     font-weight: 500;
-    color: rgba(255,255,255,0.85);
+    color: rgba(255, 255, 255, 0.85);
     padding: $space-3 $space-4;
     border-radius: $radius-md;
     transition: all $transition-fast;
@@ -320,7 +330,7 @@
     display: block;
 
     &:hover {
-      background: rgba(255,255,255,0.1);
+      background: rgba(255, 255, 255, 0.1);
       color: $color-white;
     }
   }
@@ -339,6 +349,6 @@
     text-align: center !important;
     font-size: $fs-sm !important;
     letter-spacing: 0.05em;
-    box-shadow: 0 4px 16px rgba(113,194,0,0.3);
+    box-shadow: 0 4px 16px rgba(113, 194, 0, 0.3);
   }
 }

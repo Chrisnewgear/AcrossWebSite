@@ -152,7 +152,9 @@ $ease-wow: cubic-bezier(0.16, 1, 0.3, 1);
     padding: $space-3 $space-6;
     border: 1.5px solid rgba(113, 194, 0, 0.55);
     border-radius: $radius-full;
-    background: rgba(113, 194, 0, 0.05);
+    background: rgba(113, 194, 0, 0.08);
+    backdrop-filter: blur(10px) saturate(160%);
+    -webkit-backdrop-filter: blur(10px) saturate(160%);
     animation: fadeUp 0.7s 0.05s $ease-out-expo both;
   }
 

@@ -137,7 +137,7 @@ export const translations = {
 
     footer: {
       brandDesc:
-        "Tu socio confiable en trading e intermediación internacional. Conectamos mercados desde Asia y Europa hasta su destino.",
+        "Tu socio confiable en trading e intermediación internacional. Conectamos mercados desde Asia y Europa hasta tu destino.",
       servicesTitle: "Servicios",
       companyTitle: "La Empresa",
       contactTitle: "Contacto",
@@ -167,7 +167,7 @@ export const translations = {
       heroLabel: "Nuestras capacidades",
       heroTitle: "Soluciones Logísticas Integrales",
       heroSub:
-        "Desde el proveedor hasta su bodega — gestionamos cada paso de su cadena de suministro internacional.",
+        "Desde el proveedor hasta tu bodega — gestionamos cada paso de tu cadena de suministro internacional.",
       ctaQuote: "Solicitar Cotización",
       ctaExpert: "Hablar con un Experto",
       complementaryRibbon: "Servicios Complementarios",
@@ -178,7 +178,7 @@ export const translations = {
         },
         {
           title: "Gestión Integral de Importaciones",
-          desc: "Coordinamos todo el ciclo de importación —trámites aduaneros, aranceles, permisos y logística— para que su mercancía llegue a destino sin contratiempos.",
+          desc: "Coordinamos todo el ciclo de importación —trámites aduaneros, aranceles, permisos y logística— para que tu mercancía llegue a destino sin contratiempos.",
         },
         {
           title: "Negociación y Compras Internacionales",
@@ -200,7 +200,7 @@ export const translations = {
       inspectionRibbon: "Inspección de Calidad",
       inspHeading: "Control de Calidad AQL en Fábrica",
       inspPill:
-        "Proteja su inversión antes de que la mercancía salga de origen.",
+        "Protege tu inversión antes de que la mercancía salga de origen.",
       inspIntro:
         "Realizamos inspecciones de calidad bajo estándares internacionales AQL (Acceptable Quality Limit) en las principales zonas industriales de China, verificando que los productos cumplan con las especificaciones acordadas antes del embarque.",
       tabsLabel: "Fases de inspección",
@@ -226,7 +226,7 @@ export const translations = {
         {
           tab: "Durante Producción",
           subtitle: "Inspección en Planta (DUPRO)",
-          desc: "Supervisamos el proceso de fabricación mientras su pedido se encuentra en producción, permitiendo detectar desviaciones, defectos o incumplimientos antes de que afecten la totalidad del lote.",
+          desc: "Supervisamos el proceso de fabricación mientras tu pedido se encuentra en producción, permitiendo detectar desviaciones, defectos o incumplimientos antes de que afecten la totalidad del lote.",
           includes: [
             "Verificación del avance de producción.",
             "Revisión de materias primas y componentes.",
@@ -257,12 +257,12 @@ export const translations = {
     rastreo: {
       breadcrumb: "Rastreo",
       heroLabel: "Seguimiento en tiempo real",
-      heroTitle: "Rastree su Envío",
+      heroTitle: "Rastrea tu Envío",
       heroSub:
-        "Ingrese su número de guía, contenedor o AWB para ver el estado en tiempo real de su carga.",
+        "Ingresa tu número de guía, contenedor o AWB para ver el estado en tiempo real de tu carga.",
       searchLabel: "Búsqueda de Envío",
-      searchTitle: "¿Dónde está su carga?",
-      searchSubPre: "Pruebe con: ",
+      searchTitle: "¿Dónde está tu carga?",
+      searchSubPre: "Prueba con: ",
       searchSubPost: " para ver un ejemplo de seguimiento en vivo.",
       placeholder: "Ej: MSKU7845213 / AWB-987654 / BL-2026-GYE",
       searchBtn: "Rastrear",
@@ -274,10 +274,10 @@ export const translations = {
         eta: "ETA",
       },
       notFound:
-        "No encontramos un envío con ese número. Verifique e intente de nuevo, o contáctenos directamente.",
+        "No encontramos un envío con ese número. Verifica e intenta de nuevo, o contáctanos directamente.",
       notFoundCta: "Contactar a Operaciones",
       infoLabel: "Información de Rastreo",
-      infoTitle: "Todo lo que necesita saber",
+      infoTitle: "Todo lo que necesitas saber",
       info: [
         {
           title: "¿Qué puedo rastrear?",
@@ -285,14 +285,14 @@ export const translations = {
         },
         {
           title: "Notificaciones Automáticas",
-          text: "Reciba actualizaciones por WhatsApp o correo en cada evento de su envío: zarpe, tránsito, llegada y entrega.",
+          text: "Recibe actualizaciones por WhatsApp o correo en cada evento de tu envío: zarpe, tránsito, llegada y entrega.",
         },
         {
-          title: "¿No encuentra su envío?",
-          text: "Contáctenos directamente. Nuestro equipo de operaciones tiene acceso a información en tiempo real de todos sus embarques.",
+          title: "¿No encuentras tu envío?",
+          text: "Contáctanos directamente. Nuestro equipo de operaciones tiene acceso a información en tiempo real de todos tus embarques.",
         },
       ],
-      contactTitle: "¿Necesita ayuda con su envío?",
+      contactTitle: "¿Necesitas ayuda con tu envío?",
       contactText:
         "Nuestro equipo de operaciones está disponible de lunes a sábado, 8am – 6pm (GMT-5)",
       contactCta: "Formulario de Contacto",
@@ -360,12 +360,12 @@ export const translations = {
       breadcrumb: "Cotización",
       headerBar: "Cotización",
       heroLabel: "Solicitud de cotización",
-      heroTitle: "Cotice su Operación Internacional",
+      heroTitle: "Cotiza tu Operación Internacional",
       heroSub:
-        "Propuestas de pago personalizadas adaptadas a su situación financiera y volumen de operación.",
+        "Propuestas de pago personalizadas adaptadas a tu situación financiera y volumen de operación.",
       howTitle: "¿Cómo funciona?",
       howSub:
-        "Reciba una cotización detallada en menos de 24 horas hábiles con el mejor precio del mercado.",
+        "Recibe una cotización detallada en menos de 24 horas hábiles con el mejor precio del mercado.",
       steps: [
         {
           title: "Complete el formulario",
@@ -373,15 +373,15 @@ export const translations = {
         },
         {
           title: "Análisis en 24h",
-          desc: "Nuestro equipo revisa su solicitud y prepara una propuesta.",
+          desc: "Nuestro equipo revisa tu solicitud y prepara una propuesta.",
         },
         {
           title: "Propuesta personalizada",
-          desc: "Recibe cotización con opciones de pago adaptadas a su operación.",
+          desc: "Recibe cotización con opciones de pago adaptadas a tu operación.",
         },
         {
           title: "Inicio de operación",
-          desc: "Aprueba y comenzamos a trabajar en su importación o exportación.",
+          desc: "Aprueba y comenzamos a trabajar en tu importación o exportación.",
         },
       ],
       services: ["Inspección", "Sourcing", "Trading"],
@@ -437,7 +437,7 @@ export const translations = {
       },
       success: {
         title: "¡Cotización Enviada!",
-        sub: "Hemos recibido su solicitud. Nuestro equipo la revisará y le enviará una propuesta personalizada en menos de 24 horas hábiles.",
+        sub: "Hemos recibido tu solicitud. Nuestro equipo la revisará y te enviará una propuesta personalizada en menos de 24 horas hábiles.",
         backHome: "Volver al Inicio",
       },
       fileHint: "Opcional · PDF, DOCX, XLSX, JPG, PNG · máx 10 MB",
@@ -452,12 +452,12 @@ export const translations = {
     contacto: {
       breadcrumb: "Contacto",
       headerBar: "Contacto",
-      heroLabel: "Hablemos de su operación",
-      heroTitle: "Contáctenos",
+      heroLabel: "Hablemos de tu operación",
+      heroTitle: "Contáctanos",
       heroSub:
-        "Nuestro equipo de especialistas está listo para asesorarle en cada etapa de su operación internacional.",
-      formTitle: "Envíenos un mensaje",
-      formSub: "Le respondemos en menos de 24 horas hábiles.",
+        "Nuestro equipo de especialistas está listo para asesorarte en cada etapa de tu operación internacional.",
+      formTitle: "Envíanos un mensaje",
+      formSub: "Te respondemos en menos de 24 horas hábiles.",
       labels: {
         nombre: "Nombres y Apellidos *",
         empresa: "Empresa",
@@ -472,7 +472,7 @@ export const translations = {
         email: "su@empresa.com",
         telefono: "0987654321",
         mensaje:
-          "Cuéntenos sobre su operación: producto, origen, destino, volumen y cualquier consulta específica...",
+          "Cuéntenos sobre tu operación: producto, origen, destino, volumen y cualquier consulta específica...",
       },
       asuntoPlaceholder: "Seleccionar motivo...",
       subjects: [
@@ -483,12 +483,12 @@ export const translations = {
         "Trading / Intermediación",
         "Otro",
       ],
-      otroPlaceholder: "Especifique el motivo de su consulta",
+      otroPlaceholder: "Especifique el motivo de tu consulta",
       submit: "Enviar Mensaje",
       submitting: "Enviando...",
       success: {
         title: "¡Mensaje Enviado!",
-        sub: "Hemos recibido su mensaje. Un especialista se pondrá en contacto con usted en menos de 24 horas hábiles.",
+        sub: "Hemos recibido tu mensaje. Un especialista se pondrá en contacto contigo en menos de 24 horas hábiles.",
       },
       error:
         "No se pudo enviar el mensaje. Intente nuevamente o escríbanos a info@acrosscon.com.",

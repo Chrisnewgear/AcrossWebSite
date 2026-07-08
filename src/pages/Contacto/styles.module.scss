@@ -56,7 +56,10 @@
 .form-card {
   width: 100%;
   max-width: 640px;
-  background: $color-off-white;
+  background: rgba(244, 247, 251, 0.82);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: $radius-xl;
   box-shadow: $shadow-md;
   padding: $space-10;
@@ -91,7 +94,10 @@
 .info-block {
   flex: 1;
   min-width: 0;
-  background: $color-off-white;
+  background: rgba(244, 247, 251, 0.82);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: $radius-xl;
   box-shadow: $shadow-md;
   padding: $space-8;
