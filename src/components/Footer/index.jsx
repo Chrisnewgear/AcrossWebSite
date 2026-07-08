@@ -4,15 +4,15 @@ import { useI18n } from "../../i18n/LanguageContext";
 import logo from "../../assets/logo.png";
 import s from "./styles.module.scss";
 
-// `i` indexes into t.footer.services. Commented entries are temporarily
-// disabled — re-enable when their page/section exists.
+// `i` indexes into t.footer.services, which mirrors the six services listed
+// on the Servicios page ("Servicios Complementarios" section).
 const SERVICE_LINKS = [
-  { i: 0, to: "/servicios" }, // Transporte Marítimo
-  { i: 1, to: "/servicios" }, // Transporte Aéreo
-  { i: 2, to: "/servicios" }, // Transporte Terrestre
-  // { i: 3, to: "/rastreo" },   // Rastreo de Envíos
-  // { i: 4, to: "/servicios" }, // Verificación Proveedores
-  // { i: 5, to: "/servicios" }, // Inspección de Calidad
+  { i: 0, to: "/servicios" }, // Sourcing de Proveedores
+  { i: 1, to: "/servicios" }, // Gestión de Importaciones
+  { i: 2, to: "/servicios" }, // Negociación y Compras
+  { i: 3, to: "/servicios" }, // Logística de Transporte
+  { i: 4, to: "/servicios" }, // Asesoría en Comercio Exterior
+  { i: 5, to: "/servicios" }, // Inspección de Calidad
 ];
 
 // Index-aligned with t.footer.company — all resolve to live routes.

@@ -142,11 +142,11 @@ export const translations = {
       companyTitle: "La Empresa",
       contactTitle: "Contacto",
       services: [
-        "Transporte Marítimo",
-        "Transporte Aéreo",
-        "Transporte Terrestre",
-        "Rastreo de Envíos",
-        "Verificación Proveedores",
+        "Sourcing de Proveedores",
+        "Gestión de Importaciones",
+        "Negociación y Compras",
+        "Logística de Transporte",
+        "Asesoría en Comercio Exterior",
         "Inspección de Calidad",
       ],
       company: [
@@ -661,11 +661,11 @@ export const translations = {
       companyTitle: "Company",
       contactTitle: "Contact",
       services: [
-        "Ocean Freight",
-        "Air Freight",
-        "Ground Transport",
-        "Shipment Tracking",
-        "Supplier Verification",
+        "Supplier Sourcing",
+        "Import Management",
+        "Negotiation & Procurement",
+        "Transport Logistics",
+        "Foreign Trade Advisory",
         "Quality Inspection",
       ],
       company: [
