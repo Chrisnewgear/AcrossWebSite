@@ -36,11 +36,23 @@
 .media {
   position: absolute;
   inset: -18%;
+  overflow: hidden;
+  will-change: transform;
+  animation: heroMediaIn 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+// Subtle hover parallax layer — translated via --mx/--my written on
+// pointermove (index.jsx). Kept off `.media` itself so this transform never
+// collides with that layer's own scroll-parallax transform.
+.mediaImg {
+  position: absolute;
+  inset: -4%;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translate3d(calc(var(--mx, 0) * -18px), calc(var(--my, 0) * -12px), 0);
   will-change: transform;
-  animation: heroMediaIn 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .scrim {
@@ -177,6 +189,13 @@
   flex-wrap: wrap;
   margin-top: $space-8;
   animation: fadeInUp 0.6s 0.2s ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mediaImg {
+    transition: none !important;
+    transform: none !important;
+  }
 }
 
 @keyframes fadeInUp {

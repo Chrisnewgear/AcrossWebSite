@@ -20,10 +20,27 @@ $ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   // ── Background stack ───────────────────────────────────────────────
+  // Extended vertically beyond the section bounds (and parallax-translated
+  // as a whole, see --py in main.scss) so the scroll effect never reveals
+  // empty edges. The zoom animation lives on the child image so its own
+  // `transform` doesn't fight the parallax translate on this wrapper.
   &__bg {
     position: absolute;
-    inset: 0;
+    inset: -10% 0;
     z-index: -1;
+    overflow: hidden;
+    will-change: transform;
+  }
+
+  // Subtle hover parallax: translated via --mx/--my (written on pointermove,
+  // see index.jsx). Sits between the scroll-parallax wrapper and the
+  // zoom-animated photo so none of the three transforms fight each other.
+  &__bgMouse {
+    position: absolute;
+    inset: -4%;
+    transition: transform 0.5s $ease-out-expo;
+    transform: translate3d(calc(var(--mx, 0) * -20px), calc(var(--my, 0) * -14px), 0);
+    will-change: transform;
   }
 
   // Aerial container-terminal photograph, anchored to the right.
@@ -267,5 +284,10 @@ $ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
 @media (prefers-reduced-motion: reduce) {
   .hero * {
     animation: none !important;
+  }
+
+  .hero__bgMouse {
+    transition: none !important;
+    transform: none !important;
   }
 }

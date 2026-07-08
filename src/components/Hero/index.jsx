@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useI18n } from "../../i18n/LanguageContext";
 import s from "./styles.module.scss";
@@ -5,14 +6,40 @@ import s from "./styles.module.scss";
 export default function Hero() {
   const navigate = useNavigate();
   const { t } = useI18n();
+  const heroRef = useRef(null);
+
+  // Subtle hover parallax: write the normalised cursor offset (-0.5..0.5) to
+  // CSS vars on the section. Direct DOM writes — no state, no re-render — the
+  // background layer just reads them via a smoothed CSS transition.
+  const handlePointerMove = (e) => {
+    const el = heroRef.current;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    el.style.setProperty("--mx", ((e.clientX - r.left) / r.width - 0.5).toFixed(3));
+    el.style.setProperty("--my", ((e.clientY - r.top) / r.height - 0.5).toFixed(3));
+  };
+  const handlePointerLeave = () => {
+    const el = heroRef.current;
+    if (!el) return;
+    el.style.setProperty("--mx", "0");
+    el.style.setProperty("--my", "0");
+  };
 
   return (
-    <section id="inicio" className={s.hero}>
+    <section
+      id="inicio"
+      className={s.hero}
+      ref={heroRef}
+      onPointerMove={handlePointerMove}
+      onPointerLeave={handlePointerLeave}
+    >
       {/* ── Background: solid navy on the left blending into a port photo ── */}
-      <div className={s.hero__bg} aria-hidden="true">
-        <div className={s.hero__bgImage} />
-        <div className={s.hero__bgOverlay} />
-        <div className={s.hero__bgWarm} />
+      <div className={s.hero__bg} data-parallax="0.12" aria-hidden="true">
+        <div className={s.hero__bgMouse}>
+          <div className={s.hero__bgImage} />
+          <div className={s.hero__bgOverlay} />
+          <div className={s.hero__bgWarm} />
+        </div>
       </div>
 
       {/* ── Content ─────────────────────────────────────────────────────── */}
