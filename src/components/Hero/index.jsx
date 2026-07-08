@@ -45,6 +45,7 @@ export default function Hero() {
           <div className={s.hero__bgImage} />
           <div className={s.hero__bgOverlay} />
           <div className={s.hero__bgWarm} />
+          <div className={s.hero__bgGlare} />
         </div>
       </div>
 

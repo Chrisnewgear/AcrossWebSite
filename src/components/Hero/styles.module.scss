@@ -3,6 +3,9 @@
 
 // Easing shared by entrance reveals
 $ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
+// Punchy expo-out used for the mouse-tracked tilt/glare — settles like a
+// spring without needing a JS animation library.
+$ease-wow: cubic-bezier(0.16, 1, 0.3, 1);
 
 .hero {
   position: relative;
@@ -32,18 +35,40 @@ $ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
     will-change: transform;
   }
 
-  // Subtle hover parallax: translated via --mx/--my (written on pointermove,
-  // see index.jsx). Sits between the scroll-parallax wrapper and the
-  // zoom-animated photo so none of the three transforms fight each other.
+  // WOW hover parallax: the photo tilts in fake 3D toward the cursor (via a
+  // self-contained perspective() in the transform list — no need for the
+  // ancestor chain to opt into 3D), plus a bigger pop-toward-viewer translate
+  // and a slight permanent zoom. Sits between the scroll-parallax wrapper and
+  // the zoom-in-entrance photo so none of the transforms fight each other.
   &__bgMouse {
     position: absolute;
-    inset: -4%;
-    transition: transform 0.5s $ease-out-expo;
-    transform: translate3d(
-      calc(var(--mx, 0) * -20px),
-      calc(var(--my, 0) * -14px),
-      0
-    );
+    inset: -10%;
+    transition: transform 0.6s $ease-wow;
+    transform:
+      perspective(1000px)
+      rotateX(calc(var(--my, 0) * -7deg))
+      rotateY(calc(var(--mx, 0) * 9deg))
+      translate3d(calc(var(--mx, 0) * -32px), calc(var(--my, 0) * -22px), 0)
+      scale(1.05);
+    will-change: transform;
+  }
+
+  // Soft glare that slides across the tilted photo, following the cursor —
+  // pure transform (translate) so it stays cheap and rides along with the
+  // tilted plane above.
+  &__bgGlare {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 75%;
+    height: 75%;
+    margin: -37.5% 0 0 -37.5%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.22) 0%, transparent 70%);
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    transition: transform 0.6s $ease-wow;
+    transform: translate3d(calc(var(--mx, 0) * 130px), calc(var(--my, 0) * 90px), 0);
     will-change: transform;
   }
 
@@ -316,7 +341,8 @@ $ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
     animation: none !important;
   }
 
-  .hero__bgMouse {
+  .hero__bgMouse,
+  .hero__bgGlare {
     transition: none !important;
     transform: none !important;
   }

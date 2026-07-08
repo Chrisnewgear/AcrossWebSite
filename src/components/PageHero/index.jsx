@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { useI18n } from "../../i18n/LanguageContext";
 import s from "./styles.module.scss";
@@ -12,55 +11,22 @@ export default function PageHero({
   image,
 }) {
   const { t } = useI18n();
-  const heroRef = useRef(null);
-
-  // Subtle hover parallax on the background photo: write the normalised
-  // cursor offset (-0.5..0.5) to CSS vars — direct DOM writes, no state, no
-  // re-renders (same pattern as Hero/PresenciaGlobal). `.mediaImg` reads them
-  // via a smoothed transition, nested inside `.media` so it never fights that
-  // layer's own scroll-driven transform (applied via [data-parallax]).
-  const handlePointerMove = (e) => {
-    const el = heroRef.current;
-    if (!el) return;
-    const r = el.getBoundingClientRect();
-    el.style.setProperty(
-      "--mx",
-      ((e.clientX - r.left) / r.width - 0.5).toFixed(3),
-    );
-    el.style.setProperty(
-      "--my",
-      ((e.clientY - r.top) / r.height - 0.5).toFixed(3),
-    );
-  };
-  const handlePointerLeave = () => {
-    const el = heroRef.current;
-    if (!el) return;
-    el.style.setProperty("--mx", "0");
-    el.style.setProperty("--my", "0");
-  };
 
   return (
-    <section
-      className={`${s.hero} ${image ? s["hero--image"] : ""}`}
-      ref={heroRef}
-      onPointerMove={image ? handlePointerMove : undefined}
-      onPointerLeave={image ? handlePointerLeave : undefined}
-    >
+    <section className={`${s.hero} ${image ? s["hero--image"] : ""}`}>
       <div className={s.decor} aria-hidden="true">
         {image && (
           <>
-            <div className={s.media} data-parallax="0.07">
-              <div
-                className={s.mediaImg}
-                style={{ backgroundImage: `url(${image})` }}
-              />
-            </div>
+            <div
+              className={s.media}
+              style={{ backgroundImage: `url(${image})` }}
+            />
             <div className={s.scrim} />
           </>
         )}
-        <span className={s.blobA} data-parallax="0.16" />
-        <span className={s.blobB} data-parallax="-0.12" />
-        <span className={s.grid} data-parallax="0.05" />
+        <span className={s.blobA} />
+        <span className={s.blobB} />
+        <span className={s.grid} />
       </div>
 
       <div className={s.inner}>
