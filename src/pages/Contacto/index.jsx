@@ -228,6 +228,7 @@ export default function Contacto() {
                 </div>
               </div>
 
+              {/* HORARIO DE ATENCIÓN disabled for now — uncomment to re-enable
               <div className={s["info-block"]}>
                 <h3 className={s["info-block-title"]}>{tc.hoursTitle}</h3>
                 <div className={s["hours-list"]}>
@@ -240,6 +241,7 @@ export default function Contacto() {
                 </div>
                 <p className={s["hours-note"]}>{tc.hoursNote}</p>
               </div>
+              */}
             </aside>
           </div>
         </div>

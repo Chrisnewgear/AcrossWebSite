@@ -7,7 +7,8 @@ import s from "./styles.module.scss";
 const NAV_LINKS = [
   { key: "inicio", to: "/" },
   { key: "servicios", to: "/servicios" },
-  { key: "cotizacion", to: "/cotizacion" },
+  // Cotizacion disabled for now — uncomment to re-enable the page link
+  // { key: "cotizacion", to: "/cotizacion" },
   { key: "contacto", to: "/contacto" },
 ];
 

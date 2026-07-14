@@ -50,11 +50,13 @@ export const translations = {
       banner: "Lo que nos define",
       mision: {
         title: "Nuestra Misión",
-        text: "Transformamos la distancia en oportunidades globales. Simplificamos tus operaciones internacionales conectándote con soluciones eficientes en cualquier parte del mundo.",
+        // text: "Transformamos la distancia en oportunidades globales. Simplificamos tus operaciones internacionales conectándote con soluciones eficientes en cualquier parte del mundo.",
+        text: "Satisfacer los requerimientos de nuestros clientes en todos los negocios internacionales de cualquier parte del mundo",
       },
       vision: {
         title: "Nuestra Visión",
-        text: "Ser el puente global que transforma fronteras en oportunidades, consolidándonos como el aliado estratégico más confiable, transparente y seguro para conectar mercados.",
+        // text: "Ser el puente global que transforma fronteras en oportunidades, consolidándonos como el aliado estratégico más confiable, transparente y seguro para conectar mercados.",
+        text: "Ser la empresa número uno en concretar negocios a nivel internacional, abriendo mercados y apoyando a empresas extranjeras en insertar sus productos globalmente",
       },
     },
 
@@ -153,7 +155,7 @@ export const translations = {
         "Nosotros",
         "Misión y Visión",
         "Presencia Internacional",
-        "Cotización",
+        // "Cotización",
         "Contacto",
       ],
       address:

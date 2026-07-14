@@ -51,7 +51,7 @@ export default function Hero() {
 
       {/* ── Content ─────────────────────────────────────────────────────── */}
       <div className={s.hero__content}>
-        <span className={s.hero__eyebrow}>{t.hero.eyebrow}</span>
+        {/* <span className={s.hero__eyebrow}>{t.hero.eyebrow}</span> */}
 
         <h1 className={s.hero__headline}>
           <span className={s.line}>{t.hero.line1}</span>
