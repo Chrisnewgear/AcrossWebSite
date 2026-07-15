@@ -212,20 +212,6 @@ export const translations = {
       benefitTag: "Beneficio para el cliente",
       phases: [
         {
-          tab: "Carga de Contenedor",
-          subtitle: "Supervisión de Estiba y Carga",
-          desc: "Verificamos que la mercancía sea cargada correctamente en el contenedor, asegurando la integridad de los productos durante el transporte internacional.",
-          includes: [
-            "Verificación del estado del contenedor.",
-            "Confirmación de cantidades cargadas.",
-            "Supervisión de manipulación y estiba.",
-            "Control de distribución y aseguramiento de la carga.",
-            "Registro fotográfico completo del proceso.",
-          ],
-          benefit:
-            "Evita daños durante el transporte, reduce riesgos logísticos y proporciona evidencia documental del estado de la mercancía al momento del embarque.",
-        },
-        {
           tab: "Durante Producción",
           subtitle: "Inspección en Planta (DUPRO)",
           desc: "Supervisamos el proceso de fabricación mientras tu pedido se encuentra en producción, permitiendo detectar desviaciones, defectos o incumplimientos antes de que afecten la totalidad del lote.",
@@ -252,6 +238,20 @@ export const translations = {
           ],
           benefit:
             "Garantiza que la mercancía enviada corresponde a lo solicitado y minimiza reclamaciones, devoluciones y pérdidas económicas.",
+        },
+        {
+          tab: "Carga de Contenedor",
+          subtitle: "Supervisión de Estiba y Carga",
+          desc: "Verificamos que la mercancía sea cargada correctamente en el contenedor, asegurando la integridad de los productos durante el transporte internacional.",
+          includes: [
+            "Verificación del estado del contenedor.",
+            "Confirmación de cantidades cargadas.",
+            "Supervisión de manipulación y estiba.",
+            "Control de distribución y aseguramiento de la carga.",
+            "Registro fotográfico completo del proceso.",
+          ],
+          benefit:
+            "Evita daños durante el transporte, reduce riesgos logísticos y proporciona evidencia documental del estado de la mercancía al momento del embarque.",
         },
       ],
     },
@@ -729,20 +729,6 @@ export const translations = {
       benefitTag: "Client benefit",
       phases: [
         {
-          tab: "Container Loading",
-          subtitle: "Stowage & Loading Supervision",
-          desc: "We verify that the goods are loaded correctly into the container, ensuring product integrity during international transport.",
-          includes: [
-            "Verification of the container's condition.",
-            "Confirmation of loaded quantities.",
-            "Supervision of handling and stowage.",
-            "Control of load distribution and securing.",
-            "Complete photographic record of the process.",
-          ],
-          benefit:
-            "Prevents damage during transport, reduces logistics risks and provides documentary evidence of the goods' condition at the time of shipment.",
-        },
-        {
           tab: "During Production",
           subtitle: "In-Plant Inspection (DUPRO)",
           desc: "We supervise the manufacturing process while your order is in production, allowing deviations, defects or non-compliance to be detected before they affect the entire batch.",
@@ -769,6 +755,20 @@ export const translations = {
           ],
           benefit:
             "Ensures the goods shipped match what was ordered and minimizes claims, returns and financial losses.",
+        },
+        {
+          tab: "Container Loading",
+          subtitle: "Stowage & Loading Supervision",
+          desc: "We verify that the goods are loaded correctly into the container, ensuring product integrity during international transport.",
+          includes: [
+            "Verification of the container's condition.",
+            "Confirmation of loaded quantities.",
+            "Supervision of handling and stowage.",
+            "Control of load distribution and securing.",
+            "Complete photographic record of the process.",
+          ],
+          benefit:
+            "Prevents damage during transport, reduces logistics risks and provides documentary evidence of the goods' condition at the time of shipment.",
         },
       ],
     },

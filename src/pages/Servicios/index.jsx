@@ -7,7 +7,14 @@ import { useI18n } from "../../i18n/LanguageContext";
 import s from "./styles.module.scss";
 
 // Icons stay in code; copy comes from translations (index-aligned).
-const COMP_ICONS = ["search", "package", "handshake", "truck", "document", "shieldCheck"];
+const COMP_ICONS = [
+  "search",
+  "package",
+  "handshake",
+  "truck",
+  "document",
+  "shieldCheck",
+];
 
 /* const TRANSPORT = [
   {
@@ -88,7 +95,7 @@ export default function Servicios() {
   const { t } = useI18n();
   const ts = t.servicios;
   // Center card ("Durante Producción") is featured by default, matching the design.
-  const [activePhase, setActivePhase] = useState(1);
+  const [activePhase, setActivePhase] = useState(0);
 
   // On mobile the phase cards become a swipeable scroll-snap carousel; on desktop
   // the same DOM stays a 3-up featured grid (the track never scrolls there).
