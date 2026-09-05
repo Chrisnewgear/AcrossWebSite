@@ -1,24 +1,30 @@
-// ─── Brand Colors ────────────────────────────────────────────────────────────
-$color-blue:        #134289;
-$color-blue-dark:   #0d2f63;
-$color-blue-light:  #1a54ad;
-$color-green:       #71C200;
-$color-green-dark:  #5a9a00;
-$color-green-light: #8be020;
+// Brand manual, page 9: use printed hex values as the digital source of truth.
+$color-charcoal:    #181c1a;
+$color-continental-green: #133326;
+$color-silver:      #c6c6c6;
+$color-mist:        #778680;
+
+// UI roles. Silver supplies readable accents on dark brand surfaces.
+$color-primary:       $color-charcoal;
+$color-primary-dark:  $color-charcoal;
+$color-primary-light: $color-continental-green;
+$color-accent:        $color-continental-green;
+$color-accent-dark:   #0d261c;
+$color-accent-light:  $color-silver;
 $color-white:       #ffffff;
-$color-off-white:   #f4f7fb;
-$color-dark:        #0a0a0a;
-$color-gray-100:    #f8fafc;
-$color-gray-200:    #e8edf5;
-$color-gray-300:    #c5d0e0;
-$color-gray-400:    #8fa3bc; // decorative only — fails WCAG AA as text (2.5:1 on white)
-$color-gray-500:    #5b6d85; // muted text — passes AA (5.3:1 on white)
-$color-gray-600:    #4a5e7a;
-$color-gray-800:    #1e2c3d;
+$color-off-white:   #f2f5f3;
+$color-dark:        $color-charcoal;
+$color-gray-100:    #f7f8f7;
+$color-gray-200:    #e2e7e4;
+$color-gray-300:    $color-silver;
+$color-gray-400:    $color-mist; // decoration; use gray-500 for muted text on white
+$color-gray-500:    #53635b;
+$color-gray-600:    #435249;
+$color-gray-800:    #27392f;
 
 // ─── Typography ──────────────────────────────────────────────────────────────
-$font-primary:    'Barlow', 'Inter', sans-serif;
-$font-display:    'Barlow Condensed', 'Inter', sans-serif;
+$font-primary:    'Montserrat', sans-serif;
+$font-display:    'Montserrat', sans-serif;
 
 $fs-xs:   0.75rem;
 $fs-sm:   0.875rem;
@@ -50,7 +56,7 @@ $space-32: 8rem;
 // ─── Layout ──────────────────────────────────────────────────────────────────
 $container-max:   1280px;
 $container-wide:  1440px;
-$navbar-height:   80px;
+$navbar-height:   112px;
 
 // ─── Breakpoints ─────────────────────────────────────────────────────────────
 $bp-sm:   576px;
@@ -68,8 +74,8 @@ $radius-full: 9999px;
 $shadow-sm:  0 2px 8px rgba(0, 0, 0, 0.08);
 $shadow-md:  0 4px 24px rgba(0, 0, 0, 0.12);
 $shadow-lg:  0 8px 40px rgba(0, 0, 0, 0.18);
-$shadow-blue: 0 8px 32px rgba(19, 66, 137, 0.25);
-$shadow-green: 0 8px 32px rgba(113, 194, 0, 0.3);
+$shadow-primary: 0 8px 32px rgba($color-primary, 0.25);
+$shadow-accent: 0 8px 32px rgba($color-accent, 0.3);
 
 $transition-fast:   0.15s ease;
 $transition-base:   0.3s ease;

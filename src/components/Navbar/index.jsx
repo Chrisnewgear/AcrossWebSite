@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { useI18n } from "../../i18n/LanguageContext";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/logo-charcoal.svg";
 import s from "./styles.module.scss";
 
 const NAV_LINKS = [

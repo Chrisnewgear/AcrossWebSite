@@ -24,6 +24,9 @@ function build_message(PHPMailer $mail, array $opts, array $cfg): void {
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
     $mail->Port       = (int) $cfg['SMTP_PORT'];
     $mail->CharSet    = 'UTF-8';
+    // PHPMailer defaults to 300s. A blocked SMTP port would otherwise leave the
+    // visitor watching a spinner for five minutes before the request gives up.
+    $mail->Timeout    = 15;
 
     $mail->setFrom($cfg['MAIL_FROM'], $cfg['MAIL_FROM_NAME']);
     $mail->addAddress($cfg['RECIPIENT']);

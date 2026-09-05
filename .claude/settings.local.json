@@ -8,7 +8,27 @@
       "Bash(npx vite *)",
       "Bash(npm run *)",
       "Bash(npm view *)",
-      "Bash(npx --yes impeccable@3.2.0 install)"
+      "Bash(npx --yes impeccable@3.2.0 install)",
+      "Bash(echo \"\\(exit $?\\)\")",
+      "Bash(php -v)",
+      "Bash(docker info *)",
+      "Bash(awk -F: '{print $3}')",
+      "Bash(npx --no-install eslint src/pages/Contacto/index.jsx src/components/CotizacionForm/index.jsx)",
+      "Bash(rm -rf /tmp/dist-check)",
+      "Bash(grep -n 'public $Timeout' public/api/lib/PHPMailer/PHPMailer.php public/api/lib/PHPMailer/SMTP.php)",
+      "Bash(echo \"--- lint exit: $? ---\")",
+      "Read(//opt/homebrew/**)",
+      "Bash(brew list *)",
+      "Read(//opt/**)",
+      "Bash(command -v brew)",
+      "Read(//usr/local/Cellar/**)",
+      "Bash(npm init *)",
+      "Bash(echo \"install exit: $?\")",
+      "Bash(node /private/tmp/claude-501/-Users-chrisnewgear-Documents-GitHub-AcrossWebSite/d5dce436-fe13-4afd-96e4-6d58c19bd177/scratchpad/check.mjs public/api/contact.php public/api/cotizacion.php public/api/health.php public/api/config.example.php public/api/lib/respond.php public/api/lib/validate.php public/api/lib/body.php public/api/lib/mailer.php public/api/lib/ratelimit.php)",
+      "Bash(node /private/tmp/claude-501/-Users-chrisnewgear-Documents-GitHub-AcrossWebSite/d5dce436-fe13-4afd-96e4-6d58c19bd177/scratchpad/check.mjs test/*.php)",
+      "Bash(node /private/tmp/claude-501/-Users-chrisnewgear-Documents-GitHub-AcrossWebSite/d5dce436-fe13-4afd-96e4-6d58c19bd177/scratchpad/check.mjs test/ratelimit.test.php)",
+      "Bash(npx eslint *)",
+      "Bash(grep -vE \"scss$\")"
     ],
     "additionalDirectories": [
       "C:\\Users\\chris\\Documents\\Github\\ACROSS PROJECT\\website\\src\\components"

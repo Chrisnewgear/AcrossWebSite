@@ -5,13 +5,13 @@
   position: relative;
   overflow: hidden;
   padding-block: $space-24;
-  background-color: $color-blue-dark;
+  background-color: $color-primary-dark;
   background-image:
     linear-gradient(
       160deg,
-      rgba(8, 22, 55, 0.93) 0%,
-      rgba(13, 42, 92, 0.84) 55%,
-      rgba(9, 26, 64, 0.94) 100%
+      rgba($color-primary-dark, 0.93) 0%,
+      rgba($color-accent, 0.84) 55%,
+      rgba($color-primary-dark, 0.94) 100%
     ),
     url("https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=2000&q=80");
   background-size: cover;
@@ -31,7 +31,7 @@
     border-radius: 50%;
     background: radial-gradient(
       circle,
-      rgba(113, 194, 0, 0.12) 0%,
+      rgba($color-accent, 0.12) 0%,
       transparent 70%
     );
   }
@@ -66,7 +66,7 @@
 .title {
   font-family: $font-display;
   font-size: clamp(#{$fs-2xl}, 4vw, #{$fs-4xl});
-  font-weight: 900;
+  font-weight: 700;
   color: $color-white;
   letter-spacing: -0.02em;
   text-transform: uppercase;
@@ -88,7 +88,7 @@
   overflow: hidden;
   padding: $space-10 $space-10 $space-12;
   border-radius: $radius-xl;
-  background-color: $color-green;
+  background-color: $color-accent;
   background-image: linear-gradient(
     150deg,
     rgba(255, 255, 255, 0.14) 0%,
@@ -139,7 +139,7 @@
   bottom: $space-2;
   font-family: $font-display;
   font-size: clamp(5rem, 9vw, 8rem);
-  font-weight: 900;
+  font-weight: 700;
   line-height: 1;
   letter-spacing: -0.05em;
   color: rgba(255, 255, 255, 0.2);
@@ -163,10 +163,10 @@
 }
 
 .commission-item {
-  background: rgba(113, 194, 0, 0.12);
+  background: rgba($color-accent, 0.12);
   backdrop-filter: blur(14px) saturate(160%);
   -webkit-backdrop-filter: blur(14px) saturate(160%);
-  border: 1px solid rgba(113, 194, 0, 0.25);
+  border: 1px solid rgba($color-accent, 0.25);
   border-radius: $radius-lg;
   padding: $space-6 $space-8;
   text-align: center;
@@ -175,8 +175,8 @@
 .commission-rate {
   font-family: $font-display;
   font-size: $fs-3xl;
-  font-weight: 900;
-  color: $color-green;
+  font-weight: 700;
+  color: $color-silver;
   letter-spacing: -0.03em;
   line-height: 1;
   margin-bottom: $space-2;

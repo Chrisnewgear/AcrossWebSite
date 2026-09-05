@@ -11,7 +11,7 @@
 
 // ── Full-bleed green banner ───────────────────────────────────────────
 .banner {
-  background: $color-green;
+  background: $color-accent;
   text-align: center;
   padding-block: $space-4;
 }
@@ -57,19 +57,19 @@
   -webkit-backdrop-filter: blur(16px) saturate(160%);
   border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: $radius-xl;
-  box-shadow: 0 16px 40px rgba(19, 66, 137, 0.06);
+  box-shadow: 0 16px 40px rgba($color-primary, 0.06);
   transition:
     transform $transition-base,
     box-shadow $transition-base;
 
   &:hover {
     transform: translateY(-6px);
-    box-shadow: 0 24px 56px rgba(19, 66, 137, 0.12);
+    box-shadow: 0 24px 56px rgba($color-primary, 0.12);
 
     .card__icon {
       color: $color-white;
-      background: $color-blue;
-      border-color: $color-blue;
+      background: $color-primary;
+      border-color: $color-primary;
     }
   }
 }
@@ -82,9 +82,9 @@
   align-items: center;
   justify-content: center;
   margin-bottom: $space-6;
-  color: $color-blue;
-  background: rgba(19, 66, 137, 0.07);
-  border: 1px solid rgba(19, 66, 137, 0.12);
+  color: $color-primary;
+  background: rgba($color-primary, 0.07);
+  border: 1px solid rgba($color-primary, 0.12);
   transition:
     color $transition-base,
     background $transition-base,
@@ -95,7 +95,7 @@
   font-family: $font-display;
   font-size: $fs-xl;
   font-weight: 700;
-  color: $color-blue;
+  color: $color-primary;
   letter-spacing: -0.01em;
   margin-bottom: $space-4;
 }
@@ -104,7 +104,7 @@
   width: 44px;
   height: 3px;
   border-radius: 2px;
-  background: $color-green;
+  background: $color-accent;
   margin-bottom: $space-5;
 }
 

@@ -236,6 +236,7 @@ export default function Rastreo() {
             <p>{tr.contactText}</p>
           </div>
           <div
+            className="on-dark"
             style={{
               display: "flex",
               gap: "1rem",

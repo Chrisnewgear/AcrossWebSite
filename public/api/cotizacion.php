@@ -3,12 +3,15 @@ require_once __DIR__ . '/lib/respond.php';
 require_once __DIR__ . '/lib/validate.php';
 require_once __DIR__ . '/lib/body.php';
 require_once __DIR__ . '/lib/mailer.php';
+require_once __DIR__ . '/lib/ratelimit.php';
 
 require_post();
 
 $data = $_POST;
 
-if (!empty($data['website'])) {
+// Honeypot: pretend success, send nothing. "website" is the legacy field name,
+// still checked so visitors on a cached JS bundle keep working after deploy.
+if (!empty($data['nombre_confirmacion']) || !empty($data['website'])) {
     json_response(200, ['ok' => true]);
 }
 
@@ -52,14 +55,21 @@ if ($file && ($file['error'] ?? UPLOAD_ERR_NO_FILE) !== UPLOAD_ERR_NO_FILE) {
     if (!isset($allowed[$ext])) {
         json_response(422, ['ok' => false, 'error' => 'File type not allowed', 'fields' => ['documento']]);
     }
+    // No finfo_close(): it is deprecated as of PHP 8.4 and the handle is freed
+    // at end of request on every supported version anyway.
     $finfo = finfo_open(FILEINFO_MIME_TYPE);
     $mime  = finfo_file($finfo, $file['tmp_name']);
-    finfo_close($finfo);
     if (!in_array($mime, $allowed[$ext], true)) {
         json_response(422, ['ok' => false, 'error' => 'File content does not match extension', 'fields' => ['documento']]);
     }
     $attachments[] = ['tmp_path' => $file['tmp_name'], 'filename' => basename($file['name'])];
     $docNote = 'Sí (' . basename($file['name']) . ')';
+}
+
+// Throttle only what would actually send mail, so a visitor who fumbles the
+// form or retries an attachment is never locked out.
+if (!rate_limit('cotizacion', 5, 3600)) {
+    json_response(429, ['ok' => false, 'error' => 'Too many requests']);
 }
 
 [$html, $text] = build_bodies('Nueva solicitud de cotización', [

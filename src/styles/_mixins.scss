@@ -100,7 +100,7 @@
   border-radius: $radius-full;
   font-family: $font-primary;
   font-size: $fs-sm;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   cursor: pointer;
@@ -109,7 +109,7 @@
   transition: all $transition-base;
 
   &:focus-visible {
-    outline: 2px solid $color-green;
+    outline: 2px solid $color-accent;
     outline-offset: 3px;
   }
 }

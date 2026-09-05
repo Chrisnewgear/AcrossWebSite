@@ -40,7 +40,7 @@ export default function PageHero({
         {label && <div className={s.label}>{label}</div>}
         <h1 className={s.title}>{title}</h1>
         {subtitle && <p className={s.subtitle}>{subtitle}</p>}
-        {actions && <div className={s.actions}>{actions}</div>}
+        {actions && <div className={`${s.actions} on-dark`}>{actions}</div>}
       </div>
     </section>
   );

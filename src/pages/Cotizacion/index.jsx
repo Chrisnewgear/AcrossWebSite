@@ -20,9 +20,16 @@ const INITIAL = {
   telefono: "",
   descripcion: "",
   comentarios: "",
+  // Honeypot — must stay empty. Deliberately not named "website"/"url":
+  // browsers and password managers autofill those even with autocomplete off,
+  // which would make the server silently discard a real request.
+  nombre_confirmacion: "",
 };
 
 const TOTAL_STEPS = 3;
+
+// Longer than the contact form's: this request can carry a 10 MB attachment.
+const REQUEST_TIMEOUT_MS = 60000;
 
 export default function Cotizacion() {
   const [step, setStep] = useState(1);
@@ -31,7 +38,7 @@ export default function Cotizacion() {
   const [loading, setLoading] = useState(false);
   const [documento, setDocumento] = useState(null);
   const [docError, setDocError] = useState("");
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("");
 
   const { t } = useI18n();
   const tc = t.cotizacion;
@@ -69,21 +76,29 @@ export default function Cotizacion() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setError(false);
+    setError("");
     try {
       const fd = new FormData();
+      // Includes the honeypot, so a bot that fills it is actually detected.
       Object.entries(form).forEach(([k, v]) => fd.append(k, v));
-      fd.append("website", ""); // honeypot
       if (documento) fd.append("documento", documento);
       const res = await fetch("/api/cotizacion.php", {
         method: "POST",
         body: fd,
+        // Optional call: on a browser without AbortSignal.timeout this is
+        // undefined (no timeout) rather than a TypeError that would break
+        // every submission.
+        signal: AbortSignal.timeout?.(REQUEST_TIMEOUT_MS),
       });
       const data = await res.json().catch(() => ({}));
+      if (res.status === 429) {
+        setError(tc.errorRate);
+        return;
+      }
       if (!res.ok || !data.ok) throw new Error("send failed");
       setSubmitted(true);
     } catch {
-      setError(true);
+      setError(tc.error);
     } finally {
       setLoading(false);
     }
@@ -171,13 +186,13 @@ export default function Cotizacion() {
                   <form className={s["form-body"]} onSubmit={handleSubmit}>
                     <input
                       type="text"
-                      name="website"
+                      name="nombre_confirmacion"
                       className={s.honeypot}
                       tabIndex={-1}
                       autoComplete="off"
                       aria-hidden="true"
-                      value=""
-                      onChange={() => {}}
+                      value={form.nombre_confirmacion}
+                      onChange={update("nombre_confirmacion")}
                     />
                     {/* Step 1 — Service + Route */}
                     {step === 1 && (
@@ -394,9 +409,9 @@ export default function Cotizacion() {
                             </div>
                           ))}
                         </div>
-                        {error && (
-                          <p className={s["form-error"]}>{tc.error}</p>
-                        )}
+                        <div role="status" aria-live="polite">
+                          {error && <p className={s["form-error"]}>{error}</p>}
+                        </div>
                         <div className={s["form-actions"]}>
                           <button
                             type="button"

@@ -4,9 +4,9 @@
 .hero {
   background: linear-gradient(
     160deg,
-    $color-blue-dark 0%,
-    $color-blue 55%,
-    $color-blue-light 100%
+    $color-primary-dark 0%,
+    $color-primary 55%,
+    $color-primary-light 100%
   );
   padding-top: calc(#{$navbar-height} + #{$space-20});
   padding-bottom: $space-20;
@@ -49,11 +49,11 @@
   background:
     linear-gradient(
       105deg,
-      rgba(8, 24, 52, 0.94) 0%,
-      rgba(11, 40, 84, 0.78) 44%,
-      rgba(19, 66, 137, 0.5) 100%
+      rgba($color-primary-dark, 0.94) 0%,
+      rgba($color-accent, 0.78) 44%,
+      rgba($color-primary, 0.5) 100%
     ),
-    linear-gradient(to top, rgba(8, 24, 52, 0.88) 0%, transparent 46%);
+    linear-gradient(to top, rgba($color-primary-dark, 0.88) 0%, transparent 46%);
 }
 
 @keyframes heroMediaIn {
@@ -80,7 +80,7 @@
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(113, 194, 0, 0.18) 0%,
+    rgba($color-accent, 0.18) 0%,
     transparent 68%
   );
 }
@@ -142,12 +142,12 @@
     transition: color $transition-fast;
 
     &:hover {
-      color: $color-green;
+      color: $color-silver;
     }
   }
 
   span {
-    color: $color-green;
+    color: $color-silver;
   }
 }
 
@@ -159,7 +159,7 @@
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: $color-green;
+  color: $color-silver;
   margin-bottom: $space-5;
 
   &::before {
@@ -167,7 +167,7 @@
     display: inline-block;
     width: 28px;
     height: 2px;
-    background: $color-green;
+    background: $color-silver;
     border-radius: 2px;
   }
 }
@@ -175,7 +175,7 @@
 .title {
   font-family: $font-display;
   font-size: clamp(2.2rem, 5vw, 4rem);
-  font-weight: 900;
+  font-weight: 700;
   color: $color-white;
   letter-spacing: -0.02em;
   line-height: 1.05;

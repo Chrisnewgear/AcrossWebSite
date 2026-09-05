@@ -6,7 +6,8 @@ import Valores from "../../components/Valores";
 import Ventajas from "../../components/Ventajas";
 // import PresenciaGlobal from "../../components/PresenciaGlobal";
 // import CTABanner from "../../components/CTABanner";
-// import CotizacionForm from "../../components/CotizacionForm";
+// Removed: components/CotizacionForm was a mock that faked a successful submit
+// without sending anything. Use the /cotizacion page, which posts to the API.
 
 export default function Home() {
   return (
@@ -18,8 +19,7 @@ export default function Home() {
       <Valores />
       <Ventajas />
       {/* <PresenciaGlobal /> */}
-      {/* <CTABanner />
-      <CotizacionForm /> */}
+      {/* <CTABanner /> */}
     </>
   );
 }

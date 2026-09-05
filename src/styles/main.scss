@@ -3,7 +3,7 @@
 @use 'typography';
 
 // Google Fonts
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap');
 
 // Global
 body {
@@ -17,18 +17,22 @@ body {
   min-height: 100vh;
 }
 
+section[id] {
+  scroll-margin-top: $navbar-height;
+}
+
 // ─── Keyboard focus ──────────────────────────────────────────────────────────
 // Consistent, on-brand focus ring for keyboard users across every interactive
 // element (mouse clicks stay clean via :focus-visible).
 :focus-visible {
-  outline: 2px solid $color-blue;
+  outline: 2px solid $color-primary;
   outline-offset: 2px;
   border-radius: 2px;
 }
 
 a:focus-visible,
 button:focus-visible {
-  outline-color: $color-green;
+  outline-color: $color-mist;
 }
 
 // ─── Utility: Section Label ──────────────────────────────────────────────────
@@ -41,7 +45,7 @@ button:focus-visible {
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: $color-green;
+  color: $color-accent;
   margin-bottom: $space-4;
 
   &::before {
@@ -49,20 +53,31 @@ button:focus-visible {
     display: block;
     width: 24px;
     height: 2px;
-    background: $color-green;
+    background: $color-accent;
     border-radius: 2px;
   }
 }
 
-// ─── Utility: Btn Green ──────────────────────────────────────────────────────
+// ─── Utility: Btn Green (primary action) ─────────────────────────────────────
+// Surface-aware. On light pages the primary is the brand green; on dark brand
+// surfaces the fill inverts to white, because continental green (#133326) only
+// clears 1.25:1 against charcoal (#181c1a) and vanishes there. Dark sections
+// opt in by setting these custom properties (see `.on-dark` below) — the
+// button itself never needs a modifier class in the markup.
 .btn-green {
+  --btn-bg: #{$color-accent};
+  --btn-bg-hover: #{$color-accent-dark};
+  --btn-fg: #{$color-white};
+  --btn-shadow: 0 4px 16px #{rgba($color-accent, 0.3)};
+  --btn-shadow-hover: 0 8px 24px #{rgba($color-accent, 0.4)};
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: $space-2;
   padding: $space-3 $space-8;
-  background: $color-green;
-  color: $color-white;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
   border-radius: $radius-full;
   font-family: $font-primary;
   font-size: $fs-sm;
@@ -70,15 +85,17 @@ button:focus-visible {
   letter-spacing: 0.05em;
   text-transform: uppercase;
   cursor: pointer;
-  border: none;
   text-decoration: none;
   transition: all $transition-base;
-  box-shadow: 0 4px 16px rgba(113, 194, 0, 0.3);
+  box-shadow: var(--btn-shadow);
+  // A solid fill is the signal on its own; an outline on top of it only makes
+  // the button read like the outlined secondary sitting next to it.
+  border: none;
 
   &:hover {
-    background: $color-green-dark;
+    background: var(--btn-bg-hover);
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(113, 194, 0, 0.4);
+    box-shadow: var(--btn-shadow-hover);
   }
 
   &:active {
@@ -86,6 +103,9 @@ button:focus-visible {
   }
 }
 
+// ─── Utility: Btn Outline White (secondary action) ───────────────────────────
+// Deliberately quieter than the filled primary: a hairline instead of a 2px
+// rule, so the pair reads as two levels rather than two equals.
 .btn-outline-white {
   display: inline-flex;
   align-items: center;
@@ -93,7 +113,7 @@ button:focus-visible {
   gap: $space-2;
   padding: $space-3 $space-8;
   background: transparent;
-  color: $color-white;
+  color: rgba(255, 255, 255, 0.92);
   border-radius: $radius-full;
   font-family: $font-primary;
   font-size: $fs-sm;
@@ -101,14 +121,37 @@ button:focus-visible {
   letter-spacing: 0.05em;
   text-transform: uppercase;
   cursor: pointer;
-  border: 2px solid rgba(255,255,255,0.6);
+  border: 1px solid rgba(255, 255, 255, 0.32);
   text-decoration: none;
   transition: all $transition-base;
 
   &:hover {
-    background: rgba(255,255,255,0.15);
-    border-color: $color-white;
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.7);
+    color: $color-white;
     transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// ─── Dark-surface button context ─────────────────────────────────────────────
+// Applied to any wrapper sitting on charcoal / a photo overlay. Inverts the
+// primary to a white pill (≈17:1 against charcoal) so it stops competing with
+// the outlined secondary beside it.
+.on-dark {
+  .btn-green {
+    --btn-bg: #{$color-white};
+    --btn-bg-hover: #{$color-off-white};
+    --btn-fg: #{$color-primary-dark};
+    --btn-shadow: 0 6px 20px #{rgba(#000, 0.35)};
+    --btn-shadow-hover: 0 12px 32px #{rgba(#000, 0.45)};
+  }
+
+  .btn-green:focus-visible {
+    outline-color: $color-white;
   }
 }
 

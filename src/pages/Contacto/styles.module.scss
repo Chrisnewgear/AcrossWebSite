@@ -16,18 +16,18 @@
 
 // ─── Green header bar ─────────────────────────────────────────────────────────
 .header-bar {
-  background: $color-green;
-  background-image: linear-gradient(90deg, $color-green, $color-green-dark);
+  background: $color-accent;
+  background-image: linear-gradient(90deg, $color-accent, $color-accent-dark);
   color: $color-white;
   text-align: center;
   font-family: $font-display;
   font-size: $fs-xl;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   padding: $space-4;
   border-radius: $radius-lg $radius-lg 0 0;
-  box-shadow: $shadow-green;
+  box-shadow: $shadow-accent;
 }
 
 // ─── Outer navy panel ─────────────────────────────────────────────────────────
@@ -36,10 +36,10 @@
   justify-content: center;
   align-items: flex-start;
   gap: $space-8;
-  background: $color-blue;
-  background-image: linear-gradient(160deg, $color-blue-dark, $color-blue);
+  background: $color-primary;
+  background-image: linear-gradient(160deg, $color-primary-dark, $color-primary);
   border-radius: 0 0 $radius-xl $radius-xl;
-  box-shadow: $shadow-blue;
+  box-shadow: $shadow-primary;
   padding: $space-16 $space-10;
 
   @include respond-to(lg) {
@@ -114,8 +114,8 @@
   gap: $space-2;
   font-family: $font-display;
   font-size: $fs-sm;
-  font-weight: 800;
-  color: $color-blue;
+  font-weight: 700;
+  color: $color-primary;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin-bottom: $space-5;
@@ -125,7 +125,7 @@
     width: 18px;
     height: 3px;
     border-radius: $radius-full;
-    background: $color-green;
+    background: $color-accent;
     flex-shrink: 0;
   }
 }
@@ -149,7 +149,7 @@
 
   &:hover {
     background: $color-white;
-    border-color: $color-green;
+    border-color: $color-accent;
     transform: translateY(-1px);
   }
 }
@@ -161,8 +161,8 @@
   width: 40px;
   height: 40px;
   flex-shrink: 0;
-  background: rgba(113, 194, 0, 0.12);
-  color: $color-green;
+  background: rgba($color-accent, 0.12);
+  color: $color-accent;
   border-radius: $radius-md;
 }
 
@@ -184,8 +184,8 @@
 
 .channel-value {
   font-size: $fs-sm;
-  font-weight: 600;
-  color: $color-blue;
+  font-weight: 700;
+  color: $color-primary;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -196,7 +196,7 @@
   align-items: center;
   gap: 4px;
   font-size: $fs-xs;
-  font-weight: 600;
+  font-weight: 700;
   color: $color-gray-500;
   white-space: nowrap;
 }
@@ -222,7 +222,7 @@
 
 .hours-time {
   font-weight: 700;
-  color: $color-blue;
+  color: $color-primary;
 }
 
 .hours-note {
@@ -239,8 +239,8 @@
 .form-title {
   font-family: $font-display;
   font-size: $fs-2xl;
-  font-weight: 800;
-  color: $color-blue;
+  font-weight: 700;
+  color: $color-primary;
   letter-spacing: -0.01em;
   margin-bottom: $space-2;
   text-transform: uppercase;
@@ -275,7 +275,7 @@
 
 .form-label {
   font-size: $fs-sm;
-  font-weight: 600;
+  font-weight: 700;
   color: $color-gray-600;
 }
 
@@ -304,8 +304,8 @@
 
   &:focus {
     background: $color-white;
-    border-color: $color-blue;
-    box-shadow: 0 0 0 3px rgba(19, 66, 137, 0.12);
+    border-color: $color-primary;
+    box-shadow: 0 0 0 3px rgba($color-primary, 0.12);
   }
 }
 
@@ -338,7 +338,7 @@
   justify-content: center;
   gap: $space-2;
   padding: $space-4 $space-10;
-  background: $color-green;
+  background: $color-accent;
   color: $color-white;
   border-radius: $radius-md;
   font-family: $font-primary;
@@ -349,10 +349,10 @@
   border: none;
   cursor: pointer;
   transition: all $transition-base;
-  box-shadow: 0 4px 16px rgba(113, 194, 0, 0.35);
+  box-shadow: 0 4px 16px rgba($color-accent, 0.35);
 
   &:hover:not(:disabled) {
-    background: $color-green-dark;
+    background: $color-accent-dark;
     transform: translateY(-2px);
   }
 
@@ -369,7 +369,7 @@
 }
 
 .success-icon {
-  color: $color-green;
+  color: $color-accent;
   display: flex;
   justify-content: center;
   margin-bottom: $space-6;
@@ -379,8 +379,8 @@
 .success-title {
   font-family: $font-display;
   font-size: $fs-2xl;
-  font-weight: 800;
-  color: $color-blue;
+  font-weight: 700;
+  color: $color-primary;
   margin-bottom: $space-4;
 }
 

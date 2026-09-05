@@ -449,6 +449,8 @@ export const translations = {
       },
       error:
         "No se pudo enviar la solicitud. Intente nuevamente o escríbanos a info@acrosscon.com.",
+      errorRate:
+        "Ha enviado demasiadas solicitudes. Espere unos minutos o escríbanos a info@acrosscon.com.",
     },
 
     contacto: {
@@ -477,13 +479,15 @@ export const translations = {
           "Cuéntanos sobre tu operación: producto, origen, destino, volumen y cualquier consulta específica...",
       },
       asuntoPlaceholder: "Seleccionar motivo...",
+      // `id` is the stable form value — never translate it, or switching
+      // language mid-form would clear the user's selection.
       subjects: [
-        "Cotización de flete",
-        "Inspección de calidad",
-        "Sourcing de proveedores",
-        "Seguimiento de envío",
-        "Trading / Intermediación",
-        "Otro",
+        { id: "flete", label: "Cotización de flete" },
+        { id: "inspeccion", label: "Inspección de calidad" },
+        { id: "sourcing", label: "Sourcing de proveedores" },
+        { id: "seguimiento", label: "Seguimiento de envío" },
+        { id: "trading", label: "Trading / Intermediación" },
+        { id: "otro", label: "Otro" },
       ],
       otroPlaceholder: "Especifique el motivo de tu consulta",
       submit: "Enviar Mensaje",
@@ -494,6 +498,8 @@ export const translations = {
       },
       error:
         "No se pudo enviar el mensaje. Intente nuevamente o escríbanos a info@acrosscon.com.",
+      errorRate:
+        "Ha enviado demasiados mensajes. Espere unos minutos o escríbanos a info@acrosscon.com.",
       channelsTitle: "Canales de Atención",
       channels: [
         {
@@ -966,6 +972,8 @@ export const translations = {
       },
       error:
         "Your request could not be sent. Please try again or email us at info@acrosscon.com.",
+      errorRate:
+        "You have sent too many requests. Please wait a few minutes or email us at info@acrosscon.com.",
     },
 
     contacto: {
@@ -994,13 +1002,14 @@ export const translations = {
           "Tell us about your operation: product, origin, destination, volume and any specific questions...",
       },
       asuntoPlaceholder: "Select a reason...",
+      // `id` must match the Spanish list — it is the stable form value.
       subjects: [
-        "Freight quote",
-        "Quality inspection",
-        "Supplier sourcing",
-        "Shipment tracking",
-        "Trading / Intermediation",
-        "Other",
+        { id: "flete", label: "Freight quote" },
+        { id: "inspeccion", label: "Quality inspection" },
+        { id: "sourcing", label: "Supplier sourcing" },
+        { id: "seguimiento", label: "Shipment tracking" },
+        { id: "trading", label: "Trading / Intermediation" },
+        { id: "otro", label: "Other" },
       ],
       otroPlaceholder: "Specify the reason for your inquiry",
       submit: "Send Message",
@@ -1011,6 +1020,8 @@ export const translations = {
       },
       error:
         "Your message could not be sent. Please try again or email us at info@acrosscon.com.",
+      errorRate:
+        "You have sent too many messages. Please wait a few minutes or email us at info@acrosscon.com.",
       channelsTitle: "Contact Channels",
       channels: [
         {

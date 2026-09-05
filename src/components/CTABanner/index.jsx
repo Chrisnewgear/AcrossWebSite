@@ -17,7 +17,11 @@ export default function CTABanner() {
           <p className={s.subtitle} data-reveal="up" data-reveal-delay={200}>
             Hable con nuestros expertos y obtenga una propuesta personalizada para su operación.
           </p>
-          <div className={s.actions} data-reveal="up" data-reveal-delay={260}>
+          <div
+            className={`${s.actions} on-dark`}
+            data-reveal="up"
+            data-reveal-delay={260}
+          >
             <Link to="/cotizacion" className="btn-green">
               Solicitar Cotización
               <Icon name="arrowRight" size={16} />

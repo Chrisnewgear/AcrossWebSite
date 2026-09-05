@@ -13,9 +13,9 @@
 .card {
   background: linear-gradient(
     135deg,
-    $color-blue-dark 0%,
-    $color-blue 60%,
-    $color-blue-light 100%
+    $color-primary-dark 0%,
+    $color-primary 60%,
+    $color-primary-light 100%
   );
   border-radius: $radius-xl;
   padding: $space-16 $space-12;
@@ -35,7 +35,7 @@
     border-radius: 50%;
     background: radial-gradient(
       circle,
-      rgba(113, 194, 0, 0.15) 0%,
+      rgba($color-accent, 0.15) 0%,
       transparent 70%
     );
   }
@@ -58,7 +58,7 @@
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(113, 194, 0, 0.18) 0%,
+    rgba($color-accent, 0.18) 0%,
     transparent 68%
   );
   pointer-events: none;
@@ -75,7 +75,7 @@
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: $color-green;
+  color: $color-silver;
   margin-bottom: $space-6;
 
   &::before {
@@ -83,7 +83,7 @@
     display: inline-block;
     width: 24px;
     height: 2px;
-    background: $color-green;
+    background: $color-silver;
     border-radius: 2px;
   }
 }
@@ -91,7 +91,7 @@
 .title {
   font-family: $font-display;
   font-size: clamp(#{$fs-2xl}, 4vw, #{$fs-3xl});
-  font-weight: 900;
+  font-weight: 700;
   color: $color-white;
   letter-spacing: -0.02em;
   max-width: 680px;

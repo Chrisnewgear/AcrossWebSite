@@ -16,18 +16,18 @@
 
 // ─── Green header bar ─────────────────────────────────────────────────────────
 .header-bar {
-  background: $color-green;
-  background-image: linear-gradient(90deg, $color-green, $color-green-dark);
+  background: $color-accent;
+  background-image: linear-gradient(90deg, $color-accent, $color-accent-dark);
   color: $color-white;
   text-align: center;
   font-family: $font-display;
   font-size: $fs-xl;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   padding: $space-4;
   border-radius: $radius-lg $radius-lg 0 0;
-  box-shadow: $shadow-green;
+  box-shadow: $shadow-accent;
 }
 
 // ─── Outer navy panel ─────────────────────────────────────────────────────────
@@ -36,10 +36,10 @@
   grid-template-columns: 1fr 1.35fr;
   gap: $space-10;
   align-items: start;
-  background: $color-blue;
-  background-image: linear-gradient(160deg, $color-blue-dark, $color-blue);
+  background: $color-primary;
+  background-image: linear-gradient(160deg, $color-primary-dark, $color-primary);
   border-radius: 0 0 $radius-xl $radius-xl;
-  box-shadow: $shadow-blue;
+  box-shadow: $shadow-primary;
   padding: $space-12 $space-10;
 
   @include respond-to(lg) {
@@ -59,7 +59,7 @@
 .how-title {
   font-family: $font-display;
   font-size: clamp(#{$fs-xl}, 3vw, #{$fs-2xl});
-  font-weight: 800;
+  font-weight: 700;
   color: $color-white;
   letter-spacing: -0.01em;
   margin-bottom: $space-3;
@@ -90,7 +90,7 @@
 
   &:hover {
     background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(113, 194, 0, 0.4);
+    border-color: rgba($color-accent, 0.4);
   }
 }
 
@@ -100,7 +100,7 @@
   right: $space-5;
   font-family: $font-display;
   font-size: $fs-xl;
-  font-weight: 800;
+  font-weight: 700;
   color: rgba(255, 255, 255, 0.22);
   line-height: 1;
 }
@@ -141,8 +141,8 @@
 .form-title {
   font-family: $font-display;
   font-size: $fs-2xl;
-  font-weight: 800;
-  color: $color-blue;
+  font-weight: 700;
+  color: $color-primary;
   letter-spacing: -0.01em;
   margin-bottom: $space-2;
   text-transform: uppercase;
@@ -168,10 +168,10 @@
   transition: background $transition-base;
 
   &--done {
-    background: $color-green;
+    background: $color-accent;
   }
   &--active {
-    background: $color-green;
+    background: $color-accent;
   }
 }
 
@@ -182,10 +182,10 @@
 .section-heading {
   font-family: $font-display;
   font-size: $fs-xl;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: $color-blue;
+  color: $color-primary;
   margin-bottom: $space-6;
 }
 
@@ -205,7 +205,7 @@
 
 .form-label {
   font-size: $fs-sm;
-  font-weight: 600;
+  font-weight: 700;
   color: $color-gray-600;
 }
 
@@ -234,8 +234,8 @@
 
   &:focus {
     background: $color-white;
-    border-color: $color-blue;
-    box-shadow: 0 0 0 3px rgba(19, 66, 137, 0.12);
+    border-color: $color-primary;
+    box-shadow: 0 0 0 3px rgba($color-primary, 0.12);
   }
 }
 
@@ -293,7 +293,7 @@
 
 .review-value {
   color: $color-gray-800;
-  font-weight: 600;
+  font-weight: 700;
   text-align: right;
 }
 
@@ -316,15 +316,15 @@
   color: $color-gray-600;
   border-radius: $radius-full;
   font-size: $fs-sm;
-  font-weight: 600;
+  font-weight: 700;
   border: 1px solid $color-gray-300;
   cursor: pointer;
   transition: all $transition-fast;
 
   &:hover {
     background: $color-gray-100;
-    color: $color-blue;
-    border-color: $color-blue;
+    color: $color-primary;
+    border-color: $color-primary;
   }
 }
 
@@ -334,7 +334,7 @@
   justify-content: center;
   gap: $space-2;
   padding: $space-4 $space-10;
-  background: $color-green;
+  background: $color-accent;
   color: $color-white;
   border-radius: $radius-full;
   font-size: $fs-sm;
@@ -344,10 +344,10 @@
   border: none;
   cursor: pointer;
   transition: all $transition-base;
-  box-shadow: 0 4px 16px rgba(113, 194, 0, 0.35);
+  box-shadow: 0 4px 16px rgba($color-accent, 0.35);
 
   &:hover:not(:disabled) {
-    background: $color-green-dark;
+    background: $color-accent-dark;
     transform: translateY(-2px);
   }
 
@@ -364,7 +364,7 @@
 }
 
 .success-icon {
-  color: $color-green;
+  color: $color-accent;
   display: flex;
   justify-content: center;
   margin-bottom: $space-6;
@@ -374,8 +374,8 @@
 .success-title {
   font-family: $font-display;
   font-size: $fs-2xl;
-  font-weight: 800;
-  color: $color-blue;
+  font-weight: 700;
+  color: $color-primary;
   margin-bottom: $space-4;
 }
 
@@ -402,7 +402,7 @@
   gap: $space-2;
   padding: $space-3 $space-8;
   background: transparent;
-  color: $color-blue;
+  color: $color-primary;
   border-radius: $radius-full;
   font-family: $font-primary;
   font-size: $fs-sm;
@@ -416,7 +416,7 @@
 
   &:hover {
     background: $color-white;
-    border-color: $color-blue;
+    border-color: $color-primary;
     transform: translateY(-2px);
   }
 }
@@ -445,7 +445,7 @@
   display: block;
   margin-top: 4px;
   font-size: 0.8rem;
-  color: #6b7280;
+  color: $color-gray-500;
 }
 
 .form-error {

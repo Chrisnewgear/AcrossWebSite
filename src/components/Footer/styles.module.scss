@@ -2,12 +2,12 @@
 @use "../../styles/mixins" as *;
 
 .footer {
-  background: $color-blue;
+  background: $color-primary;
   background-image: linear-gradient(
     165deg,
-    $color-blue-light 0%,
-    $color-blue 45%,
-    $color-blue-dark 100%
+    $color-primary-light 0%,
+    $color-primary 45%,
+    $color-primary-dark 100%
   );
   padding-top: $space-20;
   position: relative;
@@ -85,17 +85,13 @@
 }
 
 .logo-img {
-  height: 56px;
-  width: auto;
+  height: auto;
+  width: 240px;
   max-width: 100%;
   display: block;
-  // logo.png is navy on transparent; render it white for the blue footer
-  filter: brightness(0) invert(1);
-
-  // The wordmark is ~5.8:1 — at 56px it is 324px wide and dominates a phone,
-  // so step it down to sit comfortably within the viewport.
+  // Official silver artwork with built-in clear space; no color filters.
   @include respond-to(sm) {
-    height: 44px;
+    width: 216px;
   }
 }
 

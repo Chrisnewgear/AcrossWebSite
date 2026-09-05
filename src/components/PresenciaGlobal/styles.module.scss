@@ -4,7 +4,7 @@
 // ── Section ───────────────────────────────────────────────────────────────────
 
 .section {
-  background: #f0f2f6;
+  background: $color-off-white;
   padding-top: $space-24;
   padding-bottom: $space-20;
   overflow: hidden;
@@ -31,7 +31,7 @@
   display: inline-flex;
   align-items: center;
   padding: 0.4rem 1.2rem;
-  background: $color-green;
+  background: $color-accent;
   color: $color-white;
   border-radius: $radius-full;
   font-family: $font-primary;
@@ -43,9 +43,9 @@
 
 .title {
   font-family: $font-display;
-  font-size: clamp(#{$fs-3xl}, 5.5vw, 4rem);
-  font-weight: 900;
-  color: $color-blue;
+  font-size: clamp(1.65rem, 5.5vw, 4rem);
+  font-weight: 700;
+  color: $color-primary;
   letter-spacing: -0.01em;
   text-transform: uppercase;
   line-height: 1.05;
@@ -81,7 +81,7 @@
 .card {
   flex: 0 0 300px;
   height: 440px;
-  background: #dde1e8;
+  background: $color-gray-200;
   border-radius: $radius-xl;
   display: flex;
   flex-direction: column;
@@ -179,8 +179,8 @@
 .card-city {
   font-family: $font-display;
   font-size: 1.35rem;
-  font-weight: 800;
-  color: $color-blue;
+  font-weight: 700;
+  color: $color-primary;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   line-height: 1;
@@ -211,7 +211,7 @@
   height: 8px;
   width: 28px;
   border-radius: $radius-full;
-  background: #c2c8d4;
+  background: $color-silver;
   border: none;
   padding: 0;
   cursor: pointer;
@@ -220,16 +220,16 @@
     background 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
-    background: #a8b0bf;
+    background: $color-mist;
   }
 
   &--active {
     width: 44px;
-    background: $color-blue;
+    background: $color-primary;
   }
 
   &:focus-visible {
-    outline: 2px solid $color-blue;
+    outline: 2px solid $color-primary;
     outline-offset: 3px;
   }
 }

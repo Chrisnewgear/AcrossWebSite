@@ -3,6 +3,9 @@ require_once __DIR__ . '/lib/respond.php';
 require_once __DIR__ . '/lib/validate.php';
 require_once __DIR__ . '/lib/body.php';
 require_once __DIR__ . '/lib/mailer.php';
+require_once __DIR__ . '/lib/ratelimit.php';
+
+const MAX_MENSAJE = 5000; // mirrors the maxLength on the Contacto textarea
 
 require_post();
 
@@ -11,8 +14,9 @@ if (!is_array($data)) {
     json_response(400, ['ok' => false, 'error' => 'Invalid JSON']);
 }
 
-// Honeypot: pretend success, send nothing.
-if (!empty($data['website'])) {
+// Honeypot: pretend success, send nothing. "website" is the legacy field name,
+// still checked so visitors on a cached JS bundle keep working after deploy.
+if (!empty($data['nombre_confirmacion']) || !empty($data['website'])) {
     json_response(200, ['ok' => true]);
 }
 
@@ -22,6 +26,15 @@ if ($missing) {
 }
 if (!valid_email($data['email'])) {
     json_response(422, ['ok' => false, 'error' => 'Invalid email', 'fields' => ['email']]);
+}
+if (mb_strlen((string) $data['mensaje']) > MAX_MENSAJE) {
+    json_response(422, ['ok' => false, 'error' => 'Message too long', 'fields' => ['mensaje']]);
+}
+
+// Throttle only what would actually send mail, so a visitor who mistypes their
+// email a few times is never locked out.
+if (!rate_limit('contact', 5, 3600)) {
+    json_response(429, ['ok' => false, 'error' => 'Too many requests']);
 }
 
 $asunto = (string) $data['asunto'];

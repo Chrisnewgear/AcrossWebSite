@@ -1,7 +1,7 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Icon from "../Icon";
 import { useI18n } from "../../i18n/LanguageContext";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/logo-silver.svg";
 import s from "./styles.module.scss";
 
 // `i` indexes into t.footer.services, which mirrors the six services listed

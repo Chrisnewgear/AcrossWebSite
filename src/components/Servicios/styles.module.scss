@@ -27,7 +27,7 @@
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: $color-green;
+  color: $color-accent;
   margin-bottom: $space-4;
 
   &::before {
@@ -35,7 +35,7 @@
     display: inline-block;
     width: 24px;
     height: 2px;
-    background: $color-green;
+    background: $color-accent;
     border-radius: 2px;
   }
 }
@@ -43,8 +43,8 @@
 .title {
   font-family: $font-display;
   font-size: clamp(#{$fs-2xl}, 4vw, #{$fs-3xl});
-  font-weight: 800;
-  color: $color-blue;
+  font-weight: 700;
+  color: $color-primary;
   letter-spacing: -0.02em;
   margin-bottom: $space-4;
 }
@@ -89,15 +89,15 @@
 
   &:hover {
     transform: translateY(-8px);
-    box-shadow: $shadow-blue;
-    border-color: rgba(19, 66, 137, 0.2);
+    box-shadow: $shadow-primary;
+    border-color: rgba($color-primary, 0.2);
 
     .transport-card__img-wrap img {
       transform: scale(1.06);
     }
 
     .transport-card__btn {
-      background: $color-green-dark;
+      background: $color-accent-dark;
       transform: translateX(4px);
     }
   }
@@ -120,7 +120,7 @@
       position: absolute;
       inset: 0;
       z-index: 1;
-      background: linear-gradient(to top, rgba(19,66,137,0.4) 0%, transparent 60%);
+      background: linear-gradient(to top, rgba($color-primary, 0.4) 0%, transparent 60%);
     }
   }
 
@@ -145,7 +145,7 @@
     border-radius: $radius-full;
     padding: $space-1 $space-3;
     font-size: $fs-xs;
-    font-weight: 600;
+    font-weight: 700;
     color: $color-white;
     letter-spacing: 0.04em;
   }
@@ -167,12 +167,12 @@
   &__icon {
     width: 44px;
     height: 44px;
-    background: rgba(19,66,137,0.08);
+    background: rgba($color-primary, 0.08);
     border-radius: $radius-md;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: $color-blue;
+    color: $color-primary;
     flex-shrink: 0;
   }
 
@@ -180,7 +180,7 @@
     font-family: $font-display;
     font-size: $fs-lg;
     font-weight: 700;
-    color: $color-blue;
+    color: $color-primary;
     letter-spacing: -0.01em;
   }
 
@@ -198,7 +198,7 @@
     align-items: center;
     gap: $space-2;
     padding: $space-3 $space-6;
-    background: $color-green;
+    background: $color-accent;
     color: $color-white;
     border-radius: $radius-full;
     font-family: $font-primary;
@@ -210,7 +210,7 @@
     cursor: pointer;
     transition: all $transition-base;
     align-self: flex-start;
-    box-shadow: 0 4px 12px rgba(113,194,0,0.25);
+    box-shadow: 0 4px 12px rgba($color-accent, 0.25);
   }
 }
 
@@ -225,7 +225,7 @@
   font-family: $font-display;
   font-size: $fs-xl;
   font-weight: 700;
-  color: $color-blue;
+  color: $color-primary;
   margin-bottom: $space-10;
   letter-spacing: -0.01em;
 }
@@ -259,7 +259,7 @@
 
   &:hover {
     background: $color-gray-100;
-    border-color: $color-blue;
+    border-color: $color-primary;
     transform: translateY(-4px);
   }
 }
@@ -267,12 +267,12 @@
 .feature-icon {
   width: 64px;
   height: 64px;
-  background: linear-gradient(135deg, rgba(19,66,137,0.1), rgba(113,194,0,0.1));
+  background: linear-gradient(135deg, rgba($color-primary, 0.1), rgba($color-accent, 0.1));
   border-radius: $radius-lg;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: $color-blue;
+  color: $color-primary;
   flex-shrink: 0;
 }
 
@@ -280,7 +280,7 @@
   font-family: $font-display;
   font-size: $fs-base;
   font-weight: 700;
-  color: $color-blue;
+  color: $color-primary;
   line-height: 1.3;
 }
 

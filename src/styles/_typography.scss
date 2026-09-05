@@ -5,7 +5,7 @@
 body {
   font-family: $font-primary;
   font-size: $fs-base;
-  font-weight: 400;
+  font-weight: 500;
   color: $color-dark;
 }
 
@@ -32,6 +32,6 @@ p {
 .text-lg    { font-size: $fs-lg; }
 .text-xl    { font-size: $fs-xl; }
 .text-upper { text-transform: uppercase; letter-spacing: 0.12em; }
-.text-blue  { color: $color-blue; }
-.text-green { color: $color-green; }
+.text-blue  { color: $color-primary; }
+.text-green { color: $color-accent; }
 .text-muted { color: $color-gray-500; }

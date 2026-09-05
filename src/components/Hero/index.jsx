@@ -62,7 +62,7 @@ export default function Hero() {
 
         <p className={s.hero__sub}>{t.hero.sub}</p>
 
-        <div className={s.hero__ctas}>
+        <div className={`${s.hero__ctas} on-dark`}>
           <button className="btn-green" onClick={() => navigate("/cotizacion")}>
             {t.hero.ctaQuote}
           </button>
