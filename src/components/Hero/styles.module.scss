@@ -8,6 +8,8 @@ $ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
 $ease-wow: cubic-bezier(0.16, 1, 0.3, 1);
 
 .hero {
+  --hero-image: url("../../assets/heroImageLight.jpg");
+
   position: relative;
   display: flex;
   align-items: center;
@@ -83,7 +85,7 @@ $ease-wow: cubic-bezier(0.16, 1, 0.3, 1);
     position: absolute;
     inset: 0;
     // background-image: url("https://images.unsplash.com/photo-1605745341112-85968b19335b?w=2200&q=80");
-    background-image: url("../../assets/heroImageLight.jpg");
+    background-image: var(--hero-image);
     background-size: cover;
     background-position: right top;
     animation: heroZoom 2.2s $ease-out-expo both;
@@ -317,6 +319,10 @@ $ease-wow: cubic-bezier(0.16, 1, 0.3, 1);
       outline-offset: 3px;
     }
   }
+}
+
+:global([data-theme="dark"]) .hero {
+  --hero-image: url("../../assets/heroImageDark.jpg");
 }
 
 // ── Keyframes ───────────────────────────────────────────────────────

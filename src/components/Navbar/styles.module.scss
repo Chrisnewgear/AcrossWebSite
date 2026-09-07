@@ -106,7 +106,7 @@
 
     @include respond-to(sm) {
       height: auto;
-      width: 132px;
+      width: 120px;
     }
   }
 }
@@ -160,6 +160,48 @@
     .whatsapp {
       display: none;
     }
+  }
+}
+
+.theme-toggle {
+  display: inline-grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  color: $color-primary-dark;
+  background: rgba($color-primary-dark, 0.08);
+  border: 1px solid rgba($color-primary-dark, 0.18);
+  border-radius: $radius-full;
+  cursor: pointer;
+  transition:
+    color $transition-base,
+    background $transition-base,
+    border-color $transition-base,
+    transform $transition-fast;
+
+  svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  &:hover {
+    background: rgba($color-primary-dark, 0.14);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  @include respond-to(sm) {
+    width: 36px;
+    height: 36px;
   }
 }
 
@@ -361,5 +403,62 @@
     font-size: $fs-sm !important;
     letter-spacing: 0.05em;
     box-shadow: 0 4px 16px rgba($color-accent, 0.3);
+  }
+}
+
+:global([data-theme="dark"]) .navbar--scrolled {
+  background: rgba(13, 18, 16, 0.88);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+  .nav__link {
+    color: rgba(255, 255, 255, 0.76);
+
+    &:hover {
+      color: $color-white;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    &--active {
+      color: $color-silver;
+    }
+  }
+
+  .theme-toggle {
+    color: $color-silver;
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.16);
+
+    &:hover {
+      color: $color-white;
+      background: rgba(255, 255, 255, 0.14);
+    }
+  }
+
+  .lang-toggle {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.16);
+  }
+
+  .lang-thumb {
+    background: $color-silver;
+  }
+
+  .lang-option {
+    color: rgba(255, 255, 255, 0.68);
+
+    &:hover {
+      color: $color-white;
+    }
+
+    &[aria-pressed="true"] {
+      color: $color-primary-dark;
+    }
+  }
+
+  .hamburger span {
+    background: $color-white;
   }
 }

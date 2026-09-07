@@ -3,7 +3,7 @@
 
 // ─── Transport detail cards ───────────────────────────────────────────────────
 .transport-section {
-  background: $color-white;
+  background: var(--theme-surface);
   padding-block: $space-24;
 
   @include respond-to(md) {
@@ -40,14 +40,14 @@
   font-family: $font-display;
   font-size: clamp(#{$fs-2xl}, 4vw, #{$fs-3xl});
   font-weight: 700;
-  color: $color-primary;
+  color: var(--theme-text);
   letter-spacing: -0.02em;
   margin-bottom: $space-4;
 }
 
 .section-sub {
   font-size: $fs-md;
-  color: $color-gray-600;
+  color: var(--theme-text-soft);
   max-width: 560px;
   line-height: 1.7;
   margin-bottom: $space-12;
@@ -61,7 +61,7 @@
   align-items: center;
   margin-bottom: $space-16;
   padding-bottom: $space-16;
-  border-bottom: 1px solid $color-gray-200;
+  border-bottom: 1px solid var(--theme-border);
 
   &:last-child {
     border-bottom: none;
@@ -143,14 +143,14 @@
   font-family: $font-display;
   font-size: clamp(#{$fs-xl}, 3vw, #{$fs-2xl});
   font-weight: 700;
-  color: $color-primary;
+  color: var(--theme-text);
   letter-spacing: -0.01em;
   margin-bottom: $space-4;
 }
 
 .transport-desc {
   font-size: $fs-base;
-  color: $color-gray-600;
+  color: var(--theme-text-soft);
   line-height: 1.75;
   margin-bottom: $space-6;
 }
@@ -167,7 +167,7 @@
   align-items: center;
   gap: $space-3;
   font-size: $fs-sm;
-  color: $color-gray-800;
+  color: var(--theme-text);
   font-weight: 500;
 
   &-dot {
@@ -230,7 +230,7 @@
 
 // ─── Servicios complementarios (numbered card grid) ───────────────────────────
 .complementary {
-  background: $color-gray-100;
+  background: var(--theme-surface-muted);
   padding-bottom: $space-24;
 
   @include respond-to(md) {
@@ -256,8 +256,8 @@
 
 .comp-card {
   position: relative;
-  background: $color-white;
-  border: 1px solid $color-gray-200;
+  background: var(--theme-surface);
+  border: 1px solid var(--theme-border);
   border-radius: $radius-lg;
   padding: $space-8 $space-8 $space-10;
   box-shadow: $shadow-sm;
@@ -283,7 +283,7 @@
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.03em;
-  color: $color-gray-200;
+  color: var(--theme-border);
   user-select: none;
 }
 
@@ -295,7 +295,7 @@
   height: 54px;
   border-radius: $radius-md;
   background: rgba($color-primary, 0.08);
-  color: $color-primary;
+  color: var(--theme-text);
   margin-bottom: $space-8;
 }
 
@@ -305,7 +305,7 @@
   font-size: $fs-xl;
   font-weight: 700;
   text-transform: uppercase;
-  color: $color-primary;
+  color: var(--theme-text);
   letter-spacing: -0.005em;
   line-height: 1.15;
   margin-bottom: $space-4;
@@ -314,14 +314,14 @@
 
 .comp-desc {
   font-size: $fs-sm;
-  color: $color-gray-600;
+  color: var(--theme-text-soft);
   line-height: 1.7;
   max-width: 44ch;
 }
 
 // ─── Inspección de calidad (dark panel + phase tabs) ──────────────────────────
 .inspection {
-  background: $color-gray-100;
+  background: var(--theme-surface-muted);
   padding-bottom: $space-24;
 
   @include respond-to(md) {
@@ -497,11 +497,11 @@
 .insp-item {
   padding: $space-8 $space-6;
   border-radius: $radius-lg;
-  color: $color-primary-dark;
+  color: var(--theme-text);
   background: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.95) 0%,
-    rgba(255, 255, 255, 0.68) 100%
+    var(--theme-surface) 0%,
+    var(--theme-surface-alt) 100%
   );
   transition:
     transform $transition-base,
@@ -513,7 +513,7 @@
     flex: 0 0 100%;
     scroll-snap-align: center;
     padding: $space-10 $space-6;
-    background: $color-white; // every slide is solid, never the peek gradient
+    background: var(--theme-surface); // every slide is solid, never the peek gradient
     box-shadow: 0 16px 40px rgba($color-primary-dark, 0.28);
   }
 
@@ -521,12 +521,12 @@
     flex: 0 0 100%;
     scroll-snap-align: center;
     padding: $space-10 $space-6;
-    background: $color-white;
+    background: var(--theme-surface);
     box-shadow: 0 16px 40px rgba($color-primary-dark, 0.28);
   }
 
   &--active {
-    background: $color-white;
+    background: var(--theme-surface);
     box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
 
     // Enlarged "featured card" hover effect is desktop/landscape-only — it must
@@ -548,7 +548,7 @@
   font-size: clamp(#{$fs-xl}, 2.4vw, #{$fs-2xl});
   font-weight: 700;
   text-transform: uppercase;
-  color: $color-primary;
+  color: var(--theme-text);
   line-height: 1.05;
   letter-spacing: -0.01em;
   margin-bottom: $space-2;
@@ -557,13 +557,13 @@
 .insp-item-sub {
   font-size: $fs-sm;
   font-weight: 700;
-  color: $color-gray-600;
+  color: var(--theme-text-soft);
   margin-bottom: $space-4;
 }
 
 .insp-item-desc {
   font-size: $fs-sm;
-  color: $color-gray-600;
+  color: var(--theme-text-soft);
   line-height: 1.6;
   margin-bottom: $space-6;
 }
@@ -599,13 +599,13 @@
   flex-direction: column;
   gap: $space-2;
   font-size: $fs-sm;
-  color: $color-gray-800;
+  color: var(--theme-text);
   line-height: 1.5;
 }
 
 .insp-benefit {
   font-size: $fs-sm;
-  color: $color-gray-600;
+  color: var(--theme-text-soft);
   line-height: 1.6;
 }
 
@@ -702,7 +702,7 @@
 
 // ─── AQL standards ───────────────────────────────────────────────────────────
 .aql {
-  background: $color-white;
+  background: var(--theme-surface);
   padding-block: $space-24;
 
   @include respond-to(md) {
@@ -734,8 +734,8 @@
   td {
     padding: $space-4 $space-6;
     font-size: $fs-sm;
-    color: $color-gray-800;
-    border-bottom: 1px solid $color-gray-200;
+    color: var(--theme-text);
+    border-bottom: 1px solid var(--theme-border);
   }
 
   tr:last-child td {
@@ -743,7 +743,7 @@
   }
 
   tr:nth-child(even) td {
-    background: $color-gray-100;
+    background: var(--theme-surface-muted);
   }
 
   tr:hover td {

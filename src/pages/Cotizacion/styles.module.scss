@@ -454,3 +454,87 @@
   color: #c0392b;
   font-size: 0.9rem;
 }
+
+// ─── Dark theme ──────────────────────────────────────────────────────────────
+:global([data-theme="dark"]) .section {
+  background: var(--theme-surface-muted);
+}
+
+:global([data-theme="dark"]) .form-card {
+  background: var(--theme-surface-alt);
+}
+
+:global([data-theme="dark"]) .form-title,
+:global([data-theme="dark"]) .section-heading,
+:global([data-theme="dark"]) .success-title,
+:global([data-theme="dark"]) .review-value {
+  color: var(--theme-text);
+}
+
+:global([data-theme="dark"]) .form-subtitle,
+:global([data-theme="dark"]) .form-label,
+:global([data-theme="dark"]) .success-sub,
+:global([data-theme="dark"]) .btn-prev {
+  color: var(--theme-text-soft);
+}
+
+:global([data-theme="dark"]) .file-hint,
+:global([data-theme="dark"]) .review-key {
+  color: var(--theme-text-muted);
+}
+
+:global([data-theme="dark"]) .form-input,
+:global([data-theme="dark"]) .form-select,
+:global([data-theme="dark"]) .form-textarea,
+:global([data-theme="dark"]) .review {
+  color: var(--theme-text);
+  background-color: var(--theme-control);
+  border-color: var(--theme-border);
+
+  &::placeholder {
+    color: var(--theme-text-muted);
+  }
+}
+
+:global([data-theme="dark"]) .form-input:focus,
+:global([data-theme="dark"]) .form-select:focus,
+:global([data-theme="dark"]) .form-textarea:focus {
+  background-color: var(--theme-surface);
+  border-color: $color-silver;
+}
+
+:global([data-theme="dark"]) .form-select option {
+  color: var(--theme-text);
+  background: var(--theme-surface);
+}
+
+:global([data-theme="dark"]) .form-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c6c6c6' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+:global([data-theme="dark"]) .review-row {
+  border-bottom-color: var(--theme-border);
+}
+
+:global([data-theme="dark"]) .progress-step {
+  background: var(--theme-border);
+}
+
+:global([data-theme="dark"]) .progress-step--done,
+:global([data-theme="dark"]) .progress-step--active {
+  background: $color-accent;
+}
+
+:global([data-theme="dark"]) .btn-prev,
+:global([data-theme="dark"]) .btn-outline {
+  border-color: var(--theme-border-strong);
+}
+
+:global([data-theme="dark"]) .btn-outline {
+  color: var(--theme-text);
+
+  &:hover {
+    color: $color-primary-dark;
+    background: $color-white;
+  }
+}

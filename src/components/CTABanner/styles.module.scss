@@ -2,7 +2,7 @@
 @use "../../styles/mixins" as *;
 
 .banner {
-  background: $color-white;
+  background: var(--theme-surface);
   padding-block: $space-20;
 }
 

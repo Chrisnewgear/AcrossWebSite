@@ -52,6 +52,17 @@
   }
 }
 
+:global([data-theme="dark"]) .section {
+  background-image:
+    linear-gradient(
+      160deg,
+      rgba($color-primary-dark, 0.97) 0%,
+      rgba($color-primary-dark, 0.82) 55%,
+      rgba($color-primary-dark, 0.97) 100%
+    ),
+    url("../../assets/ventajasBackground.jpg");
+}
+
 .inner {
   @include container;
   position: relative;

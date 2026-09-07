@@ -2,7 +2,7 @@
 @use "../../styles/mixins" as *;
 
 .section {
-  background: $color-white;
+  background: var(--theme-surface);
 }
 
 // ── Full-bleed banner ─────────────────────────────────────────────────
@@ -83,11 +83,11 @@
   }
 
   &--vision {
-    background: rgba(255, 255, 255, 0.6);
+    background: var(--theme-surface-glass);
     backdrop-filter: blur(16px) saturate(160%);
     -webkit-backdrop-filter: blur(16px) saturate(160%);
-    border: 1px solid rgba(255, 255, 255, 0.7);
-    box-shadow: 0 24px 60px rgba($color-primary, 0.08);
+    border: 1px solid var(--theme-border);
+    box-shadow: 0 24px 60px var(--theme-shadow);
 
     &:hover {
       box-shadow: 0 34px 76px rgba($color-primary, 0.16);
@@ -116,7 +116,7 @@
     opacity: 0.08;
   }
   .pillar--vision & {
-    color: $color-primary;
+    color: var(--theme-text);
     opacity: 0.05;
   }
 }
@@ -139,7 +139,7 @@
   }
 
   .pillar--vision & {
-    color: $color-primary;
+    color: var(--theme-text);
     background: rgba($color-primary, 0.08);
     border: 1px solid rgba($color-primary, 0.12);
   }
@@ -159,7 +159,7 @@
     color: $color-white;
   }
   .pillar--vision & {
-    color: $color-primary;
+    color: var(--theme-text);
   }
 }
 
@@ -189,6 +189,12 @@
     color: rgba(255, 255, 255, 0.82);
   }
   .pillar--vision & {
-    color: $color-gray-600;
+    color: var(--theme-text-soft);
   }
+}
+
+:global([data-theme="dark"]) .pillar--vision .pillar__icon {
+  color: $color-silver;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.14);
 }

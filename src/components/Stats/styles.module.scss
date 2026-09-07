@@ -2,7 +2,7 @@
 @use '../../styles/mixins' as *;
 
 .stats {
-  background: $color-white;
+  background: var(--theme-surface);
   position: relative;
 
   &__inner {
@@ -30,13 +30,13 @@
 
     // Hairline separators divide the metrics into one authoritative strip.
     & + & {
-      border-left: 1px solid $color-gray-200;
+      border-left: 1px solid var(--theme-border);
     }
 
     @include respond-to(md) {
       // 2-col layout: only the right-hand column keeps a divider.
       & + & { border-left: none; }
-      &:nth-child(even) { border-left: 1px solid $color-gray-200; }
+      &:nth-child(even) { border-left: 1px solid var(--theme-border); }
     }
   }
 
@@ -44,7 +44,7 @@
     font-family: $font-display;
     font-size: clamp(2.75rem, 6vw, 4.25rem);
     font-weight: 700;
-    color: $color-primary;
+    color: var(--theme-text);
     line-height: 1;
     letter-spacing: -0.02em;
 
@@ -57,7 +57,7 @@
     font-family: $font-primary;
     font-size: $fs-sm;
     font-weight: 700;
-    color: $color-gray-600;
+    color: var(--theme-text-soft);
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }

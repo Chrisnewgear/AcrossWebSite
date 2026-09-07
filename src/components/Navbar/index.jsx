@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { useI18n } from "../../i18n/LanguageContext";
-import logo from "../../assets/logo-charcoal.svg";
+import { useTheme } from "../../theme/ThemeContext";
+import logoCharcoal from "../../assets/logo-charcoal.svg";
+import logoSilver from "../../assets/logo-silver.svg";
 import s from "./styles.module.scss";
 
 const NAV_LINKS = [
@@ -22,6 +24,7 @@ const NAV_LINKS = [
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const { lang, setLang, t } = useI18n();
+  const { theme, toggleTheme } = useTheme();
   const { pathname } = useLocation();
 
   // Close mobile menu on route change (adjust state during render — no effect)
@@ -38,7 +41,11 @@ export default function Navbar() {
       >
         <div className={s.navbar__inner}>
           <Link to="/" className={s.logo}>
-            <img src={logo} alt="Across Continents" className={s.logo__img} />
+            <img
+              src={theme === "dark" ? logoSilver : logoCharcoal}
+              alt="Across Continents"
+              className={s.logo__img}
+            />
           </Link>
 
           <nav className={s.nav} aria-label={t.common.navMain}>
@@ -69,6 +76,30 @@ export default function Navbar() {
               <span>¡Te Ayudamos!</span>
             </a>
             */}
+
+            <button
+              type="button"
+              className={s["theme-toggle"]}
+              onClick={toggleTheme}
+              aria-pressed={theme === "dark"}
+              aria-label={
+                theme === "dark" ? t.common.themeToLight : t.common.themeToDark
+              }
+              title={
+                theme === "dark" ? t.common.themeToLight : t.common.themeToDark
+              }
+            >
+              {theme === "dark" ? (
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="4" />
+                  <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41" />
+                </svg>
+              ) : (
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M20.5 14.2A8.3 8.3 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2Z" />
+                </svg>
+              )}
+            </button>
 
             <div
               className={s["lang-toggle"]}

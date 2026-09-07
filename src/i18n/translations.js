@@ -12,6 +12,8 @@ export const translations = {
       menuMobile: "Menú móvil",
       menuOpen: "Abrir menú",
       menuClose: "Cerrar menú",
+      themeToLight: "Cambiar al tema claro",
+      themeToDark: "Cambiar al tema oscuro",
     },
 
     nav: {
@@ -543,6 +545,8 @@ export const translations = {
       menuMobile: "Mobile menu",
       menuOpen: "Open menu",
       menuClose: "Close menu",
+      themeToLight: "Switch to light theme",
+      themeToDark: "Switch to dark theme",
     },
 
     nav: {

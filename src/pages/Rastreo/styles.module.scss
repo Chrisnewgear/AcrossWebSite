@@ -423,3 +423,84 @@
     margin-bottom: $space-4;
   }
 }
+
+// ─── Dark theme ──────────────────────────────────────────────────────────────
+:global([data-theme="dark"]) .search-section,
+:global([data-theme="dark"]) .contact-prompt,
+:global([data-theme="dark"]) .not-found {
+  background: var(--theme-surface-muted);
+}
+
+:global([data-theme="dark"]) .search-card,
+:global([data-theme="dark"]) .info-section {
+  background: var(--theme-surface);
+}
+
+:global([data-theme="dark"]) .info-card,
+:global([data-theme="dark"]) .search-example {
+  background: var(--theme-surface-muted);
+  border-color: var(--theme-border);
+}
+
+:global([data-theme="dark"]) .search-title,
+:global([data-theme="dark"]) .result-id,
+:global([data-theme="dark"]) .timeline-event,
+:global([data-theme="dark"]) .info-title {
+  color: var(--theme-text);
+}
+
+:global([data-theme="dark"]) .search-sub,
+:global([data-theme="dark"]) .search-example,
+:global([data-theme="dark"]) .result-meta-item,
+:global([data-theme="dark"]) .timeline-location,
+:global([data-theme="dark"]) .info-text,
+:global([data-theme="dark"]) .not-found p {
+  color: var(--theme-text-soft);
+}
+
+:global([data-theme="dark"]) .search-icon,
+:global([data-theme="dark"]) .timeline-date,
+:global([data-theme="dark"]) .result-meta-item span {
+  color: var(--theme-text-muted);
+}
+
+:global([data-theme="dark"]) .search-input {
+  color: var(--theme-text);
+  background: var(--theme-control);
+  border-color: var(--theme-border);
+
+  &::placeholder {
+    color: var(--theme-text-muted);
+  }
+}
+
+:global([data-theme="dark"]) .timeline::before {
+  background: var(--theme-border);
+}
+
+:global([data-theme="dark"]) .timeline-item--pending .timeline-dot,
+:global([data-theme="dark"]) .timeline-dot {
+  background: var(--theme-border-strong);
+}
+
+:global([data-theme="dark"]) .timeline-item--done .timeline-dot {
+  background: $color-silver;
+}
+
+:global([data-theme="dark"]) .timeline-item--active .timeline-dot {
+  background: $color-accent;
+}
+
+:global([data-theme="dark"]) .status-badge--pending {
+  color: $color-silver;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+:global([data-theme="dark"]) .search-example:hover {
+  color: var(--theme-text);
+  background: var(--theme-control);
+}
+
+:global([data-theme="dark"]) .result {
+  border-top-color: var(--theme-border);
+}
