@@ -29,7 +29,7 @@ $ease-wow: cubic-bezier(0.16, 1, 0.3, 1);
   // `transform` doesn't fight the parallax translate on this wrapper.
   &__bg {
     position: absolute;
-    inset: -10% 0;
+    inset: -6% 0;
     z-index: -1;
     overflow: hidden;
     will-change: transform;
@@ -42,12 +42,12 @@ $ease-wow: cubic-bezier(0.16, 1, 0.3, 1);
   // the zoom-in-entrance photo so none of the transforms fight each other.
   &__bgMouse {
     position: absolute;
-    inset: -10%;
+    inset: -3%;
     transition: transform 0.6s $ease-wow;
     transform: perspective(1000px) rotateX(calc(var(--my, 0) * -7deg))
       rotateY(calc(var(--mx, 0) * 9deg))
       translate3d(calc(var(--mx, 0) * -32px), calc(var(--my, 0) * -22px), 0)
-      scale(1.05);
+      scale(1.02);
     will-change: transform;
   }
 
@@ -82,9 +82,10 @@ $ease-wow: cubic-bezier(0.16, 1, 0.3, 1);
   &__bgImage {
     position: absolute;
     inset: 0;
-    background-image: url("https://images.unsplash.com/photo-1605745341112-85968b19335b?w=2200&q=80");
+    // background-image: url("https://images.unsplash.com/photo-1605745341112-85968b19335b?w=2200&q=80");
+    background-image: url("../../assets/heroImageLight.jpg");
     background-size: cover;
-    background-position: center right;
+    background-position: right top;
     animation: heroZoom 2.2s $ease-out-expo both;
   }
 
@@ -343,7 +344,7 @@ $ease-wow: cubic-bezier(0.16, 1, 0.3, 1);
 
 @keyframes heroZoom {
   from {
-    transform: scale(1.12);
+    transform: scale(1.06);
   }
   to {
     transform: scale(1);
