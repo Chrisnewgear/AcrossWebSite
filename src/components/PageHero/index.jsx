@@ -9,6 +9,8 @@ export default function PageHero({
   actions,
   breadcrumb,
   image,
+  imageInset,
+  imagePosition,
 }) {
   const { t } = useI18n();
 
@@ -19,7 +21,11 @@ export default function PageHero({
           <>
             <div
               className={s.media}
-              style={{ backgroundImage: `url(${image})` }}
+              style={{
+                backgroundImage: `url(${image})`,
+                ...(imageInset !== undefined ? { inset: imageInset } : {}),
+                ...(imagePosition ? { backgroundPosition: imagePosition } : {}),
+              }}
             />
             <div className={s.scrim} />
           </>

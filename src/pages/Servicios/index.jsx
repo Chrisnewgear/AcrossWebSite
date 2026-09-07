@@ -4,6 +4,7 @@ import PageHero from "../../components/PageHero";
 //import CTABanner from "../../components/CTABanner";
 import Icon from "../../components/Icon";
 import { useI18n } from "../../i18n/LanguageContext";
+import servicesImage from "../../assets/services.jpg";
 import s from "./styles.module.scss";
 
 // Icons stay in code; copy comes from translations (index-aligned).
@@ -162,7 +163,9 @@ export default function Servicios() {
         label={ts.heroLabel}
         title={ts.heroTitle}
         subtitle={ts.heroSub}
-        image="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1920&q=80"
+        image={servicesImage}
+        imageInset="0"
+        imagePosition="center top"
         actions={
           <>
             <Link to="/cotizacion" className="btn-green">
