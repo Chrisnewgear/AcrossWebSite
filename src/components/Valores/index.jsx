@@ -2,7 +2,7 @@ import Icon from '../Icon';
 import { useI18n } from '../../i18n/LanguageContext';
 import s from './styles.module.scss';
 
-const ICONS = ['heartHandshake', 'users', 'messageSquare'];
+const ICONS = ['award', 'lock', 'rocket'];
 
 export default function Valores() {
   const { t } = useI18n();

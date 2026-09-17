@@ -40,6 +40,14 @@
   grid-template-columns: repeat(3, 1fr);
   gap: $space-8;
 
+  // iPad portrait: at three columns each card is left with ~171px of text, too
+  // narrow for a value name like "Confidencialidad". An unbreakable word that
+  // long raises the column's min-content past its share and drags the whole
+  // grid wider than the viewport, clipping the third card. Two columns fit.
+  @include respond-to(tablet-portrait) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   @include respond-to(md) {
     grid-template-columns: 1fr;
     gap: $space-6;
@@ -98,6 +106,9 @@
   color: var(--theme-text);
   letter-spacing: -0.01em;
   margin-bottom: $space-4;
+  // Safety net for a future value name longer than its card: break the word
+  // rather than let it push the grid past the viewport.
+  overflow-wrap: break-word;
 }
 
 .card__rule {

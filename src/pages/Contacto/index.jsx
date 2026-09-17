@@ -35,6 +35,12 @@ export default function Contacto() {
   const tc = t.contacto;
   const isOtro = form.asunto === "otro";
 
+  // Built from the footer's address so the two never drift apart. A plain
+  // search URL needs no API key and resolves the pin from the address itself.
+  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+    t.footer.address,
+  )}`;
+
   const update = (field) => (e) => {
     const { value } = e.target;
     setForm((f) => ({
@@ -266,6 +272,7 @@ export default function Contacto() {
                       key={ch.label}
                       href={ch.href}
                       className={s["channel-item"]}
+                      aria-label={`${ch.label}: ${ch.value}. ${ch.action}`}
                       target={ch.href.startsWith("http") ? "_blank" : undefined}
                       rel={
                         ch.href.startsWith("http")
@@ -280,13 +287,39 @@ export default function Contacto() {
                         <span className={s["channel-label"]}>{ch.label}</span>
                         <span className={s["channel-value"]}>{ch.value}</span>
                       </span>
-                      <span className={s["channel-action"]}>
-                        {ch.action}
+                      {/* Arrow only: spelling out "Enviar email" here squeezed
+                          the address into an ellipsis. The action still reaches
+                          screen readers through the link's aria-label. */}
+                      <span className={s["channel-action"]} aria-hidden="true">
                         <Icon name="arrowRight" size={14} />
                       </span>
                     </a>
                   ))}
                 </div>
+              </div>
+
+              <div className={s["info-block"]}>
+                <h3 className={s["info-block-title"]}>{tc.officeTitle}</h3>
+                <a
+                  className={`${s["channel-item"]} ${s["office-item"]}`}
+                  href={mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${tc.officeLabel}: ${t.footer.address}. ${tc.officeAction}`}
+                >
+                  <span className={s["channel-icon"]}>
+                    <Icon name="mapPin" size={20} />
+                  </span>
+                  <span className={s["channel-info"]}>
+                    <span className={s["channel-label"]}>{tc.officeLabel}</span>
+                    <span className={s["office-address"]}>
+                      {t.footer.address}
+                    </span>
+                  </span>
+                  <span className={s["channel-action"]} aria-hidden="true">
+                    <Icon name="arrowRight" size={14} />
+                  </span>
+                </a>
               </div>
 
               {/* HORARIO DE ATENCIÓN disabled for now — uncomment to re-enable

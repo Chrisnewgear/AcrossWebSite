@@ -9,6 +9,7 @@ export default function Ventajas() {
       <div className={s.inner}>
         <div className={s.header} data-reveal="up">
           <h2 className={s.title}>{t.ventajas.title}</h2>
+          <p className={s.intro}>{t.ventajas.intro}</p>
         </div>
 
         <div className={s.grid}>

@@ -4,26 +4,24 @@ import { useI18n } from "../../i18n/LanguageContext";
 import logo from "../../assets/logo-silver.svg";
 import s from "./styles.module.scss";
 
-// `i` indexes into t.footer.services, which mirrors the six services listed
-// on the Servicios page ("Servicios Complementarios" section).
+// `i` indexes into t.footer.services — the same six services as the Servicios
+// page, but listed in process order here, so the two orders differ on purpose.
+// Every one lands on the service card grid rather than the top of the page.
+const SERVICES_GRID = "/servicios#nuestros-servicios";
 const SERVICE_LINKS = [
-  { i: 0, to: "/servicios" }, // Sourcing de Proveedores
-  { i: 1, to: "/servicios" }, // Gestión de Importaciones
-  { i: 2, to: "/servicios" }, // Negociación y Compras
-  { i: 3, to: "/servicios" }, // Logística de Transporte
-  { i: 4, to: "/servicios" }, // Asesoría en Comercio Exterior
-  { i: 5, to: "/servicios" }, // Inspección de Calidad
+  { i: 0, to: SERVICES_GRID }, // Sourcing de Proveedores
+  { i: 1, to: SERVICES_GRID }, // Negociación y Compras
+  { i: 2, to: SERVICES_GRID }, // Inspección y Control de Calidad
+  { i: 3, to: SERVICES_GRID }, // Logística Internacional
+  { i: 4, to: SERVICES_GRID }, // Gestión Aduanera
+  { i: 5, to: SERVICES_GRID }, // Consultoría en Comercio Exterior
 ];
 
 // Index-aligned with t.footer.company — all resolve to live routes.
 // A `#hash` target scrolls to that section on the home page.
-const COMPANY_LINKS = [
-  "/",
-  "/#mision-vision",
-  "/#presencia-internacional",
-  "/cotizacion",
-  "/contacto",
-];
+// Keep this array the same length as t.footer.company in EVERY language:
+// a label with no matching entry here silently links to the wrong page.
+const COMPANY_LINKS = ["/", "/#mision-vision", "/contacto"];
 
 // Only Instagram is active for now. Re-enable the others when accounts exist.
 const SOCIALS = [
@@ -42,8 +40,10 @@ export default function Footer() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
-  // Navigate to a "/#section" target and smooth-scroll to it. If already on the
-  // home page, just scroll; otherwise route home first, then scroll once mounted.
+  // Navigate to a "path#section" target and smooth-scroll to it. Already on that
+  // page, just scroll; otherwise route there first, then scroll once mounted —
+  // the delay also outlasts MainLayout's scroll-to-top on route change, which
+  // would otherwise land the visitor at the top of the page instead.
   function handleHashNav(e, to) {
     const [path, id] = to.split("#");
     e.preventDefault();
@@ -92,7 +92,12 @@ export default function Footer() {
             <div className={s["col-title"]}>{t.footer.servicesTitle}</div>
             <div className={s["col-links"]}>
               {SERVICE_LINKS.map(({ i, to }) => (
-                <Link key={i} to={to} className={s["col-link"]}>
+                <Link
+                  key={i}
+                  to={to}
+                  className={s["col-link"]}
+                  onClick={(e) => handleHashNav(e, to)}
+                >
                   {t.footer.services[i]}
                 </Link>
               ))}
@@ -127,12 +132,9 @@ export default function Footer() {
             <div className={s["contact-list"]}>
               <p className={s["contact-line"]}>{t.footer.address}</p>
               <p className={s["contact-line"]}>
-                <a href="tel:+593998432427">+593 99 843 2427</a>
-              </p>
-              {/* <p className={s["contact-line"]}>
                 <a href="mailto:info@acrosscon.com">info@acrosscon.com</a>
               </p>
-              <p className={s["contact-line"]}>www.acrosscon.com</p> */}
+              {/* <p className={s["contact-line"]}>www.acrosscon.com</p> */}
             </div>
           </div>
         </div>

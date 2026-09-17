@@ -9,12 +9,12 @@ import s from "./styles.module.scss";
 
 // Icons stay in code; copy comes from translations (index-aligned).
 const COMP_ICONS = [
-  "search",
-  "package",
-  "handshake",
-  "truck",
-  "document",
-  "shieldCheck",
+  "search", // Sourcing y Representación en Origen
+  "document", // Revisión Documental y Gestión Aduanera
+  "handshake", // Negociación Comercial y Gestión de Compras
+  "truck", // Coordinación Logística y Embarque Internacional
+  "messageSquare", // Asesoría en Comercio Exterior
+  "shieldCheck", // Control de Calidad e Inspección en Planta (AQL)
 ];
 
 /* const TRANSPORT = [
@@ -167,14 +167,11 @@ export default function Servicios() {
         imageInset="0"
         imagePosition="center top"
         actions={
-          <>
-            <Link to="/cotizacion" className="btn-green">
-              {ts.ctaQuote}
-            </Link>
-            <Link to="/contacto" className="btn-outline-white">
-              {ts.ctaExpert}
-            </Link>
-          </>
+          // Single, primary call to action: the quote page is on hold, so
+          // contacting an advisor is the only path forward from here.
+          <Link to="/contacto" className="btn-green">
+            {ts.ctaExpert}
+          </Link>
         }
       />
 
@@ -246,9 +243,9 @@ export default function Servicios() {
       </section>
       */}
 
-      {/* Servicios Complementarios */}
-      <section className={s.complementary}>
-        <div className={`${s.ribbon} ${s["ribbon--blue"]}`}>
+      {/* Nuestros Servicios — scroll target for the footer's service links. */}
+      <section id="nuestros-servicios" className={s.complementary}>
+        <div className={`${s.ribbon} ${s["ribbon--white"]}`}>
           {ts.complementaryRibbon}
         </div>
         <div className={s.inner}>

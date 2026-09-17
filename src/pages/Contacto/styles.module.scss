@@ -186,19 +186,42 @@
   font-size: $fs-sm;
   font-weight: 700;
   color: $color-primary;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  // Wrap rather than truncate: a clipped email address is useless, and these
+  // have no spaces to break at, so the break has to be allowed mid-word.
+  overflow-wrap: anywhere;
 }
 
+// Holds just the arrow now, so it must not steal width from the address.
 .channel-action {
   display: flex;
   align-items: center;
-  gap: 4px;
-  font-size: $fs-xs;
-  font-weight: 700;
+  flex-shrink: 0;
   color: $color-gray-500;
-  white-space: nowrap;
+}
+
+// Multi-line street address: lighter than .channel-value, which is a single
+// bold line meant for one email.
+.office-address {
+  font-size: $fs-sm;
+  font-weight: 500;
+  color: $color-primary;
+  line-height: 1.5;
+}
+
+// Between these widths .info-card lays its two blocks side by side, which
+// leaves the address only ~134px next to the icon and arrow — six cramped
+// lines. Stacking hands it the block's full width instead. Outside this range
+// the sidebar is a single column and the inline layout has room.
+@media (min-width: #{$bp-sm + 1}) and (max-width: #{$bp-lg}) {
+  .office-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $space-2;
+  }
+
+  .office-item .channel-action {
+    align-self: flex-end;
+  }
 }
 
 .hours-list {
@@ -435,11 +458,26 @@
 
   &:hover {
     background: var(--theme-surface);
+    // The accent green is almost the same value as the dark surfaces, so it
+    // reads as no border at all here. Silver keeps the hover visible.
+    border-color: $color-silver;
   }
+}
+
+// Same reason: accent-green artwork disappears against the dark surfaces
+// behind it, so both icon marks switch to silver in this theme.
+:global([data-theme="dark"]) .channel-icon {
+  background: rgba($color-silver, 0.12);
+  color: $color-silver;
+}
+
+:global([data-theme="dark"]) .success-icon {
+  color: $color-silver;
 }
 
 :global([data-theme="dark"]) .info-block-title,
 :global([data-theme="dark"]) .channel-value,
+:global([data-theme="dark"]) .office-address,
 :global([data-theme="dark"]) .hours-time,
 :global([data-theme="dark"]) .form-title,
 :global([data-theme="dark"]) .success-title {

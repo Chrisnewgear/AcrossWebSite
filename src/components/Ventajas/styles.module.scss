@@ -83,6 +83,18 @@
   text-transform: uppercase;
 }
 
+// Sits under the section title: sets up the four cards below it. Capped in
+// `ch` so the line length stays readable no matter how wide the container gets.
+.intro {
+  max-width: 68ch;
+  margin: $space-5 auto 0;
+  font-family: $font-primary;
+  font-size: clamp(#{$fs-base}, 1.4vw, #{$fs-lg});
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.7;
+}
+
 // ── Advantage cards ───────────────────────────────────────────────────
 .grid {
   display: grid;

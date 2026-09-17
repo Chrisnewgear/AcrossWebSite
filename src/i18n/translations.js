@@ -26,10 +26,10 @@ export const translations = {
 
     hero: {
       eyebrow: "Tu socio en comercio internacional",
-      line1: "Conexiones",
-      line2: "Globales",
-      tagline: "Confianza sin fronteras",
-      sub: "Garantizamos la seguridad de tus operaciones mediante procesos claros, visibilidad absoluta y un respaldo constante.",
+      line1: "Conectamos",
+      line2: "Mercados",
+      tagline: "Garantizamos el Éxito de tus Importaciones",
+      sub: "Simplificamos tus operaciones de comercio internacional desde el sourcing hasta la carga, con presencia global.",
       ctaQuote: "Solicitar Cotización",
       ctaServices: "Nuestros Servicios",
       badges: [
@@ -53,12 +53,12 @@ export const translations = {
       mision: {
         title: "Nuestra Misión",
         // text: "Transformamos la distancia en oportunidades globales. Simplificamos tus operaciones internacionales conectándote con soluciones eficientes en cualquier parte del mundo.",
-        text: "Satisfacer los requerimientos de nuestros clientes en todos los negocios internacionales de cualquier parte del mundo",
+        text: "Impulsar y proteger el comercio internacional de nuestros clientes, transformando sus operaciones de importación y exportación en procesos seguros, rentables y eficientes, respaldados por un estricto control de calidad e intermediación transparente en origen.",
       },
       vision: {
         title: "Nuestra Visión",
         // text: "Ser el puente global que transforma fronteras en oportunidades, consolidándonos como el aliado estratégico más confiable, transparente y seguro para conectar mercados.",
-        text: "Ser la empresa número uno en concretar negocios a nivel internacional, abriendo mercados y apoyando a empresas extranjeras en insertar sus productos globalmente",
+        text: "Posicionarnos como la firma de trading e intermediación de referencia en la región, reconocida por construir alianzas sólidas y sostenibles entre proveedores globales y empresas",
       },
     },
 
@@ -66,38 +66,40 @@ export const translations = {
       banner: "Nuestros Valores",
       items: [
         {
-          name: "Responsabilidad",
-          desc: "Asumimos cada proceso comercial con profesionalismo, garantizando una gestión eficiente y el cumplimiento de los estándares acordados.",
+          name: "Experiencia y Rigor",
+          desc: "Dominio profundo de cada etapa del proceso de importación y exportación, respaldado por rigurosos controles de calidad en origen (AQL).",
         },
         {
-          name: "Crecimiento Compartido",
-          desc: "Creemos en generar valor sostenible para clientes, proveedores, colaboradores y aliados estratégicos.",
+          name: "Lealtad y Confidencialidad",
+          desc: "Compromiso absoluto con nuestros clientes y proveedores. Protegemos la identidad de tus fabricantes y la seguridad de tu inversión.",
         },
         {
-          name: "Adaptabilidad",
-          desc: "Respondemos con agilidad a los cambios del mercado global para ofrecer soluciones oportunas y competitivas.",
+          name: "Mejora Continua y Eficiencia",
+          desc: "Optimización constante de la cadena de suministro, ofreciendo soluciones financieras flexibles y respuestas oportunas en el comercio global.",
         },
       ],
     },
 
     ventajas: {
       title: "Por qué elegirnos",
+      intro:
+        "Transformamos la incertidumbre de las compras internacionales en una operación estructurada, transparente y rentable. Como firma de intermediación comercial, conectamos a tu empresa de forma directa con los mercados globales gracias a nuestra presencia con oficinas estratégicas en China, EE. UU., India y Perú.",
       advantages: [
         {
-          title: "Red Global de Proveedores",
-          desc: "Contamos con una sólida red de fabricantes y proveedores internacionales cuidadosamente seleccionados, lo que nos permite ofrecer productos competitivos, confiables y adaptados a las necesidades de cada cliente.",
+          title: "Verificación Directa en Mercados Clave",
+          desc: "Visitamos y evaluamos a los fabricantes en sus propias instalaciones dentro de nuestros destinos de operación. Revisamos la legalidad de la empresa, sus equipos y su capacidad real de producción antes de que realices cualquier pago.",
         },
         {
-          title: "Eficiencia en la Gestión Comercial",
-          desc: "Optimizamos cada etapa del proceso de importación, desde la búsqueda de proveedores hasta la entrega final, garantizando operaciones ágiles y seguras.",
+          title: "Negociación Estratégica y Optimización de Costos",
+          desc: "Contamos con la experiencia y la capacidad técnica para negociar directo con los fabricantes. Dominamos las dinámicas del comercio local en cada origen para eliminar sobrecostos comerciales, ajustar mínimos de producción (MOQ) y asegurar términos contractuales firmes que protegen el margen de tu operación.",
         },
         {
-          title: "Transparencia y Confianza",
-          desc: "Trabajamos con total claridad en cada negociación, brindando información oportuna y acompañamiento constante para que nuestros clientes tomen decisiones con seguridad.",
+          title: "Inspección Técnica de Calidad",
+          desc: "Auditamos la producción mediante estándares AQL (DUPRO y PSI). Verificamos especificaciones, empaque y etiquetado normativo antes de autorizar el pago final y la salida del contenedor.",
         },
         {
-          title: "Experiencia en Comercio Internacional",
-          desc: "Nuestro conocimiento de los mercados globales, procesos aduaneros y logística internacional nos permite minimizar riesgos y generar oportunidades de negocio exitosas.",
+          title: "Control Logístico y Aduanero",
+          desc: "Supervisamos la carga de contenedores (CLS), gestionamos el transporte internacional y validamos la documentación de importación para asegurar un despacho sin multas ni retrasos.",
         },
       ],
       commissions: [
@@ -141,25 +143,21 @@ export const translations = {
 
     footer: {
       brandDesc:
-        "Tu socio confiable en trading e intermediación internacional. Conectamos mercados desde Asia y Europa hasta tu destino.",
+        "Tu socio estratégico en trading e intermediación internacional. Conectamos tu empresa con centros industriales y proveedores calificados a nivel global, sin fronteras para tu cadena de suministro.",
       servicesTitle: "Servicios",
       companyTitle: "La Empresa",
       contactTitle: "Contacto",
+      // Ordered as the process runs — source, negotiate, inspect, ship, clear
+      // customs, advise — not as the Servicios page grid is laid out.
       services: [
         "Sourcing de Proveedores",
-        "Gestión de Importaciones",
         "Negociación y Compras",
-        "Logística de Transporte",
-        "Asesoría en Comercio Exterior",
-        "Inspección de Calidad",
+        "Inspección y Control de Calidad",
+        "Logística Internacional",
+        "Gestión Aduanera",
+        "Consultoría en Comercio Exterior",
       ],
-      company: [
-        "Nosotros",
-        "Misión y Visión",
-        "Presencia Internacional",
-        // "Cotización",
-        "Contacto",
-      ],
+      company: ["Nosotros", "Misión y Visión", "Contacto"],
       address:
         "Av. del Bombero, La Vista de San Eduardo, Edificio 100A Of. 502, Guayaquil, Ecuador",
       copyright:
@@ -168,45 +166,44 @@ export const translations = {
 
     servicios: {
       breadcrumb: "Servicios",
-      heroLabel: "Nuestras capacidades",
-      heroTitle: "Soluciones Logísticas Integrales",
+      heroLabel: "Servicios y Soluciones Globales",
+      heroTitle: "Soluciones Integrales en Comercio Exterior",
       heroSub:
-        "Desde el proveedor hasta tu bodega — gestionamos cada paso de tu cadena de suministro internacional.",
+        "Desde la localización de proveedores en origen hasta la entrega final: conectamos tu empresa con los centros de producción más competitivos del mundo mediante un control riguroso de calidad, seguridad comercial y gestión logística eficientes.",
       ctaQuote: "Solicitar Cotización",
-      ctaExpert: "Hablar con un Experto",
-      complementaryRibbon: "Servicios Complementarios",
+      ctaExpert: "Contactar a un Asesor",
+      complementaryRibbon: "Nuestros Servicios",
       complementary: [
         {
-          title: "Búsqueda y Desarrollo de Proveedores Internacionales",
-          desc: "Identificamos, evaluamos y seleccionamos fabricantes y proveedores confiables en mercados internacionales, garantizando calidad, competitividad y seguridad comercial.",
+          title: "Sourcing y Representación en Origen",
+          desc: "Actuamos como tu oficina de compras en el extranjero. Localizamos fabricantes directos, realizamos auditorías físicas e inspección de instalaciones en planta, y gestionamos el contacto inicial.",
         },
         {
-          title: "Gestión Integral de Importaciones",
-          desc: "Coordinamos todo el ciclo de importación —trámites aduaneros, aranceles, permisos y logística— para que tu mercancía llegue a destino sin contratiempos.",
+          title: "Revisión Documental y Gestión Aduanera",
+          desc: "Revisamos y validamos toda la documentación de importación (facturas comerciales, listas de empaque, certificados de origen y permisos) antes de que la carga navegue. Garantizamos el cumplimiento estricto de las normativas locales para asegurar un despacho aduanero fluido.",
         },
         {
-          title: "Negociación y Compras Internacionales",
-          desc: "Representamos los intereses de nuestros clientes en negociaciones comerciales, obteniendo las mejores condiciones de precio, calidad y plazos de entrega.",
+          title: "Negociación Comercial y Gestión de Compras",
+          desc: "Representamos los intereses económicos de tu empresa frente a las fábricas. Negociamos precios, plazos de pago y términos contractuales para obtener las condiciones más favorables.",
         },
         {
-          title: "Logística y Coordinación de Transporte Internacional",
-          desc: "Gestionamos el transporte marítimo, aéreo y terrestre, asegurando una cadena logística eficiente y un seguimiento continuo de la mercancía.",
+          title: "Coordinación Logística y Embarque Internacional",
+          desc: "Gestionamos la cadena de transporte internacional (vía marítima, aérea o terrestre). Negociamos fletes, coordinamos reservas de espacio, optimizamos tiempos de tránsito y supervisamos el consolidado y llenado de contenedores en puerto de origen.",
         },
         {
           title: "Asesoría en Comercio Exterior",
-          desc: "Brindamos orientación especializada en normativas, documentación, requisitos aduaneros, aranceles y procesos de importación para minimizar riesgos.",
+          desc: "Acompañamiento especializado en la estructuración de compras internacionales, evaluación de requisitos aduaneros y cumplimiento normativo para escalar tu cadena de suministro con total certeza.",
         },
         {
-          title: "Inspección y Control de Calidad",
-          desc: "Coordinamos verificaciones e inspecciones de productos antes del embarque para garantizar que cumplan con las especificaciones y estándares requeridos.",
+          title: "Control de Calidad e Inspección en Planta (AQL)",
+          desc: "Supervisamos el proceso de producción directamente en la fábrica. Realizamos auditorías de materia prima, inspecciones en línea y revisiones pre-embarque bajo estándares AQL, verificando empaque, etiquetado y especificaciones técnicas.",
         },
       ],
       inspectionRibbon: "Inspección de Calidad",
       inspHeading: "Control de Calidad AQL en Fábrica",
-      inspPill:
-        "Protege tu inversión antes de que la mercancía salga de origen.",
+      inspPill: "Protección de capital y control técnico previo al embarque",
       inspIntro:
-        "Realizamos inspecciones de calidad bajo estándares internacionales AQL (Acceptable Quality Limit) en las principales zonas industriales de China, verificando que los productos cumplan con las especificaciones acordadas antes del embarque.",
+        "Realizamos inspecciones de calidad bajo estándares internacionales AQL (Acceptable Quality Limit) en los principales hubs de manufactura internacional, verificando que los productos cumplan con las especificaciones acordadas antes del embarque.",
       tabsLabel: "Fases de inspección",
       prevPhase: "Fase anterior",
       nextPhase: "Fase siguiente",
@@ -458,10 +455,10 @@ export const translations = {
     contacto: {
       breadcrumb: "Contacto",
       headerBar: "Contacto",
-      heroLabel: "Hablemos de tu operación",
-      heroTitle: "Contáctanos",
+      heroLabel: "Atención y consultas B2B",
+      heroTitle: "Conecta con Nuestro Equipo",
       heroSub:
-        "Nuestro equipo de especialistas está listo para asesorarte en cada etapa de tu operación internacional.",
+        "Evaluamos las necesidades de tu empresa para ofrecerte soluciones de intermediación, calidad y logística a medida.",
       formTitle: "Envíanos un mensaje",
       formSub: "Te respondemos en menos de 24 horas hábiles.",
       labels: {
@@ -484,11 +481,10 @@ export const translations = {
       // `id` is the stable form value — never translate it, or switching
       // language mid-form would clear the user's selection.
       subjects: [
-        { id: "flete", label: "Cotización de flete" },
-        { id: "inspeccion", label: "Inspección de calidad" },
-        { id: "sourcing", label: "Sourcing de proveedores" },
-        { id: "seguimiento", label: "Seguimiento de envío" },
-        { id: "trading", label: "Trading / Intermediación" },
+        { id: "sourcing", label: "Sourcing y Desarrollo de Proveedores" },
+        { id: "inspeccion", label: "Control de Calidad (AQL / Inspección)" },
+        { id: "logistica", label: "Coordinación Logística / Embarque" },
+        { id: "consultoria", label: "Consultoría / Asesoría Integral" },
         { id: "otro", label: "Otro" },
       ],
       otroPlaceholder: "Especifique el motivo de tu consulta",
@@ -526,6 +522,11 @@ export const translations = {
           href: "mailto:comex@acrosscon.com",
         },
       ],
+      // The address itself lives in `footer.address` — the Contacto page reads
+      // it from there so both places always show the same one.
+      officeTitle: "Ubicación de Oficina",
+      officeLabel: "Oficina Principal",
+      officeAction: "Ver en mapa",
       hoursTitle: "Horario de Atención",
       hours: [
         { day: "Lunes – Viernes", time: "08:00 – 18:00" },
@@ -559,10 +560,10 @@ export const translations = {
 
     hero: {
       eyebrow: "Your partner in international trade",
-      line1: "Global",
-      line2: "Connections",
-      tagline: "Trust without borders",
-      sub: "We guarantee the security of your operations through clear processes, full visibility and constant support.",
+      line1: "Connecting",
+      line2: "Markets",
+      tagline: "We Guarantee Your Import Success",
+      sub: "We simplify your international trade operations, from sourcing to cargo loading, with a global presence.",
       ctaQuote: "Request a Quote",
       ctaServices: "Our Services",
       badges: [
@@ -585,11 +586,11 @@ export const translations = {
       banner: "What Defines Us",
       mision: {
         title: "Our Mission",
-        text: "We turn distance into global opportunities. We simplify your international operations by connecting you with efficient solutions anywhere in the world.",
+        text: "To drive and protect our clients' international trade, turning their import and export operations into secure, profitable and efficient processes, backed by strict quality control and transparent intermediation at origin.",
       },
       vision: {
         title: "Our Vision",
-        text: "To be the global bridge that turns borders into opportunities, establishing ourselves as the most reliable, transparent and secure strategic ally for connecting markets.",
+        text: "To position ourselves as the leading trading and intermediation firm in the region, recognized for building solid, sustainable partnerships between global suppliers and companies",
       },
     },
 
@@ -597,38 +598,40 @@ export const translations = {
       banner: "Our Values",
       items: [
         {
-          name: "Responsibility",
-          desc: "We take on every commercial process with professionalism, ensuring efficient management and compliance with the agreed standards.",
+          name: "Expertise and Rigor",
+          desc: "Deep command of every stage of the import and export process, backed by rigorous quality controls at origin (AQL).",
         },
         {
-          name: "Shared Growth",
-          desc: "We believe in generating sustainable value for clients, suppliers, partners and strategic allies.",
+          name: "Loyalty and Confidentiality",
+          desc: "Absolute commitment to our clients and suppliers. We protect the identity of your manufacturers and the security of your investment.",
         },
         {
-          name: "Adaptability",
-          desc: "We respond swiftly to changes in the global market to deliver timely and competitive solutions.",
+          name: "Continuous Improvement and Efficiency",
+          desc: "Constant optimization of the supply chain, offering flexible financing solutions and timely responses in global trade.",
         },
       ],
     },
 
     ventajas: {
       title: "Why Choose Us",
+      intro:
+        "We turn the uncertainty of international purchasing into a structured, transparent and profitable operation. As a commercial intermediation firm, we connect your company directly with global markets through our strategic offices in China, the USA, India and Peru.",
       advantages: [
         {
-          title: "Global Supplier Network",
-          desc: "We have a solid network of carefully selected international manufacturers and suppliers, allowing us to offer competitive, reliable products tailored to each client's needs.",
+          title: "Direct Verification in Key Markets",
+          desc: "We visit and assess manufacturers at their own facilities across our operating destinations. We review the company's legal standing, its equipment and its real production capacity before you make any payment.",
         },
         {
-          title: "Efficient Trade Management",
-          desc: "We optimize every stage of the import process, from sourcing suppliers to final delivery, ensuring agile and secure operations.",
+          title: "Strategic Negotiation and Cost Optimization",
+          desc: "We have the experience and technical capacity to negotiate directly with manufacturers. We master the dynamics of local trade at each origin to eliminate commercial overcharges, adjust minimum order quantities (MOQ) and secure firm contractual terms that protect your operation's margin.",
         },
         {
-          title: "Transparency and Trust",
-          desc: "We work with complete clarity in every negotiation, providing timely information and constant support so our clients can make decisions with confidence.",
+          title: "Technical Quality Inspection",
+          desc: "We audit production under AQL standards (DUPRO and PSI). We verify specifications, packaging and regulatory labeling before authorizing final payment and the container's departure.",
         },
         {
-          title: "International Trade Expertise",
-          desc: "Our knowledge of global markets, customs processes and international logistics allows us to minimize risks and create successful business opportunities.",
+          title: "Logistics and Customs Control",
+          desc: "We supervise container loading (CLS), manage international transport and validate import documentation to ensure clearance with no fines or delays.",
         },
       ],
       commissions: [
@@ -668,25 +671,21 @@ export const translations = {
 
     footer: {
       brandDesc:
-        "Your trusted partner in international trading and intermediation. We connect markets from Asia and Europe to your destination.",
+        "Your strategic partner in international trading and intermediation. We connect your company with industrial centers and qualified suppliers worldwide, with no borders for your supply chain.",
       servicesTitle: "Services",
       companyTitle: "Company",
       contactTitle: "Contact",
+      // Ordered as the process runs — source, negotiate, inspect, ship, clear
+      // customs, advise — not as the Servicios page grid is laid out.
       services: [
         "Supplier Sourcing",
-        "Import Management",
         "Negotiation & Procurement",
-        "Transport Logistics",
-        "Foreign Trade Advisory",
-        "Quality Inspection",
+        "Quality Inspection & Control",
+        "International Logistics",
+        "Customs Management",
+        "Foreign Trade Consulting",
       ],
-      company: [
-        "About Us",
-        "Mission & Vision",
-        "International Presence",
-        "Quote",
-        "Contact",
-      ],
+      company: ["About Us", "Mission & Vision", "Contact"],
       address:
         "Av. del Bombero, La Vista de San Eduardo, Edificio 100A Of. 502, Guayaquil, Ecuador",
       copyright: "© 2026 Across Continents Trading. All rights reserved.",
@@ -694,44 +693,44 @@ export const translations = {
 
     servicios: {
       breadcrumb: "Services",
-      heroLabel: "Our capabilities",
-      heroTitle: "Integrated Logistics Solutions",
+      heroLabel: "Global Services and Solutions",
+      heroTitle: "Comprehensive Foreign Trade Solutions",
       heroSub:
-        "From the supplier to your warehouse — we manage every step of your international supply chain.",
+        "From sourcing suppliers at origin to final delivery: we connect your company with the world's most competitive production centers through rigorous quality control, commercial security and efficient logistics management.",
       ctaQuote: "Request a Quote",
-      ctaExpert: "Talk to an Expert",
-      complementaryRibbon: "Complementary Services",
+      ctaExpert: "Contact an Advisor",
+      complementaryRibbon: "Our Services",
       complementary: [
         {
-          title: "International Supplier Sourcing & Development",
-          desc: "We identify, evaluate and select reliable manufacturers and suppliers in international markets, ensuring quality, competitiveness and commercial security.",
+          title: "Sourcing & Representation at Origin",
+          desc: "We act as your purchasing office abroad. We locate direct manufacturers, carry out physical audits and on-site facility inspections, and handle the initial contact.",
         },
         {
-          title: "End-to-End Import Management",
-          desc: "We coordinate the entire import cycle —customs procedures, tariffs, permits and logistics— so your goods reach their destination without setbacks.",
+          title: "Document Review & Customs Management",
+          desc: "We review and validate all import documentation (commercial invoices, packing lists, certificates of origin and permits) before the cargo sails. We ensure strict compliance with local regulations for smooth customs clearance.",
         },
         {
-          title: "International Negotiation & Procurement",
-          desc: "We represent our clients' interests in commercial negotiations, securing the best conditions in price, quality and delivery times.",
+          title: "Commercial Negotiation & Procurement Management",
+          desc: "We represent your company's economic interests before the factories. We negotiate prices, payment terms and contractual conditions to secure the most favorable terms.",
         },
         {
-          title: "International Transport Logistics & Coordination",
-          desc: "We manage ocean, air and ground transport, ensuring an efficient logistics chain and continuous tracking of the goods.",
+          title: "Logistics Coordination & International Shipping",
+          desc: "We manage the international transport chain (ocean, air or ground). We negotiate freight rates, coordinate space bookings, optimize transit times and supervise consolidation and container loading at the port of origin.",
         },
         {
           title: "Foreign Trade Advisory",
-          desc: "We provide specialized guidance on regulations, documentation, customs requirements, tariffs and import processes to minimize risks.",
+          desc: "Specialized support in structuring international purchases, assessing customs requirements and regulatory compliance so you can scale your supply chain with complete certainty.",
         },
         {
-          title: "Quality Inspection & Control",
-          desc: "We coordinate product verifications and inspections before shipment to ensure they meet the required specifications and standards.",
+          title: "Quality Control & In-Plant Inspection (AQL)",
+          desc: "We supervise the production process directly at the factory. We perform raw material audits, in-line inspections and pre-shipment reviews under AQL standards, verifying packaging, labeling and technical specifications.",
         },
       ],
       inspectionRibbon: "Quality Inspection",
       inspHeading: "AQL Quality Control at the Factory",
-      inspPill: "Protect your investment before the goods leave origin.",
+      inspPill: "Capital protection and technical control prior to shipment",
       inspIntro:
-        "We perform quality inspections under international AQL (Acceptable Quality Limit) standards in China's main industrial zones, verifying that products meet the agreed specifications before shipment.",
+        "We perform quality inspections under international AQL (Acceptable Quality Limit) standards in the leading international manufacturing hubs, verifying that products meet the agreed specifications before shipment.",
       tabsLabel: "Inspection phases",
       prevPhase: "Previous phase",
       nextPhase: "Next phase",
@@ -983,10 +982,10 @@ export const translations = {
     contacto: {
       breadcrumb: "Contact",
       headerBar: "Contact",
-      heroLabel: "Let's talk about your operation",
-      heroTitle: "Contact Us",
+      heroLabel: "B2B support and inquiries",
+      heroTitle: "Connect With Our Team",
       heroSub:
-        "Our team of specialists is ready to advise you at every stage of your international operation.",
+        "We assess your company's needs to offer tailored intermediation, quality and logistics solutions.",
       formTitle: "Send us a message",
       formSub: "We reply in under 24 business hours.",
       labels: {
@@ -1008,11 +1007,10 @@ export const translations = {
       asuntoPlaceholder: "Select a reason...",
       // `id` must match the Spanish list — it is the stable form value.
       subjects: [
-        { id: "flete", label: "Freight quote" },
-        { id: "inspeccion", label: "Quality inspection" },
-        { id: "sourcing", label: "Supplier sourcing" },
-        { id: "seguimiento", label: "Shipment tracking" },
-        { id: "trading", label: "Trading / Intermediation" },
+        { id: "sourcing", label: "Supplier Sourcing & Development" },
+        { id: "inspeccion", label: "Quality Control (AQL / Inspection)" },
+        { id: "logistica", label: "Logistics Coordination / Shipping" },
+        { id: "consultoria", label: "Consulting / Comprehensive Advisory" },
         { id: "otro", label: "Other" },
       ],
       otroPlaceholder: "Specify the reason for your inquiry",
@@ -1050,6 +1048,11 @@ export const translations = {
           href: "mailto:comex@acrosscon.com",
         },
       ],
+      // The address itself lives in `footer.address` — the Contacto page reads
+      // it from there so both places always show the same one.
+      officeTitle: "Office Location",
+      officeLabel: "Head Office",
+      officeAction: "View on map",
       hoursTitle: "Business Hours",
       hours: [
         { day: "Monday – Friday", time: "08:00 – 18:00" },

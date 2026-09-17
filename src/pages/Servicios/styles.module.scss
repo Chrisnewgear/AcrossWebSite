@@ -214,8 +214,12 @@
   text-transform: uppercase;
   color: $color-white;
 
-  &--blue {
-    background: $color-primary;
+  // Fixed white in both themes — deliberately not theme-tokened, so the band
+  // looks identical in light and dark mode. Text must be pinned dark for the
+  // same reason: the background never changes with the theme.
+  &--white {
+    background: $color-white;
+    color: $color-primary;
   }
 
   &--green {
@@ -244,13 +248,13 @@
   gap: $space-8;
   padding-top: $space-16;
 
+  // Collapse to one column here, not at `sm`: between 577 and ~670px two
+  // columns leave the title ~180px, and an uppercase word like
+  // "INTERNACIONAL" needs ~212px, so the card's `overflow: hidden` clipped it.
   @include respond-to(md) {
+    grid-template-columns: 1fr;
     padding-top: $space-12;
     gap: $space-6;
-  }
-
-  @include respond-to(sm) {
-    grid-template-columns: 1fr;
   }
 }
 
@@ -310,6 +314,9 @@
   line-height: 1.15;
   margin-bottom: $space-4;
   max-width: 90%;
+  // Uppercase service names run long; break one rather than let the card's
+  // `overflow: hidden` cut it off mid-word.
+  overflow-wrap: break-word;
 }
 
 .comp-desc {

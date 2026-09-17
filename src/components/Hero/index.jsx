@@ -63,7 +63,9 @@ export default function Hero() {
         <p className={s.hero__sub}>{t.hero.sub}</p>
 
         <div className={`${s.hero__ctas} on-dark`}>
-          <button className="btn-green" onClick={() => navigate("/cotizacion")}>
+          {/* Goes to Contacto, not /cotizacion: the quote page is on hold, so
+              every quote request is funnelled through the contact form. */}
+          <button className="btn-green" onClick={() => navigate("/contacto")}>
             {t.hero.ctaQuote}
           </button>
           <button

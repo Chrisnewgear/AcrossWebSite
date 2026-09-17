@@ -28,7 +28,15 @@
       "Bash(node /private/tmp/claude-501/-Users-chrisnewgear-Documents-GitHub-AcrossWebSite/d5dce436-fe13-4afd-96e4-6d58c19bd177/scratchpad/check.mjs test/*.php)",
       "Bash(node /private/tmp/claude-501/-Users-chrisnewgear-Documents-GitHub-AcrossWebSite/d5dce436-fe13-4afd-96e4-6d58c19bd177/scratchpad/check.mjs test/ratelimit.test.php)",
       "Bash(npx eslint *)",
-      "Bash(grep -vE \"scss$\")"
+      "Bash(grep -vE \"scss$\")",
+      "Bash(git fetch *)",
+      "Bash(git rev-list *)",
+      "Bash(git stash *)",
+      "Bash(git pull *)",
+      "Bash(node -e ' *)",
+      "Bash(node --input-type=module -e ' *)",
+      "Bash(grep -n 'color: $color-accent\\\\|color: $color-primary\\\\b' src/pages/Contacto/styles.module.scss)",
+      "Bash(grep -n 'color: \\\\$color-accent' src/pages/Contacto/styles.module.scss)"
     ],
     "additionalDirectories": [
       "C:\\Users\\chris\\Documents\\Github\\ACROSS PROJECT\\website\\src\\components"
