@@ -83,7 +83,7 @@
   text-transform: uppercase;
 }
 
-// Sits under the section title: sets up the four cards below it. Capped in
+// Sits under the section title: introduces the four advantages. Capped in
 // `ch` so the line length stays readable no matter how wide the container gets.
 .intro {
   max-width: 68ch;
@@ -95,82 +95,78 @@
   line-height: 1.7;
 }
 
-// ── Advantage cards ───────────────────────────────────────────────────
-.grid {
+// ── Alternating advantage rows ────────────────────────────────────────
+.advantages {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: $space-6;
+  gap: $space-24;
 
   @include respond-to(md) {
-    grid-template-columns: 1fr;
+    gap: $space-16;
   }
 }
 
-.card {
-  position: relative;
-  overflow: hidden;
-  padding: $space-10 $space-10 $space-12;
-  border-radius: $radius-xl;
-  background-color: $color-accent;
-  background-image: linear-gradient(
-    150deg,
-    rgba(255, 255, 255, 0.14) 0%,
-    rgba(255, 255, 255, 0) 42%,
-    rgba(0, 0, 0, 0.1) 100%
-  );
-  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.22);
-  transition:
-    transform $transition-base,
-    box-shadow $transition-base;
+.advantage {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  gap: clamp(#{$space-8}, 5vw, #{$space-20});
 
-  // Subtle hover: lift, deepen shadow, and bring the index number forward.
-  &:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 30px 64px rgba(0, 0, 0, 0.34);
+  &:nth-child(even) {
+    .image {
+      grid-column: 2;
+      grid-row: 1;
+    }
 
-    .card-number {
-      opacity: 0.32;
-      transform: translateY(-6px);
+    .content {
+      grid-column: 1;
+      grid-row: 1;
+    }
+  }
+
+  @include respond-to(md) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: $space-6;
+
+    &:nth-child(even) {
+      .image,
+      .content {
+        grid-column: auto;
+        grid-row: auto;
+      }
     }
   }
 }
 
-.card-title {
-  position: relative;
-  z-index: 1;
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: $radius-lg;
+}
+
+.content {
+  min-width: 0;
+  text-align: left;
+}
+
+.advantage-title {
   font-family: $font-primary;
-  font-size: clamp(#{$fs-lg}, 2vw, #{$fs-xl});
+  font-size: clamp(#{$fs-xl}, 2.5vw, #{$fs-2xl});
   font-weight: 700;
   color: $color-white;
-  letter-spacing: -0.01em;
-  margin-bottom: $space-3;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: $space-5;
+  text-wrap: balance;
 }
 
-.card-desc {
-  position: relative;
-  z-index: 1;
+.advantage-desc {
   font-family: $font-primary;
-  font-size: $fs-base;
+  font-size: clamp(#{$fs-base}, 1.4vw, #{$fs-md});
   color: rgba(255, 255, 255, 0.9);
-  line-height: 1.65;
-  max-width: 92%;
-}
-
-.card-number {
-  position: absolute;
-  right: $space-6;
-  bottom: $space-2;
-  font-family: $font-display;
-  font-size: clamp(5rem, 9vw, 8rem);
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: -0.05em;
-  color: rgba(255, 255, 255, 0.2);
-  pointer-events: none;
-  user-select: none;
-  transition:
-    opacity $transition-base,
-    transform $transition-base;
+  line-height: 1.8;
 }
 
 // ── Commissions strip ─────────────────────────────────────────────────
