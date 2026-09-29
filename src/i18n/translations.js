@@ -81,7 +81,7 @@ export const translations = {
     },
 
     ventajas: {
-      title: "Por qué elegirnos",
+      title: "¿Por qué elegirnos?",
       intro:
         "Transformamos la incertidumbre de las compras internacionales en una operación estructurada, transparente y rentable. Como firma de intermediación comercial, conectamos a tu empresa de forma directa con los mercados globales gracias a nuestra presencia con oficinas estratégicas en China, EE. UU., India y Perú.",
       advantages: [
@@ -158,6 +158,7 @@ export const translations = {
         "Consultoría en Comercio Exterior",
       ],
       company: ["Nosotros", "Misión y Visión", "Contacto"],
+      phone: "043900680",
       address:
         "Av. del Bombero, La Vista de San Eduardo, Edificio 100A Of. 502, Guayaquil, Ecuador",
       copyright:
@@ -499,6 +500,8 @@ export const translations = {
       errorRate:
         "Ha enviado demasiados mensajes. Espere unos minutos o escríbanos a info@acrosscon.com.",
       channelsTitle: "Canales de Atención",
+      phoneLabel: "Teléfono",
+      phoneAction: "Llamar",
       channels: [
         {
           icon: "mail",
@@ -686,6 +689,7 @@ export const translations = {
         "Foreign Trade Consulting",
       ],
       company: ["About Us", "Mission & Vision", "Contact"],
+      phone: "043900680",
       address:
         "Av. del Bombero, La Vista de San Eduardo, Edificio 100A Of. 502, Guayaquil, Ecuador",
       copyright: "© 2026 Across Continents Trading. All rights reserved.",
@@ -1025,6 +1029,8 @@ export const translations = {
       errorRate:
         "You have sent too many messages. Please wait a few minutes or email us at info@acrosscon.com.",
       channelsTitle: "Contact Channels",
+      phoneLabel: "Phone",
+      phoneAction: "Call",
       channels: [
         {
           icon: "mail",

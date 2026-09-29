@@ -132,6 +132,10 @@ export default function Footer() {
             <div className={s["contact-list"]}>
               <p className={s["contact-line"]}>{t.footer.address}</p>
               <p className={s["contact-line"]}>
+                {t.contacto.phoneLabel}: {" "}
+                <a href={`tel:${t.footer.phone}`}>{t.footer.phone}</a>
+              </p>
+              <p className={s["contact-line"]}>
                 <a href="mailto:info@acrosscon.com">info@acrosscon.com</a>
               </p>
               {/* <p className={s["contact-line"]}>www.acrosscon.com</p> */}

@@ -267,6 +267,22 @@ export default function Contacto() {
               <div className={s["info-block"]}>
                 <h3 className={s["info-block-title"]}>{tc.channelsTitle}</h3>
                 <div className={s["channel-list"]}>
+                  <a
+                    href={`tel:${t.footer.phone}`}
+                    className={s["channel-item"]}
+                    aria-label={`${tc.phoneLabel}: ${t.footer.phone}. ${tc.phoneAction}`}
+                  >
+                    <span className={s["channel-icon"]}>
+                      <Icon name="phone" size={20} />
+                    </span>
+                    <span className={s["channel-info"]}>
+                      <span className={s["channel-label"]}>{tc.phoneLabel}</span>
+                      <span className={s["channel-value"]}>{t.footer.phone}</span>
+                    </span>
+                    <span className={s["channel-action"]} aria-hidden="true">
+                      <Icon name="arrowRight" size={14} />
+                    </span>
+                  </a>
                   {tc.channels.map((ch) => (
                     <a
                       key={ch.label}
