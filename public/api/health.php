@@ -44,6 +44,19 @@ try {
             $report['config']['placeholders'][] = $key;
         }
     }
+
+    // Shape checks for the usual causes of a 535 with a password that works in
+    // webmail: a pasted space, a non-ASCII lookalike character, or a username
+    // that is not the mailbox address. Booleans only — no values.
+    $user = (string) ($cfg['SMTP_USER'] ?? '');
+    $pass = (string) ($cfg['SMTP_PASS'] ?? '');
+    $report['config']['checks'] = [
+        'smtp_user_is_email'        => filter_var($user, FILTER_VALIDATE_EMAIL) !== false,
+        'smtp_user_edge_whitespace' => $user !== trim($user),
+        'smtp_pass_edge_whitespace' => $pass !== trim($pass),
+        'smtp_pass_non_ascii'       => (bool) preg_match('/[^\x20-\x7E]/', $pass),
+        'mail_from_equals_user'     => strcasecmp((string) ($cfg['MAIL_FROM'] ?? ''), $user) === 0,
+    ];
 } catch (Throwable $e) {
     $report['hint'] = 'Copy api/config.example.php to api/config.php and fill it in.';
     json_response(500, $report);
@@ -59,11 +72,31 @@ if (isset($_GET['smtp']) && $configOk) {
         $mail = new PHPMailer\PHPMailer\PHPMailer(true);
         // Also validates MAIL_FROM / RECIPIENT — both throw here if malformed.
         build_message($mail, ['subject' => 'health', 'htmlBody' => '', 'textBody' => ''], $cfg);
+        // Keep the server's own rejection lines (e.g. "535 5.7.139 ..."): they
+        // say why AUTH failed. Client lines are dropped — they carry the
+        // base64 credentials.
+        $mail->SMTPDebug   = 2;
+        $mail->Debugoutput = function ($line) use (&$report) {
+            if (preg_match('/^SERVER -> CLIENT: ([45]\d\d[ -].*)/s', $line, $m)) {
+                $report['smtp_server_said'][] = trim($m[1]);
+            }
+        };
         $mail->smtpConnect();
         $mail->smtpClose();
         $report['smtp'] = ['ok' => true];
     } catch (Throwable $e) {
         $report['smtp'] = ['ok' => false, 'error' => $e->getMessage()];
+    }
+    // Which handshake was attempted, and whether the port is reachable at all.
+    // A failed raw connect means the host blocks outbound SMTP — no config
+    // change fixes that; a successful one points at TLS or credentials.
+    $report['smtp']['encryption'] = $mail->SMTPSecure;
+    $sock = @fsockopen($cfg['SMTP_HOST'], (int) $cfg['SMTP_PORT'], $errno, $errstr, 10);
+    $report['smtp']['tcp'] = $sock
+        ? ['ok' => true]
+        : ['ok' => false, 'errno' => $errno, 'error' => $errstr];
+    if ($sock) {
+        fclose($sock);
     }
 }
 

@@ -21,8 +21,13 @@ function build_message(PHPMailer $mail, array $opts, array $cfg): void {
     $mail->SMTPAuth   = true;
     $mail->Username   = $cfg['SMTP_USER'];
     $mail->Password   = $cfg['SMTP_PASS'];
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
     $mail->Port       = (int) $cfg['SMTP_PORT'];
+    // 465 is implicit TLS; 587 (Office 365, most submission servers) speaks
+    // plaintext first and upgrades with STARTTLS. Using the wrong one never
+    // gets past the handshake.
+    $mail->SMTPSecure = $mail->Port === 465
+        ? PHPMailer::ENCRYPTION_SMTPS
+        : PHPMailer::ENCRYPTION_STARTTLS;
     $mail->CharSet    = 'UTF-8';
     // PHPMailer defaults to 300s. A blocked SMTP port would otherwise leave the
     // visitor watching a spinner for five minutes before the request gives up.
